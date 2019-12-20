@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:id="@+id/tv_select_fixed_channel_name"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60pt"
+    android:textSize="30pt"
+    android:layout_margin="10pt"
+    android:textColor="@color/_81D8CF"
+    android:gravity="center"
+    android:background="@color/_c0c0c0"
+    android:orientation="vertical"/>

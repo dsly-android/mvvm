@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100pt">
+
+    <LinearLayout
+        android:id="@+id/ll_pull_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="40pt"
+            android:layout_height="40pt"/>
+
+        <TextView
+            android:id="@+id/tv_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20pt"
+            android:textColor="@color/_4e4e4e"
+            android:textSize="26pt"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_refreshing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_progress"
+            android:layout_width="40pt"
+            android:layout_height="40pt"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20pt"
+            android:text="正在刷新"
+            android:textColor="@color/_4e4e4e"
+            android:textSize="26pt"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/_4e4e4e"
+        android:textSize="26pt"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_refresh_num"
+        android:layout_width="match_parent"
+        android:layout_height="60pt"
+        android:background="@color/_FFE9E9"
+        android:gravity="center"
+        android:textColor="@color/_ed4040"
+        android:visibility="gone"
+        android:textSize="26pt"
+        android:layout_gravity="bottom"
+        tools:text="已为您更新10条内容"/>
+</merge>

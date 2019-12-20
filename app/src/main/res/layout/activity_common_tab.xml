@@ -1,0 +1,132 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#eeeeee"
+    android:fitsSystemWindows="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.htxtdshopping.htxtd.frame.widget.tablayout.CommonTabLayout
+            android:id="@+id/tl_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:paddingBottom="10pt"
+            android:paddingTop="10pt"
+            tl:tl_indicator_color="#2C97DE"
+            tl:tl_textSelectColor="#2C97DE"
+            tl:tl_textUnselectColor="#66000000"
+            tl:tl_underline_color="#DDDDDD"
+            tl:tl_underline_height="2pt"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_2"
+            android:layout_width="match_parent"
+            android:layout_height="168pt"/>
+
+        <com.htxtdshopping.htxtd.frame.widget.tablayout.CommonTabLayout
+            android:id="@+id/tl_2"
+            android:layout_width="match_parent"
+            android:layout_height="108pt"
+            android:background="#ffffff"
+            tl:tl_iconHeight="46pt"
+            tl:tl_iconWidth="46pt"
+            tl:tl_indicator_color="#2C97DE"
+            tl:tl_indicator_height="0dp"
+            tl:tl_textSelectColor="#2C97DE"
+            tl:tl_textUnselectColor="#66000000"
+            tl:tl_textsize="24pt"
+            tl:tl_underline_color="#DDDDDD"
+            tl:tl_underline_height="2pt"/>
+
+        <FrameLayout
+            android:id="@+id/fl_change"
+            android:layout_width="match_parent"
+            android:layout_height="168pt">
+        </FrameLayout>
+
+        <com.htxtdshopping.htxtd.frame.widget.tablayout.CommonTabLayout
+            android:id="@+id/tl_3"
+            android:layout_width="match_parent"
+            android:layout_height="96pt"
+            android:background="#ffffff"
+            tl:tl_iconGravity="LEFT"
+            tl:tl_iconHeight="36pt"
+            tl:tl_iconMargin="10pt"
+            tl:tl_iconWidth="36pt"
+            tl:tl_indicator_bounce_enable="false"
+            tl:tl_indicator_color="#2C97DE"
+            tl:tl_indicator_gravity="TOP"
+            tl:tl_textSelectColor="#2C97DE"
+            tl:tl_textUnselectColor="#66000000"
+            tl:tl_textsize="30pt"
+            tl:tl_underline_color="#DDDDDD"
+            tl:tl_underline_gravity="TOP"
+            tl:tl_underline_height="2pt"/>
+
+        <com.htxtdshopping.htxtd.frame.widget.tablayout.CommonTabLayout
+            android:id="@+id/tl_4"
+            android:layout_width="match_parent"
+            android:layout_height="96pt"
+            android:background="#F6CE59"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_width="20pt"
+            tl:tl_textBold="SELECT"
+            tl:tl_textsize="28pt"/>
+
+        <com.htxtdshopping.htxtd.frame.widget.tablayout.CommonTabLayout
+            android:id="@+id/tl_5"
+            android:layout_width="match_parent"
+            android:layout_height="96pt"
+            android:background="#EC7263"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_corner_radius="4pt"
+            tl:tl_indicator_height="8pt"
+            tl:tl_indicator_width="8pt"
+            tl:tl_textBold="BOTH"
+            tl:tl_textsize="28pt"/>
+
+        <com.htxtdshopping.htxtd.frame.widget.tablayout.CommonTabLayout
+            android:id="@+id/tl_6"
+            android:layout_width="match_parent"
+            android:layout_height="96pt"
+            android:background="#57385C"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_corner_radius="3pt"
+            tl:tl_indicator_height="6pt"
+            tl:tl_indicator_width="20pt"
+            tl:tl_textsize="28pt"/>
+
+        <com.htxtdshopping.htxtd.frame.widget.tablayout.CommonTabLayout
+            android:id="@+id/tl_7"
+            android:layout_width="match_parent"
+            android:layout_height="96pt"
+            android:background="#E45171"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_color="#eeeeee"
+            tl:tl_indicator_corner_radius="3pt"
+            tl:tl_indicator_height="6pt"
+            tl:tl_indicator_style="TRIANGLE"
+            tl:tl_indicator_width="20pt"
+            tl:tl_textsize="28pt"/>
+
+        <com.htxtdshopping.htxtd.frame.widget.tablayout.CommonTabLayout
+            android:id="@+id/tl_8"
+            android:layout_width="match_parent"
+            android:layout_height="96pt"
+            android:background="#6D8FB0"
+            android:paddingLeft="10pt"
+            android:paddingRight="10pt"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_margin_left="10pt"
+            tl:tl_indicator_margin_right="10pt"
+            tl:tl_indicator_style="BLOCK"
+            tl:tl_textsize="28pt"/>
+    </LinearLayout>
+</ScrollView>

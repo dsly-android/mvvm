@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.four.activity.TimeOrAddressPickerActivity">
+
+    <com.android.dsly.common.widget.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title_bar"
+        app:tb_title="时间、地址选择器"/>
+
+    <Button
+        android:id="@+id/btn_lunar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="公农历切换"/>
+
+    <Button
+        android:id="@+id/btn_Time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="时间选择器"/>
+
+    <Button
+        android:id="@+id/btn_Options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="条件选择器"/>
+
+    <Button
+        android:id="@+id/btn_CustomTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="时间选择器自定义布局"/>
+
+    <Button
+        android:id="@+id/btn_no_linkage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="条件选择器(不联动)"/>
+
+    <Button
+        android:id="@+id/btn_GotoJsonData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="省市区Json文件解析示例"/>
+</LinearLayout>

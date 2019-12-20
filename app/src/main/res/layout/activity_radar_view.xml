@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#666666"
+    tools:context=".ui.four.activity.RadarViewActivity">
+
+    <com.htxtdshopping.htxtd.frame.widget.radarview.RadarView
+        android:id="@+id/rv_radar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:vertex_line_color="#99FFFFFF"
+        app:layer_line_color="#99FFFFFF"
+        app:vertex_text_color="#FFFFFF"
+        app:vertex_text_offset="30pt" />
+</FrameLayout>

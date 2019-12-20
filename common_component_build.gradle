@@ -1,0 +1,104 @@
+//def componentName = project.getName().startsWith("module_") ? project.getName().substring(0, "module_".length()) :
+
+if (isBuildModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    signingConfigs {
+        frame {
+            keyAlias 'frame'
+            keyPassword '123456'
+            storeFile file('/Users/chenzhipeng/移动硬盘/android/框架/Frame/frame.jks')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    useLibrary 'org.apache.http.legacy'
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+        //方法数超过65536时要加这行
+        multiDexEnabled true
+        //ARouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                includeCompileClasspath true
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            if (isBuildModule.toBoolean()) {
+                minifyEnabled true    //混淆
+                shrinkResources true  //资源文件压缩
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), '../app/proguard-rules.pro'
+                signingConfig signingConfigs.frame
+            } else {
+                //子module中通过这个自动寻找该module下我们指定的混淆文件对代码进行混淆，
+                // 是否进行混淆是通过主module的minifyEnabled决定的
+                consumerProguardFiles '../proguard-rules.pro'
+            }
+        }
+        release {
+            if (isBuildModule.toBoolean()) {
+                minifyEnabled true
+                shrinkResources true
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), '../app/proguard-rules.pro'
+                signingConfig signingConfigs.frame
+            } else {
+                //子module中通过这个自动寻找该module下我们指定的混淆文件对代码进行混淆，
+                // 是否进行混淆是通过主module的minifyEnabled决定的
+                consumerProguardFiles '../proguard-rules.pro'
+            }
+        }
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        disable "ResourceType"
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            if (isBuildModule.toBoolean()) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+    //dagger
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+
+    //glide
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+
+    //butterknife
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+
+    //arouter
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
+    //common
+    api project(":common")
+}

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Frame</string>
+    <string name="latest_version">当前已是最新版本</string>
+
+    <string name="refresh_news_num">已为您更新%1$d条内容</string>
+
+    <string name="pickerview_cancel">取消</string>
+    <string name="pickerview_submit">确定</string>
+    <string name="pickerview_year">年</string>
+    <string name="pickerview_month">月</string>
+    <string name="pickerview_day">日</string>
+    <string name="pickerview_hours">时</string>
+    <string name="pickerview_minutes">分</string>
+    <string name="pickerview_seconds">秒</string>
+
+</resources>

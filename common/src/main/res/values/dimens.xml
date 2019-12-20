@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标题栏的默认高度-->
+    <dimen name="height_title_bar">88pt</dimen>
+    <!--bottomTab-->
+    <dimen name="material_bottom_navigation_active_item_max_width">336pt</dimen>
+    <dimen name="material_bottom_navigation_height">112pt</dimen>
+    <dimen name="material_bottom_navigation_item_max_width">192pt</dimen>
+    <dimen name="material_bottom_navigation_item_min_width">112pt</dimen>
+    <dimen name="material_bottom_navigation_margin">16pt</dimen>
+    <dimen name="material_bottom_navigation_text_size">24sp</dimen>
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="32pt"
+    android:paddingLeft="30pt"
+    android:paddingRight="30pt"
+    android:background="@drawable/bg_press_effect"
+    android:paddingTop="20pt">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        tools:text="《红色通缉》第五集《筑坝》：红通逃犯欲潜逃国外 最终却在国内被捕"
+        android:textColor="@color/_212121"
+        android:textSize="34pt"/>
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="68pt"
+        android:layout_height="32pt"
+        android:background="@drawable/home_news_label"
+        android:gravity="center"
+        android:textColor="@color/_EA3D36"
+        android:textSize="24pt"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:layout_marginTop="15pt"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="置顶"/>
+
+    <TextView
+        android:id="@+id/tv_comment_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20pt"
+        tools:text="16评 · 2分钟前"
+        android:textColor="@color/_a0a0a0"
+        android:textSize="24pt"
+        app:layout_constraintBottom_toBottomOf="@id/tv_label"
+        app:layout_constraintLeft_toRightOf="@id/tv_label"
+        app:layout_constraintTop_toTopOf="@id/tv_label"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.android.dsly.common.widget.TitleBar
+        android:id="@+id/tb_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title_bar"
+        app:tb_title="RefreshAndLoadMore"
+        tools:ignore="MissingConstraints"/>
+
+    <com.htxtdshopping.htxtd.frame.widget.refresh.NewsRefreshLayout
+        android:id="@+id/nrl_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_title">
+
+        <com.htxtdshopping.htxtd.frame.widget.refresh.NewsRefreshHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
+    </com.htxtdshopping.htxtd.frame.widget.refresh.NewsRefreshLayout>
+
+    <com.htxtdshopping.htxtd.frame.widget.ThreePointLoadingView
+        android:id="@+id/tpl_view"
+        android:layout_width="match_parent"
+        android:layout_height="0pt"
+        android:clickable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_title"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

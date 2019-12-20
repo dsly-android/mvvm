@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.first.activity.RxjavaActivity">
+
+    <Button
+        android:id="@+id/btn_test1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="接口的嵌套调用"/>
+
+    <Button
+        android:id="@+id/btn_test2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="merge组合多个被观察者按时间线并行执行"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn_test3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="concat组合多个被观察者按发送顺序串行执行"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示/隐藏loading"
+        android:textAllCaps="false"/>
+
+    <ImageView
+        android:id="@+id/iv_test1"
+        android:layout_width="100pt"
+        android:layout_height="100pt"/>
+</LinearLayout>

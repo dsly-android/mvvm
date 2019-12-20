@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="180pt"
+    android:background="@drawable/image_selector_image_folder"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="132pt"
+        android:layout_height="132pt"
+        android:layout_marginLeft="24pt"
+        android:layout_marginRight="24pt"
+        android:background="@drawable/image_bg_image_folder">
+
+        <ImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="12pt"
+            android:layout_marginRight="12pt"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_folder_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/image_all_pictures"
+            android:textColor="@color/_424242"
+            android:textSize="28pt"/>
+
+        <TextView
+            android:id="@+id/tv_image_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8pt"
+            android:text="共0张"
+            android:textColor="@color/_999999"
+            android:textSize="24pt"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_folder_check"
+        android:layout_width="48pt"
+        android:layout_height="48pt"
+        android:layout_marginLeft="16pt"
+        android:layout_marginRight="40pt"
+        android:src="@drawable/image_ic_vector_check"
+        android:visibility="gone"/>
+</LinearLayout>

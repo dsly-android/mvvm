@@ -1,0 +1,120 @@
+apply plugin: 'com.android.library'
+//module中使用butterknife
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        testInstrumentationRunner rootProject.ext.android["androidJUnitRunner"]
+        //ARouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            //子module中通过这个自动寻找该module下我们指定的混淆文件对代码进行混淆，
+            // 是否进行混淆是通过主module的minifyEnabled决定的
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+        release {
+            //子module中通过这个自动寻找该module下我们指定的混淆文件对代码进行混淆，
+            // 是否进行混淆是通过主module的minifyEnabled决定的
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    //给 Module 内的资源名增加前缀, 避免资源名冲突
+//    resourcePrefix "common_"
+}
+
+dependencies {
+    //implementation修饰的只能在当前module中引用,依赖module中改为api则主module中也可引用jar包
+    //annotationProcessor在每个module都必须要引用
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    testApi 'junit:junit:4.12'
+    androidTestApi 'androidx.test:runner:1.2.0'
+    androidTestApi 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //multidex
+    api rootProject.ext.dependencies["multidex"]
+
+    //design
+    api rootProject.ext.dependencies["design"]
+
+    //common_service
+    api project(path: ':common_service')
+
+    //rxhttp
+    api rootProject.ext.dependencies["rxhttp"]
+
+    //fastjson
+    api rootProject.ext.dependencies["fastjson"]
+
+    //AndroidEventBus
+    api rootProject.ext.dependencies["androideventbus"]
+
+    //butterknife
+    api rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+
+    //glide
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+
+    //RxPermissions
+    api rootProject.ext.dependencies["rxpermissions"]
+
+    //lifecycle
+    api rootProject.ext.dependencies["lifecycle"]
+
+    //dagger
+    api rootProject.ext.dependencies["dagger"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    api rootProject.ext.dependencies["dagger-android"]
+    api(rootProject.ext.dependencies["dagger-android-support"]) {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+
+    //leakcanary
+    debugApi rootProject.ext.dependencies["leakcanary"]
+
+    //AndroidAutoSize
+    api project(path: ':autosize')
+
+    //flexbox-layout
+    api rootProject.ext.dependencies["flexbox"]
+
+    //BaseRecyclerViewAdapterHelper
+    api rootProject.ext.dependencies["adapter"]
+
+    //x5
+    api files('libs/tbs_sdk_thirdapp_v3.6.0.1371_43624_sharewithdownload_withoutGame_obfs_20181106_121046.jar')
+
+    //SmartRefreshLayout
+    api rootProject.ext.dependencies["refresh"]
+    //没有使用特殊Header，可以不加这行
+    api rootProject.ext.dependencies["refresh-header"]
+    api rootProject.ext.dependencies["legacy"]
+
+    //ARouter
+    api rootProject.ext.dependencies["arouter"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+}

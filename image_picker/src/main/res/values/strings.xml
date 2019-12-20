@@ -1,0 +1,6 @@
+<resources>
+    <string name="image_app_name">image_picker</string>
+
+    <string name="image_all_pictures">所有图片</string>
+    <string name="image_folder_image_count">共%1$d张</string>
+</resources>

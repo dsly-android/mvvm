@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80pt">
+
+    <LinearLayout
+        android:id="@+id/load_more_loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="30pt"
+            android:layout_height="30pt"
+            android:indeterminateTint="@color/colorPrimary"
+            android:layout_marginRight="8pt"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8pt"
+            android:text="@string/loading"
+            android:textColor="#999999"
+            android:textSize="28pt"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/load_more_load_fail_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/load_failed"
+            android:textColor="#999999"
+            android:textSize="28pt"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/load_more_load_end_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2pt"
+            android:layout_weight="1"
+            android:layout_marginLeft="100pt"
+            android:background="#f1f1f1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/load_end"
+            android:layout_marginLeft="40pt"
+            android:layout_marginRight="40pt"
+            android:textColor="#999999"
+            android:textSize="28pt"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="2pt"
+            android:layout_weight="1"
+            android:layout_marginRight="100pt"
+            android:background="#f1f1f1"/>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,41 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+       xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="48pt"
+        android:layout_height="48pt"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12pt" />
+
+    <com.android.dsly.common.widget.pagerbottomtabstrip.internal.BaselineLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:clipToPadding="false"
+        android:paddingBottom="16pt">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="24sp"
+            tools:text="123" />
+
+    </com.android.dsly.common.widget.pagerbottomtabstrip.internal.BaselineLayout>
+
+    <com.android.dsly.common.widget.UnreadMsgView
+        android:id="@+id/messages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6pt"
+        android:translationX="28pt"
+        android:layout_gravity="center_horizontal"/>
+</merge>
+
+
+
+
+

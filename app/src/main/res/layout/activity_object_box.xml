@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.first.activity.ObjectBoxActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="rxjava"
+        android:text="rxjava"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="first"
+        android:text="one-to-one"/>
+
+    <Button
+        android:onClick="second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="one-to-many"/>
+
+    <Button
+        android:onClick="third"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="many-to-many"/>
+
+    <ScrollView
+        android:id="@+id/scrollViewLog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/textViewLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:padding="16dp"
+            tools:text="Log 1\nLog 2\nLog 3"/>
+
+    </ScrollView>
+</LinearLayout>

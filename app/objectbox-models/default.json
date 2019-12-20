@@ -1,0 +1,132 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:8466090597035078806",
+      "lastPropertyId": "4:5680186249087992043",
+      "name": "User",
+      "properties": [
+        {
+          "id": "1:6455154442475845180",
+          "name": "id"
+        },
+        {
+          "id": "2:7735448922001942240",
+          "indexId": "1:1273702595229490685",
+          "name": "name"
+        },
+        {
+          "id": "3:6132587953806994529",
+          "indexId": "2:8133529727553629042",
+          "name": "description"
+        },
+        {
+          "id": "4:5680186249087992043",
+          "indexId": "3:2154851499448561818",
+          "name": "personId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:8880797391569114785",
+      "lastPropertyId": "3:6749969371509763387",
+      "name": "Person",
+      "properties": [
+        {
+          "id": "1:1895071826410437544",
+          "name": "id"
+        },
+        {
+          "id": "2:2298783519794814782",
+          "name": "name"
+        },
+        {
+          "id": "3:6749969371509763387",
+          "indexId": "4:6093340530874606569",
+          "name": "userId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:6000720780381848224",
+      "lastPropertyId": "2:5912658490676344484",
+      "name": "Order",
+      "properties": [
+        {
+          "id": "1:278127885788563708",
+          "name": "id"
+        },
+        {
+          "id": "2:5912658490676344484",
+          "indexId": "5:23157569282386783",
+          "name": "customerId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:8573211696079466460",
+      "lastPropertyId": "1:3583416323248056856",
+      "name": "Customer",
+      "properties": [
+        {
+          "id": "1:3583416323248056856",
+          "name": "id"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:7745181277693390955",
+      "lastPropertyId": "2:5063837986387626593",
+      "name": "Student",
+      "properties": [
+        {
+          "id": "1:5074765564020319614",
+          "name": "id"
+        },
+        {
+          "id": "2:5063837986387626593",
+          "name": "name"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:8956576967626234200",
+          "name": "teachers"
+        }
+      ]
+    },
+    {
+      "id": "6:5523286145606361441",
+      "lastPropertyId": "2:1725653598956379248",
+      "name": "Teacher",
+      "properties": [
+        {
+          "id": "1:817587735879279891",
+          "name": "id"
+        },
+        {
+          "id": "2:1725653598956379248",
+          "name": "name"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "6:5523286145606361441",
+  "lastIndexId": "5:23157569282386783",
+  "lastRelationId": "1:8956576967626234200",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView
+    android:id="@+id/iv_img"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180pt"
+    android:layout_height="180pt"
+    android:scaleType="centerCrop"/>

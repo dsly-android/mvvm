@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.htxtdshopping.htxtd.frame"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- 显示系统Window必须添加的权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
+    <!-- objectbox -->
+    <!-- Required to provide the web interface -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Required to run keep-alive service when targeting API 28 or higher -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true"/>
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <!-- oss -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <!-- Sophix -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 外部存储读权限，调试工具加载本地补丁需要 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- x5内核 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <!-- UShare -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".base.SophixStubApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="icon,theme,label,allowBackup">
+        <activity
+            android:name=".ui.center.activity.LinearActivity"
+            android:screenOrientation="portrait"/>
+
+        <service android:name=".service.WebSocketService"/>
+
+        <activity
+            android:name=".ui.first.activity.WebSocketActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.four.activity.DoodleViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.four.activity.DialogActivity"
+            android:screenOrientation="portrait"/>
+
+        <service android:name="com.lzf.easyfloat.service.FloatService"/>
+
+        <activity
+            android:name=".ui.four.activity.RadarViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.first.activity.AutoSizeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.first.activity.FloatWindowActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.center.fragment.CenterActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.HandlerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.LifecycleActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.ChipActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.BottomSheetActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.MaterialDesignActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.other.activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.other.activity.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.first.activity.RefreshAndLoadMoreActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.first.activity.PermissionActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.first.activity.GenerateQrCodeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.GridActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.ListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.VoiceRecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.VoicePlayActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.second.activity.OssActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.second.activity.UpgradeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.AppCompat.Dialog"/>
+        <activity
+            android:name=".ui.third.activity.PopupWindowActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.first.activity.ObjectBoxActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.four.activity.TabHomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.four.activity.SlidingTabActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.four.activity.SegmentTabActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.four.activity.CommonTabActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.four.activity.CommonTextViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.four.activity.CommonViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.second.activity.WebActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity
+            android:name=".ui.third.activity.ChangeAvatarActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.NotificationActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.LaunchActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.ServiceActivity"
+            android:screenOrientation="portrait"/>
+
+        <service android:name=".service.LocalService"/>
+        <service android:name=".service.BindService"/>
+        <service android:name=".service.MyIntentService"/>
+
+        <activity
+            android:name=".ui.four.activity.TimeOrAddressPickerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.four.activity.ContactNavigationActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.second.activity.LoginAndShareActivity"
+            android:screenOrientation="portrait"/> <!-- 分享 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity
+            android:name=".ui.four.activity.ChooseChannelActivity"
+            android:screenOrientation="portrait"/> <!-- 一进去就弹出输入法 -->
+        <!-- android:windowSoftInputMode="stateVisible|adjustResize" -->
+        <!-- 不弹出输入法 -->
+        <!-- android:windowSoftInputMode="stateHidden" -->
+        <activity
+            android:name=".ui.third.activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity
+            android:name=".ui.first.activity.BannerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.first.activity.NewsVideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.first.activity.RxjavaActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.third.activity.UpgradeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.AppCompat.Dialog"/>
+
+        <!--bugly-->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <!-- 友盟 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5c3ca500f1f556c482000950"/>
+    </application>
+</manifest>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.third.activity.NotificationActivity">
+
+    <com.android.dsly.common.widget.TitleBar
+        android:id="@+id/tb_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_title_bar"
+        app:tb_title="通知"/>
+
+    <Button
+        android:id="@+id/btn_high"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="重要的通知"/>
+
+    <Button
+        android:id="@+id/btn_low"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="正常的通知"/>
+
+    <Button
+        android:id="@+id/btn_custom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义通知"/>
+</LinearLayout>

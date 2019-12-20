@@ -1,0 +1,68 @@
+ext {
+    android = [
+            compileSdkVersion       : 28,
+            buildToolsVersion       : '29.0.1',
+            minSdkVersion           : 19,
+            targetSdkVersion        : 28,
+            versionCode             : 1,
+            versionName             : "1.0.0"
+    ]
+
+    version = [
+            butterknifeSdkVersion   : "10.0.0",
+            glideSdkVersion         : "4.9.0",
+            daggerSdkVersion       : "2.24",
+    ]
+
+    dependencies = [
+            //test
+            "androidJUnitRunner"       : "androidx.test.runner.AndroidJUnitRunner",
+            //multidex
+            "multidex"                 : "androidx.multidex:multidex:2.0.1",
+            //design
+            "design"                   : "com.google.android.material:material:1.1.0-alpha02",
+            //butterknife
+            "butterknife"              : "com.jakewharton:butterknife:${version["butterknifeSdkVersion"]}",
+            "butterknife-compiler"     : "com.jakewharton:butterknife-compiler:${version["butterknifeSdkVersion"]}",
+            //rxhttp
+            "rxhttp"                   : "com.android.dsly:rxhttp:1.0.1",
+            //fastjson
+            "fastjson"                 : "com.alibaba:fastjson:1.1.71.android",
+            //AndroidEventBus
+            "androideventbus"          : "org.simple:androideventbus:1.0.5.1",
+            //glide
+            "glide"                    : "com.github.bumptech.glide:glide:${version["glideSdkVersion"]}",
+            //glide-compiler
+            "glide-compiler"           : "com.github.bumptech.glide:compiler:${version["glideSdkVersion"]}",
+            //rxpermissions
+            "rxpermissions"            : "com.github.tbruyelle:rxpermissions:0.10.2",
+            //lifecycle
+            "lifecycle"                : "android.arch.lifecycle:common-java8:+",
+            //dagger
+            "dagger"                   : "com.google.dagger:dagger:${version["daggerSdkVersion"]}",
+            //dagger-compiler
+            "dagger-compiler"          : "com.google.dagger:dagger-compiler:${version[ "daggerSdkVersion"]}",
+            //dagger-android
+            "dagger-android"           : "com.google.dagger:dagger-android:${version["daggerSdkVersion"]}",
+            //dagger-android-support
+            "dagger-android-support"   : "com.google.dagger:dagger-android-support:${version["daggerSdkVersion"]}",
+            //dagger-android-processor
+            "dagger-android-processor" : "com.google.dagger:dagger-android-processor:${version["daggerSdkVersion"]}",
+            //leakcanary
+            "leakcanary"               : "com.squareup.leakcanary:leakcanary-android:2.0",
+            //flexbox
+            "flexbox"                  : "com.google.android:flexbox:1.1.0",
+            //BaseRecyclerViewAdapterHelper
+            "adapter"                  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.49-androidx",
+            //SmartRefreshLayout
+            "refresh"                  : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-15",
+            //SmartRefreshHeader
+            "refresh-header"           : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-15",
+            //legacy
+            "legacy"                   : "androidx.legacy:legacy-support-v4:1.0.0",
+            //arouter
+            "arouter"              : "com.alibaba:arouter-api:1.5.0",
+            //arouter-compiler
+            "arouter-compiler"         : "com.alibaba:arouter-compiler:1.2.2",
+    ]
+}

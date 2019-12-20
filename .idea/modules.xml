@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autosize/autosize.iml" filepath="$PROJECT_DIR$/autosize/autosize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common_service/common_service.iml" filepath="$PROJECT_DIR$/common_service/common_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easyfloat/easyfloat.iml" filepath="$PROJECT_DIR$/easyfloat/easyfloat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/image_picker/image_picker.iml" filepath="$PROJECT_DIR$/image_picker/image_picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvvm.iml" filepath="$PROJECT_DIR$/mvvm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zxing/zxing.iml" filepath="$PROJECT_DIR$/zxing/zxing.iml" />
+    </modules>
+  </component>
+</project>

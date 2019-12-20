@@ -1,0 +1,16 @@
+apply from:"../common_component_build.gradle"
+
+android {
+    resourcePrefix "zxing_" //给 Module 内的资源名增加前缀, 避免资源名冲突
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testApi 'junit:junit:4.12'
+    androidTestApi 'androidx.test:runner:1.2.0'
+    androidTestApi 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //zxing
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.google.zxing:android-core:3.3.0'
+}

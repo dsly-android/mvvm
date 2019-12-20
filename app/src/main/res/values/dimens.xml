@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--wheelview默认字体大小-->
+    <dimen name="wheelview_textsize">36pt</dimen>
+    <!-- 顶部按钮栏高度 -->
+    <dimen name="pickerview_topbar_height">88pt</dimen>
+    <!-- 顶部按钮padding -->
+    <dimen name="pickerview_topbar_padding">40pt</dimen>
+    <!-- 顶部按钮文字大小 -->
+    <dimen name="pickerview_topbar_btn_textsize">34pt</dimen>
+    <dimen name="pickerview_topbar_title_textsize">36pt</dimen>
+    <!-- 选项文字大小 -->
+    <dimen name="pickerview_textsize">40pt</dimen>
+</resources>
