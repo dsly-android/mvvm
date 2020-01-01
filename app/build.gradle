@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-//To use Butter Knife in a library, add the plugin to your buildscript:
-//apply plugin: 'com.jakewharton.butterknife'
 //bugly
 apply plugin: 'bugly'
 bugly {
@@ -39,11 +37,13 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName(), 'objectbox.debug': 'false']
             }
         }
+        //databinding
+        dataBinding.enabled = true
     }
     buildTypes {
         debug {
-            minifyEnabled true    //混淆
-            shrinkResources true  //资源文件压缩
+            minifyEnabled false    //混淆
+            shrinkResources false  //资源文件压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.frame
         }
@@ -92,23 +92,17 @@ dependencies {
     //common
     implementation project(path: ':common')
 
-    //dagger
-    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
-    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
-
     //glide
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
-
-    //butterknife
-    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
     //arouter
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
     if (!isBuildModule.toBoolean()) {
-        //在宿主 App 中使用 implementation 依赖业务组件, 业务组件的代码就会完全暴露给宿主 App, 不利于代码的隔离
-        //使用 runtimeOnly 依赖业务组件, 可实现业务组件的代码在编译时对宿主 App 不可见, 仅在运行时对宿主 App 可见
-        runtimeOnly project(":zxing")
+        //使用runtimeOnly会是databinding失效
+        implementation project(":zxing")
     }
 
     //image_picker

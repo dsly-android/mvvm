@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-//module中使用butterknife
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -23,6 +21,8 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+        //databinding
+        dataBinding.enabled = true
     }
 
     buildTypes {
@@ -50,6 +50,4 @@ dependencies {
     implementation project(":common")
     //glide
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
-    //butterknife
-    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 }

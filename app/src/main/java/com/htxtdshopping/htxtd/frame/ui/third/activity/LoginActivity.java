@@ -6,26 +6,16 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityLoginBinding;
 
-import butterknife.BindView;
-import butterknife.OnClick;
-
-public class LoginActivity extends BaseActivity {
-
-    @BindView(R.id.et_phone)
-    EditText mEtPhone;
-    @BindView(R.id.et_password)
-    EditText mEtPassword;
-    @BindView(R.id.tv_showPW)
-    TextView mTvShowPW;
+public class LoginActivity extends BaseActivity<ActivityLoginBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -34,12 +24,12 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mEtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        mBinding.etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
     }
 
     @Override
     public void initEvent() {
-        mEtPassword.addTextChangedListener(new TextWatcher() {
+        mBinding.etPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -59,10 +49,16 @@ public class LoginActivity extends BaseActivity {
                     String temp = s.toString();
                     ToastUtils.showLong("请输入数字或字母");
                     s.delete(temp.length() - 1, temp.length());
-                    mEtPassword.setSelection(s.length());
+                    mBinding.etPassword.setSelection(s.length());
                 }
             }
         });
+
+        mBinding.tvShowPW.setOnClickListener(this);
+        mBinding.btnLogin.setOnClickListener(this);
+        mBinding.ivWechat.setOnClickListener(this);
+        mBinding.ivRetrievePassword.setOnClickListener(this);
+        mBinding.ivCustomerService.setOnClickListener(this);
     }
 
     @Override
@@ -70,26 +66,26 @@ public class LoginActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.tv_showPW, R.id.btn_login, R.id.iv_wechat, R.id.iv_retrieve_password, R.id.iv_customer_service})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_showPW:
-                if (mEtPassword.getInputType() != InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
-                    mEtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    mTvShowPW.setText("隐藏密码");
+                if (mBinding.etPassword.getInputType() != InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                    mBinding.etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    mBinding.tvShowPW.setText("隐藏密码");
                 } else {
-                    mEtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    mTvShowPW.setText("显示密码");
+                    mBinding.etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    mBinding.tvShowPW.setText("显示密码");
                 }
-                String pwd = mEtPassword.getText().toString();
-                if (!TextUtils.isEmpty(pwd)){
-                    mEtPassword.setSelection(pwd.length());
+                String pwd = mBinding.etPassword.getText().toString();
+                if (!TextUtils.isEmpty(pwd)) {
+                    mBinding.etPassword.setSelection(pwd.length());
                 }
                 break;
             case R.id.btn_login:
-                String phone = mEtPhone.getText().toString();
-                String password = mEtPassword.getText().toString();
-                if (!RegexUtils.isMobileExact(phone)){
+                String phone = mBinding.etPhone.getText().toString();
+                String password = mBinding.etPassword.getText().toString();
+                if (!RegexUtils.isMobileExact(phone)) {
                     ToastUtils.showLong("请输入正确的手机号码");
                     return;
                 }

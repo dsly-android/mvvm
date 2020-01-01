@@ -4,7 +4,7 @@ import com.android.dsly.common.utils.GlideUtils;
 import com.android.dsly.image_picker.R;
 import com.android.dsly.image_picker.local_data.ImageFolder;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 /**
  * @author 陈志鹏
@@ -26,8 +26,8 @@ public class ImageFolderAdapter extends BaseQuickAdapter<ImageFolder, BaseViewHo
     protected void convert(BaseViewHolder helper, ImageFolder item) {
         int position = helper.getLayoutPosition();
         helper.setText(R.id.tv_folder_name, item.name);
-        helper.setText(R.id.tv_image_count, mContext.getString(R.string.image_folder_image_count, item.images.size()));
-        GlideUtils.loadImage(mContext, item.cover.path, helper.getView(R.id.iv_cover));
+        helper.setText(R.id.tv_image_count, getContext().getString(R.string.image_folder_image_count, item.images.size()));
+        GlideUtils.loadImage(getContext(), item.cover.path, helper.getView(R.id.iv_cover));
         if (mSelectedPos == position) {
             helper.setVisible(R.id.iv_folder_check, true);
         } else {

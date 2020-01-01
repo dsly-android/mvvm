@@ -1,17 +1,14 @@
 package com.htxtdshopping.htxtd.frame.ui.four.fragment;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BasePageLazyFragment;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.FragmentSimpleCardBinding;
 
-import butterknife.BindView;
+public class SimpleCardFragment extends BasePageLazyFragment<FragmentSimpleCardBinding, BaseViewModel> {
 
-public class SimpleCardFragment extends BasePageLazyFragment {
-
-    @BindView(R.id.tv_card_title)
-    TextView mTvCardTitle;
     private String mTitle;
 
     public static SimpleCardFragment getInstance(String title) {
@@ -27,7 +24,7 @@ public class SimpleCardFragment extends BasePageLazyFragment {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mTvCardTitle.setText(mTitle);
+        mBinding.tvCardTitle.setText(mTitle);
     }
 
     @Override

@@ -22,7 +22,7 @@
 
     <application>
         <activity
-            android:name=".test.MainActivity"
+            android:name=".test.ZxingMainActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".CaptureActivity"

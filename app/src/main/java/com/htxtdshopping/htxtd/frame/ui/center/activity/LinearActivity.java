@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.os.SystemClock;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnLoadMoreListener;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityLinearBinding;
 import com.htxtdshopping.htxtd.frame.ui.center.adapter.LinearAdapter;
 import com.htxtdshopping.htxtd.frame.widget.ChatLoadMoreView;
 
@@ -15,12 +18,9 @@ import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
 
-public class LinearActivity extends BaseFitsWindowActivity {
+public class LinearActivity extends BaseFitsWindowActivity<ActivityLinearBinding, BaseViewModel> {
 
-    @BindView(R.id.rv_content)
-    RecyclerView mRvContent;
     private LinearAdapter mAdapter;
 
     private int currentNum = 100;
@@ -32,21 +32,21 @@ public class LinearActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mRvContent.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, true));
+        mBinding.rvContent.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, true));
         mAdapter = new LinearAdapter();
-        mAdapter.setEnableLoadMore(true);
-        mAdapter.setLoadMoreView(new ChatLoadMoreView());
-        mRvContent.setAdapter(mAdapter);
+        mAdapter.getLoadMoreModule().setEnableLoadMore(true);
+        mAdapter.getLoadMoreModule().setLoadMoreView(new ChatLoadMoreView());
+        mBinding.rvContent.setAdapter(mAdapter);
     }
 
     @Override
     public void initEvent() {
-        mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        mAdapter.getLoadMoreModule().setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void onLoadMoreRequested() {
+            public void onLoadMore() {
                 loadData();
             }
-        }, mRvContent);
+        });
     }
 
     @Override
@@ -71,7 +71,7 @@ public class LinearActivity extends BaseFitsWindowActivity {
             @Override
             public void onSuccess(List<String> result) {
                 mAdapter.addData(result);
-                mAdapter.loadMoreComplete();
+                mAdapter.getLoadMoreModule().loadMoreComplete();
             }
         });
     }

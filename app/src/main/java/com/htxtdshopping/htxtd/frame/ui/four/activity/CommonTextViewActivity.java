@@ -3,18 +3,14 @@ package com.htxtdshopping.htxtd.frame.ui.four.activity;
 import android.os.Bundle;
 
 import com.android.dsly.common.base.BaseActivity;
-import com.android.dsly.common.widget.CommonTextView;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
-
-import butterknife.BindView;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityCommonTextViewBinding;
 
 /**
  * @author chenzhipeng
  */
-public class CommonTextViewActivity extends BaseActivity {
-
-    @BindView(R.id.ctv_test1)
-    CommonTextView mCtvTest1;
+public class CommonTextViewActivity extends BaseActivity<ActivityCommonTextViewBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {

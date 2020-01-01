@@ -1,21 +1,24 @@
 package com.htxtdshopping.htxtd.frame.ui.four.adapter;
 
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.module.BaseDraggableModule;
+import com.chad.library.adapter.base.module.DraggableModule;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.bean.ChannelBean;
-import com.htxtdshopping.htxtd.frame.widget.adapter.BaseMultiItemDraggableAdapter;
+import com.htxtdshopping.htxtd.frame.widget.NewsDraggableModule;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author 陈志鹏
  * @date 2019/1/16
  */
-public class ChooseChannelAdapter extends BaseMultiItemDraggableAdapter<MultiItemEntity, BaseViewHolder> {
+public class ChooseChannelAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder> implements DraggableModule {
 
     //已选频道
     public static final int TYPE_SELECTED = 1;
@@ -32,10 +35,6 @@ public class ChooseChannelAdapter extends BaseMultiItemDraggableAdapter<MultiIte
         addItemType(TYPE_SELECTED, R.layout.item_select_channel);
         addItemType(TYPE_NOT_SELECTED, R.layout.item_not_select_channel);
         addItemType(TYPE_SELECTED_FIXED, R.layout.item_select_fixed_channel);
-    }
-
-    public void setItemTouchHelper(ItemTouchHelper itemTouchHelper) {
-        this.mItemTouchHelper = itemTouchHelper;
     }
 
     @Override
@@ -59,11 +58,10 @@ public class ChooseChannelAdapter extends BaseMultiItemDraggableAdapter<MultiIte
         }
     }
 
+    @NotNull
     @Override
-    public void onItemDragMoving(RecyclerView.ViewHolder source, RecyclerView.ViewHolder target) {
-        if (target.getItemViewType() == TYPE_SELECTED) {
-            super.onItemDragMoving(source, target);
-        }
+    public BaseDraggableModule addDraggableModule(@NotNull BaseQuickAdapter<?, ?> baseQuickAdapter) {
+        return new NewsDraggableModule(this);
     }
 
     public int getItemTypeNum(int itemType) {
@@ -77,6 +75,6 @@ public class ChooseChannelAdapter extends BaseMultiItemDraggableAdapter<MultiIte
     }
 
     public boolean inRange(int position) {
-        return position >= 0 && position < mData.size();
+        return position >= 0 && position < getData().size();
     }
 }

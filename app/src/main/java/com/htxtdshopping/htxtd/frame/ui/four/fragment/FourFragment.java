@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseLazyFragment;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.FragmentFourBinding;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.ChooseChannelActivity;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.CommonTextViewActivity;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.CommonViewActivity;
@@ -17,16 +19,10 @@ import com.htxtdshopping.htxtd.frame.ui.four.activity.RadarViewActivity;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.TabHomeActivity;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.TimeOrAddressPickerActivity;
 
-import butterknife.BindView;
-import butterknife.OnClick;
-
 /**
  * @author chenzhipeng
  */
-public class FourFragment extends BaseLazyFragment {
-
-    @BindView(R.id.v_bar)
-    View mVBar;
+public class FourFragment extends BaseLazyFragment<FragmentFourBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -35,12 +31,20 @@ public class FourFragment extends BaseLazyFragment {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        BarUtils.setStatusBarColor(mVBar, getResources().getColor(R.color._81D8CF));
+        BarUtils.setStatusBarColor(mBinding.vBar, getResources().getColor(R.color._81D8CF));
     }
 
     @Override
     public void initEvent() {
-
+        mBinding.btnTab.setOnClickListener(this);
+        mBinding.btnCommonTv.setOnClickListener(this);
+        mBinding.btnCommon.setOnClickListener(this);
+        mBinding.btnTimeOrDatePicker.setOnClickListener(this);
+        mBinding.btnContactNavigation.setOnClickListener(this);
+        mBinding.btnChooseChannel.setOnClickListener(this);
+        mBinding.btnRadarview.setOnClickListener(this);
+        mBinding.btnDialog.setOnClickListener(this);
+        mBinding.btnSketchpad.setOnClickListener(this);
     }
 
     @Override
@@ -48,10 +52,8 @@ public class FourFragment extends BaseLazyFragment {
 
     }
 
-    @OnClick({R.id.btn_tab, R.id.btn_common_tv, R.id.btn_common, R.id.btn_time_or_date_picker,
-            R.id.btn_contact_navigation, R.id.btn_choose_channel, R.id.btn_radarview, R.id.btn_dialog,
-            R.id.btn_sketchpad})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_tab:
                 ActivityUtils.startActivity(TabHomeActivity.class);

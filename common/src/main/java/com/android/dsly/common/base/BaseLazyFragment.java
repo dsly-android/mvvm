@@ -4,13 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentTransaction;
 
 /**
  * @author 陈志鹏
  * @date 2018/9/7
  */
-public abstract class BaseLazyFragment<P extends BasePresenter> extends BaseFragment<P> {
+public abstract class BaseLazyFragment<VB extends ViewDataBinding, VM extends BaseViewModel> extends BaseFragment<VB,VM> {
 
     private static final String INVISIBLE_WHEN_LEAVE = "invisible_when_leave";
     private boolean mInvisibleWhenLeave;

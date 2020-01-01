@@ -3,28 +3,21 @@ package com.htxtdshopping.htxtd.frame.ui.first.activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityGenerateQrCodeBinding;
 import com.mrd.common_service.service.GenerateCodeService;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * @author chenzhipeng
  */
-public class GenerateQrCodeActivity extends BaseFitsWindowActivity {
+public class GenerateQrCodeActivity extends BaseFitsWindowActivity<ActivityGenerateQrCodeBinding, BaseViewModel> implements View.OnClickListener {
 
-    @BindView(R.id.et_code)
-    EditText mEtCode;
-    @BindView(R.id.iv_img)
-    ImageView mIvImg;
     @Autowired
     GenerateCodeService mGenerateCodeService;
 
@@ -40,7 +33,7 @@ public class GenerateQrCodeActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initEvent() {
-
+        mBinding.btnGenerateQrCode.setOnClickListener(this);
     }
 
     @Override
@@ -48,16 +41,16 @@ public class GenerateQrCodeActivity extends BaseFitsWindowActivity {
 
     }
 
-    @OnClick({R.id.btn_generateQrCode})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_generateQrCode:
-                String code = mEtCode.getText().toString();
+                String code = mBinding.etCode.getText().toString();
                 if (ObjectUtils.isEmpty(code)) {
                     return;
                 }
                 Bitmap bitmap = mGenerateCodeService.generateBarCode(code);
-                mIvImg.setImageBitmap(bitmap);
+                mBinding.ivImg.setImageBitmap(bitmap);
                 break;
             default:
                 break;

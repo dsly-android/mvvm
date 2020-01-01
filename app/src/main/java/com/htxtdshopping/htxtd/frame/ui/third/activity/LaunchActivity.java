@@ -1,19 +1,15 @@
 package com.htxtdshopping.htxtd.frame.ui.third.activity;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityLaunchBinding;
 
-import butterknife.BindView;
-
-public class LaunchActivity extends BaseActivity {
+public class LaunchActivity extends BaseActivity<ActivityLaunchBinding, BaseViewModel> {
 
     public static final String KEY_CONTENT = "key_content";
-
-    @BindView(R.id.tv_content)
-    TextView mTvContent;
 
     @Override
     public int getLayoutId() {
@@ -23,7 +19,7 @@ public class LaunchActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         String content = getIntent().getStringExtra(KEY_CONTENT);
-        mTvContent.setText(content);
+        mBinding.tvContent.setText(content);
     }
 
     @Override

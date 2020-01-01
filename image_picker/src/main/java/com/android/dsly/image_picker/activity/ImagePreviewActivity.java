@@ -6,26 +6,22 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
-import com.android.dsly.common.widget.TitleBar;
 import com.android.dsly.image_picker.R;
-import com.android.dsly.image_picker.R2;
 import com.android.dsly.image_picker.adapter.ImagePageAdapter;
+import com.android.dsly.image_picker.databinding.ImageActivityImagePreviewBinding;
 import com.android.dsly.image_picker.local_data.ImageItem;
-import com.android.dsly.image_picker.widget.ZoomViewPager;
 import com.blankj.utilcode.util.BarUtils;
 
 import java.util.ArrayList;
 
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
-import butterknife.BindView;
-import butterknife.OnClick;
 
-public class ImagePreviewActivity extends BaseActivity {
+public class ImagePreviewActivity extends BaseActivity<ImageActivityImagePreviewBinding, BaseViewModel> implements View.OnClickListener {
 
     public static final String KEY_All_IMAGE = "key_all_image";
     public static final String KEY_SELECTED_PATH = "key_selected_path";
@@ -33,18 +29,7 @@ public class ImagePreviewActivity extends BaseActivity {
     public static final String KEY_MAX_SELECT_NUM = "key_max_select_num";
     public static final String RESULT_KEY_ALL_IMAGE = "result_key_all_image";
     public static final String RESULT_KEY_FINISH = "result_key_finish";
-    @BindView(R2.id.tb_title)
-    TitleBar mTbTitle;
-    @BindView(R2.id.tv_back)
-    TextView mTvBack;
-    @BindView(R2.id.tv_right)
-    TextView mTvRight;
-    @BindView(R2.id.zvp_page)
-    ZoomViewPager mZvpPage;
-    @BindView(R2.id.tv_check)
-    TextView mTvCheck;
-    @BindView(R2.id.fl_footer)
-    FrameLayout mFlFooter;
+
     private ArrayList<ImageItem> mAllImages;
     private String mSelectedPath;
     private ImagePageAdapter mAdapter;
@@ -63,12 +48,12 @@ public class ImagePreviewActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.transparent));
-        mTvRight.setVisibility(View.VISIBLE);
+        mBinding.tbTitle.setRightTextVisible(View.VISIBLE);
 
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mTbTitle.getLayoutParams();
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mBinding.tbTitle.getLayoutParams();
         params.height += BarUtils.getStatusBarHeight();
-        mTbTitle.setLayoutParams(params);
-        mTbTitle.setPadding(0, BarUtils.getStatusBarHeight(), 0, 0);
+        mBinding.tbTitle.setLayoutParams(params);
+        mBinding.tbTitle.setPadding(0, BarUtils.getStatusBarHeight(), 0, 0);
 
         mAllImages = (ArrayList<ImageItem>) getIntent().getSerializableExtra(KEY_All_IMAGE);
         mSelectedPath = getIntent().getStringExtra(KEY_SELECTED_PATH);
@@ -85,12 +70,12 @@ public class ImagePreviewActivity extends BaseActivity {
         refreshFinish();
 
         mAdapter = new ImagePageAdapter(this, mAllImages);
-        mZvpPage.setAdapter(mAdapter);
+        mBinding.zvpPage.setAdapter(mAdapter);
     }
 
     @Override
     public void initEvent() {
-        mZvpPage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mBinding.zvpPage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
 
@@ -98,8 +83,8 @@ public class ImagePreviewActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int i) {
-                mTvBack.setText((i + 1) + "/" + mAllImages.size());
-                mTvCheck.setSelected(mAllImages.get(i).isChecked);
+                mBinding.tbTitle.setBackTextString(((i + 1) + "/" + mAllImages.size()));
+                mBinding.tvCheck.setSelected(mAllImages.get(i).isChecked);
             }
 
             @Override
@@ -116,6 +101,9 @@ public class ImagePreviewActivity extends BaseActivity {
                 }
             }
         });
+        mBinding.tbTitle.setOnTextBackClickListener(this);
+        mBinding.tbTitle.setOnRightTextClickListener(this);
+        mBinding.tvCheck.setOnClickListener(this);
     }
 
     @Override
@@ -127,21 +115,21 @@ public class ImagePreviewActivity extends BaseActivity {
                 break;
             }
         }
-        mZvpPage.setCurrentItem(position);
+        mBinding.zvpPage.setCurrentItem(position);
 
-        mTvBack.setText((position + 1) + "/" + mAllImages.size());
-        mTvCheck.setSelected(mAllImages.get(position).isChecked);
+        mBinding.tbTitle.setBackTextString((position + 1) + "/" + mAllImages.size());
+        mBinding.tvCheck.setSelected(mAllImages.get(position).isChecked);
     }
 
-    @OnClick({R2.id.tv_back, R2.id.tv_right, R2.id.tv_check})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         int i = view.getId();
         if (i == R.id.tv_back) {
             onBackPressed();
         } else if (i == R.id.tv_right) {
             setResult(true);
         } else if (i == R.id.tv_check) {
-            ImageItem imageItem = mAllImages.get(mZvpPage.getCurrentItem());
+            ImageItem imageItem = mAllImages.get(mBinding.zvpPage.getCurrentItem());
             if (imageItem.isChecked == false) {
                 if (mSelectedImages.size() >= mMaxSelectNum) {
                     ToastUtils.showLong("您最多只能选择" + mMaxSelectNum + "张图片");
@@ -149,7 +137,7 @@ public class ImagePreviewActivity extends BaseActivity {
                 }
             }
             imageItem.isChecked = !imageItem.isChecked;
-            mTvCheck.setSelected(imageItem.isChecked);
+            mBinding.tvCheck.setSelected(imageItem.isChecked);
             if (imageItem.isChecked == true) {
                 mSelectedImages.add(imageItem);
             } else {
@@ -161,13 +149,13 @@ public class ImagePreviewActivity extends BaseActivity {
 
     private void refreshFinish() {
         if (mSelectedImages.size() == 0) {
-            mTvRight.setText("完成");
-            mTvRight.setClickable(false);
-            mTvRight.setAlpha(0.5f);
+            mBinding.tbTitle.setRightTextString("完成");
+            mBinding.tbTitle.setRightTextClickable(false);
+            mBinding.tbTitle.setRightTextAlpha(0.5f);
         } else {
-            mTvRight.setText("完成(" + mSelectedImages.size() + "/" + mMaxSelectNum + ")");
-            mTvRight.setClickable(true);
-            mTvRight.setAlpha(1);
+            mBinding.tbTitle.setRightTextString("完成(" + mSelectedImages.size() + "/" + mMaxSelectNum + ")");
+            mBinding.tbTitle.setRightTextClickable(true);
+            mBinding.tbTitle.setRightTextAlpha(1);
         }
     }
 
@@ -186,13 +174,13 @@ public class ImagePreviewActivity extends BaseActivity {
 
     private void hideStatusBar() {
         mBarStatus = false;
-        mTbTitle.animate().translationY(-mTbTitle.getHeight()).setInterpolator(new AccelerateInterpolator(2));
-        mFlFooter.animate().alpha(0.0f).setInterpolator(new AccelerateInterpolator(2));
+        mBinding.tbTitle.animate().translationY(- mBinding.tbTitle.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+        mBinding.flFooter.animate().alpha(0.0f).setInterpolator(new AccelerateInterpolator(2));
     }
 
     private void showStatusBar() {
         mBarStatus = true;
-        mTbTitle.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
-        mFlFooter.animate().alpha(1.0f).setInterpolator(new DecelerateInterpolator(2));
+        mBinding.tbTitle.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+        mBinding.flFooter.animate().alpha(1.0f).setInterpolator(new DecelerateInterpolator(2));
     }
 }

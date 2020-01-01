@@ -1,75 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <com.htxtdshopping.htxtd.frame.widget.VoiceLineView
-        android:id="@+id/vlv_wave"
+    <data>
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200pt"
-        android:background="@android:color/darker_gray"
-        app:maxVolume="100"
-        app:middleLine="@android:color/white"
-        app:middleLineHeight="1dp"
-        app:fineness="three"
-        app:rectSpace="2dp"
-        app:rectWidth="5dp"
-        app:sensibility="five"
-        app:viewMode="line"
-        app:lineSpeed="90"
-        app:voiceLine="@android:color/white" />
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/_424242"
-        android:textSize="30pt"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        <com.htxtdshopping.htxtd.frame.widget.VoiceLineView
+            android:id="@+id/vlv_wave"
+            android:layout_width="match_parent"
+            android:layout_height="200pt"
+            android:background="@android:color/darker_gray"
+            app:maxVolume="100"
+            app:middleLine="@android:color/white"
+            app:middleLineHeight="1dp"
+            app:fineness="three"
+            app:rectSpace="2dp"
+            app:rectWidth="5dp"
+            app:sensibility="five"
+            app:viewMode="line"
+            app:lineSpeed="90"
+            app:voiceLine="@android:color/white"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="start"
-        android:text="开始录音"
-        android:textColor="@color/_424242"
-        android:textSize="20pt"/>
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/_424242"
+            android:textSize="30pt"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="pause"
-        android:text="暂停录音"
-        android:textColor="@color/_424242"
-        android:textSize="20pt"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="start"
+            android:text="开始录音"
+            android:textColor="@color/_424242"
+            android:textSize="20pt"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="resume"
-        android:text="继续录音"
-        android:textColor="@color/_424242"
-        android:textSize="20pt"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="pause"
+            android:text="暂停录音"
+            android:textColor="@color/_424242"
+            android:textSize="20pt"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="stop"
-        android:textColor="@color/_424242"
-        android:textSize="20pt"
-        android:text="停止录音"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="resume"
+            android:text="继续录音"
+            android:textColor="@color/_424242"
+            android:textSize="20pt"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="record"
-        android:textColor="@color/_424242"
-        android:textSize="20pt"
-        android:text="录音记录"/>
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="stop"
+            android:textColor="@color/_424242"
+            android:textSize="20pt"
+            android:text="停止录音"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="record"
+            android:textColor="@color/_424242"
+            android:textSize="20pt"
+            android:text="录音记录"/>
+    </LinearLayout>
+</layout>

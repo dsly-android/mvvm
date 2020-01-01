@@ -2,17 +2,15 @@ package com.htxtdshopping.htxtd.frame.ui.third.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.Constants;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.base.AppContext;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityUpgradeBinding;
 import com.liulishuo.okdownload.DownloadTask;
 import com.liulishuo.okdownload.StatusUtil;
 import com.liulishuo.okdownload.core.breakpoint.BreakpointInfo;
@@ -25,14 +23,12 @@ import java.io.File;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * @author 陈志鹏
  * @date 2019-08-06
  */
-public class UpgradeActivity extends BaseActivity {
+public class UpgradeActivity extends BaseActivity<ActivityUpgradeBinding, BaseViewModel> implements View.OnClickListener {
 
     public static final String VERSIONCODE = "versionCode";
     public static final String VERSIONNAME = "versionName";
@@ -40,22 +36,6 @@ public class UpgradeActivity extends BaseActivity {
     public static final String ISFORCE = "isForce";
     public static final String DESCRIPTION = "description";
 
-    @BindView(R.id.tv_title)
-    TextView mTvTitle;
-    @BindView(R.id.tv_version)
-    TextView mTvVersion;
-    @BindView(R.id.tv_content)
-    TextView mTvContent;
-    @BindView(R.id.btn_cancel)
-    Button mBtnCancel;
-    @BindView(R.id.btn_start)
-    Button mBtnStart;
-    @BindView(R.id.btn_install)
-    Button mBtnInstall;
-    @BindView(R.id.pb_progress)
-    ProgressBar mPbProgress;
-    @BindView(R.id.ll_btn)
-    LinearLayout mLlBtn;
     private int mVersionCode;
     private String mVersionName;
     private String mApkUrl;
@@ -81,14 +61,14 @@ public class UpgradeActivity extends BaseActivity {
         mDescription = getIntent().getStringExtra(DESCRIPTION);
 
         /*获取策略信息，初始化界面信息*/
-        mTvTitle.setText(mTvTitle.getText().toString() + mVersionCode);
-        mTvVersion.setText(mTvVersion.getText().toString() + mVersionName);
-        mTvContent.setText(mDescription);
+        mBinding.tvTitle.setText(mBinding.tvTitle.getText().toString() + mVersionCode);
+        mBinding.tvVersion.setText(mBinding.tvVersion.getText().toString() + mVersionName);
+        mBinding.tvContent.setText(mDescription);
         if (mIsForce) {
-            mBtnCancel.setVisibility(View.GONE);
+            mBinding.btnCancel.setVisibility(View.GONE);
             setFinishOnTouchOutside(false);
         } else {
-            mBtnCancel.setVisibility(View.VISIBLE);
+            mBinding.btnCancel.setVisibility(View.VISIBLE);
             setFinishOnTouchOutside(true);
         }
 
@@ -110,10 +90,10 @@ public class UpgradeActivity extends BaseActivity {
 
             @Override
             public void taskStart(@NonNull DownloadTask task, @NonNull Listener1Assist.Listener1Model model) {
-                mBtnCancel.setVisibility(View.GONE);
-                mBtnStart.setVisibility(View.GONE);
-                mBtnInstall.setVisibility(View.GONE);
-                mPbProgress.setVisibility(View.VISIBLE);
+                mBinding.btnCancel.setVisibility(View.GONE);
+                mBinding.btnStart.setVisibility(View.GONE);
+                mBinding.btnInstall.setVisibility(View.GONE);
+                mBinding.pbProgress.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -136,6 +116,10 @@ public class UpgradeActivity extends BaseActivity {
                 initStatus();
             }
         };
+
+        mBinding.btnCancel.setOnClickListener(this);
+        mBinding.btnStart.setOnClickListener(this);
+        mBinding.btnInstall.setOnClickListener(this);
     }
 
     @Override
@@ -146,14 +130,14 @@ public class UpgradeActivity extends BaseActivity {
     private void initStatus() {
         StatusUtil.Status status = StatusUtil.getStatus(mTask);
         if (status == StatusUtil.Status.COMPLETED) {
-            mBtnStart.setVisibility(View.GONE);
-            mBtnInstall.setVisibility(View.VISIBLE);
-            mPbProgress.setVisibility(View.GONE);
-            mPbProgress.setProgress(mPbProgress.getMax());
-            if (mIsForce){
-                mBtnCancel.setVisibility(View.GONE);
-            }else{
-                mBtnCancel.setVisibility(View.VISIBLE);
+            mBinding.btnStart.setVisibility(View.GONE);
+            mBinding.btnInstall.setVisibility(View.VISIBLE);
+            mBinding.pbProgress.setVisibility(View.GONE);
+            mBinding.pbProgress.setProgress(mBinding.pbProgress.getMax());
+            if (mIsForce) {
+                mBinding.btnCancel.setVisibility(View.GONE);
+            } else {
+                mBinding.btnCancel.setVisibility(View.VISIBLE);
             }
         }
         BreakpointInfo info = StatusUtil.getCurrentInfo(mTask);
@@ -162,8 +146,8 @@ public class UpgradeActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.btn_cancel, R.id.btn_start, R.id.btn_install})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_cancel:
                 mTask.cancel();
@@ -171,8 +155,8 @@ public class UpgradeActivity extends BaseActivity {
                 break;
             case R.id.btn_start:
                 if (mIsForce) {
-                    mBtnStart.setVisibility(View.GONE);
-                    mPbProgress.setVisibility(View.VISIBLE);
+                    mBinding.btnStart.setVisibility(View.GONE);
+                    mBinding.pbProgress.setVisibility(View.VISIBLE);
                     mTask.enqueue(mListener);
                 } else {
                     mTask.enqueue(AppContext.getInstance().getUpgradeListener());
@@ -189,12 +173,12 @@ public class UpgradeActivity extends BaseActivity {
 
     private void calcProgressToView(long offset, long total) {
         float percent = (float) offset / total;
-        mPbProgress.setProgress((int) (percent * mPbProgress.getMax()));
+        mBinding.pbProgress.setProgress((int) (percent * mBinding.pbProgress.getMax()));
     }
 
     @Override
     public void onBackPressed() {
-        if (!mIsForce){
+        if (!mIsForce) {
             super.onBackPressed();
         }
     }
@@ -208,7 +192,7 @@ public class UpgradeActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mIsForce){
+        if (mIsForce) {
             mTask.cancel();
         }
     }

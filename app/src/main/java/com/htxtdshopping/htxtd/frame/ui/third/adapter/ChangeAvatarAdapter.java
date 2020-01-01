@@ -18,6 +18,6 @@ public class ChangeAvatarAdapter extends BaseQuickAdapter<String, ChangeAvatarVi
 
     @Override
     protected void convert(@NonNull ChangeAvatarViewHolder helper, String item) {
-        helper.convert(mContext,item);
+        helper.convert(getContext(),item);
     }
 }

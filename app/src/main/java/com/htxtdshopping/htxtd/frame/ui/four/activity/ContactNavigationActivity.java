@@ -5,11 +5,14 @@ import android.view.View;
 
 import com.alibaba.fastjson.JSON;
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.decoration.PinnedHeaderDecoration;
 import com.android.dsly.common.utils.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.bean.ContactBean;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityContactNavigationBinding;
 import com.htxtdshopping.htxtd.frame.ui.four.adapter.ContactNavigationAdapter;
 import com.htxtdshopping.htxtd.frame.widget.WaveSideBarView;
 
@@ -19,7 +22,6 @@ import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -27,12 +29,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class ContactNavigationActivity extends BaseFitsWindowActivity {
+public class ContactNavigationActivity extends BaseFitsWindowActivity<ActivityContactNavigationBinding, BaseViewModel> {
 
-    @BindView(R.id.rv_content)
-    RecyclerView mRvContent;
-    @BindView(R.id.wsbv_letter)
-    WaveSideBarView mWsbvLetter;
     private ContactNavigationAdapter mAdapter;
 
     @Override
@@ -42,7 +40,7 @@ public class ContactNavigationActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mRvContent.setLayoutManager(new LinearLayoutManager(this));
+        mBinding.rvContent.setLayoutManager(new LinearLayoutManager(this));
         PinnedHeaderDecoration decoration = new PinnedHeaderDecoration();
         decoration.registerTypePinnedHeader(ContactNavigationAdapter.HEADER, new PinnedHeaderDecoration.PinnedHeaderCreator() {
             @Override
@@ -50,14 +48,14 @@ public class ContactNavigationActivity extends BaseFitsWindowActivity {
                 return true;
             }
         });
-        mRvContent.addItemDecoration(decoration);
+        mBinding.rvContent.addItemDecoration(decoration);
         mAdapter = new ContactNavigationAdapter();
-        mRvContent.setAdapter(mAdapter);
+        mBinding.rvContent.setAdapter(mAdapter);
     }
 
     @Override
     public void initEvent() {
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (adapter.getItemViewType(position)) {
@@ -72,14 +70,14 @@ public class ContactNavigationActivity extends BaseFitsWindowActivity {
                 }
             }
         });
-        mWsbvLetter.setOnTouchLetterChangeListener(new WaveSideBarView.OnTouchLetterChangeListener() {
+        mBinding.wsbvLetter.setOnTouchLetterChangeListener(new WaveSideBarView.OnTouchLetterChangeListener() {
             @Override
             public void onLetterChange(String letter) {
                 int pos = mAdapter.getLetterPosition(letter);
                 if (pos != -1) {
-                    mRvContent.scrollToPosition(pos);
+                    mBinding.rvContent.scrollToPosition(pos);
                     LinearLayoutManager mLayoutManager =
-                            (LinearLayoutManager) mRvContent.getLayoutManager();
+                            (LinearLayoutManager) mBinding.rvContent.getLayoutManager();
                     mLayoutManager.scrollToPositionWithOffset(pos, 0);
                 }
             }

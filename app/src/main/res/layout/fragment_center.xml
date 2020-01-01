@@ -1,34 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.center.fragment.CenterFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <View
-        android:id="@+id/v_bar"
+    <data>
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/_81D8CF"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.center.fragment.CenterFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        <View
+            android:id="@+id/v_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:background="@color/_81D8CF"/>
 
-            <Button
-                android:id="@+id/btn_linear"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="LinearLayoutManager反转布局"
-                android:textAllCaps="false"
-                android:textSize="24sp"/>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="LinearLayoutManager反转布局"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"/>
+
+                <Button
+                    android:id="@+id/btn_slide_close"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="侧滑删除"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

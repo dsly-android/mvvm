@@ -10,15 +10,15 @@ import android.os.IBinder;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.LogUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityServiceBinding;
 import com.htxtdshopping.htxtd.frame.service.BindService;
 import com.htxtdshopping.htxtd.frame.service.LocalService;
 import com.htxtdshopping.htxtd.frame.service.MyIntentService;
 
-import butterknife.OnClick;
-
-public class ServiceActivity extends BaseFitsWindowActivity {
+public class ServiceActivity extends BaseFitsWindowActivity<ActivityServiceBinding, BaseViewModel> implements View.OnClickListener {
 
 
     private Intent mIntent;
@@ -39,7 +39,12 @@ public class ServiceActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initEvent() {
-
+        mBinding.btnStartService.setOnClickListener(this);
+        mBinding.btnStopService.setOnClickListener(this);
+        mBinding.btnBindService.setOnClickListener(this);
+        mBinding.btnUnbindService.setOnClickListener(this);
+        mBinding.btnStartIntentService.setOnClickListener(this);
+        mBinding.btnStopIntentService.setOnClickListener(this);
     }
 
     @Override
@@ -47,9 +52,8 @@ public class ServiceActivity extends BaseFitsWindowActivity {
 
     }
 
-    @OnClick({R.id.btn_start_service, R.id.btn_stop_service, R.id.btn_bind_service, R.id.btn_unbind_service,
-            R.id.btn_start_intent_service, R.id.btn_stop_intent_service})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_start_service:
                 if (Build.VERSION_CODES.O <= Build.VERSION.SDK_INT) {

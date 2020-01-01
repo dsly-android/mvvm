@@ -4,26 +4,22 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseLazyFragment;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.FragmentSecondBinding;
 import com.htxtdshopping.htxtd.frame.ui.second.activity.LoginAndShareActivity;
 import com.htxtdshopping.htxtd.frame.ui.second.activity.OssActivity;
 import com.htxtdshopping.htxtd.frame.ui.second.activity.WebActivity;
 import com.taobao.sophix.SophixManager;
 import com.tencent.bugly.beta.Beta;
 
-import butterknife.BindView;
-import butterknife.OnClick;
-
 /**
  * @author 陈志鹏
  * @date 2018/9/7
  */
-public class SecondFragment extends BaseLazyFragment {
-
-    @BindView(R.id.v_bar)
-    View mVBar;
+public class SecondFragment extends BaseLazyFragment<FragmentSecondBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -32,12 +28,16 @@ public class SecondFragment extends BaseLazyFragment {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        BarUtils.setStatusBarColor(mVBar, getResources().getColor(R.color._81D8CF));
+        BarUtils.setStatusBarColor(mBinding.vBar, getResources().getColor(R.color._81D8CF));
     }
 
     @Override
     public void initEvent() {
-
+        mBinding.btnOss.setOnClickListener(this);
+        mBinding.btnBugly.setOnClickListener(this);
+        mBinding.btnSophix.setOnClickListener(this);
+        mBinding.btnX5.setOnClickListener(this);
+        mBinding.btnLoginAndShare.setOnClickListener(this);
     }
 
     @Override
@@ -45,8 +45,8 @@ public class SecondFragment extends BaseLazyFragment {
 
     }
 
-    @OnClick({R.id.btn_oss, R.id.btn_bugly, R.id.btn_sophix, R.id.btn_x5, R.id.btn_login_and_share})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_oss:
                 ActivityUtils.startActivity(OssActivity.class);

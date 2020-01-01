@@ -107,15 +107,6 @@
 -keep class leakcanary.KeyedWeakReference { *; }
 -keep class leakcanary.internal.AndroidXFragmentDestroyWatcher { *; }
 
-#butterknife
--keep public class * implements butterknife.Unbinder { public <init>(**, android.view.View); }
--keep class butterknife.*
--keepclasseswithmembernames class * { @butterknife.* <methods>; }
--keepclasseswithmembernames class * { @butterknife.* <fields>; }
--dontwarn butterknife.internal.**
--keep class **$$ViewBinder { *; }
--keepnames class * { @butterknife.InjectView *;}
-
 #glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
@@ -322,12 +313,6 @@
 -dontwarn com.google.zxing.**
 -keep class com.google.zxing.** { *; }
 
-
-
-
-
-
-
 #bugly
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}
@@ -393,13 +378,6 @@
 
 #EasyFloat
 -keep class com.lzf.easyfloat.** {*;}
-
-
-
-
-
-
-
 
 #ARouter
 -keep public class com.alibaba.android.arouter.routes.**{*;}

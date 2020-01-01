@@ -13,10 +13,10 @@ import com.android.dsly.common.base.BasePopupWindow;
 import com.android.dsly.common.decoration.ItemDecorationDrawable;
 import com.android.dsly.common.decoration.LinearDividerItemDecoration;
 import com.android.dsly.image_picker.R;
-import com.android.dsly.image_picker.R2;
 import com.android.dsly.image_picker.adapter.ImageFolderAdapter;
 import com.android.dsly.image_picker.local_data.ImageFolder;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 
 import java.util.List;
 
@@ -57,8 +57,8 @@ public class ImageFolderPopupWindow extends BasePopupWindow implements View.OnCl
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mVBgColor = mRootView.findViewById(R.id.v_bg_color);
-        mRvContent = mRootView.findViewById(R.id.rv_content);
+        mVBgColor = mBinding.getRoot().findViewById(R.id.v_bg_color);
+        mRvContent = mBinding.getRoot().findViewById(R.id.rv_content);
 
         mRvContent.setLayoutManager(new LinearLayoutManager(mContext));
         mRvContent.setHasFixedSize(true);
@@ -70,7 +70,7 @@ public class ImageFolderPopupWindow extends BasePopupWindow implements View.OnCl
     @Override
     public void initEvent() {
         mVBgColor.setOnClickListener(this);
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 int oldSelectedPos = mSelectedPos;
@@ -94,7 +94,7 @@ public class ImageFolderPopupWindow extends BasePopupWindow implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R2.id.v_bg_color) {
+        if (v.getId() == R.id.v_bg_color) {
             dismiss();
         }
     }

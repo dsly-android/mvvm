@@ -4,8 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.widget.pagerbottomtabstrip.NavigationController;
-import com.android.dsly.common.widget.pagerbottomtabstrip.PageNavigationView;
 import com.android.dsly.common.widget.pagerbottomtabstrip.item.BaseTabItem;
 import com.android.dsly.common.widget.pagerbottomtabstrip.item.SpecialTabItemView;
 import com.android.dsly.common.widget.pagerbottomtabstrip.item.SpecialTabRoundItemView;
@@ -13,6 +13,7 @@ import com.android.dsly.common.widget.pagerbottomtabstrip.listener.SimpleTabItem
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.FragmentUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityMainBinding;
 import com.htxtdshopping.htxtd.frame.ui.center.fragment.CenterFragment;
 import com.htxtdshopping.htxtd.frame.ui.first.fragment.FirstFragment;
 import com.htxtdshopping.htxtd.frame.ui.four.fragment.FourFragment;
@@ -24,15 +25,11 @@ import java.util.List;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import butterknife.BindView;
 
 /**
  * @author chenzhipeng
  */
-public class MainActivity extends BaseActivity {
-
-    @BindView(R.id.pnv_tab)
-    PageNavigationView mPnvTab;
+public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewModel> {
 
     private List<Fragment> mFragments;
     private FirstFragment firstFragment;
@@ -51,7 +48,7 @@ public class MainActivity extends BaseActivity {
     public void initView(Bundle savedInstanceState) {
         BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.transparent));
 
-        mController = mPnvTab.custom()
+        mController = mBinding.pnvTab.custom()
                 .addItem(newItem(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, "框架"))
                 .addItem(newItem(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, "第三方"))
                 .addItem(newRoundItem(R.drawable.icon_center, R.drawable.icon_center))

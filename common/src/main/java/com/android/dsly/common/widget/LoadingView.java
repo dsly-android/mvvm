@@ -1,4 +1,4 @@
-package com.htxtdshopping.htxtd.frame.widget;
+package com.android.dsly.common.widget;
 
 import android.animation.ArgbEvaluator;
 import android.content.Context;

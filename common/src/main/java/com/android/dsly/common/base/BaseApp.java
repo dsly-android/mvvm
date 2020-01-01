@@ -1,19 +1,16 @@
 package com.android.dsly.common.base;
 
+import android.app.Application;
 import android.content.Context;
 
-import com.android.dsly.common.di.component.DaggerBaseComponent;
 import com.android.dsly.common.core.AppDelegate;
 import com.android.dsly.common.core.AppLifecycles;
-
-import dagger.android.AndroidInjector;
-import dagger.android.support.DaggerApplication;
 
 /**
  * @author 陈志鹏
  * @date 2019-12-09
  */
-public class BaseApp extends DaggerApplication {
+public class BaseApp extends Application {
 
     private AppLifecycles mAppDelegate;
 
@@ -46,10 +43,5 @@ public class BaseApp extends DaggerApplication {
         super.onTerminate();
         if (mAppDelegate != null)
             this.mAppDelegate.onTerminate(this);
-    }
-
-    @Override
-    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-        return DaggerBaseComponent.builder().build();
     }
 }

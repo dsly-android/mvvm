@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseLazyFragment;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.base.AppContext;
+import com.htxtdshopping.htxtd.frame.databinding.FragmentThirdBinding;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.ChangeAvatarActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.GridActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.HandlerActivity;
@@ -24,18 +26,13 @@ import com.htxtdshopping.htxtd.frame.ui.third.activity.VoiceRecordActivity;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import io.reactivex.functions.Consumer;
 
 /**
  * @author 陈志鹏
  * @date 2018/9/7
  */
-public class ThirdFragment extends BaseLazyFragment {
-
-    @BindView(R.id.v_bar)
-    View mVBar;
+public class ThirdFragment extends BaseLazyFragment<FragmentThirdBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -44,12 +41,23 @@ public class ThirdFragment extends BaseLazyFragment {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        BarUtils.setStatusBarColor(mVBar, getResources().getColor(R.color._81D8CF));
+        BarUtils.setStatusBarColor(mBinding.vBar, getResources().getColor(R.color._81D8CF));
     }
 
     @Override
     public void initEvent() {
-
+        mBinding.btnGrid.setOnClickListener(this);
+        mBinding.btnList.setOnClickListener(this);
+        mBinding.btnRecord.setOnClickListener(this);
+        mBinding.btnPopup.setOnClickListener(this);
+        mBinding.btnImagePicker.setOnClickListener(this);
+        mBinding.btnNotification.setOnClickListener(this);
+        mBinding.btnService.setOnClickListener(this);
+        mBinding.btnLogin.setOnClickListener(this);
+        mBinding.btnDesign.setOnClickListener(this);
+        mBinding.btnVersionUpdate.setOnClickListener(this);
+        mBinding.btnLifecycle.setOnClickListener(this);
+        mBinding.btnHandler.setOnClickListener(this);
     }
 
     @Override
@@ -57,10 +65,8 @@ public class ThirdFragment extends BaseLazyFragment {
 
     }
 
-    @OnClick({R.id.btn_grid, R.id.btn_list, R.id.btn_record, R.id.btn_popup, R.id.btn_image_picker,
-            R.id.btn_notification, R.id.btn_service, R.id.btn_login, R.id.btn_design, R.id.btn_version_update,
-            R.id.btn_lifecycle,R.id.btn_handler})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_grid:
                 ActivityUtils.startActivity(GridActivity.class);

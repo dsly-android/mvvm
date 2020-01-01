@@ -2,39 +2,23 @@ package com.htxtdshopping.htxtd.frame.ui.second.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityUpgradeBinding;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.download.DownloadListener;
 import com.tencent.bugly.beta.download.DownloadTask;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * @author 陈志鹏
  * @date 2018/11/23
  */
-public class UpgradeActivity extends BaseActivity {
-
-    @BindView(R.id.tv_title)
-    TextView mTvTitle;
-    @BindView(R.id.tv_version)
-    TextView mTvVersion;
-    @BindView(R.id.tv_size)
-    TextView mTvSize;
-    @BindView(R.id.tv_time)
-    TextView mTvTime;
-    @BindView(R.id.tv_content)
-    TextView mTvContent;
-    @BindView(R.id.btn_start)
-    Button mBtnStart;
+public class UpgradeActivity extends BaseActivity<ActivityUpgradeBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -48,11 +32,11 @@ public class UpgradeActivity extends BaseActivity {
         BarUtils.setStatusBarVisibility(this, false);
 
         /*获取策略信息，初始化界面信息*/
-        mTvTitle.setText(mTvTitle.getText().toString() + Beta.getUpgradeInfo().title);
-        mTvVersion.setText(mTvVersion.getText().toString() + Beta.getUpgradeInfo().versionName);
-        mTvSize.setText(mTvSize.getText().toString() + ConvertUtils.byte2FitMemorySize(Beta.getUpgradeInfo().fileSize));
-        mTvTime.setText(mTvTime.getText().toString() + TimeUtils.millis2String(Beta.getUpgradeInfo().publishTime));
-        mTvContent.setText(Beta.getUpgradeInfo().newFeature);
+        mBinding.tvTitle.setText(mBinding.tvTitle.getText().toString() + Beta.getUpgradeInfo().title);
+        mBinding.tvVersion.setText(mBinding.tvVersion.getText().toString() + Beta.getUpgradeInfo().versionName);
+        mBinding.tvSize.setText( mBinding.tvSize.getText().toString() + ConvertUtils.byte2FitMemorySize(Beta.getUpgradeInfo().fileSize));
+        mBinding.tvTime.setText(mBinding.tvTime.getText().toString() + TimeUtils.millis2String(Beta.getUpgradeInfo().publishTime));
+        mBinding.tvContent.setText(Beta.getUpgradeInfo().newFeature);
 
         /*获取下载任务，初始化界面信息*/
         updateBtn(Beta.getStrategyTask());
@@ -77,6 +61,8 @@ public class UpgradeActivity extends BaseActivity {
                 updateBtn(task);
             }
         });
+        mBinding.btnCancel.setOnClickListener(this);
+        mBinding.btnStart.setOnClickListener(this);
     }
 
     @Override
@@ -84,8 +70,8 @@ public class UpgradeActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.btn_cancel, R.id.btn_start})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_cancel:
                 Beta.cancelDownload();
@@ -107,16 +93,16 @@ public class UpgradeActivity extends BaseActivity {
             case DownloadTask.INIT:
             case DownloadTask.DELETED:
             case DownloadTask.FAILED:
-                mBtnStart.setText("开始下载");
+                mBinding.btnStart.setText("开始下载");
                 break;
             case DownloadTask.COMPLETE:
-                mBtnStart.setText("安装");
+                mBinding.btnStart.setText("安装");
                 break;
             case DownloadTask.DOWNLOADING:
-                mBtnStart.setText("暂停");
+                mBinding.btnStart.setText("暂停");
                 break;
             case DownloadTask.PAUSED:
-                mBtnStart.setText("继续下载");
+                mBinding.btnStart.setText("继续下载");
                 break;
             default:
                 break;

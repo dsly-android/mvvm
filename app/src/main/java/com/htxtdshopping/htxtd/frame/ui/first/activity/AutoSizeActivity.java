@@ -2,20 +2,15 @@ package com.htxtdshopping.htxtd.frame.ui.first.activity;
 
 import android.os.Bundle;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityAutosizeBinding;
 
-import butterknife.BindView;
 import me.jessyan.autosize.AutoSizeConfig;
 
-public class AutoSizeActivity extends BaseFitsWindowActivity {
-
-    @BindView(R.id.sb_progress)
-    SeekBar mSbProgress;
-    @BindView(R.id.tv_text)
-    TextView mTvText;
+public class AutoSizeActivity extends BaseFitsWindowActivity<ActivityAutosizeBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {
@@ -29,7 +24,7 @@ public class AutoSizeActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initEvent() {
-        mSbProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        mBinding.sbProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 AutoSizeConfig.getInstance().setFontMagnification(progress);
@@ -49,6 +44,6 @@ public class AutoSizeActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initData() {
-        mSbProgress.setProgress((int) AutoSizeConfig.getInstance().getFontMagnification());
+        mBinding.sbProgress.setProgress((int) AutoSizeConfig.getInstance().getFontMagnification());
     }
 }

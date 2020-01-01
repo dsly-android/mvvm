@@ -5,17 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.Constants;
 import com.android.dsly.common.decoration.GridDividerItemDecoration;
 import com.android.dsly.common.utils.ToastUtils;
-import com.android.dsly.common.widget.TitleBar;
 import com.android.dsly.image_picker.R;
-import com.android.dsly.image_picker.R2;
 import com.android.dsly.image_picker.adapter.ImagePickerAdapter;
+import com.android.dsly.image_picker.databinding.ImageActivityImagePickerBinding;
 import com.android.dsly.image_picker.local_data.CameraItem;
 import com.android.dsly.image_picker.local_data.ImageDataUtils;
 import com.android.dsly.image_picker.local_data.ImageFolder;
@@ -26,6 +24,8 @@ import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.SDCardUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -35,15 +35,12 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.OnClick;
 import io.reactivex.functions.Consumer;
 
 /**
  * @author chenzhipeng
  */
-public class ImagePickerActivity extends BaseFitsWindowActivity implements ImageDataUtils.OnImagesLoadedListener, ImageFolderPopupWindow.OnImageFolderSelectedListener {
+public class ImagePickerActivity extends BaseFitsWindowActivity<ImageActivityImagePickerBinding, BaseViewModel> implements ImageDataUtils.OnImagesLoadedListener, ImageFolderPopupWindow.OnImageFolderSelectedListener, View.OnClickListener {
 
     public static final String RESULT_KEY_IMAGE_PATH = "result_key_image_path";
     private static final int CODE_CROP_IMAGE = 1;
@@ -59,16 +56,6 @@ public class ImagePickerActivity extends BaseFitsWindowActivity implements Image
     //选择数量
     public static final String KEY_MAX_SELECT_NUM = "key_max_select_num";
 
-    @BindView(R2.id.rv_content)
-    RecyclerView mRvContent;
-    @BindView(R2.id.ll_footer)
-    LinearLayout mLlFooter;
-    @BindView(R2.id.tv_dir)
-    TextView mTvDir;
-    @BindView(R2.id.tv_preview)
-    TextView mTvPreview;
-    @BindView(R2.id.tb_title)
-    TitleBar mTbTitle;
     private int mSelectMode;
     private File mCameraTmpFile;
     private ImagePickerAdapter mAdapter;
@@ -93,21 +80,21 @@ public class ImagePickerActivity extends BaseFitsWindowActivity implements Image
         mMaxSelectNum = getIntent().getIntExtra(KEY_MAX_SELECT_NUM, 1);
         mSelectMode = getIntent().getIntExtra(KEY_SELECT_MODE, MODE_AVATAR);
         if (mSelectMode == MODE_MULTIPLE) {
-            mTvPreview.setVisibility(View.VISIBLE);
-            mTbTitle.setRightTextVisible(View.VISIBLE);
+            mBinding.tvPreview.setVisibility(View.VISIBLE);
+            mBinding.tbTitle.setRightTextVisible(View.VISIBLE);
             refreshView();
         }
 
-        mRvContent.setLayoutManager(new GridLayoutManager(this, 4));
-        mRvContent.addItemDecoration(new GridDividerItemDecoration(this, 10));
-        mRvContent.setItemAnimator(null);
+        mBinding.rvContent.setLayoutManager(new GridLayoutManager(this, 4));
+        mBinding.rvContent.addItemDecoration(new GridDividerItemDecoration(this, 10));
+        mBinding.rvContent.setItemAnimator(null);
         mAdapter = new ImagePickerAdapter(mSelectMode);
-        mRvContent.setAdapter(mAdapter);
+        mBinding.rvContent.setAdapter(mAdapter);
     }
 
     @Override
     public void initEvent() {
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 MultiItemEntity entity = mAdapter.getData().get(position);
@@ -124,7 +111,7 @@ public class ImagePickerActivity extends BaseFitsWindowActivity implements Image
                 }
             }
         });
-        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+        mAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 if (view.getId() == R.id.iv_check) {
@@ -146,18 +133,20 @@ public class ImagePickerActivity extends BaseFitsWindowActivity implements Image
                 }
             }
         });
-        mTbTitle.setOnRightTextClickListener(new View.OnClickListener() {
+        mBinding.tbTitle.setOnRightTextClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setResult();
             }
         });
-        mTbTitle.setOnTextBackClickListener(new View.OnClickListener() {
+        mBinding.tbTitle.setOnTextBackClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
+        mBinding.clDir.setOnClickListener(this);
+        mBinding.tvPreview.setOnClickListener(this);
     }
 
     @Override
@@ -167,15 +156,15 @@ public class ImagePickerActivity extends BaseFitsWindowActivity implements Image
 
     private void refreshView() {
         if (mSelectedImages.size() == 0) {
-            mTvPreview.setText("预览");
-            mTbTitle.setRightTextString("完成");
-            mTbTitle.setRightTextClickable(false);
-            mTbTitle.setRightTextAlpha(0.5f);
+            mBinding.tvPreview.setText("预览");
+            mBinding.tbTitle.setRightTextString("完成");
+            mBinding.tbTitle.setRightTextClickable(false);
+            mBinding.tbTitle.setRightTextAlpha(0.5f);
         } else {
-            mTvPreview.setText("预览(" + mSelectedImages.size() + ")");
-            mTbTitle.setRightTextString("完成(" + mSelectedImages.size() + "/" + mMaxSelectNum + ")");
-            mTbTitle.setRightTextClickable(true);
-            mTbTitle.setRightTextAlpha(1);
+            mBinding.tvPreview.setText("预览(" + mSelectedImages.size() + ")");
+            mBinding.tbTitle.setRightTextString("完成(" + mSelectedImages.size() + "/" + mMaxSelectNum + ")");
+            mBinding.tbTitle.setRightTextClickable(true);
+            mBinding.tbTitle.setRightTextAlpha(1);
         }
     }
 
@@ -209,8 +198,8 @@ public class ImagePickerActivity extends BaseFitsWindowActivity implements Image
         refreshData(0);
     }
 
-    @OnClick({R2.id.cl_dir, R2.id.tv_preview})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         if (isFastClick()) {
             return;
         }
@@ -221,10 +210,10 @@ public class ImagePickerActivity extends BaseFitsWindowActivity implements Image
             }
             if (mFolderPopupWindow == null) {
                 mFolderPopupWindow = new ImageFolderPopupWindow(this,
-                        mRvContent.getHeight(), mImageFolders, this);
+                        mBinding.rvContent.getHeight(), mImageFolders, this);
             }
             if (!mFolderPopupWindow.isShowing()) {
-                mFolderPopupWindow.showAtLocation(mLlFooter, Gravity.TOP, 0, mTbTitle.getBottom());
+                mFolderPopupWindow.showAtLocation(mBinding.llFooter, Gravity.TOP, 0, mBinding.tbTitle.getBottom());
             } else {
                 mFolderPopupWindow.dismiss();
             }
@@ -240,7 +229,7 @@ public class ImagePickerActivity extends BaseFitsWindowActivity implements Image
     @Override
     public void OnImageFolderSelected(int selectedPos) {
         refreshData(selectedPos);
-        mTvDir.setText(mImageFolders.get(selectedPos).name);
+        mBinding.tvDir.setText(mImageFolders.get(selectedPos).name);
     }
 
     private void refreshData(int selectedPos) {

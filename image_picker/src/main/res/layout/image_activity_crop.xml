@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context=".ui.third.activity.CropActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.android.dsly.common.widget.TitleBar
-        android:id="@+id/tb_title"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_title_bar"
-        app:tb_title="裁剪"/>
+    <data>
 
-    <com.android.dsly.image_picker.widget.cropimage.CropImageLayout
-        android:id="@+id/cil_crop"
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:image_borderColor="@android:color/white"
-        app:image_borderWidth="2pt"
-        app:image_horizontalPadding="100pt"/>
-</LinearLayout>
+        android:orientation="vertical">
+
+        <com.android.dsly.common.widget.TitleBar
+            android:id="@+id/tb_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_title_bar"
+            app:tb_title="裁剪"/>
+
+        <com.android.dsly.image_picker.widget.cropimage.CropImageLayout
+            android:id="@+id/cil_crop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:image_borderColor="@android:color/white"
+            app:image_borderWidth="2pt"
+            app:image_horizontalPadding="100pt"/>
+    </LinearLayout>
+</layout>

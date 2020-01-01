@@ -7,12 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.Constants;
 import com.android.dsly.common.utils.ToastUtils;
-import com.android.dsly.common.widget.TitleBar;
 import com.android.dsly.image_picker.R;
-import com.android.dsly.image_picker.R2;
-import com.android.dsly.image_picker.widget.cropimage.CropImageLayout;
+import com.android.dsly.image_picker.databinding.ImageActivityCropBinding;
 import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.SDCardUtils;
 import com.bumptech.glide.Glide;
@@ -25,19 +24,14 @@ import java.io.File;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import butterknife.BindView;
 
 /**
  * @author chenzhipeng
  */
-public class CropActivity extends BaseFitsWindowActivity {
+public class CropActivity extends BaseFitsWindowActivity<ImageActivityCropBinding, BaseViewModel> {
 
     public static final String KEY_IMAGE_PATH = "key_image_path";
     public static final String RESULT_KEY_IMAGE_PATH = "result_key_image_path";
-    @BindView(R2.id.cil_crop)
-    CropImageLayout mCilCrop;
-    @BindView(R2.id.tb_title)
-    TitleBar mTbTitle;
     private File mTmpFile;
 
     @Override
@@ -47,12 +41,12 @@ public class CropActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mTbTitle.setRightTextString("完成");
+        mBinding.tbTitle.setRightTextString("完成");
     }
 
     @Override
     public void initEvent() {
-        mTbTitle.setOnRightTextClickListener(new View.OnClickListener() {
+        mBinding.tbTitle.setOnRightTextClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (SDCardUtils.isSDCardEnableByEnvironment()) {
@@ -60,7 +54,7 @@ public class CropActivity extends BaseFitsWindowActivity {
                 } else {
                     mTmpFile = new File(Constants.PATH_CACHE_IMAGE, "crop.jpg");
                 }
-                Bitmap bitmap = mCilCrop.crop();
+                Bitmap bitmap = mBinding.cilCrop.crop();
                 boolean isSucceed = ImageUtils.save(bitmap, mTmpFile, Bitmap.CompressFormat.PNG, true);
                 if (isSucceed) {
                     Intent intent = new Intent();
@@ -89,7 +83,7 @@ public class CropActivity extends BaseFitsWindowActivity {
             @Override
             public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                 Bitmap bitmap = ImageUtils.drawable2Bitmap(resource);
-                mCilCrop.init(CropActivity.this, bitmap);
+                mBinding.cilCrop.init(CropActivity.this, bitmap);
             }
         });
     }

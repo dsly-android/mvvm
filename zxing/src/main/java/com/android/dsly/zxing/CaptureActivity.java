@@ -12,13 +12,14 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.zxing.camera.CameraConfigurationManager;
 import com.android.dsly.zxing.camera.CameraManager;
+import com.android.dsly.zxing.databinding.ZxingActivityCaptureBinding;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
@@ -26,26 +27,14 @@ import com.google.zxing.Result;
 
 import java.io.IOException;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * @author 陈志鹏
  * @date 2018/10/29
  */
 @Route(path = RouterHub.ZXING_CAPTURE_ACTIVITY)
-public final class CaptureActivity extends BaseActivity implements SurfaceHolder.Callback {
-
-    @BindView(R2.id.cl_parent)
-    ConstraintLayout mClParent;
-    @BindView(R2.id.v_scan_area)
-    View mVScanArea;
-    @BindView(R2.id.sv_preview)
-    SurfaceView mSvPreview;
-    @BindView(R2.id.iv_light_switch)
-    ImageView mIvLightSwitch;
+public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBinding, BaseViewModel> implements SurfaceHolder.Callback, View.OnClickListener {
 
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
@@ -57,7 +46,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
         return handler;
     }
 
-    CameraManager getCameraManager() {
+    public CameraManager getCameraManager() {
         return cameraManager;
     }
 
@@ -79,7 +68,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
     @Override
     public void initEvent() {
-
+        mBinding.ivLightSwitch.setOnClickListener(this);
     }
 
     @Override
@@ -87,8 +76,8 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
     }
 
-    @OnClick({R2.id.iv_light_switch})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         if (view.getId() == R.id.iv_light_switch) {
             if (cameraManager.isFlashlightOn()) {
                 cameraManager.setTorch(false);
@@ -100,9 +89,9 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
     public void isDarkEnv(boolean isDarkEnv) {
         if (isDarkEnv || cameraManager.isFlashlightOn()) {
-            mIvLightSwitch.setVisibility(View.VISIBLE);
+            mBinding.ivLightSwitch.setVisibility(View.VISIBLE);
         } else {
-            mIvLightSwitch.setVisibility(View.GONE);
+            mBinding.ivLightSwitch.setVisibility(View.GONE);
         }
     }
 
@@ -122,7 +111,7 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
         inactivityTimer.onResume();
 
-        SurfaceHolder surfaceHolder = mSvPreview.getHolder();
+        SurfaceHolder surfaceHolder = mBinding.svPreview.getHolder();
         if (hasSurface) {
             // The activity was paused but not stopped, so the surface still exists. Therefore
             // surfaceCreated() won't be called, so init the camera here.
@@ -262,17 +251,17 @@ public final class CaptureActivity extends BaseActivity implements SurfaceHolder
 
         /** 获取布局中扫描框的位置信息 */
         int[] location = new int[2];
-        mVScanArea.getLocationInWindow(location);
+        mBinding.vScanArea.getLocationInWindow(location);
 
         int cropLeft = location[0];
         int cropTop = location[1];
 
-        int cropWidth = mVScanArea.getWidth();
-        int cropHeight = mVScanArea.getHeight();
+        int cropWidth = mBinding.vScanArea.getWidth();
+        int cropHeight = mBinding.vScanArea.getHeight();
 
         /** 获取布局容器的宽高 */
-        int containerWidth = mClParent.getWidth();
-        int containerHeight = mClParent.getHeight();
+        int containerWidth = mBinding.clParent.getWidth();
+        int containerHeight = mBinding.clParent.getHeight();
 
         /** 计算最终截取的矩形的左上角顶点x坐标 */
         int x = cropLeft * cameraWidth / containerWidth;

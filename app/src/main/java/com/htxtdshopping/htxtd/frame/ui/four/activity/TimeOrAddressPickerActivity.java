@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.ObjectUtils;
@@ -22,6 +23,7 @@ import com.htxtdshopping.htxtd.frame.bean.AddressBean;
 import com.htxtdshopping.htxtd.frame.bean.CityBean;
 import com.htxtdshopping.htxtd.frame.bean.CountyBean;
 import com.htxtdshopping.htxtd.frame.bean.ProvinceBean;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityTimeOrAddressPickerBinding;
 import com.htxtdshopping.htxtd.frame.widget.pickerview.builder.OptionsPickerBuilder;
 import com.htxtdshopping.htxtd.frame.widget.pickerview.builder.TimePickerBuilder;
 import com.htxtdshopping.htxtd.frame.widget.pickerview.listener.CustomListener;
@@ -39,14 +41,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class TimeOrAddressPickerActivity extends BaseFitsWindowActivity {
+public class TimeOrAddressPickerActivity extends BaseFitsWindowActivity<ActivityTimeOrAddressPickerBinding, BaseViewModel> implements View.OnClickListener {
 
     private TimePickerView pvTime, pvCustomTime, pvCustomLunar;
     private OptionsPickerView pvOptions, pvNoLinkOptions;
@@ -89,12 +90,16 @@ public class TimeOrAddressPickerActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initData() {
-
+        mBinding.btnLunar.setOnClickListener(this);
+        mBinding.btnTime.setOnClickListener(this);
+        mBinding.btnOptions.setOnClickListener(this);
+        mBinding.btnCustomTime.setOnClickListener(this);
+        mBinding.btnNoLinkage.setOnClickListener(this);
+        mBinding.btnGotoJsonData.setOnClickListener(this);
     }
 
-    @OnClick({R.id.btn_lunar, R.id.btn_Time, R.id.btn_Options, R.id.btn_CustomTime,
-            R.id.btn_no_linkage, R.id.btn_GotoJsonData})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_lunar:
                 pvCustomLunar.show();

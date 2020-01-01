@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.second.activity.LoginAndShareActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <com.android.dsly.common.widget.TitleBar
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_title_bar"
-        app:tb_title="微信登录和分享"/>
+    <data>
 
-    <Button
-        android:id="@+id/btn_share_ui"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="带面板的分享"/>
+    </data>
 
-    <Button
-        android:id="@+id/btn_wechat_login"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="微信登录"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.second.activity.LoginAndShareActivity">
 
-    <Button
-        android:id="@+id/btn_share_no_ui"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="不带面板的分享"/>
+        <com.android.dsly.common.widget.TitleBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_title_bar"
+            app:tb_title="微信登录和分享"/>
 
-    <TextView
-        android:id="@+id/tv_msg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_share_ui"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="带面板的分享"/>
+
+        <Button
+            android:id="@+id/btn_wechat_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="微信登录"/>
+
+        <Button
+            android:id="@+id/btn_share_no_ui"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="不带面板的分享"/>
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

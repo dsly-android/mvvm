@@ -9,19 +9,19 @@ import com.alibaba.sdk.android.oss.callback.OSSCompletedCallback;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.FileUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityOssBinding;
 import com.htxtdshopping.htxtd.frame.network.OssService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.OnClick;
-
 /**
  * @author chenzhipeng
  */
-public class OssActivity extends BaseActivity {
+public class OssActivity extends BaseActivity<ActivityOssBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -35,7 +35,8 @@ public class OssActivity extends BaseActivity {
 
     @Override
     public void initEvent() {
-
+        mBinding.btnUploadSingle.setOnClickListener(this);
+        mBinding.btnUploadMore.setOnClickListener(this);
     }
 
     @Override
@@ -43,8 +44,8 @@ public class OssActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.btn_upload_single, R.id.btn_upload_more})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_upload_single:
                 String path = "本地路径";

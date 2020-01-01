@@ -1,40 +1,41 @@
 package com.htxtdshopping.htxtd.frame.ui.first.adapter;
 
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.android.dsly.common.base.BaseActivity;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.module.LoadMoreModule;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.bean.NewsPictureBean;
 import com.htxtdshopping.htxtd.frame.bean.NewsTextBean;
 import com.htxtdshopping.htxtd.frame.bean.NewsVideoBean;
+import com.htxtdshopping.htxtd.frame.databinding.ItemNewsPictureBinding;
+import com.htxtdshopping.htxtd.frame.databinding.ItemNewsTextBinding;
 import com.htxtdshopping.htxtd.frame.widget.CoverVideoPlayer;
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
-import me.jessyan.autosize.AutoSize;
+import androidx.databinding.DataBindingUtil;
 
 /**
  * @author 陈志鹏
  * @date 2018/10/12
  */
-public class RefreshAndLoadMoreAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder> {
+public class RefreshAndLoadMoreAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder> implements LoadMoreModule {
 
     public static final int TYPE_TEXT = 1;
     public static final int TYPE_PICTURE = 2;
     public static final int TYPE_VIDEO = 3;
-    private BaseActivity mActivity;
 
-    public RefreshAndLoadMoreAdapter(BaseActivity activity) {
+    public RefreshAndLoadMoreAdapter() {
         super(new ArrayList<>());
         addItemType(TYPE_TEXT, R.layout.item_news_text);
         addItemType(TYPE_PICTURE, R.layout.item_news_picture);
         addItemType(TYPE_VIDEO, R.layout.item_news_video);
-        mActivity = activity;
     }
 
     @Override
@@ -43,12 +44,14 @@ public class RefreshAndLoadMoreAdapter extends BaseMultiItemQuickAdapter<MultiIt
         int itemViewType = helper.getItemViewType();
         switch (itemViewType) {
             case TYPE_TEXT:
+                ItemNewsTextBinding itemNewsTextBinding = helper.<ItemNewsTextBinding>getBinding();
                 NewsTextBean newsTextBean = (NewsTextBean) item;
-                helper.setText(R.id.tv_title, newsTextBean.getTitle());
+                itemNewsTextBinding.tvTitle.setText(newsTextBean.getTitle());
                 break;
             case TYPE_PICTURE:
+                ItemNewsPictureBinding itemNewsPictureBinding = helper.<ItemNewsPictureBinding>getBinding();
                 NewsPictureBean newsPictureBean = (NewsPictureBean) item;
-                helper.setText(R.id.tv_title, newsPictureBean.getTitle());
+                itemNewsPictureBinding.setData(newsPictureBean);
                 break;
             case TYPE_VIDEO:
                 NewsVideoBean newsVideoBean = (NewsVideoBean) item;
@@ -72,7 +75,7 @@ public class RefreshAndLoadMoreAdapter extends BaseMultiItemQuickAdapter<MultiIt
                 player.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        player.startWindowFullscreen(mContext, false, true);
+                        player.startWindowFullscreen(getContext(), false, true);
                     }
                 });
                 player.setRotateViewAuto(false);
@@ -99,8 +102,7 @@ public class RefreshAndLoadMoreAdapter extends BaseMultiItemQuickAdapter<MultiIt
     }
 
     @Override
-    protected View getItemView(int layoutResId, ViewGroup parent) {
-        AutoSize.autoConvertDensityBaseOnWidth(mActivity,750);
-        return super.getItemView(layoutResId, parent);
+    protected void onItemViewHolderCreated(@NotNull BaseViewHolder viewHolder, int viewType) {
+        DataBindingUtil.bind(viewHolder.itemView);
     }
 }

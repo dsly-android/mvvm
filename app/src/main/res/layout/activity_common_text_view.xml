@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context=".ui.four.activity.CommonTextViewActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <com.android.dsly.common.widget.CommonTextView
-        android:id="@+id/ctv_test1"
+    <data>
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="90pt"
-        app:cCenterTextString="fjiwf"
-        app:cCenterTextViewGravity="left_center"
-        app:cCenterViewPaddingLeft="300pt"
-        app:cLeftImageViewDrawableRes="@mipmap/ic_launcher_round"
-        app:cLeftImageViewHeight="60pt"
-        app:cLeftImageViewWidth="60pt"
-        app:cLeftTextString="joaiffwfe"
-        app:cRightIconResForDrawableRight="@drawable/ss_return"
-        app:cRightTextString="fjoaief"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        tools:context=".ui.four.activity.CommonTextViewActivity">
+
+        <com.android.dsly.common.widget.CommonTextView
+            android:id="@+id/ctv_test1"
+            android:layout_width="match_parent"
+            android:layout_height="90pt"
+            app:cCenterTextString="fjiwf"
+            app:cCenterTextViewGravity="left_center"
+            app:cCenterViewPaddingLeft="300pt"
+            app:cLeftImageViewDrawableRes="@mipmap/ic_launcher_round"
+            app:cLeftImageViewHeight="60pt"
+            app:cLeftImageViewWidth="60pt"
+            app:cLeftTextString="joaiffwfe"
+            app:cRightIconResForDrawableRight="@drawable/ss_return"
+            app:cRightTextString="fjoaief"/>
+    </LinearLayout>
+</layout>

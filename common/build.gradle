@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-//module中使用butterknife
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -23,6 +21,8 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+        //databinding
+        dataBinding.enabled = true
     }
 
     buildTypes {
@@ -70,10 +70,6 @@ dependencies {
     //AndroidEventBus
     api rootProject.ext.dependencies["androideventbus"]
 
-    //butterknife
-    api rootProject.ext.dependencies["butterknife"]
-    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-
     //glide
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
@@ -84,14 +80,8 @@ dependencies {
     //lifecycle
     api rootProject.ext.dependencies["lifecycle"]
 
-    //dagger
-    api rootProject.ext.dependencies["dagger"]
-    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
-    api rootProject.ext.dependencies["dagger-android"]
-    api(rootProject.ext.dependencies["dagger-android-support"]) {
-        exclude group: 'com.android.support'
-    }
-    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+    //jetpack
+    api rootProject.ext.dependencies["lifecycle-extensions"]
 
     //leakcanary
     debugApi rootProject.ext.dependencies["leakcanary"]

@@ -2,16 +2,12 @@
 <manifest package="com.htxtdshopping.htxtd.frame"
           xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
-
     <!-- 录音 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <!-- 显示系统Window必须添加的权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/> <!-- 显示系统Window必须添加的权限 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
-    <!-- objectbox -->
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/> <!-- objectbox -->
     <!-- Required to provide the web interface -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- Required to run keep-alive service when targeting API 28 or higher -->
+    <uses-permission android:name="android.permission.INTERNET"/> <!-- Required to run keep-alive service when targeting API 28 or higher -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <supports-screens
@@ -24,28 +20,22 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_LOGS"/>
-    <!-- oss -->
+    <uses-permission android:name="android.permission.READ_LOGS"/> <!-- oss -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <!-- Sophix -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/> <!-- Sophix -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <!-- 外部存储读权限，调试工具加载本地补丁需要 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!-- x5内核 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> <!-- 外部存储读权限，调试工具加载本地补丁需要 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> <!-- x5内核 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <!-- UShare -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/> <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+    <uses-permission android:name="android.permission.GET_TASKS"/> <!-- UShare -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -59,6 +49,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="icon,theme,label,allowBackup">
+        <activity
+            android:name=".ui.center.activity.SlideCloseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SlideClose.Transparent.Theme"/>
+
         <activity
             android:name=".ui.center.activity.LinearActivity"
             android:screenOrientation="portrait"/>
@@ -229,17 +224,14 @@
         <activity
             android:name=".ui.third.activity.UpgradeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.AppCompat.Dialog"/>
-
-        <!--bugly-->
+            android:theme="@style/AppTheme.AppCompat.Dialog"/> <!-- bugly -->
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:theme="@android:style/Theme.Translucent" />
-
-        <!-- 友盟 -->
+            android:theme="@android:style/Theme.Translucent"/> <!-- 友盟 -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5c3ca500f1f556c482000950"/>
     </application>
+
 </manifest>

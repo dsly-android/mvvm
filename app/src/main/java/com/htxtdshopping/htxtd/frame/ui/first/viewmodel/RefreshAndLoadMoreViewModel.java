@@ -1,19 +1,21 @@
-package com.htxtdshopping.htxtd.frame.ui.first.presenter;
+package com.htxtdshopping.htxtd.frame.ui.first.viewmodel;
 
-import com.android.dsly.common.base.BasePresenter;
+import android.app.Application;
+
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.rxhttp.observer.CommonObserver;
 import com.android.dsly.rxhttp.utils.RxLifecycleUtils;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.htxtdshopping.htxtd.frame.bean.NewsPictureBean;
 import com.htxtdshopping.htxtd.frame.bean.NewsTextBean;
 import com.htxtdshopping.htxtd.frame.bean.NewsVideoBean;
-import com.htxtdshopping.htxtd.frame.ui.first.view.IRefreshAndLoadMoreView;
+import com.htxtdshopping.htxtd.frame.bean.RefreshBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
+import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -22,13 +24,14 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author 陈志鹏
- * @date 2019/1/17
+ * @date 2019-12-27
  */
-public class RefreshAndLoadMorePresenter extends BasePresenter<IRefreshAndLoadMoreView> {
+public class RefreshAndLoadMoreViewModel extends BaseViewModel {
 
-    @Inject
-    public RefreshAndLoadMorePresenter() {
-        super();
+    private MutableLiveData<RefreshBean<List<MultiItemEntity>>> liveData = new MutableLiveData<>();
+
+    public RefreshAndLoadMoreViewModel(@NonNull Application application) {
+        super(application);
     }
 
     public void loadData(boolean isRefresh) {
@@ -66,26 +69,30 @@ public class RefreshAndLoadMorePresenter extends BasePresenter<IRefreshAndLoadMo
                 e.onNext(datas);
                 e.onComplete();
             }
-        }).subscribeOn(Schedulers.io())
+        })
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(RxLifecycleUtils.bindUntilDestroyEvent(mView))
+                .compose(RxLifecycleUtils.bindUntilDestroyEvent(getLifecycleProvider()))
                 .subscribe(new CommonObserver<List<MultiItemEntity>>() {
                     @Override
                     protected void onSuccess(List<MultiItemEntity> multiItemEntities) {
-                        if (isRefresh) {
-                            mView.loadDataSuccess(multiItemEntities, true);
-                        } else {
-                            mView.loadDataSuccess(multiItemEntities, false);
-                        }
-                        mView.hideLoading();
+                        RefreshBean<List<MultiItemEntity>> refreshResponse = new RefreshBean<>();
+                        refreshResponse.setRefresh(isRefresh);
+                        refreshResponse.setData(multiItemEntities);
+                        liveData.setValue(refreshResponse);
+                        showDialog(false);
                     }
 
                     @Override
                     protected void onError(String errorMsg) {
                         super.onError(errorMsg);
-                        mView.loadDataFail();
-                        mView.hideLoading();
+                        liveData.setValue(null);
+                        showDialog(false);
                     }
                 });
+    }
+
+    public MutableLiveData<RefreshBean<List<MultiItemEntity>>> getLiveData() {
+        return liveData;
     }
 }

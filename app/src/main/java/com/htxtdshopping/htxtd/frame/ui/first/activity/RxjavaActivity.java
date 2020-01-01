@@ -3,18 +3,17 @@ package com.htxtdshopping.htxtd.frame.ui.first.activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.rxhttp.observer.CommonObserver;
 import com.blankj.utilcode.util.LogUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityRxjavaBinding;
 import com.htxtdshopping.htxtd.frame.network.ServerApi;
 
 import java.util.concurrent.TimeUnit;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -23,10 +22,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class RxjavaActivity extends BaseFitsWindowActivity {
-
-    @BindView(R.id.iv_test1)
-    ImageView mIvTest1;
+public class RxjavaActivity extends BaseFitsWindowActivity<ActivityRxjavaBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -40,7 +36,10 @@ public class RxjavaActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initEvent() {
-
+        mBinding.btnTest1.setOnClickListener(this);
+        mBinding.btnTest2.setOnClickListener(this);
+        mBinding.btnTest3.setOnClickListener(this);
+        mBinding.btnLoading.setOnClickListener(this);
     }
 
     @Override
@@ -48,8 +47,8 @@ public class RxjavaActivity extends BaseFitsWindowActivity {
 
     }
 
-    @OnClick({R.id.btn_test1, R.id.btn_test2, R.id.btn_test3, R.id.btn_loading})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test1:
                 test1();
@@ -81,7 +80,7 @@ public class RxjavaActivity extends BaseFitsWindowActivity {
                 .subscribe(new CommonObserver<Bitmap>() {
                     @Override
                     protected void onSuccess(Bitmap bitmap) {
-                        mIvTest1.setImageBitmap(bitmap);
+                        mBinding.ivTest1.setImageBitmap(bitmap);
                     }
                 });
     }

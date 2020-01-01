@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.listener.GridSpanSizeLookup;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.bean.ChannelBean;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityChooseChannelBinding;
 import com.htxtdshopping.htxtd.frame.ui.four.adapter.ChooseChannelAdapter;
 import com.htxtdshopping.htxtd.frame.widget.adapter.MultiItemBean;
 
@@ -17,14 +20,11 @@ import java.util.Collections;
 import java.util.List;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
 
-public class ChooseChannelActivity extends BaseFitsWindowActivity {
+import static com.htxtdshopping.htxtd.frame.ui.four.adapter.ChooseChannelAdapter.TYPE_SELECTED;
 
-    @BindView(R.id.rv_content)
-    RecyclerView mRvContent;
+public class ChooseChannelActivity extends BaseFitsWindowActivity<ActivityChooseChannelBinding, BaseViewModel> {
+
     private ChooseChannelAdapter mAdapter;
 
     @Override
@@ -34,41 +34,40 @@ public class ChooseChannelActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mRvContent.setLayoutManager(new GridLayoutManager(this, 4));
+        mBinding.rvContent.setLayoutManager(new GridLayoutManager(this, 4));
         mAdapter = new ChooseChannelAdapter();
-        mAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {
+        mAdapter.setGridSpanSizeLookup(new GridSpanSizeLookup() {
             @Override
-            public int getSpanSize(GridLayoutManager gridLayoutManager, int i) {
-                if (mAdapter.getData().get(i).getItemType() == ChooseChannelAdapter.TYPE_SECTION) {
+            public int getSpanSize(GridLayoutManager gridLayoutManager, int viewType, int position) {
+                if (mAdapter.getData().get(position).getItemType() == ChooseChannelAdapter.TYPE_SECTION) {
                     return 4;
                 } else {
                     return 1;
                 }
             }
         });
-        mRvContent.setAdapter(mAdapter);
+        mBinding.rvContent.setAdapter(mAdapter);
 
-        ItemDragAndSwipeCallback itemDragAndSwipeCallback = new ItemDragAndSwipeCallback(mAdapter);
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(itemDragAndSwipeCallback);
-        itemTouchHelper.attachToRecyclerView(mRvContent);
-        mAdapter.enableDragItem(itemTouchHelper, R.id.tv_select_channel_name, true);
-
-        mAdapter.setItemTouchHelper(itemTouchHelper);
+        mAdapter.getDraggableModule().setDragEnabled(true);
+        //设置R.id.tv_select_channel_name响应长按或拖拽
+        mAdapter.getDraggableModule().setToggleViewId(R.id.tv_select_channel_name);
+        //false：拖拽  true：长按
+        mAdapter.getDraggableModule().setDragOnLongPressEnabled(false);
     }
 
     @Override
     public void initEvent() {
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 int viewType = adapter.getItemViewType(position);
                 switch (viewType) {
                     case ChooseChannelAdapter.TYPE_NOT_SELECTED:
                         ChannelBean bean = (ChannelBean) mAdapter.getData().get(position);
-                        bean.setItemType(ChooseChannelAdapter.TYPE_SELECTED);
+                        bean.setItemType(TYPE_SELECTED);
                         mAdapter.notifyItemChanged(position);
                         int from = position;
-                        int to = mAdapter.getItemTypeNum(ChooseChannelAdapter.TYPE_SELECTED)
+                        int to = mAdapter.getItemTypeNum(TYPE_SELECTED)
                                 + mAdapter.getItemTypeNum(ChooseChannelAdapter.TYPE_SELECTED_FIXED);
                         if (mAdapter.inRange(position) && mAdapter.inRange(to)) {
                             if (from < to) {
@@ -95,7 +94,7 @@ public class ChooseChannelActivity extends BaseFitsWindowActivity {
         List<MultiItemEntity> datas = new ArrayList<>();
         datas.add(new MultiItemBean(ChooseChannelAdapter.TYPE_SECTION));
         for (int i = 0; i < 13; i++) {
-            ChannelBean bean = new ChannelBean(ChooseChannelAdapter.TYPE_SELECTED);
+            ChannelBean bean = new ChannelBean(TYPE_SELECTED);
             bean.setChannelId(i);
             bean.setChannelName("title" + i);
             if (i == 0 || i == 1) {

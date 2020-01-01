@@ -1,13 +1,19 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/tv_card_title"
+    <data>
+
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20pt"
-        android:gravity="center"
-        android:textSize="36pt"/>
-</RelativeLayout>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_card_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20pt"
+            android:gravity="center"
+            android:textSize="36pt"/>
+    </RelativeLayout>
+</layout>

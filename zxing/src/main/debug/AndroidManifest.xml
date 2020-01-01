@@ -30,7 +30,7 @@
         android:theme="@style/AppTheme"
         tools:replace="icon,theme,label">
         <activity
-            android:name=".test.MainActivity"
+            android:name=".test.ZxingMainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

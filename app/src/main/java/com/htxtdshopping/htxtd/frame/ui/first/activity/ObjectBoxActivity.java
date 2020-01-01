@@ -7,11 +7,12 @@ import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.base.AppContext;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityObjectBoxBinding;
 import com.htxtdshopping.htxtd.frame.db.Customer;
 import com.htxtdshopping.htxtd.frame.db.Order;
 import com.htxtdshopping.htxtd.frame.db.Order_;
@@ -25,7 +26,6 @@ import com.htxtdshopping.htxtd.frame.db.User;
 import java.util.List;
 
 import androidx.lifecycle.Observer;
-import butterknife.BindView;
 import io.objectbox.Box;
 import io.objectbox.android.AndroidScheduler;
 import io.objectbox.android.ObjectBoxLiveData;
@@ -41,10 +41,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class ObjectBoxActivity extends BaseFitsWindowActivity {
-
-    @BindView(R.id.textViewLog)
-    public TextView textViewLog;
+public class ObjectBoxActivity extends BaseFitsWindowActivity<ActivityObjectBoxBinding, BaseViewModel> {
 
     private Box<Person> personBox;
     private Box<User> userBox;
@@ -284,14 +281,14 @@ public class ObjectBoxActivity extends BaseFitsWindowActivity {
     }
 
     private void log(String message) {
-        textViewLog.append(message + "\n");
+        mBinding.textViewLog.append(message + "\n");
     }
 
     private void logTitle(String message) {
         Spannable spannableString = new SpannableString(message.concat("\n"));
         StyleSpan span = new StyleSpan(Typeface.BOLD);
         spannableString.setSpan(span, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textViewLog.append(spannableString);
+        mBinding.textViewLog.append(spannableString);
     }
 
     @Override

@@ -1,81 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.third.activity.ImagePickerActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <com.android.dsly.common.widget.TitleBar
-        android:id="@+id/tb_title"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_title_bar"
-        app:tb_title="选择图片"/>
+    <data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_content"
-        android:layout_width="match_parent"
-        android:layout_height="0pt"
-        android:layout_weight="1"
-        android:overScrollMode="never"/>
+    </data>
 
     <LinearLayout
-        android:id="@+id/ll_footer"
         android:layout_width="match_parent"
-        android:layout_height="96pt"
-        android:background="@color/image_393A3F"
-        android:clickable="true"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <FrameLayout
-            android:layout_width="0pt"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+        <com.android.dsly.common.widget.TitleBar
+            android:id="@+id/tb_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_title_bar"
+            app:tb_title="选择图片"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_dir"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0pt"
+            android:layout_weight="1"
+            android:overScrollMode="never"/>
+
+        <LinearLayout
+            android:id="@+id/ll_footer"
+            android:layout_width="match_parent"
+            android:layout_height="96pt"
+            android:background="@color/image_393A3F"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="0pt"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_dir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="32pt"
+                    android:paddingRight="32pt">
+
+                    <TextView
+                        android:id="@+id/tv_dir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@string/image_all_pictures"
+                        android:textColor="@color/_c0c0c0"
+                        android:textSize="32pt"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4pt"
+                        android:layout_marginLeft="8pt"
+                        android:src="@drawable/text_indicator"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_dir"
+                        app:layout_constraintLeft_toRightOf="@id/tv_dir"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_preview"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:paddingLeft="32pt"
-                android:paddingRight="32pt">
-
-                <TextView
-                    android:id="@+id/tv_dir"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:text="@string/image_all_pictures"
-                    android:textColor="@color/_c0c0c0"
-                    android:textSize="32pt"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4pt"
-                    android:layout_marginLeft="8pt"
-                    android:src="@drawable/text_indicator"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_dir"
-                    app:layout_constraintLeft_toRightOf="@id/tv_dir"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/tv_preview"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:paddingLeft="32pt"
-            android:paddingRight="32pt"
-            android:text="预览"
-            android:textColor="@android:color/white"
-            android:textSize="32pt"
-            android:visibility="gone"/>
+                android:paddingRight="32pt"
+                android:text="预览"
+                android:textColor="@android:color/white"
+                android:textSize="32pt"
+                android:visibility="gone"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</layout>

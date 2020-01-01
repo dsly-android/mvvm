@@ -4,28 +4,28 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.WindowManager;
 
 import com.android.dsly.common.R;
-import com.android.dsly.rxhttp.IView;
 import com.blankj.utilcode.util.ScreenUtils;
 
 import org.simple.eventbus.EventBus;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 /**
  * @author 陈志鹏
  * @date 2018/1/31
  */
 
-public abstract class BaseDialog extends Dialog implements ILifeCycle{
+public abstract class BaseDialog<VB extends ViewDataBinding> extends Dialog implements ILifeCycle {
 
     protected Context mContext;
-    private Unbinder mUnbinder;
+    protected VB mBinding;
 
     public BaseDialog(@NonNull Context context) {
         this(context, R.style.AppTheme_Dialog);
@@ -39,8 +39,9 @@ public abstract class BaseDialog extends Dialog implements ILifeCycle{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-        mUnbinder = ButterKnife.bind(this);
+        //私有的初始化Databinding和ViewModel方法
+        initViewDataBinding();
+
         EventBus.getDefault().registerSticky(this);
 
         initView(savedInstanceState);
@@ -48,7 +49,18 @@ public abstract class BaseDialog extends Dialog implements ILifeCycle{
         initData();
     }
 
-    public void showDefault(){
+    /**
+     * 注入绑定
+     */
+    private void initViewDataBinding() {
+        if (getLayoutId() != 0) {
+            //DataBindingUtil类需要在project的build中配置 dataBinding {enabled true }, 同步后会自动关联android.databinding包
+            mBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), getLayoutId(), null, false);
+            setContentView(mBinding.getRoot());
+        }
+    }
+
+    public void showDefault() {
         super.show();
     }
 
@@ -90,16 +102,10 @@ public abstract class BaseDialog extends Dialog implements ILifeCycle{
     }
 
     @Override
-    public void setMvpView(IView view) {
-
-    }
-
-    @Override
     public void dismiss() {
         super.dismiss();
-        if (mUnbinder != null && mUnbinder != Unbinder.EMPTY){
-            mUnbinder.unbind();
-            mUnbinder = null;
+        if (mBinding != null) {
+            mBinding.unbind();
         }
         EventBus.getDefault().unregister(this);
     }

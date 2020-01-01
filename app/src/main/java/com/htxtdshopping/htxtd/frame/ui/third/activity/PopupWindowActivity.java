@@ -3,24 +3,17 @@ package com.htxtdshopping.htxtd.frame.ui.third.activity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
 import com.android.dsly.common.base.BasePopupWindow;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import butterknife.BindView;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityPopupWindowBinding;
 
 /**
  * @author chenzhipeng
  */
-public class PopupWindowActivity extends BaseFitsWindowActivity {
-
-    @BindView(R.id.cl_parent)
-    ConstraintLayout mClParent;
-    @BindView(R.id.btn_fullScreen)
-    Button mBtnFullScreen;
+public class PopupWindowActivity extends BaseFitsWindowActivity<ActivityPopupWindowBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {
@@ -67,10 +60,10 @@ public class PopupWindowActivity extends BaseFitsWindowActivity {
         //点击屏幕其他部分和返回键都能使其消失
         window.setFocusable(true);
         int[] a = new int[2];
-        mBtnFullScreen.getLocationOnScreen(a);
+        mBinding.btnFullScreen.getLocationOnScreen(a);
 //        window.showAtLocation(mClParent, Gravity.LEFT | Gravity.TOP, 0, 0);
         //上
-        window.showAtLocation(mClParent, Gravity.TOP, 0, a[1] - window.getHeight());
+        window.showAtLocation(mBinding.clParent, Gravity.TOP, 0, a[1] - window.getHeight());
         //左
 //      window.showAtLocation(mClParent,Gravity.LEFT|Gravity.TOP,a[0]-window.getWidth(),a[1] + (mBtnFullScreen.getHeight() - window.getHeight()) / 2);
     }

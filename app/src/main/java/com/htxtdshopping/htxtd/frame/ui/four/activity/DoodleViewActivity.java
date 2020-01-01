@@ -10,26 +10,21 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
-import com.android.dsly.common.widget.TitleBar;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityDoodleViewBinding;
 import com.htxtdshopping.htxtd.frame.widget.doodleView.DoodleView;
 
 import androidx.appcompat.app.AlertDialog;
-import butterknife.BindView;
 
-public class DoodleViewActivity extends BaseFitsWindowActivity {
-
-    @BindView(R.id.tb_title)
-    TitleBar mTbTitle;
-    @BindView(R.id.iv_right)
-    ImageView mIvRight;
-    @BindView(R.id.dv_view)
-    DoodleView dvView;
+public class DoodleViewActivity extends BaseFitsWindowActivity<ActivityDoodleViewBinding, BaseViewModel> {
 
     private AlertDialog mColorDialog;
     private AlertDialog mPaintDialog;
     private AlertDialog mShapeDialog;
+
+    private ImageView mIvRight;
 
     @Override
     public int getLayoutId() {
@@ -38,8 +33,10 @@ public class DoodleViewActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mTbTitle.setRightImageVisible(View.VISIBLE);
-        mTbTitle.setRightImageResource(R.drawable.ic_launcher_foreground);
+        mBinding.tbTitle.setRightImageVisible(View.VISIBLE);
+        mBinding.tbTitle.setRightImageResource(R.drawable.ic_launcher_foreground);
+
+        mIvRight = findViewById(R.id.iv_right);
     }
 
     @Override
@@ -55,7 +52,7 @@ public class DoodleViewActivity extends BaseFitsWindowActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return dvView.onTouchEvent(event);
+        return mBinding.dvView.onTouchEvent(event);
     }
 
     @Override
@@ -77,14 +74,14 @@ public class DoodleViewActivity extends BaseFitsWindowActivity {
                 showShapeDialog();
                 break;
             case R.id.main_reset:
-                dvView.reset();
+                mBinding.dvView.reset();
                 break;
             case R.id.main_save:
-                String path = dvView.saveBitmap(dvView);
+                String path = mBinding.dvView.saveBitmap(mBinding.dvView);
                 Toast.makeText(this, "保存图片的路径为：" + path, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.main_back:
-                dvView.back();
+                mBinding.dvView.back();
                 break;
         }
         return super.onContextItemSelected(item);
@@ -103,13 +100,13 @@ public class DoodleViewActivity extends BaseFitsWindowActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     switch (which) {
                                         case 0:
-                                            dvView.setColor("#0000ff");
+                                            mBinding.dvView.setColor("#0000ff");
                                             break;
                                         case 1:
-                                            dvView.setColor("#ff0000");
+                                            mBinding.dvView.setColor("#ff0000");
                                             break;
                                         case 2:
-                                            dvView.setColor("#272822");
+                                            mBinding.dvView.setColor("#272822");
                                             break;
                                         default:
                                             break;
@@ -134,13 +131,13 @@ public class DoodleViewActivity extends BaseFitsWindowActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     switch (which) {
                                         case 0:
-                                            dvView.setSize(ConvertUtils.dp2px(5));
+                                            mBinding.dvView.setSize(ConvertUtils.dp2px(5));
                                             break;
                                         case 1:
-                                            dvView.setSize(ConvertUtils.dp2px(10));
+                                            mBinding.dvView.setSize(ConvertUtils.dp2px(10));
                                             break;
                                         case 2:
-                                            dvView.setSize(ConvertUtils.dp2px(15));
+                                            mBinding.dvView.setSize(ConvertUtils.dp2px(15));
                                             break;
                                         default:
                                             break;
@@ -165,22 +162,22 @@ public class DoodleViewActivity extends BaseFitsWindowActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     switch (which) {
                                         case 0:
-                                            dvView.setType(DoodleView.ActionType.Path);
+                                            mBinding.dvView.setType(DoodleView.ActionType.Path);
                                             break;
                                         case 1:
-                                            dvView.setType(DoodleView.ActionType.Line);
+                                            mBinding.dvView.setType(DoodleView.ActionType.Line);
                                             break;
                                         case 2:
-                                            dvView.setType(DoodleView.ActionType.Rect);
+                                            mBinding.dvView.setType(DoodleView.ActionType.Rect);
                                             break;
                                         case 3:
-                                            dvView.setType(DoodleView.ActionType.Circle);
+                                            mBinding.dvView.setType(DoodleView.ActionType.Circle);
                                             break;
                                         case 4:
-                                            dvView.setType(DoodleView.ActionType.FillEcRect);
+                                            mBinding.dvView.setType(DoodleView.ActionType.FillEcRect);
                                             break;
                                         case 5:
-                                            dvView.setType(DoodleView.ActionType.FilledCircle);
+                                            mBinding.dvView.setType(DoodleView.ActionType.FilledCircle);
                                             break;
                                         default:
                                             break;

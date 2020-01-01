@@ -8,9 +8,11 @@ import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.common.utils.ToastUtils;
 import com.android.dsly.zxing.R;
+import com.android.dsly.zxing.databinding.ZxingActivityMainBinding;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -21,7 +23,7 @@ import io.reactivex.functions.Consumer;
  * @author 陈志鹏
  * @date 2019-12-13
  */
-public class MainActivity extends BaseFitsWindowActivity {
+public class ZxingMainActivity extends BaseFitsWindowActivity<ZxingActivityMainBinding, BaseViewModel> {
 
     private static final int CODE_SCAN_QR = 1;
 
@@ -57,7 +59,7 @@ public class MainActivity extends BaseFitsWindowActivity {
                     public void accept(Permission permission) throws Exception {
                         if (permission.granted) {
                             ARouter.getInstance().build(RouterHub.ZXING_CAPTURE_ACTIVITY)
-                                    .navigation(MainActivity.this, CODE_SCAN_QR);
+                                    .navigation(ZxingMainActivity.this, CODE_SCAN_QR);
                         } else if (permission.shouldShowRequestPermissionRationale) {
                             ToastUtils.showLong("shouldShowRequestPermissionRationale");
                         } else {

@@ -2,8 +2,6 @@ package com.android.dsly.common.base;
 
 import android.os.Bundle;
 
-import com.android.dsly.rxhttp.IView;
-
 /**
  * @author 陈志鹏
  * @date 2018/9/7
@@ -16,11 +14,6 @@ public interface ILifeCycle {
      * @return
      */
     int getLayoutId();
-
-    /**
-     * 将mvp的view设置给presenter
-     */
-    void setMvpView(IView view);
 
     /**
      * 初始化 view

@@ -8,17 +8,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
-import com.android.dsly.common.widget.web.X5WebView;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.widget.web.X5WebViewClient;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityWebBinding;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebView;
 
-import butterknife.BindView;
 import me.jessyan.autosize.AutoSize;
 
 import static android.view.View.GONE;
@@ -26,13 +25,9 @@ import static android.view.View.GONE;
 /**
  * @author chenzhipeng
  */
-public class WebActivity extends BaseFitsWindowActivity {
+public class WebActivity extends BaseFitsWindowActivity<ActivityWebBinding, BaseViewModel> {
 
     private static final int CODE_CHOOSE_FILE = 0;
-    @BindView(R.id.wv_web)
-    X5WebView mWvWeb;
-    @BindView(R.id.pb_progress)
-    ProgressBar mPbProgress;
     /**
      * 上传文件
      */
@@ -55,7 +50,7 @@ public class WebActivity extends BaseFitsWindowActivity {
     public void initView(Bundle savedInstanceState) {
         //网页中的视频，上屏幕的时候，可能出现闪烁的情况，需要如下设置
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
-        mWvWeb.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        mBinding.wvWeb.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         try {
             if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 11) {
                 getWindow()
@@ -70,12 +65,12 @@ public class WebActivity extends BaseFitsWindowActivity {
     @Override
     public void initEvent() {
         //上传文件要重写的方法
-        mWvWeb.setWebChromeClient(new WebChromeClient() {
+        mBinding.wvWeb.setWebChromeClient(new WebChromeClient() {
 
             @Override
             public void onProgressChanged(WebView webView, int i) {
                 super.onProgressChanged(webView, i);
-                mPbProgress.setProgress(i);
+                mBinding.pbProgress.setProgress(i);
             }
 
             // For Android 3.0+
@@ -107,24 +102,24 @@ public class WebActivity extends BaseFitsWindowActivity {
                 return true;
             }
         });
-        mWvWeb.setWebViewClient(new X5WebViewClient(){
+        mBinding.wvWeb.setWebViewClient(new X5WebViewClient(){
             @Override
             public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
                 super.onPageStarted(webView, s, bitmap);
-                mPbProgress.setVisibility(View.VISIBLE);
+                mBinding.pbProgress.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onPageFinished(WebView webView, String s) {
                 super.onPageFinished(webView, s);
-                mPbProgress.setVisibility(GONE);
+                mBinding.pbProgress.setVisibility(GONE);
             }
         });
     }
 
     @Override
     public void initData() {
-        mWvWeb.loadUrl("https://www.baidu.com");
+        mBinding.wvWeb.loadUrl("https://www.baidu.com");
     }
 
     /**
@@ -167,8 +162,8 @@ public class WebActivity extends BaseFitsWindowActivity {
 
     @Override
     public void onBackPressed() {
-        if (mWvWeb.canGoBack()) {
-            mWvWeb.goBack();
+        if (mBinding.wvWeb.canGoBack()) {
+            mBinding.wvWeb.goBack();
         } else {
             super.onBackPressed();
         }
@@ -176,9 +171,8 @@ public class WebActivity extends BaseFitsWindowActivity {
 
     @Override
     protected void onDestroy() {
-        if (mWvWeb != null) {
-            mWvWeb.onDestroy();
-            mWvWeb = null;
+        if (mBinding.wvWeb != null) {
+            mBinding.wvWeb.onDestroy();
         }
         super.onDestroy();
     }

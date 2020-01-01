@@ -3,31 +3,26 @@ package com.htxtdshopping.htxtd.frame.ui.third.activity;
 import android.Manifest;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityVoiceRecordBinding;
 import com.htxtdshopping.htxtd.frame.utils.VoiceRecordManager;
-import com.htxtdshopping.htxtd.frame.widget.VoiceLineView;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
 
-import butterknife.BindView;
 import io.reactivex.functions.Consumer;
 
 /**
  * @author chenzhipeng
  */
-public class VoiceRecordActivity extends BaseActivity {
+public class VoiceRecordActivity extends BaseActivity<ActivityVoiceRecordBinding, BaseViewModel> {
 
-    @BindView(R.id.vlv_wave)
-    VoiceLineView mVlvWave;
-    @BindView(R.id.tv_time)
-    TextView mTvTime;
     private VoiceRecordManager mManager;
 
     @Override
@@ -38,7 +33,7 @@ public class VoiceRecordActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         mManager = VoiceRecordManager.getInstance();
-        mVlvWave.setPause();
+        mBinding.vlvWave.setPause();
     }
 
     @Override
@@ -46,22 +41,22 @@ public class VoiceRecordActivity extends BaseActivity {
         mManager.setOnAudioRecordListener(new VoiceRecordManager.OnAudioRecordListener() {
             @Override
             public void onStartRecord() {
-                mVlvWave.setContinue();
+                mBinding.vlvWave.setContinue();
             }
 
             @Override
             public void onAudioVolumeChanged(int volume, double db) {
-                mVlvWave.setVolume((int) db);
+                mBinding.vlvWave.setVolume((int) db);
             }
 
             @Override
             public void onPauseRecord() {
-                mVlvWave.setPause();
+                mBinding.vlvWave.setPause();
             }
 
             @Override
             public void onResumeRecord() {
-                mVlvWave.setContinue();
+                mBinding.vlvWave.setContinue();
             }
 
             @Override

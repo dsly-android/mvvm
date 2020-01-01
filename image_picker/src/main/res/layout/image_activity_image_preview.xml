@@ -1,46 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/black"
-    android:orientation="vertical"
-    tools:context=".ui.third.activity.ImagePreviewActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <com.android.dsly.image_picker.widget.ZoomViewPager
-        android:id="@+id/zvp_page"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never"/>
+    <data>
 
-    <com.android.dsly.common.widget.TitleBar
-        android:id="@+id/tb_title"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_title_bar"
-        app:tb_title="选择图片"/>
+    </data>
 
     <FrameLayout
-        android:id="@+id/fl_footer"
         android:layout_width="match_parent"
-        android:layout_height="90pt"
-        android:layout_gravity="bottom"
-        android:background="#88000000"
-        android:clickable="true">
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_check"
-            android:layout_width="wrap_content"
+        <com.android.dsly.image_picker.widget.ZoomViewPager
+            android:id="@+id/zvp_page"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:drawableLeft="@drawable/image_selector_item_selected"
-            android:drawablePadding="10pt"
-            android:gravity="center"
-            android:paddingLeft="30pt"
-            android:paddingRight="30pt"
-            android:text="选择"
-            android:textColor="@android:color/white"
-            android:textSize="30pt"/>
+            android:overScrollMode="never"/>
+
+        <com.android.dsly.common.widget.TitleBar
+            android:id="@+id/tb_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_title_bar"
+            app:tb_title="选择图片"/>
+
+        <FrameLayout
+            android:id="@+id/fl_footer"
+            android:layout_width="match_parent"
+            android:layout_height="90pt"
+            android:layout_gravity="bottom"
+            android:background="#88000000"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/tv_check"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:drawableLeft="@drawable/image_selector_item_selected"
+                android:drawablePadding="10pt"
+                android:gravity="center"
+                android:paddingLeft="30pt"
+                android:paddingRight="30pt"
+                android:text="选择"
+                android:textColor="@android:color/white"
+                android:textSize="30pt"/>
+        </FrameLayout>
     </FrameLayout>
-</FrameLayout>
+</layout>

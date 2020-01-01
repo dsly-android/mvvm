@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityFloatWindowBinding;
 import com.lzf.easyfloat.EasyFloat;
 import com.lzf.easyfloat.enums.ShowPattern;
 import com.lzf.easyfloat.enums.SidePattern;
 import com.lzf.easyfloat.permission.PermissionUtils;
 
 import androidx.appcompat.app.AlertDialog;
-import butterknife.OnClick;
 
-public class FloatWindowActivity extends BaseFitsWindowActivity {
+public class FloatWindowActivity extends BaseFitsWindowActivity<ActivityFloatWindowBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -28,7 +29,10 @@ public class FloatWindowActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initEvent() {
-
+        mBinding.btnStartFloat.setOnClickListener(this);
+        mBinding.btnShowFloat.setOnClickListener(this);
+        mBinding.btnHideFloat.setOnClickListener(this);
+        mBinding.btnCancelFloat.setOnClickListener(this);
     }
 
     @Override
@@ -36,8 +40,8 @@ public class FloatWindowActivity extends BaseFitsWindowActivity {
 
     }
 
-    @OnClick({R.id.btn_start_float, R.id.btn_show_float, R.id.btn_hide_float, R.id.btn_cancel_float})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_start_float:
                 checkPermission();

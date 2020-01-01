@@ -3,20 +3,16 @@ package com.htxtdshopping.htxtd.frame.ui.first.activity;
 import android.os.Bundle;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityBannerBinding;
 import com.htxtdshopping.htxtd.frame.loader.GlideImageLoader;
-import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
 import java.util.Arrays;
 
-import butterknife.BindView;
-
-public class BannerActivity extends BaseActivity {
-
-    @BindView(R.id.b_images)
-    Banner mBImages;
+public class BannerActivity extends BaseActivity<ActivityBannerBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {
@@ -27,7 +23,7 @@ public class BannerActivity extends BaseActivity {
     public void initView(Bundle savedInstanceState) {
         //修改指示器样式
 //        updateBannerStyle(BannerConfig.CIRCLE_INDICATOR);
-        mBImages.setImages(Arrays.asList(getResources().getStringArray(R.array.image_url)))
+        mBinding.bImages.setImages(Arrays.asList(getResources().getStringArray(R.array.image_url)))
                 .setImageLoader(new GlideImageLoader())
                 //banner加载动画
 //                .setBannerAnimation(DefaultTransformer.class)
@@ -55,12 +51,12 @@ public class BannerActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mBImages.startAutoPlay();
+        mBinding.bImages.startAutoPlay();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mBImages.stopAutoPlay();
+        mBinding.bImages.stopAutoPlay();
     }
 }

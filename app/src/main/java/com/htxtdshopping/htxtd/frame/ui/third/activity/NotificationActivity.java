@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityNotificationBinding;
 import com.htxtdshopping.htxtd.frame.notification.Notifications;
 
-import butterknife.OnClick;
-
-public class NotificationActivity extends BaseFitsWindowActivity {
+public class NotificationActivity extends BaseFitsWindowActivity<ActivityNotificationBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -23,7 +23,9 @@ public class NotificationActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initEvent() {
-
+        mBinding.btnHigh.setOnClickListener(this);
+        mBinding.btnLow.setOnClickListener(this);
+        mBinding.btnCustom.setOnClickListener(this);
     }
 
     @Override
@@ -31,8 +33,8 @@ public class NotificationActivity extends BaseFitsWindowActivity {
 
     }
 
-    @OnClick({R.id.btn_high, R.id.btn_low, R.id.btn_custom})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_high:
                 Notifications.getInstance().showImportantNotification(NotificationActivity.this);

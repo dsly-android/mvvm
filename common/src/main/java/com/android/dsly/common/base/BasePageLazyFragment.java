@@ -6,12 +6,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.ViewDataBinding;
 
 /**
  * @author 陈志鹏
  * @date 2018/9/9
  */
-public abstract class BasePageLazyFragment<P extends BasePresenter> extends BaseFragment<P> {
+public abstract class BasePageLazyFragment<VB extends ViewDataBinding, VM extends BaseViewModel> extends BaseFragment<VB, VM> {
 
     /**
      * 是否第一次加载

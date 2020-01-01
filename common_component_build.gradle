@@ -5,7 +5,6 @@ if (isBuildModule.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     signingConfigs {
@@ -40,12 +39,14 @@ android {
                 includeCompileClasspath true
             }
         }
+        //databinding
+        dataBinding.enabled = true
     }
     buildTypes {
         debug {
             if (isBuildModule.toBoolean()) {
-                minifyEnabled true    //混淆
-                shrinkResources true  //资源文件压缩
+                minifyEnabled false    //混淆
+                shrinkResources false  //资源文件压缩
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), '../app/proguard-rules.pro'
                 signingConfig signingConfigs.frame
             } else {
@@ -86,19 +87,12 @@ android {
 }
 
 dependencies {
-    //dagger
-    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
-    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+    //common
+    api project(":common")
 
     //glide
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
-    //butterknife
-    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-
     //arouter
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
-
-    //common
-    api project(":common")
 }

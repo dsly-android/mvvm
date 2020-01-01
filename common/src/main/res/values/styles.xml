@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--SlideClose-->
+    <style name="SlideClose.Transparent.Theme" parent="AppTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <!--dialog样式的activity-->
@@ -51,5 +57,12 @@
     <style name="window_animation_bottom">
         <item name="android:windowEnterAnimation">@anim/bottom_enter</item>
         <item name="android:windowExitAnimation">@anim/bottom_exit</item>
+    </style>
+
+    <!--line-->
+    <style name="horizontal_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2pt</item>
+        <item name="android:background">@color/_12000000</item>
     </style>
 </resources>

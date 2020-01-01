@@ -5,17 +5,4 @@
         <item name="android:windowBackground">@drawable/welcome_log</item>
         <item name="android:windowFullscreen">true</item>
     </style>
-
-    <!--line-->
-    <style name="horizontal_line">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">2pt</item>
-        <item name="android:background">@color/_E6E6E6</item>
-    </style>
-
-    <style name="dividing_line">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1pt</item>
-        <item name="android:background">@color/_f0f0f0</item>
-    </style>
 </resources>

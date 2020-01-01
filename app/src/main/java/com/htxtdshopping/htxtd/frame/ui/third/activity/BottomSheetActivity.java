@@ -4,21 +4,18 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityBottomSheetBinding;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.core.widget.NestedScrollView;
-import butterknife.BindView;
-import butterknife.OnClick;
 import me.jessyan.autosize.utils.AutoSizeUtils;
 
-public class BottomSheetActivity extends BaseFitsWindowActivity {
+public class BottomSheetActivity extends BaseFitsWindowActivity<ActivityBottomSheetBinding, BaseViewModel> implements View.OnClickListener {
 
-    @BindView(R.id.nsv_scroll)
-    NestedScrollView mNsvScroll;
     private BottomSheetDialog dialog;
 
     @Override
@@ -34,13 +31,13 @@ public class BottomSheetActivity extends BaseFitsWindowActivity {
 
     @Override
     public void initEvent() {
-
+        mBinding.btnBottomSheet.setOnClickListener(this);
     }
 
     @Override
     public void initData() {
         //自带的bottomsheet
-        BottomSheetBehavior behavior = BottomSheetBehavior.from(mNsvScroll);
+        BottomSheetBehavior behavior = BottomSheetBehavior.from(mBinding.nsvScroll);
         behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -60,8 +57,8 @@ public class BottomSheetActivity extends BaseFitsWindowActivity {
         mDialogSheetBottomView.setBackgroundColor(ContextCompat.getColor(this,android.R.color.white));
     }
 
-    @OnClick({R.id.btn_bottom_sheet})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_bottom_sheet:
                 dialog.show();

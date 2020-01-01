@@ -14,7 +14,6 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ProcessUtils;
 import com.htxtdshopping.htxtd.frame.BuildConfig;
 import com.htxtdshopping.htxtd.frame.R;
-import com.htxtdshopping.htxtd.frame.di.component.DaggerAppComponent;
 import com.htxtdshopping.htxtd.frame.network.OssService;
 import com.htxtdshopping.htxtd.frame.network.STSProvider;
 import com.htxtdshopping.htxtd.frame.ui.second.activity.UpgradeActivity;
@@ -39,8 +38,6 @@ import java.io.File;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
-import dagger.android.AndroidInjector;
-import dagger.android.support.DaggerApplication;
 
 /**
  * @author 陈志鹏
@@ -182,10 +179,5 @@ public class App extends BaseApp {
 
     private void initEasyFloat() {
         EasyFloat.init(this, BuildConfig.DEBUG);
-    }
-
-    @Override
-    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-        return DaggerAppComponent.builder().build();
     }
 }

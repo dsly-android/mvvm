@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityLoginAndShareBinding;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
@@ -21,15 +21,8 @@ import com.umeng.socialize.media.UMWeb;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.OnClick;
+public class LoginAndShareActivity extends BaseFitsWindowActivity<ActivityLoginAndShareBinding, BaseViewModel> implements View.OnClickListener {
 
-public class LoginAndShareActivity extends BaseFitsWindowActivity {
-
-    @BindView(R.id.btn_wechat_login)
-    Button mBtnWechatLogin;
-    @BindView(R.id.tv_msg)
-    TextView mTvMsg;
     private UMShareListener mShareListener;
     private ShareAction mShareAction;
 
@@ -57,15 +50,17 @@ public class LoginAndShareActivity extends BaseFitsWindowActivity {
         //判断微信是否授权
         boolean isauth = UMShareAPI.get(this).isAuthorize(this, SHARE_MEDIA.WEIXIN);
         if (isauth) {
-            mBtnWechatLogin.setText("微信删除授权");
+            mBinding.btnWechatLogin.setText("微信删除授权");
         } else {
-            mBtnWechatLogin.setText("微信授权");
+            mBinding.btnWechatLogin.setText("微信授权");
         }
     }
 
     @Override
     public void initEvent() {
-
+        mBinding.btnShareUi.setOnClickListener(this);
+        mBinding.btnShareNoUi.setOnClickListener(this);
+        mBinding.btnWechatLogin.setOnClickListener(this);
     }
 
     @Override
@@ -73,8 +68,8 @@ public class LoginAndShareActivity extends BaseFitsWindowActivity {
 
     }
 
-    @OnClick({R.id.btn_share_ui, R.id.btn_wechat_login, R.id.btn_share_no_ui})
-    public void onViewClicked(View view) {
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_share_ui:
                 mShareAction.open();
@@ -120,7 +115,7 @@ public class LoginAndShareActivity extends BaseFitsWindowActivity {
             for (String key : data.keySet()) {
                 sb.append(key).append(" : ").append(data.get(key)).append("\n");
             }
-            mTvMsg.setText(sb.toString());
+            mBinding.tvMsg.setText(sb.toString());
         }
 
         @Override

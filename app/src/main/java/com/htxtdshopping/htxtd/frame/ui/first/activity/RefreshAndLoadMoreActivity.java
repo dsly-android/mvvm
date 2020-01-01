@@ -13,13 +13,14 @@ import com.android.dsly.common.widget.CustomizeLoadMoreView;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.chad.library.adapter.base.listener.OnLoadMoreListener;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.bean.NewsVideoBean;
+import com.htxtdshopping.htxtd.frame.bean.RefreshBean;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityRefreshAndLoadMoreBinding;
 import com.htxtdshopping.htxtd.frame.ui.first.adapter.RefreshAndLoadMoreAdapter;
-import com.htxtdshopping.htxtd.frame.ui.first.presenter.RefreshAndLoadMorePresenter;
-import com.htxtdshopping.htxtd.frame.ui.first.view.IRefreshAndLoadMoreView;
-import com.htxtdshopping.htxtd.frame.widget.ThreePointLoadingView;
-import com.htxtdshopping.htxtd.frame.widget.refresh.NewsRefreshLayout;
+import com.htxtdshopping.htxtd.frame.ui.first.viewmodel.RefreshAndLoadMoreViewModel;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
@@ -27,25 +28,18 @@ import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
 import me.jessyan.autosize.utils.AutoSizeUtils;
 
 /**
  * @author chenzhipeng
  */
-public class RefreshAndLoadMoreActivity extends BaseFitsWindowActivity<RefreshAndLoadMorePresenter> implements IRefreshAndLoadMoreView {
+public class RefreshAndLoadMoreActivity extends BaseFitsWindowActivity<ActivityRefreshAndLoadMoreBinding, RefreshAndLoadMoreViewModel> {
 
-    @BindView(R.id.nrl_refresh)
-    NewsRefreshLayout mNrlRefresh;
-    @BindView(R.id.rv_content)
-    RecyclerView mRvContent;
-    @BindView(R.id.tpl_view)
-    ThreePointLoadingView mTplView;
-    @BindView(R.id.tv_refresh_num)
-    TextView mTvRefreshNum;
     private RefreshAndLoadMoreAdapter mAdapter;
+    private TextView mTvRefreshNum;
 
     @Override
     public int getLayoutId() {
@@ -59,36 +53,38 @@ public class RefreshAndLoadMoreActivity extends BaseFitsWindowActivity<RefreshAn
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mRvContent.setLayoutManager(new LinearLayoutManager(this));
-        mRvContent.addItemDecoration(new LinearDividerItemDecoration(this, AutoSizeUtils.pt2px(this, 1)));
-        mAdapter = new RefreshAndLoadMoreAdapter(this);
-        mAdapter.setLoadMoreView(new CustomizeLoadMoreView());
-        mRvContent.setAdapter(mAdapter);
+        mTvRefreshNum = findViewById(R.id.tv_refresh_num);
+
+        mBinding.rvContent.setLayoutManager(new LinearLayoutManager(this));
+        mBinding.rvContent.addItemDecoration(new LinearDividerItemDecoration(this, AutoSizeUtils.pt2px(this, 1)));
+        mAdapter = new RefreshAndLoadMoreAdapter();
+        mAdapter.getLoadMoreModule().setLoadMoreView(new CustomizeLoadMoreView());
+        mBinding.rvContent.setAdapter(mAdapter);
     }
 
     @Override
     public void initEvent() {
-        mNrlRefresh.setOnRefreshListener(new OnRefreshListener() {
+        mBinding.nrlRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                mAdapter.setEnableLoadMore(false);
-                mPresenter.loadData(true);
+                mAdapter.getLoadMoreModule().setEnableLoadMore(false);
+                mViewModel.loadData(true);
             }
         });
-        mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 ActivityUtils.startActivity(NewsVideoActivity.class);
             }
         });
-        mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        mAdapter.getLoadMoreModule().setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void onLoadMoreRequested() {
-                mNrlRefresh.setEnableRefresh(false);
-                mPresenter.loadData(false);
+            public void onLoadMore() {
+                mBinding.nrlRefresh.setEnableRefresh(false);
+                mViewModel.loadData(false);
             }
-        }, mRvContent);
-        mRvContent.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        });
+        mBinding.rvContent.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -97,7 +93,7 @@ public class RefreshAndLoadMoreActivity extends BaseFitsWindowActivity<RefreshAn
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                LinearLayoutManager manager = (LinearLayoutManager) mRvContent.getLayoutManager();
+                LinearLayoutManager manager = (LinearLayoutManager) mBinding.rvContent.getLayoutManager();
                 int firstVisibleItemPosition = manager.findFirstVisibleItemPosition();
                 int lastVisibleItemPosition = manager.findLastVisibleItemPosition();
                 //大于0说明有播放
@@ -114,51 +110,51 @@ public class RefreshAndLoadMoreActivity extends BaseFitsWindowActivity<RefreshAn
                 }
             }
         });
+        mViewModel.getLiveData().observe(this, new Observer<RefreshBean<List<MultiItemEntity>>>() {
+            @Override
+            public void onChanged(RefreshBean<List<MultiItemEntity>> response) {
+                if (response == null) {
+                    mBinding.nrlRefresh.setEnableRefresh(true);
+                    mAdapter.getLoadMoreModule().setEnableLoadMore(true);
+                    mBinding.nrlRefresh.finishRefresh(false);
+                    mAdapter.getLoadMoreModule().loadMoreFail();
+                } else {
+                    if (response.isRefresh()) {
+                        mBinding.nrlRefresh.finishRefresh();
+                        mAdapter.getLoadMoreModule().setEnableLoadMore(true);
+                    } else {
+                        mBinding.nrlRefresh.setEnableRefresh(true);
+                    }
+                    if (response.isRefresh()) {
+                        mAdapter.setNewData(response.getData());
+                        mTvRefreshNum.setText(String.format(getString(R.string.refresh_news_num), response.getData().size()));
+                    } else {
+                        mAdapter.addData(response.getData());
+                        if (response.getData().size() < 20) {
+                            mAdapter.getLoadMoreModule().loadMoreEnd();
+                        } else {
+                            mAdapter.getLoadMoreModule().loadMoreComplete();
+                        }
+                    }
+                }
+            }
+        });
     }
 
     @Override
     public void initData() {
         showLoading();
-        mPresenter.loadData(true);
-    }
-
-    @Override
-    public void loadDataSuccess(List<MultiItemEntity> datas, boolean isRefresh) {
-        if (isRefresh) {
-            mNrlRefresh.finishRefresh();
-            mAdapter.setEnableLoadMore(true);
-        } else {
-            mNrlRefresh.setEnableRefresh(true);
-        }
-        if (isRefresh) {
-            mAdapter.setNewData(datas);
-            mTvRefreshNum.setText(String.format(getString(R.string.refresh_news_num), datas.size()));
-        } else {
-            mAdapter.addData(datas);
-            if (datas.size() < 20) {
-                mAdapter.loadMoreEnd();
-            } else {
-                mAdapter.loadMoreComplete();
-            }
-        }
-    }
-
-    @Override
-    public void loadDataFail() {
-        mNrlRefresh.setEnableRefresh(true);
-        mAdapter.setEnableLoadMore(true);
-        mNrlRefresh.finishRefresh(false);
-        mAdapter.loadMoreFail();
+        mViewModel.loadData(true);
     }
 
     @Override
     public void showLoading() {
-        mTplView.play();
+        mBinding.tplView.play();
     }
 
     @Override
     public void hideLoading() {
-        mTplView.stop();
+        mBinding.tplView.stop();
     }
 
     @Override
