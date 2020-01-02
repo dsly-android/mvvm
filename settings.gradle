@@ -1,1 +1,1 @@
-include ':app', ':banner', ':autosize', ':easyfloat', ':common', ':zxing', ':common_service', ':image_picker'
+include ':app', ':banner', ':autosize', ':easyfloat', ':common', ':zxing', ':common_service', ':image_picker', ':accessibilityservice'

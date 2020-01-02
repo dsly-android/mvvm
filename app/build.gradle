@@ -42,8 +42,8 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled false    //混淆
-            shrinkResources false  //资源文件压缩
+            minifyEnabled true    //混淆
+            shrinkResources true  //资源文件压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.frame
         }

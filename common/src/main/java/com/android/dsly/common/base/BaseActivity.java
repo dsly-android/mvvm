@@ -45,6 +45,9 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         //侧滑关闭
         initSlideBackClose();
         super.onCreate(savedInstanceState);
+        if (isFitWindow()) {
+            setFitsSystemWindows(true);
+        }
         EventBus.getDefault().registerSticky(this);
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding();
@@ -52,9 +55,6 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         registerLiveDataCallBack();
 
         BarUtils.setStatusBarColor(this, getResources().getColor(R.color._81D8CF));
-        if (isFitWindow()) {
-            setFitsSystemWindows(true);
-        }
         findViewById(android.R.id.content).setBackgroundResource(R.color._f3f3f3);
 
         initView(savedInstanceState);

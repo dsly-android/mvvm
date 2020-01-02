@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <com.htxtdshopping.htxtd.frame.widget.CommonViewGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:padding="10pt">
+
+        <View
+            android:layout_width="300pt"
+            android:layout_height="300pt"
+            android:background="@color/_ed4040"/>
+    </com.htxtdshopping.htxtd.frame.widget.CommonViewGroup>
+</layout>

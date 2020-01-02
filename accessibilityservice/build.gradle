@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        frame {
+            keyAlias 'frame'
+            keyPassword '123456'
+            storeFile file('/Users/chenzhipeng/移动硬盘/android/框架/Frame/frame.jks')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "com.mrd.accessibilityservice"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        testInstrumentationRunner rootProject.ext.android["androidJUnitRunner"]
+        signingConfig signingConfigs.frame
+        //databinding
+        dataBinding.enabled = true
+        //ARouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled true    //混淆
+            shrinkResources true  //资源文件压缩
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.frame
+        }
+        release {
+            minifyEnabled true    //混淆
+            shrinkResources true  //资源文件压缩
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.frame
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //common
+    implementation project(path: ':common')
+
+    //glide
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+
+    //arouter
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+}

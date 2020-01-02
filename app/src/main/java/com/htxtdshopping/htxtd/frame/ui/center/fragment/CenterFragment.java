@@ -10,6 +10,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.FragmentCenterBinding;
+import com.htxtdshopping.htxtd.frame.ui.center.activity.CustomViewActivity;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.LinearActivity;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.SlideCloseActivity;
 
@@ -35,6 +36,7 @@ public class CenterFragment extends BaseLazyFragment<FragmentCenterBinding, Base
     public void initEvent() {
         mBinding.btnLinear.setOnClickListener(this);
         mBinding.btnSlideClose.setOnClickListener(this);
+        mBinding.btnView.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +52,9 @@ public class CenterFragment extends BaseLazyFragment<FragmentCenterBinding, Base
                 break;
             case R.id.btn_slide_close:
                 ActivityUtils.startActivity(SlideCloseActivity.class);
+                break;
+            case R.id.btn_view:
+                ActivityUtils.startActivity(CustomViewActivity.class);
                 break;
             default:
                 break;

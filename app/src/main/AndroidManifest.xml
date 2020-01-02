@@ -50,10 +50,12 @@
         android:theme="@style/AppTheme"
         tools:replace="icon,theme,label,allowBackup">
         <activity
+            android:name=".ui.center.activity.CustomViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ui.center.activity.SlideCloseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SlideClose.Transparent.Theme"/>
-
         <activity
             android:name=".ui.center.activity.LinearActivity"
             android:screenOrientation="portrait"/>
@@ -80,9 +82,6 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.first.activity.FloatWindowActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".ui.center.fragment.CenterActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.third.activity.HandlerActivity"
