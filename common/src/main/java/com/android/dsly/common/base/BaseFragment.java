@@ -29,8 +29,6 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
     protected VM mViewModel;
     private int mViewModelId;
 
-    private long lastClick = 0;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,19 +137,6 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
 
     public void hideLoading() {
         ((BaseActivity) getActivity()).hideLoading();
-    }
-
-    private boolean isFastClick() {
-        long now = System.currentTimeMillis();
-        if (now - lastClick >= 200) {
-            lastClick = now;
-            return false;
-        }
-        return true;
-    }
-
-    public boolean isNotFastClick() {
-        return !isFastClick();
     }
 
     public boolean isFragmentVisible() {

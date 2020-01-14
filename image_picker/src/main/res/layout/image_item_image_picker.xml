@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="180pt"
-    android:layout_height="180pt">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/iv_img"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+    <data>
+        <variable
+            name="data"
+            type="com.android.dsly.image_picker.local_data.ImageItem" />
+    </data>
 
-    <View
-        android:id="@+id/v_cover"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#66000000"
-        android:visibility="gone"/>
+    <FrameLayout
+        android:layout_width="180pt"
+        android:layout_height="180pt">
 
-    <ImageView
-        android:id="@+id/iv_check"
-        android:layout_width="60pt"
-        android:layout_height="60pt"
-        android:layout_gravity="right"
-        android:padding="15pt"
-        android:scaleType="fitXY"
-        android:src="@drawable/image_selector_item_selected"/>
-</FrameLayout>
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <View
+            android:id="@+id/v_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#66000000"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_check"
+            selected="@{data.isChecked}"
+            android:layout_width="60pt"
+            android:layout_height="60pt"
+            android:layout_gravity="right"
+            android:padding="15pt"
+            android:scaleType="fitXY"
+            android:src="@drawable/image_selector_item_selected" />
+    </FrameLayout>
+</layout>

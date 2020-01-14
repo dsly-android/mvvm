@@ -103,6 +103,7 @@ dependencies {
     if (!isBuildModule.toBoolean()) {
         //使用runtimeOnly会是databinding失效
         implementation project(":zxing")
+        implementation project(":materialdesign")
     }
 
     //image_picker

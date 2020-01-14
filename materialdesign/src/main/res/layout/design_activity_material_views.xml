@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.MaterialViewsActivity">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/_81D8CF"
+            android:text="faha"
+            android:textAllCaps="false"
+            android:textSize="30sp"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/design_share_video"
+            app:iconSize="30dp"
+            app:iconTint="@color/_81D8CF"
+            app:iconTintMode="add"
+            app:strokeColor="@color/_353535"
+            app:strokeWidth="1dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/_81D8CF"
+            android:text="faha"
+            android:textAllCaps="false"
+            android:textSize="30sp"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/design_share_video"
+            app:iconSize="30dp"
+            app:iconTint="@color/_81D8CF"
+            app:iconTintMode="add"
+            app:strokeColor="@color/_353535"
+            app:strokeWidth="1dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/_81D8CF"
+            android:text="faha"
+            android:textAllCaps="false"
+            android:textSize="30sp"
+            app:cornerRadius="10dp"
+            app:rippleColor="@color/_22000000"
+            app:strokeColor="@color/_353535"
+            app:strokeWidth="1dp"/>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:chipSpacingHorizontal="10dp"
+            app:chipSpacingVertical="-10dp"
+            app:singleSelection="false">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:clickable="true"
+                android:text="Chip"
+                android:textAllCaps="false"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="水波纹颜色"
+                android:textAllCaps="false"
+                app:rippleColor="@color/colorAccent"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:clickable="true"
+                android:text="图标"
+                android:textAllCaps="false"
+                app:chipIcon="@mipmap/ic_launcher"
+                app:chipIconEnabled="true"
+                app:chipIconSize="20dp"
+                app:iconStartPadding="5dp"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:clickable="true"
+                android:text="删除按钮"
+                android:textAllCaps="false"
+                app:closeIconEnabled="true"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:clickable="true"
+                android:text="背景"
+                android:textAllCaps="false"
+                app:chipBackgroundColor="@color/colorAccent"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:clickable="true"
+                android:text="边框"
+                android:textAllCaps="false"
+                app:chipStrokeColor="@color/colorAccent"
+                app:chipStrokeWidth="2dp"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:clickable="true"
+                android:text="圆角角度"
+                android:textAllCaps="false"
+                app:chipCornerRadius="5dp"/>
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="c"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="a"/>
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="b"/>
+        </RadioGroup>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="输入"
+            android:background="@drawable/design_bg_layer"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:hint="输入"
+            android:layout_height="60dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            app:counterEnabled="true"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="输入"
+                android:textColor="@color/_81D8CF"
+                android:textSize="30sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/sm_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:switchMinWidth="50dp"
+                android:layout_margin="10dp"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/design_share_video"
+                app:fabSize="normal"
+                app:layout_anchor="@id/bottom_app_bar"/>
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottom_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabAlignmentMode="end"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+</layout>

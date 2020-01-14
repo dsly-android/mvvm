@@ -1,16 +1,19 @@
 package com.android.dsly.image_picker.adapter;
 
-import android.widget.ImageView;
-
 import com.android.dsly.common.utils.GlideUtils;
 import com.android.dsly.image_picker.R;
 import com.android.dsly.image_picker.activity.ImagePickerActivity;
+import com.android.dsly.image_picker.databinding.ImageItemImagePickerBinding;
 import com.android.dsly.image_picker.local_data.ImageItem;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
+
+import androidx.databinding.DataBindingUtil;
 
 /**
  * @author 陈志鹏
@@ -34,7 +37,10 @@ public class ImagePickerAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
     protected void convert(BaseViewHolder helper, MultiItemEntity item) {
         if (item.getItemType() == IMAGE) {
             ImageItem imageItem = (ImageItem) item;
-            GlideUtils.loadImage(getContext(),imageItem.path, helper.getView(R.id.iv_img));
+            ImageItemImagePickerBinding binding = helper.getBinding();
+            binding.setData(imageItem);
+
+            GlideUtils.loadImage(getContext(), imageItem.path, helper.getView(R.id.iv_img));
             if (mSelectMode == ImagePickerActivity.MODE_AVATAR) {
                 helper.setVisible(R.id.iv_check, false);
                 helper.setVisible(R.id.v_cover, false);
@@ -42,8 +48,12 @@ public class ImagePickerAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
                 helper.setVisible(R.id.iv_check, true);
                 helper.setVisible(R.id.v_cover, imageItem.isChecked);
             }
-            ImageView ivCheck = helper.getView(R.id.iv_check);
-            ivCheck.setSelected(imageItem.isChecked);
         }
+    }
+
+    @Override
+    protected void onItemViewHolderCreated(@NotNull BaseViewHolder viewHolder, int viewType) {
+        super.onItemViewHolderCreated(viewHolder, viewType);
+        DataBindingUtil.bind(viewHolder.itemView);
     }
 }

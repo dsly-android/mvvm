@@ -14,6 +14,7 @@ import com.htxtdshopping.htxtd.frame.ui.second.activity.OssActivity;
 import com.htxtdshopping.htxtd.frame.ui.second.activity.WebActivity;
 import com.taobao.sophix.SophixManager;
 import com.tencent.bugly.beta.Beta;
+import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * @author 陈志鹏
@@ -38,6 +39,7 @@ public class SecondFragment extends BaseLazyFragment<FragmentSecondBinding, Base
         mBinding.btnSophix.setOnClickListener(this);
         mBinding.btnX5.setOnClickListener(this);
         mBinding.btnLoginAndShare.setOnClickListener(this);
+        mBinding.btnBuglyCrash.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +65,9 @@ public class SecondFragment extends BaseLazyFragment<FragmentSecondBinding, Base
                 break;
             case R.id.btn_login_and_share:
                 ActivityUtils.startActivity(LoginAndShareActivity.class);
+                break;
+            case R.id.btn_bugly_crash:
+                CrashReport.testJavaCrash();
                 break;
             default:
                 break;

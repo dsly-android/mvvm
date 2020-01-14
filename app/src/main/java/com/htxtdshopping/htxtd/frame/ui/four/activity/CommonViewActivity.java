@@ -39,7 +39,7 @@ public class CommonViewActivity extends BaseActivity<ActivityCommonViewBinding, 
 
     @Override
     public void initEvent() {
-
+        
     }
 
     @Override

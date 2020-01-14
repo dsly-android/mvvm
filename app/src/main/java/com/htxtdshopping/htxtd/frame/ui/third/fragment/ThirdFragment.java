@@ -4,8 +4,10 @@ import android.Manifest;
 import android.os.Bundle;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.base.BaseLazyFragment;
 import com.android.dsly.common.base.BaseViewModel;
+import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BarUtils;
@@ -18,7 +20,6 @@ import com.htxtdshopping.htxtd.frame.ui.third.activity.HandlerActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.LifecycleActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.ListActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.LoginActivity;
-import com.htxtdshopping.htxtd.frame.ui.third.activity.MaterialDesignActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.NotificationActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.PopupWindowActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.ServiceActivity;
@@ -58,6 +59,7 @@ public class ThirdFragment extends BaseLazyFragment<FragmentThirdBinding, BaseVi
         mBinding.btnVersionUpdate.setOnClickListener(this);
         mBinding.btnLifecycle.setOnClickListener(this);
         mBinding.btnHandler.setOnClickListener(this);
+        mBinding.btnWorkmanager.setOnClickListener(this);
     }
 
     @Override
@@ -93,7 +95,7 @@ public class ThirdFragment extends BaseLazyFragment<FragmentThirdBinding, BaseVi
                 ActivityUtils.startActivity(LoginActivity.class);
                 break;
             case R.id.btn_design:
-                ActivityUtils.startActivity(MaterialDesignActivity.class);
+                ARouter.getInstance().build(RouterHub.DESIGN_MATERIAL_DESIGN_ACTIVITY).navigation();
                 break;
             case R.id.btn_version_update:
                 AppContext.getInstance().checkUpdate(true);
@@ -103,6 +105,9 @@ public class ThirdFragment extends BaseLazyFragment<FragmentThirdBinding, BaseVi
                 break;
             case R.id.btn_handler:
                 ActivityUtils.startActivity(HandlerActivity.class);
+                break;
+            case R.id.btn_workmanager:
+                ARouter.getInstance().build(RouterHub.WORK_WORK_MANAGER_ACTIVITY).navigation();
                 break;
             default:
                 break;

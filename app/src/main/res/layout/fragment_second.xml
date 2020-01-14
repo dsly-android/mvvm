@@ -59,6 +59,13 @@
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
                     android:text="友盟登录和分享"/>
+
+                <Button
+                    android:id="@+id/btn_bugly_crash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:text="bugly异常上报"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

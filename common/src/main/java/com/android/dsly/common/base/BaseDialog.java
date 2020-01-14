@@ -1,6 +1,5 @@
 package com.android.dsly.common.base;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -14,6 +13,7 @@ import org.simple.eventbus.EventBus;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.app.AppCompatDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
@@ -22,7 +22,7 @@ import androidx.databinding.ViewDataBinding;
  * @date 2018/1/31
  */
 
-public abstract class BaseDialog<VB extends ViewDataBinding> extends Dialog implements ILifeCycle {
+public abstract class BaseDialog<VB extends ViewDataBinding> extends AppCompatDialog implements ILifeCycle {
 
     protected Context mContext;
     protected VB mBinding;

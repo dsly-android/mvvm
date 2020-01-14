@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.third.activity.SearchViewActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_title1"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:logo="@mipmap/ic_launcher"
+            app:navigationIcon="@drawable/ss_return"
+            app:subtitle="副标题"
+            app:subtitleTextColor="@color/_424242"
+            app:title="toolbar"
+            app:titleTextColor="@color/_424242"/>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_title2"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="20dp"
+            app:popupTheme="@style/DesignToolbarTheme"
+            android:background="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_title1"
+            app:navigationIcon="@drawable/ss_return">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="toolbar"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/_424242"
+                android:textSize="30sp"/>
+        </androidx.appcompat.widget.Toolbar>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

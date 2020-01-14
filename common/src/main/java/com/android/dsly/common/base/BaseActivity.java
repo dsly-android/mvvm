@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.android.dsly.common.R;
 import com.android.dsly.common.dialog.LoadingDialog;
@@ -34,10 +35,6 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
     protected VM mViewModel;
     private int mViewModelId;
 
-    /**
-     * 上次点击时间
-     */
-    private long lastClick = 0;
     private LoadingDialog mLoadingDialog;
 
     @Override
@@ -45,9 +42,19 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         //侧滑关闭
         initSlideBackClose();
         super.onCreate(savedInstanceState);
-        if (isFitWindow()) {
-            setFitsSystemWindows(true);
+        //刘海屏适配
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            // 仅当缺口区域完全包含在状态栏之中时，才允许窗口延伸到刘海区域显示。
+            // 也就是说，如果没有设置为全屏显示模式，就允许窗口延伸到刘海区域，否则不允许。
+//            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT;
+            // 永远不允许窗口延伸到刘海区域
+//            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER;
+            // 始终允许窗口延伸到屏幕短边上的刘海区域
+            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+            getWindow().setAttributes(lp);
         }
+
         EventBus.getDefault().registerSticky(this);
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding();
@@ -55,6 +62,9 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         registerLiveDataCallBack();
 
         BarUtils.setStatusBarColor(this, getResources().getColor(R.color._81D8CF));
+        if (isFitWindow()) {
+            setFitsSystemWindows(true);
+        }
         findViewById(android.R.id.content).setBackgroundResource(R.color._f3f3f3);
 
         initView(savedInstanceState);
@@ -220,24 +230,6 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         if (childView != null && childView instanceof ViewGroup) {
             childView.setFitsSystemWindows(fitSystemWindows);
         }
-    }
-
-    /**
-     * 判断是否快速点击
-     *
-     * @return {@code true}: 是<br>{@code false}: 否
-     */
-    public boolean isFastClick() {
-        long now = System.currentTimeMillis();
-        if (now - lastClick >= 200) {
-            lastClick = now;
-            return false;
-        }
-        return true;
-    }
-
-    public boolean isNotFastClick() {
-        return !isFastClick();
     }
 
     @Override

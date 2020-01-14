@@ -2,13 +2,13 @@ package com.android.dsly.common.base;
 
 import android.content.DialogInterface;
 
-import androidx.fragment.app.DialogFragment;
+import androidx.appcompat.app.AppCompatDialogFragment;
 
 /**
  * @author 陈志鹏
  * @date 2018/10/26
  */
-public class BaseDialogFragment extends DialogFragment {
+public class BaseDialogFragment extends AppCompatDialogFragment {
 
     /**
      * 监听弹出窗是否被取消

@@ -119,6 +119,14 @@
                     android:textAllCaps="false"
                     android:textSize="24sp"
                     android:text="handler"/>
+
+                <Button
+                    android:id="@+id/btn_workmanager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:text="workmanager"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

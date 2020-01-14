@@ -2,6 +2,7 @@ package com.htxtdshopping.htxtd.frame.ui.first.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseFitsWindowActivity;
@@ -15,6 +16,8 @@ import com.htxtdshopping.htxtd.frame.network.ServerApi;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
@@ -31,15 +34,12 @@ public class RxjavaActivity extends BaseFitsWindowActivity<ActivityRxjavaBinding
 
     @Override
     public void initView(Bundle savedInstanceState) {
-
+        mBinding.setActivity(this);
     }
 
     @Override
     public void initEvent() {
-        mBinding.btnTest1.setOnClickListener(this);
-        mBinding.btnTest2.setOnClickListener(this);
-        mBinding.btnTest3.setOnClickListener(this);
-        mBinding.btnLoading.setOnClickListener(this);
+
     }
 
     @Override
@@ -58,6 +58,9 @@ public class RxjavaActivity extends BaseFitsWindowActivity<ActivityRxjavaBinding
                 break;
             case R.id.btn_test3:
                 test3();
+                break;
+            case R.id.btn_test4:
+                test5();
                 break;
             case R.id.btn_loading:
                 test4();
@@ -130,6 +133,35 @@ public class RxjavaActivity extends BaseFitsWindowActivity<ActivityRxjavaBinding
                     @Override
                     public void accept(Integer integer) throws Exception {
                         LogUtils.e(integer + "");
+                    }
+                });
+    }
+
+    private void test5(){
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+                emitter.onNext(1);
+                SystemClock.sleep(100);
+                emitter.onNext(2);
+                SystemClock.sleep(100);
+                emitter.onNext(3);
+                SystemClock.sleep(100);
+                emitter.onNext(4);
+                SystemClock.sleep(100);
+                emitter.onNext(5);
+                SystemClock.sleep(100);
+                emitter.onNext(6);
+                SystemClock.sleep(500);
+                emitter.onNext(7);
+            }
+        }).throttleWithTimeout(300, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        LogUtils.e(""+integer);
                     }
                 });
     }

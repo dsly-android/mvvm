@@ -1,0 +1,15 @@
+<resources>
+    <string name="design_app_name">MaterialDesign</string>
+    <string name="design_navigation_drawer_open">Open navigation drawer</string>
+    <string name="design_navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="design_menu_home">Home</string>
+    <string name="design_menu_gallery">Gallery</string>
+    <string name="design_menu_slideshow">Slideshow</string>
+    <string name="design_menu_tools">Tools</string>
+    <string name="design_menu_share">Share</string>
+    <string name="design_menu_send">Send</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

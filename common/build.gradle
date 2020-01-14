@@ -107,4 +107,13 @@ dependencies {
     //ARouter
     api rootProject.ext.dependencies["arouter"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
+    //RxBinding
+    api rootProject.ext.dependencies["rxbinding-core"]
+    api rootProject.ext.dependencies["rxbinding-appcompat"]
+    api rootProject.ext.dependencies["rxbinding-drawerlayout"]
+    api rootProject.ext.dependencies["rxbinding-recyclerview"]
+    api rootProject.ext.dependencies["rxbinding-viewpager"]
+    api rootProject.ext.dependencies["rxbinding-viewpager2"]
+    api rootProject.ext.dependencies["rxbinding-material"]
 }

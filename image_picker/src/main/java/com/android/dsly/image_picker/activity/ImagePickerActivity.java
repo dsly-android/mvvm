@@ -22,6 +22,7 @@ import com.android.dsly.image_picker.popup.ImageFolderPopupWindow;
 import com.android.dsly.image_picker.utils.IntentUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.SDCardUtils;
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
@@ -33,8 +34,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.functions.Consumer;
 
 /**
@@ -147,6 +150,22 @@ public class ImagePickerActivity extends BaseFitsWindowActivity<ImageActivityIma
         });
         mBinding.clDir.setOnClickListener(this);
         mBinding.tvPreview.setOnClickListener(this);
+        mBinding.rvContent.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                switch (newState) {
+                    case RecyclerView.SCROLL_STATE_IDLE:
+                        Glide.with(ImagePickerActivity.this).resumeRequests();
+                        break;
+                    case RecyclerView.SCROLL_STATE_SETTLING:
+                        Glide.with(ImagePickerActivity.this).pauseRequests();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     @Override
@@ -200,9 +219,6 @@ public class ImagePickerActivity extends BaseFitsWindowActivity<ImageActivityIma
 
     @Override
     public void onClick(View view) {
-        if (isFastClick()) {
-            return;
-        }
         int i = view.getId();
         if (i == R.id.cl_dir) {
             if (ObjectUtils.isEmpty(mImageFolders)) {

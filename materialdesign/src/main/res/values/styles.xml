@@ -1,0 +1,12 @@
+<resources>
+    <!--Toolbar的Theme的设置-->
+    <style name="DesignToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorBackground">#223344</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+
+    <style name="design_expanded_title">
+        <item name="android:textSize">60sp</item>
+    </style>
+</resources>

@@ -24,6 +24,8 @@ public interface RouterHub {
      */
     String ZXING = "/zxing";
     String IMAGE = "/image";
+    String DESIGN = "/design";
+    String WORK = "/work";
 
     /**
      * zxing分组
@@ -33,4 +35,14 @@ public interface RouterHub {
     String ZXING_RESULT_KEY_SCAN_RESULT = ZXING + "/result_key_scan_result";
     //zxing的service
     String ZXING_GENERATE_CODE_SERVICE = ZXING + "/GenerateCodeService";
+
+    /**
+     * design分组
+     */
+    String DESIGN_MATERIAL_DESIGN_ACTIVITY = DESIGN+"/MaterialDesignActivity";
+
+    /**
+     * work分组
+     */
+    String WORK_WORK_MANAGER_ACTIVITY = WORK+"/WorkManagerActivity";
 }

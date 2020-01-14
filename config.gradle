@@ -10,6 +10,8 @@ ext {
 
     version = [
             glideSdkVersion         : "4.9.0",
+            rxBindingVersion        : "3.1.0",
+            workVersion             : "2.2.0",
     ]
 
     dependencies = [
@@ -51,5 +53,23 @@ ext {
             "arouter"                  : "com.alibaba:arouter-api:1.5.0",
             //arouter-compiler
             "arouter-compiler"         : "com.alibaba:arouter-compiler:1.2.2",
+            //rxbinding-core
+            "rxbinding-core"           : "com.jakewharton.rxbinding3:rxbinding-core:${version["rxBindingVersion"]}",
+            //rxbinding-appcompat
+            "rxbinding-appcompat"      : "com.jakewharton.rxbinding3:rxbinding-appcompat:${version["rxBindingVersion"]}",
+            //rxbinding-drawerlayout
+            "rxbinding-drawerlayout"   : "com.jakewharton.rxbinding3:rxbinding-drawerlayout:${version["rxBindingVersion"]}",
+            //rxbinding-recyclerview
+            "rxbinding-recyclerview"   : "com.jakewharton.rxbinding3:rxbinding-recyclerview:${version["rxBindingVersion"]}",
+            //rxbinding-viewpager
+            "rxbinding-viewpager"      : "com.jakewharton.rxbinding3:rxbinding-viewpager:${version["rxBindingVersion"]}",
+            //rxbinding-viewpager2
+            "rxbinding-viewpager2"     : "com.jakewharton.rxbinding3:rxbinding-viewpager2:${version["rxBindingVersion"]}",
+            //rxbinding-material
+            "rxbinding-material"       : "com.jakewharton.rxbinding3:rxbinding-material:${version["rxBindingVersion"]}",
+            //workmanager
+            "work-runtime"             : "androidx.work:work-runtime:${version["workVersion"]}",
+            "work-rxjava2"             : "androidx.work:work-rxjava2:${version["workVersion"]}",
+            "work-testing"             : "androidx.work:work-testing:${version["workVersion"]}",
     ]
 }

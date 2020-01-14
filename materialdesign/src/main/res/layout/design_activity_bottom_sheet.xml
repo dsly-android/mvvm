@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_bottom_sheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BottomSheetDialog"/>
+
+            <TextView
+                android:id="@+id/tv_label1"
+                android:layout_width="match_parent"
+                android:layout_height="500pt"
+                android:background="@color/_DBB292"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:behavior_peekHeight="200pt"
+            app:behavior_hideable="true"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="800pt"
+                android:background="@color/_666666"/>
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
