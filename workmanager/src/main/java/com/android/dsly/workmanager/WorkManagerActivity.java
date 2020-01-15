@@ -62,7 +62,7 @@ public class WorkManagerActivity extends BaseFitsWindowActivity<WorkActivityWork
                     .build();
             //要传递的数据
             Data data = new Data.Builder()
-                    .putString("request","request")
+                    .putString("request", "request")
                     .build();
             oneTimeWorkRequest = new OneTimeWorkRequest.Builder(SingleWorker.class)
 //                    .setConstraints(constraints)
@@ -85,13 +85,20 @@ public class WorkManagerActivity extends BaseFitsWindowActivity<WorkActivityWork
                     .observe(this, new Observer<WorkInfo>() {
                         @Override
                         public void onChanged(WorkInfo workInfo) {
-                            if (workInfo.getState() == WorkInfo.State.SUCCEEDED){
+                            if (workInfo.getState() == WorkInfo.State.SUCCEEDED) {
                                 LogUtils.e(workInfo.getOutputData().getString("result"));
                             }
                         }
                     });
-        }else if (id == R.id.btn_cycle){
-            periodicWorkRequest = new PeriodicWorkRequest.Builder(SingleWorker.class,30,TimeUnit.MINUTES).build();
+        } else if (id == R.id.btn_cycle) {
+            //要传递的数据
+            Data data = new Data.Builder()
+                    .putString("request", "request")
+                    .build();
+
+            periodicWorkRequest = new PeriodicWorkRequest.Builder(SingleWorker.class, 30, TimeUnit.MINUTES)
+                    .setInputData(data)
+                    .build();
             WorkManager.getInstance(this).enqueue(periodicWorkRequest);
 
             //添加状态监听
@@ -99,7 +106,7 @@ public class WorkManagerActivity extends BaseFitsWindowActivity<WorkActivityWork
                     .observe(this, new Observer<WorkInfo>() {
                         @Override
                         public void onChanged(WorkInfo workInfo) {
-                            if (workInfo.getState() == WorkInfo.State.SUCCEEDED){
+                            if (workInfo.getState() == WorkInfo.State.SUCCEEDED) {
                                 ToastUtils.showLong("cycle");
                             }
                         }

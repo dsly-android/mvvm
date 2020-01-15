@@ -1,0 +1,6 @@
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/x86/CMakeFiles/edit_cache.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/x86/CMakeFiles/rebuild_cache.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/x86/CMakeFiles/gifkit.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/x86/src/main/cpp/giflib/CMakeFiles/edit_cache.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/x86/src/main/cpp/giflib/CMakeFiles/rebuild_cache.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/x86/src/main/cpp/giflib/CMakeFiles/giflib.dir

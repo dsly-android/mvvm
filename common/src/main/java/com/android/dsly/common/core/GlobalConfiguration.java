@@ -62,7 +62,7 @@ public class GlobalConfiguration implements ConfigModule {
                 initLog();
                 //初始化奔溃重启和奔溃日志
                 if (!AppUtils.isAppDebug()) {
-                    initCrash();
+//                    initCrash();
                 }
                 //初始化x5内核
                 initX5(app);

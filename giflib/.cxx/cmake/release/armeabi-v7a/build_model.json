@@ -1,0 +1,72 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm",
+      "sdkFolder": "/Users/chenzhipeng/Library/Android/sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/build/intermediates",
+      "gradleModulePathName": ":giflib",
+      "moduleRootFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib",
+      "makeFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/.cxx",
+      "cxxFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx",
+      "ndkFolder": "/Users/chenzhipeng/Library/Android/sdk/ndk-bundle",
+      "ndkVersion": "19.0.5232133",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [
+      ""
+    ],
+    "variantName": "release",
+    "soFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/build/intermediates/cmake/release/lib",
+    "objFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/build/intermediates/cmake/release/obj",
+    "jsonFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release",
+    "gradleBuildOutputFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cxx/release",
+    "isDebuggableEnabled": false,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "ARMEABI_V7A",
+  "abiPlatformVersion": 21,
+  "cxxBuildFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a",
+  "jsonFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/android_gradle_build.json",
+  "gradleBuildOutputFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cxx/release/armeabi-v7a",
+  "objFolder": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/build/intermediates/cmake/release/obj/armeabi-v7a",
+  "buildCommandFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/build_command.txt",
+  "buildOutputFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/build_output.txt",
+  "modelOutputFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cxx/release/armeabi-v7a/CMakeLists.txt",
+    "toolchainWrapperFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cxx/release/armeabi-v7a/android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cxx/release/armeabi-v7a/build_generation_state.json",
+    "cacheKeyFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cxx/release/armeabi-v7a/compiler_cache_key.json",
+    "compilerCacheUseFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cxx/release/armeabi-v7a/compiler_cache_use.json",
+    "compilerCacheWriteFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cxx/release/armeabi-v7a/compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cxx/release/armeabi-v7a/compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/json_generation_record.json",
+  "compileCommandsJsonFile": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/compile_commands.json"
+}

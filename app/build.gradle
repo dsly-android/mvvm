@@ -42,8 +42,8 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled true    //混淆
-            shrinkResources true  //资源文件压缩
+            minifyEnabled false    //混淆
+            shrinkResources false  //资源文件压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.frame
         }
@@ -141,5 +141,8 @@ dependencies {
     implementation "io.objectbox:objectbox-rxjava:2.3.4"
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:2.3.4"
     releaseImplementation "io.objectbox:objectbox-android:2.3.4"
+
+    //giflib
+    implementation project(path: ':giflib')
 }
 apply plugin: 'io.objectbox'

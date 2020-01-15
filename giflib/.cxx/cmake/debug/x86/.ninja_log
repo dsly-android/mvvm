@@ -1,0 +1,22 @@
+# ninja log v5
+3	208	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/gif_hash.c.o	57434233cc9a2f92
+6	210	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/openbsd-reallocarray.c.o	109a54d2cc7f67a5
+1	213	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/gif_err.c.o	59d721ecee8e6266
+1	214	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/gif_font.c.o	6a93889843791190
+4	222	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/gifalloc.c.o	8395e410ea1c16c7
+1	281	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/egif_lib.c.o	9950f2b7e73a120f
+0	282	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/dgif_lib.c.o	e466ab20a1e6a9aa
+282	331	0	../../../../build/intermediates/cmake/debug/obj/x86/libgiflib.so	d5ab4b9f71c2d41c
+2	70	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/openbsd-reallocarray.c.o	109a54d2cc7f67a5
+1	79	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/gif_err.c.o	59d721ecee8e6266
+1	83	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/gif_font.c.o	6a93889843791190
+2	86	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/gif_hash.c.o	57434233cc9a2f92
+2	102	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/gifalloc.c.o	8395e410ea1c16c7
+1	149	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/egif_lib.c.o	9950f2b7e73a120f
+0	153	0	src/main/cpp/giflib/CMakeFiles/giflib.dir/dgif_lib.c.o	e466ab20a1e6a9aa
+153	199	0	../../../../build/intermediates/cmake/debug/obj/x86/libgiflib.so	d5ab4b9f71c2d41c
+200	418	0	CMakeFiles/gifkit.dir/src/main/cpp/lib-native-bridge.cpp.o	bf652403960fd769
+202	421	0	CMakeFiles/gifkit.dir/src/main/cpp/stream/Registry.cpp.o	cf6d5e299fe10802
+204	435	0	CMakeFiles/gifkit.dir/src/main/cpp/stream/Stream.cpp.o	b1f68e52d03027b3
+199	474	0	CMakeFiles/gifkit.dir/src/main/cpp/GifDecoder.cpp.o	14cb44880195d8d9
+474	529	0	../../../../build/intermediates/cmake/debug/obj/x86/libgifkit.so	e9c85522fe2bdfd6

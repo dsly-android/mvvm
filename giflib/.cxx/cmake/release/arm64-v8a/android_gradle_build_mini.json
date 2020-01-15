@@ -1,0 +1,23 @@
+{
+  "buildFiles": [
+    "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/CMakeLists.txt",
+    "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/src/main/cpp/giflib/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/chenzhipeng/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/arm64-v8a --target clean"
+  ],
+  "libraries": {
+    "gifkit-Release-arm64-v8a": {
+      "artifactName": "gifkit",
+      "buildCommand": "/Users/chenzhipeng/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/arm64-v8a --target gifkit",
+      "abi": "arm64-v8a",
+      "output": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/build/intermediates/cmake/release/obj/arm64-v8a/libgifkit.so"
+    },
+    "giflib-Release-arm64-v8a": {
+      "artifactName": "giflib",
+      "buildCommand": "/Users/chenzhipeng/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/arm64-v8a --target giflib",
+      "abi": "arm64-v8a",
+      "output": "/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/build/intermediates/cmake/release/obj/arm64-v8a/libgiflib.so"
+    }
+  }
+}

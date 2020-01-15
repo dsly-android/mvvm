@@ -1,0 +1,6 @@
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/CMakeFiles/gifkit.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/src/main/cpp/giflib/CMakeFiles/edit_cache.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/src/main/cpp/giflib/CMakeFiles/rebuild_cache.dir
+/Users/chenzhipeng/移动硬盘/android/框架/mvvm/giflib/.cxx/cmake/release/armeabi-v7a/src/main/cpp/giflib/CMakeFiles/giflib.dir

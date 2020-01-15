@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/common_service/common_service.iml" filepath="$PROJECT_DIR$/common_service/common_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/easyfloat/easyfloat.iml" filepath="$PROJECT_DIR$/easyfloat/easyfloat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/giflib/giflib.iml" filepath="$PROJECT_DIR$/giflib/giflib.iml" />
       <module fileurl="file://$PROJECT_DIR$/image_picker/image_picker.iml" filepath="$PROJECT_DIR$/image_picker/image_picker.iml" />
       <module fileurl="file://$PROJECT_DIR$/materialdesign/materialdesign.iml" filepath="$PROJECT_DIR$/materialdesign/materialdesign.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvvm.iml" filepath="$PROJECT_DIR$/mvvm.iml" />
