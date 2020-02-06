@@ -4,24 +4,24 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="48pt"
-        android:layout_height="48pt"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="12pt" />
+        android:layout_marginTop="6dp" />
 
     <com.android.dsly.common.widget.pagerbottomtabstrip.internal.BaselineLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:clipToPadding="false"
-        android:paddingBottom="16pt">
+        android:paddingBottom="6dp">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:textSize="24sp"
+            android:textSize="12sp"
             tools:text="123" />
 
     </com.android.dsly.common.widget.pagerbottomtabstrip.internal.BaselineLayout>
@@ -30,8 +30,8 @@
         android:id="@+id/messages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6pt"
-        android:translationX="28pt"
+        android:layout_marginTop="3dp"
+        android:translationX="14sp"
         android:layout_gravity="center_horizontal"/>
 </merge>
 

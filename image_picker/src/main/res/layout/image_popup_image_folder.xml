@@ -18,13 +18,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_content"
             android:layout_width="match_parent"
-            android:layout_height="700pt"
+            android:layout_height="350dp"
             android:layout_gravity="bottom"
             android:background="@android:color/white"
             android:overScrollMode="never"
-            android:paddingBottom="10pt"
-            android:paddingLeft="20pt"
-            android:paddingRight="20pt"
-            android:paddingTop="10pt"/>
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"/>
     </FrameLayout>
 </layout>

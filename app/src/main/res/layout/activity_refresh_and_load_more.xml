@@ -23,7 +23,7 @@
         <com.htxtdshopping.htxtd.frame.widget.refresh.NewsRefreshLayout
             android:id="@+id/nrl_refresh"
             android:layout_width="match_parent"
-            android:layout_height="0pt"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tb_title">
 
@@ -41,7 +41,7 @@
         <com.htxtdshopping.htxtd.frame.widget.ThreePointLoadingView
             android:id="@+id/tpl_view"
             android:layout_width="match_parent"
-            android:layout_height="0pt"
+            android:layout_height="0dp"
             android:clickable="true"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

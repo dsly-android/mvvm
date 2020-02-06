@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.android.dsly.common"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.dsly.common">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 8.0安装apk需要的权限 -->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <!-- 9.0前台服务必须要后的权限 -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <!--获取网络状态-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application>
+    <application android:networkSecurityConfig="@xml/network_security_config">
         <!-- autosize -->
         <meta-data
             android:name="design_width_in_dp"
-            android:value="720"/>
+            android:value="360" />
         <meta-data
             android:name="design_height_in_dp"
-            android:value="1280"/>
+            android:value="640" />
         <!-- 每个业务组件需要声明两个 ConfigModule, CommonSDK 的 ConfigModule 和 业务组件自己的 ConfigModule
      CommonSDK 的 ConfigModule 含有有每个组件都可共用的配置信息, 业务组件自己的 ConfigModule 含有自己独有的配置
      信息, 这样即可重用代码, 又可以允许每个组件可自行管理自己独有的配置信息, 如果业务组件没有独有的配置信息则只需要
      声明 CommonSDK 的 ConfigModule -->
         <meta-data
             android:name="com.android.dsly.common.core.GlobalConfiguration"
-            android:value="ConfigModule"/>
+            android:value="ConfigModule" />
 
         <meta-data
             android:name="android.max_aspect"
-            android:value="2.4"/>
+            android:value="2.4" />
         <!--9.0以下的刘海屏适配-->
         <!-- 适配华为（huawei）刘海屏 -->
         <meta-data
             android:name="android.notch_support"
-            android:value="true"/>
+            android:value="true" />
         <!-- 适配小米（xiaomi）刘海屏 -->
         <meta-data
             android:name="notch.config"
-            android:value="portrait|landscape"/>
+            android:value="portrait|landscape" />
     </application>
 </manifest>

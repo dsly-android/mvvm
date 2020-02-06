@@ -9,8 +9,8 @@
         android:id="@+id/tv_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32pt"
+        android:layout_marginLeft="16dp"
         android:layout_gravity="center_vertical"
         android:textColor="@android:color/black"
-        android:textSize="26pt"/>
+        android:textSize="13sp"/>
 </FrameLayout>

@@ -63,7 +63,7 @@ public class ImageFolderPopupWindow extends BasePopupWindow implements View.OnCl
         mRvContent.setLayoutManager(new LinearLayoutManager(mContext));
         mRvContent.setHasFixedSize(true);
         mRvContent.addItemDecoration(new LinearDividerItemDecoration(mContext,
-                new ItemDecorationDrawable(mContext, AutoSizeUtils.pt2px(mContext, 2), R.color._ffe0e0e0)));
+                new ItemDecorationDrawable(mContext, AutoSizeUtils.dp2px(mContext, 1), R.color._ffe0e0e0)));
         mRvContent.setAdapter(mAdapter = new ImageFolderAdapter());
     }
 

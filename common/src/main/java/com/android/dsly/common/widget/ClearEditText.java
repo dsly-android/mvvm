@@ -7,7 +7,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -71,10 +70,10 @@ public class ClearEditText extends FrameLayout {
         textStr = array.getString(R.styleable.ClearEditText_cet_text);
         textColor = array.getColor(R.styleable.ClearEditText_cet_textColor, defaultColor);
         hintTextColor = array.getColor(R.styleable.ClearEditText_cet_hintTextColor, defaultHintColor);
-        textSize = array.getDimension(R.styleable.ClearEditText_cet_textSize, AutoSizeUtils.pt2px(mContext, 30));
+        textSize = array.getDimension(R.styleable.ClearEditText_cet_textSize, 15);
         mUnderLineColor = array.getColor(R.styleable.ClearEditText_cet_underLineColor, defaultUnderLineColor);
         mUnderLineVisible = array.getInteger(R.styleable.ClearEditText_cet_underLineVisible, View.GONE);
-        mPaddingLeftAndRight = array.getDimensionPixelSize(R.styleable.ClearEditText_cet_paddingLeftAndRight, AutoSizeUtils.pt2px(mContext, 20));
+        mPaddingLeftAndRight = array.getDimensionPixelSize(R.styleable.ClearEditText_cet_paddingLeftAndRight, AutoSizeUtils.dp2px(mContext, 10));
 
         initView();
         initEvent();
@@ -111,7 +110,7 @@ public class ClearEditText extends FrameLayout {
         }
         mEtInput.setTextColor(textColor);
         mEtInput.setHintTextColor(hintTextColor);
-        mEtInput.setTextSize(TypedValue.COMPLEX_UNIT_PT, textSize);
+        mEtInput.setTextSize(textSize);
         mVUnderLine.setBackgroundColor(mUnderLineColor);
         mVUnderLine.setVisibility(mUnderLineVisible);
     }

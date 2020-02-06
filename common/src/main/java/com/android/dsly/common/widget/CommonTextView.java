@@ -212,12 +212,12 @@ public class CommonTextView extends RelativeLayout {
     public CommonTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        leftDefaultSize = AutoSizeUtils.pt2px(context, 32);
-        centerDefaultSize = AutoSizeUtils.pt2px(context, 32);
-        rightDefaultSize = AutoSizeUtils.pt2px(context, 30);
-        defaultPadding = AutoSizeUtils.pt2px(context, 20);
-        defaultPaddingLR = AutoSizeUtils.pt2px(context, 30);
-        mCenterSpaceHeight = AutoSizeUtils.pt2px(context, 10);
+        leftDefaultSize = AutoSizeUtils.sp2px(context, 16);
+        centerDefaultSize = AutoSizeUtils.sp2px(context, 16);
+        rightDefaultSize = AutoSizeUtils.sp2px(context, 15);
+        defaultPadding = AutoSizeUtils.dp2px(context, 10);
+        defaultPaddingLR = AutoSizeUtils.dp2px(context, 15);
+        mCenterSpaceHeight = AutoSizeUtils.dp2px(context, 5);
         getAttr(attrs);
         init();
     }

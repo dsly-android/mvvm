@@ -129,7 +129,7 @@ public class CommonTabActivity extends BaseActivity {
         mTabLayout_2.showDot(2);
         MsgView rtv_2_2 = mTabLayout_2.getMsgView(2);
         if (rtv_2_2 != null) {
-            UnreadMsgUtils.setSize(rtv_2_2, AutoSizeUtils.pt2px(this,15));
+            UnreadMsgUtils.setSize(rtv_2_2, AutoSizeUtils.dp2px(this,8));
         }
 
         //设置未读消息背景

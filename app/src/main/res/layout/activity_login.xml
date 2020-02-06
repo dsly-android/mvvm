@@ -12,59 +12,59 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:orientation="vertical"
-        android:paddingLeft="68pt"
-        android:paddingRight="70pt">
+        android:paddingLeft="34dp"
+        android:paddingRight="35dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150pt"
+            android:layout_marginTop="75dp"
             android:text="手机号登录"
             android:textColor="@android:color/black"
-            android:textSize="50pt"
+            android:textSize="25sp"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
-            android:layout_height="80pt"
-            android:layout_marginTop="100pt"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
             android:background="@null"
             android:hint="请输入手机号码"
             android:inputType="phone"
             android:maxLength="11"
-            android:paddingLeft="10pt"
-            android:paddingRight="10pt"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:textColor="@color/_363636"
             android:textColorHint="@color/_cccccc"
-            android:textSize="30pt"/>
+            android:textSize="15sp"/>
 
         <View style="@style/horizontal_line"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="62pt"
+            android:layout_marginTop="31dp"
             android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/et_password"
                 android:layout_width="0dp"
-                android:layout_height="80pt"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="请输入密码"
                 android:inputType="textPassword"
-                android:paddingLeft="10pt"
-                android:paddingRight="10pt"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:singleLine="true"
                 android:textColor="@color/_363636"
                 android:textColorHint="@color/_cccccc"
-                android:textSize="30pt"/>
+                android:textSize="15sp"/>
 
             <View
-                android:layout_width="1pt"
-                android:layout_height="38pt"
+                android:layout_width="1px"
+                android:layout_height="19dp"
                 android:layout_gravity="center_vertical"
                 android:background="@color/_D2D2D2"/>
 
@@ -73,11 +73,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:paddingLeft="17pt"
-                android:paddingRight="4pt"
+                android:paddingLeft="8dp"
+                android:paddingRight="2dp"
                 android:text="显示密码"
                 android:textColor="@color/_cccccc"
-                android:textSize="30pt"/>
+                android:textSize="15sp"/>
         </LinearLayout>
 
         <View style="@style/horizontal_line"/>
@@ -86,39 +86,39 @@
             android:id="@+id/btn_login"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
-            android:layout_height="90pt"
-            android:layout_marginTop="94pt"
+            android:layout_height="45dp"
+            android:layout_marginTop="47dp"
             android:background="@drawable/seletor_bg_ed4040"
             android:text="登录"
             android:textColor="@color/color_ed4040_to_white"
-            android:textSize="34pt"/>
+            android:textSize="17sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="150pt"
+            android:layout_marginTop="75dp"
             android:text="使用第三方软件登录"
             android:textColor="@color/_999999"
-            android:textSize="24pt"/>
+            android:textSize="12sp"/>
 
         <ImageView
             android:id="@+id/iv_wechat"
-            android:layout_width="128pt"
-            android:layout_height="128pt"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_gravity="center_horizontal"
-            android:padding="20pt"
+            android:padding="10dp"
             android:src="@drawable/wechat_login"/>
 
         <View
-            android:layout_width="0pt"
-            android:layout_height="0pt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_weight="1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10pt"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -126,24 +126,24 @@
                 android:id="@+id/iv_retrieve_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="30pt"
+                android:padding="15dp"
                 android:text="找回密码"
                 android:textColor="@color/_666666"
-                android:textSize="30pt"/>
+                android:textSize="15sp"/>
 
             <View
-                android:layout_width="1pt"
-                android:layout_height="26pt"
+                android:layout_width="1px"
+                android:layout_height="13dp"
                 android:background="@color/_b7b7b7"/>
 
             <TextView
                 android:id="@+id/iv_customer_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="30pt"
+                android:padding="15dp"
                 android:text="联系客服"
                 android:textColor="@color/_666666"
-                android:textSize="30pt"/>
+                android:textSize="15sp"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

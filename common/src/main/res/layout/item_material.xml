@@ -3,8 +3,8 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="48pt"
-        android:layout_height="48pt"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="@dimen/material_bottom_navigation_margin"
         android:layout_marginTop="@dimen/material_bottom_navigation_margin"/>
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:clipToPadding="false"
-        android:paddingBottom="20pt">
+        android:paddingBottom="10dp">
 
         <TextView
             android:id="@+id/label"
@@ -29,8 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="6pt"
-        android:translationX="28pt"/>
+        android:layout_marginTop="3dp"
+        android:translationX="14dp"/>
 </merge>
 
 

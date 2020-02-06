@@ -14,7 +14,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import androidx.core.content.ContextCompat;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -30,6 +29,7 @@ import android.widget.CompoundButton;
 
 import com.htxtdshopping.htxtd.frame.R;
 
+import androidx.core.content.ContextCompat;
 import me.jessyan.autosize.utils.AutoSizeUtils;
 
 
@@ -43,8 +43,8 @@ import me.jessyan.autosize.utils.AutoSizeUtils;
 @SuppressWarnings("unused")
 public class SwitchButton extends CompoundButton {
     public static final float DEFAULT_THUMB_RANGE_RATIO = 1.8f;
-    public static final int DEFAULT_THUMB_SIZE_PT = 40;
-    public static final int DEFAULT_THUMB_MARGIN_PT = 2;
+    public static final int DEFAULT_THUMB_SIZE = 20;
+    public static final int DEFAULT_THUMB_MARGIN = 1;
     public static final int DEFAULT_ANIMATION_DURATION = 250;
     public static final int DEFAULT_TINT_COLOR = 0x327FC2;
 
@@ -121,7 +121,7 @@ public class SwitchButton extends CompoundButton {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mRectPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mRectPaint.setStyle(Paint.Style.STROKE);
-        mRectPaint.setStrokeWidth(DEFAULT_THUMB_MARGIN_PT);
+        mRectPaint.setStrokeWidth(DEFAULT_THUMB_MARGIN);
 
         mTextPaint = getPaint();
 
@@ -139,7 +139,7 @@ public class SwitchButton extends CompoundButton {
 
         Drawable thumbDrawable = null;
         ColorStateList thumbColor = null;
-        float margin = AutoSizeUtils.pt2px(getContext(), DEFAULT_THUMB_MARGIN_PT);
+        float margin = AutoSizeUtils.dp2px(getContext(), DEFAULT_THUMB_MARGIN);
         float marginLeft = 0;
         float marginRight = 0;
         float marginTop = 0;
@@ -379,7 +379,7 @@ public class SwitchButton extends CompoundButton {
                 /*
                 If thumbWidth is not set, use the default one.
                  */
-                mThumbWidth = AutoSizeUtils.pt2px(getContext(), DEFAULT_THUMB_SIZE_PT);
+                mThumbWidth = AutoSizeUtils.dp2px(getContext(), DEFAULT_THUMB_SIZE);
             }
             if (mThumbRangeRatio == 0) {
                 mThumbRangeRatio = DEFAULT_THUMB_RANGE_RATIO;
@@ -439,7 +439,7 @@ public class SwitchButton extends CompoundButton {
             }
         } else {
             if (mThumbHeight == 0) {
-                mThumbHeight = AutoSizeUtils.pt2px(getContext(), DEFAULT_THUMB_SIZE_PT);
+                mThumbHeight = AutoSizeUtils.dp2px(getContext(), DEFAULT_THUMB_SIZE);
             }
             mBackHeight = ceil(mThumbHeight + mThumbMargin.top + mThumbMargin.bottom);
             if (mBackHeight < 0) {

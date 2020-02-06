@@ -7,26 +7,27 @@ import android.os.IBinder;
 import android.os.Message;
 
 import com.android.dsly.common.base.BaseService;
+import com.android.dsly.common.constant.EventBusTag;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.htxtdshopping.htxtd.frame.event.SocketReceiveEvent;
 import com.htxtdshopping.htxtd.frame.event.SocketSendEvent;
+import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
-import org.simple.eventbus.EventBus;
-import org.simple.eventbus.Subscriber;
 
 import java.lang.ref.WeakReference;
 import java.net.URI;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
 /**
  * @author 陈志鹏
  * @date 2019-11-29
  */
-public class WebSocketService extends BaseService {
+public class WebSocketService extends BaseService implements Observer<SocketSendEvent> {
 
     //每隔10秒进行一次对长连接的心跳检测
     private static final long HEART_BEAT_RATE = 10 * 1000;
@@ -40,6 +41,16 @@ public class WebSocketService extends BaseService {
     public void onCreate() {
         super.onCreate();
         mHandler = new WebSocketHandler(this);
+
+        //发送消息
+        LiveEventBus.get(EventBusTag.EVENT_SEND_MESSAGE, SocketSendEvent.class).observeForever(this);
+    }
+
+    @Override
+    public void onChanged(SocketSendEvent event) {
+        if (null != mClient) {
+            mClient.send(event.getMsg());
+        }
     }
 
     public static class WebSocketHandler extends Handler {
@@ -99,7 +110,7 @@ public class WebSocketService extends BaseService {
             public void onMessage(String message) {
                 SocketReceiveEvent event = new SocketReceiveEvent();
                 event.setMsg(message);
-                EventBus.getDefault().post(event);
+                LiveEventBus.get(EventBusTag.EVENT_RECEIVE_MESSAGE, SocketReceiveEvent.class).post(event);
             }
 
             @Override
@@ -116,16 +127,6 @@ public class WebSocketService extends BaseService {
             mClient.connectBlocking();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-    }
-
-    /**
-     * 发送消息
-     */
-    @Subscriber
-    public void sendMsg(SocketSendEvent event) {
-        if (null != mClient) {
-            mClient.send(event.getMsg());
         }
     }
 
@@ -159,6 +160,8 @@ public class WebSocketService extends BaseService {
         super.onDestroy();
         mHandler.removeMessages(WHAT_HEART_BEAT);
         closeConnect();
+
+        LiveEventBus.get(EventBusTag.EVENT_SEND_MESSAGE, SocketSendEvent.class).removeObserver(this);
     }
 
     /**

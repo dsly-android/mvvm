@@ -39,9 +39,9 @@ public class BarCodeUtils {
 
         private int codeColor = 0xff000000;
 
-        private int codeWidth = AutoSizeUtils.pt2px(Utils.getApp(), 1000);
+        private int codeWidth = AutoSizeUtils.dp2px(Utils.getApp(), 500);
 
-        private int codeHeight = AutoSizeUtils.pt2px(Utils.getApp(), 300);
+        private int codeHeight = AutoSizeUtils.dp2px(Utils.getApp(), 150);
 
         private CharSequence content;
 
@@ -136,7 +136,7 @@ public class BarCodeUtils {
      * @return 条形码的Bitmap
      */
     public static Bitmap createBarCode(String contents) {
-        return createBarCode(contents, AutoSizeUtils.pt2px(Utils.getApp(), 1000), AutoSizeUtils.pt2px(Utils.getApp(), 300));
+        return createBarCode(contents, AutoSizeUtils.dp2px(Utils.getApp(), 500), AutoSizeUtils.dp2px(Utils.getApp(), 150));
     }
 
     public static void createBarCode(String content, int codeWidth, int codeHeight, ImageView ivCode) {

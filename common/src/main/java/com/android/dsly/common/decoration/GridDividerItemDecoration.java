@@ -30,8 +30,8 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     public GridDividerItemDecoration(Context context, int dividerWidth, int dividerHeight, int color) {
-        mDividerWidth = AutoSizeUtils.pt2px(context, dividerWidth);
-        mDividerHeight = AutoSizeUtils.pt2px(context, dividerHeight);
+        mDividerWidth = AutoSizeUtils.dp2px(context, dividerWidth);
+        mDividerHeight = AutoSizeUtils.dp2px(context, dividerHeight);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(context.getResources().getColor(color));
         mPaint.setStyle(Paint.Style.FILL);

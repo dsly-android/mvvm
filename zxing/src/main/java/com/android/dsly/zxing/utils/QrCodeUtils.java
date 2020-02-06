@@ -39,7 +39,7 @@ public class QrCodeUtils {
 
         private int codeColor = 0xff000000;
 
-        private int codeSide = AutoSizeUtils.pt2px(Utils.getApp(), 800);
+        private int codeSide = AutoSizeUtils.dp2px(Utils.getApp(), 400);
 
         private CharSequence content;
 
@@ -115,7 +115,7 @@ public class QrCodeUtils {
     }
 
     public static Bitmap encodeAsBitmap(CharSequence content) {
-        return encodeAsBitmap(content, AutoSizeUtils.pt2px(Utils.getApp(), 800), AutoSizeUtils.pt2px(Utils.getApp(), 800));
+        return encodeAsBitmap(content, AutoSizeUtils.dp2px(Utils.getApp(), 400), AutoSizeUtils.dp2px(Utils.getApp(), 400));
     }
 
     //==============================================================================================二维码算法结束

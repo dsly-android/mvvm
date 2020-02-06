@@ -9,8 +9,6 @@ import android.view.WindowManager;
 import com.android.dsly.common.R;
 import com.blankj.utilcode.util.ScreenUtils;
 
-import org.simple.eventbus.EventBus;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
 import androidx.appcompat.app.AppCompatDialog;
@@ -41,8 +39,6 @@ public abstract class BaseDialog<VB extends ViewDataBinding> extends AppCompatDi
         super.onCreate(savedInstanceState);
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding();
-
-        EventBus.getDefault().registerSticky(this);
 
         initView(savedInstanceState);
         initEvent();
@@ -107,6 +103,5 @@ public abstract class BaseDialog<VB extends ViewDataBinding> extends AppCompatDi
         if (mBinding != null) {
             mBinding.unbind();
         }
-        EventBus.getDefault().unregister(this);
     }
 }

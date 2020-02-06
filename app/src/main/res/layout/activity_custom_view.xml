@@ -11,11 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:padding="10pt">
+        android:padding="5dp">
 
         <View
-            android:layout_width="300pt"
-            android:layout_height="300pt"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:background="@color/_ed4040"/>
     </com.htxtdshopping.htxtd.frame.widget.CommonViewGroup>
 </layout>

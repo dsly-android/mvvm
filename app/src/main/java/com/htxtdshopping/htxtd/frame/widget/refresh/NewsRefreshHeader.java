@@ -55,7 +55,7 @@ public class NewsRefreshHeader extends FrameLayout implements RefreshHeader {
         mIvProgress.setImageDrawable(mProgressDrawable);
         mIvArrow.setImageDrawable(new ArrowDrawable());
 
-        setMinimumHeight(AutoSizeUtils.pt2px(context, 100));
+        setMinimumHeight(AutoSizeUtils.dp2px(context, 50));
     }
 
     @Override

@@ -29,42 +29,42 @@
                     android:id="@+id/btn_oss"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
+                    android:textSize="12sp"
                     android:text="对象存储 OSS"/>
 
                 <Button
                     android:id="@+id/btn_bugly"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
+                    android:textSize="12sp"
                     android:text="检查是否有新的更新"/>
 
                 <Button
                     android:id="@+id/btn_sophix"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
+                    android:textSize="12sp"
                     android:text="阿里云的移动热修复"/>
 
                 <Button
                     android:id="@+id/btn_x5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
+                    android:textSize="12sp"
                     android:text="x5内核"/>
 
                 <Button
                     android:id="@+id/btn_login_and_share"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
+                    android:textSize="12sp"
                     android:text="友盟登录和分享"/>
 
                 <Button
                     android:id="@+id/btn_bugly_crash"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
+                    android:textSize="12sp"
                     android:text="bugly异常上报"/>
             </LinearLayout>
         </ScrollView>

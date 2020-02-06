@@ -66,9 +66,9 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
             rv_top_bar.setBackgroundColor(mPickerOptions.bgColorTitle);
 
             //设置文字大小
-            btnSubmit.setTextSize(TypedValue.COMPLEX_UNIT_PT, mPickerOptions.textSizeSubmitCancel);
-            btnCancel.setTextSize(TypedValue.COMPLEX_UNIT_PT, mPickerOptions.textSizeSubmitCancel);
-            tvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PT,mPickerOptions.textSizeTitle);
+            btnSubmit.setTextSize(mPickerOptions.textSizeSubmitCancel);
+            btnCancel.setTextSize(mPickerOptions.textSizeSubmitCancel);
+            tvTitle.setTextSize(mPickerOptions.textSizeTitle);
         } else {
             mPickerOptions.customListener.customLayout(LayoutInflater.from(context).inflate(mPickerOptions.layoutRes, contentContainer));
         }

@@ -38,9 +38,9 @@ public class CropImageLayout extends RelativeLayout {
     public CropImageLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ImageCropImageLayout);
-        mHorizontalPadding = typedArray.getDimensionPixelSize(R.styleable.ImageCropImageLayout_image_horizontalPadding, AutoSizeUtils.pt2px(context, 40));
+        mHorizontalPadding = typedArray.getDimensionPixelSize(R.styleable.ImageCropImageLayout_image_horizontalPadding, AutoSizeUtils.dp2px(context, 20));
         mBorderColor = typedArray.getColor(R.styleable.ImageCropImageLayout_image_borderColor, Color.WHITE);
-        mBorderWidth = typedArray.getDimensionPixelSize(R.styleable.ImageCropImageLayout_image_borderWidth, AutoSizeUtils.pt2px(context, 2));
+        mBorderWidth = typedArray.getDimensionPixelSize(R.styleable.ImageCropImageLayout_image_borderWidth, AutoSizeUtils.dp2px(context, 1));
         typedArray.recycle();
     }
 
@@ -68,7 +68,7 @@ public class CropImageLayout extends RelativeLayout {
      * @param mHorizontalPadding
      */
     public void setHorizontalPadding(int mHorizontalPadding) {
-        this.mHorizontalPadding = AutoSizeUtils.pt2px(getContext(), mHorizontalPadding);
+        this.mHorizontalPadding = AutoSizeUtils.dp2px(getContext(), mHorizontalPadding);
     }
 
     /**

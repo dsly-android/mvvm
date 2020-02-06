@@ -104,8 +104,8 @@ public class ThreePointLoadingView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // 考虑padding值
-        mWidth = measureSize(widthMeasureSpec, AutoSizeUtils.pt2px(getContext(), 360)) + getPaddingLeft() + getPaddingRight();
-        mHeight = measureSize(heightMeasureSpec, AutoSizeUtils.pt2px(getContext(), 360)) + getPaddingTop() + getPaddingBottom();
+        mWidth = measureSize(widthMeasureSpec, AutoSizeUtils.dp2px(getContext(), 180)) + getPaddingLeft() + getPaddingRight();
+        mHeight = measureSize(heightMeasureSpec, AutoSizeUtils.dp2px(getContext(), 180)) + getPaddingTop() + getPaddingBottom();
 
         setMeasuredDimension(mWidth, mHeight);
 

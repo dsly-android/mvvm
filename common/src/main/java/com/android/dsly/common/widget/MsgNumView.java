@@ -36,7 +36,7 @@ public class MsgNumView extends AppCompatTextView {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.MsgNumView);
         mNumber = typedArray.getInteger(R.styleable.MsgNumView_mnv_number, 0);
         mBackgroundColor = typedArray.getColor(R.styleable.MsgNumView_mnv_backgroundColor, ContextCompat.getColor(getContext(), android.R.color.holo_red_light));
-        mPaddingLeftAndRight = typedArray.getDimensionPixelSize(R.styleable.MsgNumView_mnv_paddingLeftAndRight, AutoSizeUtils.pt2px(getContext(), 5));
+        mPaddingLeftAndRight = typedArray.getDimensionPixelSize(R.styleable.MsgNumView_mnv_paddingLeftAndRight, AutoSizeUtils.dp2px(getContext(), 2));
         typedArray.recycle();
 
         setPadding(mPaddingLeftAndRight, 0, mPaddingLeftAndRight, 0);
@@ -64,7 +64,7 @@ public class MsgNumView extends AppCompatTextView {
 
     private void setBackground() {
         float textSize = getTextSize();
-        int height = (int) (textSize + AutoSizeUtils.pt2px(getContext(), 10));
+        int height = (int) (textSize + AutoSizeUtils.dp2px(getContext(), 5));
         GradientDrawable drawable = new GradientDrawable();
         drawable.setCornerRadius(height / 2);
         drawable.setColor(mBackgroundColor);

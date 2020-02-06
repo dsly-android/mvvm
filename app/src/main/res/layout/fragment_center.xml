@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:text="LinearLayoutManager反转布局"
                     android:textAllCaps="false"
-                    android:textSize="24sp"/>
+                    android:textSize="12sp"/>
 
                 <Button
                     android:id="@+id/btn_slide_close"
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:text="侧滑删除"
                     android:textAllCaps="false"
-                    android:textSize="24sp"/>
+                    android:textSize="12sp"/>
 
                 <Button
                     android:id="@+id/btn_view"
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:text="自定义控件"
                     android:textAllCaps="false"
-                    android:textSize="24sp"/>
+                    android:textSize="12sp"/>
 
                 <Button
                     android:id="@+id/btn_giflib"
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:text="通过giflib加载gif图片"
                     android:textAllCaps="false"
-                    android:textSize="24sp"/>
+                    android:textSize="12sp"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

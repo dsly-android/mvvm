@@ -157,22 +157,22 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         mIndicatorAnimDuration = ta.getInt(R.styleable.SegmentTabLayout_tl_indicator_anim_duration, -1);
 
         mDividerColor = ta.getColor(R.styleable.SegmentTabLayout_tl_divider_color, mIndicatorEndColor);
-        mDividerWidth = ta.getDimension(R.styleable.SegmentTabLayout_tl_divider_width, AutoSizeUtils.pt2px(context, 2));
+        mDividerWidth = ta.getDimension(R.styleable.SegmentTabLayout_tl_divider_width, AutoSizeUtils.dp2px(context, 1));
         mDividerPadding = ta.getDimension(R.styleable.SegmentTabLayout_tl_divider_padding, 0);
 
-        mTextsize = ta.getDimension(R.styleable.SegmentTabLayout_tl_textsize, AutoSizeUtils.pt2px(context, 26));
+        mTextsize = ta.getDimension(R.styleable.SegmentTabLayout_tl_textsize, AutoSizeUtils.sp2px(context, 13));
         mTextSelectColor = ta.getColor(R.styleable.SegmentTabLayout_tl_textSelectColor, Color.parseColor("#ffffff"));
         mTextUnselectColor = ta.getColor(R.styleable.SegmentTabLayout_tl_textUnselectColor, mIndicatorEndColor);
         mTextBold = ta.getInt(R.styleable.SegmentTabLayout_tl_textBold, TEXT_BOLD_NONE);
         mTextAllCaps = ta.getBoolean(R.styleable.SegmentTabLayout_tl_textAllCaps, false);
 
         mTabSpaceEqual = ta.getBoolean(R.styleable.SegmentTabLayout_tl_tab_space_equal, true);
-        mTabWidth = ta.getDimension(R.styleable.SegmentTabLayout_tl_tab_width, AutoSizeUtils.pt2px(context, -2));
-        mTabPadding = ta.getDimension(R.styleable.SegmentTabLayout_tl_tab_padding, mTabSpaceEqual || mTabWidth > 0 ? 0 : AutoSizeUtils.pt2px(context, 20));
+        mTabWidth = ta.getDimension(R.styleable.SegmentTabLayout_tl_tab_width, AutoSizeUtils.dp2px(context, -1));
+        mTabPadding = ta.getDimension(R.styleable.SegmentTabLayout_tl_tab_padding, mTabSpaceEqual || mTabWidth > 0 ? 0 : AutoSizeUtils.dp2px(context, 10));
 
         mBarColor = ta.getColor(R.styleable.SegmentTabLayout_tl_bar_color, Color.TRANSPARENT);
         mBarStrokeColor = ta.getColor(R.styleable.SegmentTabLayout_tl_bar_stroke_color, mIndicatorEndColor);
-        mBarStrokeWidth = ta.getDimension(R.styleable.SegmentTabLayout_tl_bar_stroke_width, AutoSizeUtils.pt2px(context, 2));
+        mBarStrokeWidth = ta.getDimension(R.styleable.SegmentTabLayout_tl_bar_stroke_width, AutoSizeUtils.dp2px(context, 1));
 
         ta.recycle();
     }
@@ -440,7 +440,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     }
 
     public void setTabPadding(float tabPadding) {
-        this.mTabPadding = AutoSizeUtils.pt2px(mContext, tabPadding);
+        this.mTabPadding = AutoSizeUtils.dp2px(mContext, tabPadding);
         updateTabStyles();
     }
 
@@ -450,7 +450,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     }
 
     public void setTabWidth(float tabWidth) {
-        this.mTabWidth = AutoSizeUtils.pt2px(mContext, tabWidth);
+        this.mTabWidth = AutoSizeUtils.dp2px(mContext, tabWidth);
         updateTabStyles();
     }
 
@@ -460,21 +460,21 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     }
 
     public void setIndicatorHeight(float indicatorHeight) {
-        this.mIndicatorHeight = AutoSizeUtils.pt2px(mContext, indicatorHeight);
+        this.mIndicatorHeight = AutoSizeUtils.dp2px(mContext, indicatorHeight);
         invalidate();
     }
 
     public void setIndicatorCornerRadius(float indicatorCornerRadius) {
-        this.mIndicatorCornerRadius = AutoSizeUtils.pt2px(mContext, indicatorCornerRadius);
+        this.mIndicatorCornerRadius = AutoSizeUtils.dp2px(mContext, indicatorCornerRadius);
         invalidate();
     }
 
     public void setIndicatorMargin(float indicatorMarginLeft, float indicatorMarginTop,
                                    float indicatorMarginRight, float indicatorMarginBottom) {
-        this.mIndicatorMarginLeft = AutoSizeUtils.pt2px(mContext, indicatorMarginLeft);
-        this.mIndicatorMarginTop = AutoSizeUtils.pt2px(mContext, indicatorMarginTop);
-        this.mIndicatorMarginRight = AutoSizeUtils.pt2px(mContext, indicatorMarginRight);
-        this.mIndicatorMarginBottom = AutoSizeUtils.pt2px(mContext, indicatorMarginBottom);
+        this.mIndicatorMarginLeft = AutoSizeUtils.dp2px(mContext, indicatorMarginLeft);
+        this.mIndicatorMarginTop = AutoSizeUtils.dp2px(mContext, indicatorMarginTop);
+        this.mIndicatorMarginRight = AutoSizeUtils.dp2px(mContext, indicatorMarginRight);
+        this.mIndicatorMarginBottom = AutoSizeUtils.dp2px(mContext, indicatorMarginBottom);
         invalidate();
     }
 
@@ -496,17 +496,17 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     }
 
     public void setDividerWidth(float dividerWidth) {
-        this.mDividerWidth = AutoSizeUtils.pt2px(mContext, dividerWidth);
+        this.mDividerWidth = AutoSizeUtils.dp2px(mContext, dividerWidth);
         invalidate();
     }
 
     public void setDividerPadding(float dividerPadding) {
-        this.mDividerPadding = AutoSizeUtils.pt2px(mContext, dividerPadding);
+        this.mDividerPadding = AutoSizeUtils.dp2px(mContext, dividerPadding);
         invalidate();
     }
 
     public void setTextsize(float textsize) {
-        this.mTextsize = AutoSizeUtils.pt2px(mContext, textsize);
+        this.mTextsize = AutoSizeUtils.sp2px(mContext, textsize);
         updateTabStyles();
     }
 
@@ -653,7 +653,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
                 return;
             }
 
-            setMsgMargin(position, 2, 2);
+            setMsgMargin(position, 1, 1);
 
             mInitSetMap.put(position, true);
         }
@@ -701,8 +701,8 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
             float textHeight = mTextPaint.descent() - mTextPaint.ascent();
             MarginLayoutParams lp = (MarginLayoutParams) tipView.getLayoutParams();
 
-            lp.leftMargin = AutoSizeUtils.pt2px(mContext, leftPadding);
-            lp.topMargin = mHeight > 0 ? (int) (mHeight - textHeight) / 2 - AutoSizeUtils.pt2px(mContext, bottomPadding) : AutoSizeUtils.pt2px(mContext, bottomPadding);
+            lp.leftMargin = AutoSizeUtils.dp2px(mContext, leftPadding);
+            lp.topMargin = mHeight > 0 ? (int) (mHeight - textHeight) / 2 - AutoSizeUtils.dp2px(mContext, bottomPadding) : AutoSizeUtils.dp2px(mContext, bottomPadding);
 
             tipView.setLayoutParams(lp);
         }

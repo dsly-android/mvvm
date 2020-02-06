@@ -5,7 +5,6 @@ import android.app.Application;
 import com.trello.rxlifecycle3.LifecycleProvider;
 
 import org.jetbrains.annotations.NotNull;
-import org.simple.eventbus.EventBus;
 
 import java.lang.ref.WeakReference;
 
@@ -33,7 +32,6 @@ public class BaseViewModel<M extends IModel> extends AndroidViewModel {
     public BaseViewModel(@NotNull Application application, M model) {
         super(application);
         this.model = model;
-        EventBus.getDefault().registerSticky(this);
     }
 
     /**
@@ -77,7 +75,6 @@ public class BaseViewModel<M extends IModel> extends AndroidViewModel {
         if (lifecycle != null) {
             lifecycle.clear();
         }
-        EventBus.getDefault().unregister(this);
         if (model != null){
             model.onCleared();
         }

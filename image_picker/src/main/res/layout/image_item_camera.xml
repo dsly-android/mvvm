@@ -6,8 +6,8 @@
     </data>
 
     <FrameLayout
-        android:layout_width="180pt"
-        android:layout_height="180pt"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:background="@drawable/image_selector_grid_camera_bg">
 
         <ImageView

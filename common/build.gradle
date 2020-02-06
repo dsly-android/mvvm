@@ -67,8 +67,8 @@ dependencies {
     //fastjson
     api rootProject.ext.dependencies["fastjson"]
 
-    //AndroidEventBus
-    api rootProject.ext.dependencies["androideventbus"]
+    //LiveEventBus
+    api rootProject.ext.dependencies["LiveEventBus"]
 
     //glide
     api rootProject.ext.dependencies["glide"]

@@ -81,13 +81,11 @@
 #fastjson
 -dontwarn com.alibaba.fastjson.**
 
-#AndroidEventBus
--keep class org.simple.** { *; }
--keep interface org.simple.** { *; }
--keepclassmembers class * {
-    @org.simple.eventbus.Subscriber <methods>;
-}
--keepattributes *Annotation*
+#LiveEventBus
+-dontwarn com.jeremyliao.liveeventbus.**
+-keep class com.jeremyliao.liveeventbus.** { *; }
+-keep class androidx.lifecycle.** { *; }
+-keep class androidx.arch.core.** { *; }
 
 #BaseRecyclerViewAdapterHelper
 -keep class com.chad.library.adapter.** {

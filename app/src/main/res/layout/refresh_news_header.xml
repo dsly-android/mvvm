@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100pt">
+    android:layout_height="50dp">
 
     <LinearLayout
         android:id="@+id/ll_pull_down"
@@ -15,16 +15,16 @@
 
         <ImageView
             android:id="@+id/iv_arrow"
-            android:layout_width="40pt"
-            android:layout_height="40pt"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
 
         <TextView
             android:id="@+id/tv_prompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20pt"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/_4e4e4e"
-            android:textSize="26pt"/>
+            android:textSize="13sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -37,16 +37,16 @@
 
         <ImageView
             android:id="@+id/iv_progress"
-            android:layout_width="40pt"
-            android:layout_height="40pt"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20pt"
+            android:layout_marginLeft="10dp"
             android:text="正在刷新"
             android:textColor="@color/_4e4e4e"
-            android:textSize="26pt"/>
+            android:textSize="13sp"/>
     </LinearLayout>
 
     <TextView
@@ -55,18 +55,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/_4e4e4e"
-        android:textSize="26pt"
+        android:textSize="13sp"
         android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_refresh_num"
         android:layout_width="match_parent"
-        android:layout_height="60pt"
+        android:layout_height="30dp"
         android:background="@color/_FFE9E9"
         android:gravity="center"
         android:textColor="@color/_ed4040"
         android:visibility="gone"
-        android:textSize="26pt"
+        android:textSize="13sp"
         android:layout_gravity="bottom"
         tools:text="已为您更新10条内容"/>
 </merge>

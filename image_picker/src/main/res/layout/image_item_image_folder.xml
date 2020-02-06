@@ -10,24 +10,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180pt"
+        android:layout_height="90dp"
         android:background="@drawable/image_selector_image_folder"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <FrameLayout
-            android:layout_width="132pt"
-            android:layout_height="132pt"
-            android:layout_marginLeft="24pt"
-            android:layout_marginRight="24pt"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
             android:background="@drawable/image_bg_image_folder">
 
             <ImageView
                 android:id="@+id/iv_cover"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="12pt"
-                android:layout_marginBottom="12pt"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="6dp"
                 android:scaleType="centerCrop" />
         </FrameLayout>
 
@@ -44,24 +44,24 @@
                 android:layout_height="wrap_content"
                 android:text="@{data.name}"
                 android:textColor="@color/_424242"
-                android:textSize="28pt" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_image_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8pt"
+                android:layout_marginTop="4dp"
                 android:text="@{@string/image_folder_image_count(data.images.size())}"
                 android:textColor="@color/_999999"
-                android:textSize="24pt" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/iv_folder_check"
-            android:layout_width="48pt"
-            android:layout_height="48pt"
-            android:layout_marginLeft="16pt"
-            android:layout_marginRight="40pt"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="20dp"
             android:src="@drawable/image_ic_vector_check"
             android:visibility="gone" />
     </LinearLayout>

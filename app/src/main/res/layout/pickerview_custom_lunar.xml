@@ -6,21 +6,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100pt"
+        android:layout_height="50dp"
         android:background="#EEEEEE">
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1pt"
+            android:layout_height="1px"
             android:background="#aaa" />
 
         <ImageView
             android:id="@+id/iv_cancel"
-            android:layout_width="70pt"
-            android:layout_height="70pt"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="34pt"
-            android:padding="16pt"
+            android:layout_marginLeft="17dp"
+            android:padding="8dp"
             android:src="@drawable/ss_return" />
 
         <CheckBox
@@ -28,10 +28,10 @@
             android:id="@+id/cb_lunar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="34pt"
+            android:layout_marginRight="17dp"
             android:text="农历"
             android:textColor="#24AD9D"
-            android:textSize="36pt" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_finish"
@@ -39,15 +39,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="34pt"
-            android:padding="16pt"
+            android:layout_marginRight="17dp"
+            android:padding="8dp"
             android:text="完成"
             android:textColor="#24AD9D"
-            android:textSize="36pt" />
+            android:textSize="18sp" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1pt"
+            android:layout_height="1px"
             android:background="#aaa" />
     </RelativeLayout>
 

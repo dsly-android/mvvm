@@ -13,38 +13,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_press_effect"
-        android:paddingBottom="28pt"
-        android:paddingTop="20pt">
+        android:paddingBottom="14dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30pt"
-            android:layout_marginRight="30pt"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="@color/_212121"
-            android:textSize="34pt"
+            android:textSize="17sp"
             tools:text="“圣诞老人”在山上抛洒积雪"/>
 
         <com.htxtdshopping.htxtd.frame.widget.CoverVideoPlayer
             android:id="@+id/cvp_video"
             android:layout_width="match_parent"
-            android:layout_height="405pt"
-            android:layout_marginTop="25pt"
+            android:layout_height="202dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@id/tv_title"/>
 
         <TextView
             android:id="@+id/tv_label"
-            android:layout_width="68pt"
-            android:layout_height="32pt"
-            android:layout_marginLeft="30pt"
-            android:layout_marginTop="15pt"
+            android:layout_width="34dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/home_news_label"
             android:gravity="center"
             android:textColor="@color/_EA3D36"
-            android:textSize="24pt"
+            android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cvp_video"
             tools:text="置顶"/>
@@ -53,9 +53,9 @@
             android:id="@+id/tv_comment_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20pt"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/_a0a0a0"
-            android:textSize="24pt"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_label"
             app:layout_constraintLeft_toRightOf="@id/tv_label"
             app:layout_constraintTop_toTopOf="@id/tv_label"

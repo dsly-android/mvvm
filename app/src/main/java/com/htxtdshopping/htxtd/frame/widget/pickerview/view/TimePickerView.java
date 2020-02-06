@@ -2,7 +2,6 @@ package com.htxtdshopping.htxtd.frame.widget.pickerview.view;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -69,9 +68,9 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             rv_top_bar.setBackgroundColor(mPickerOptions.bgColorTitle);
 
             //设置文字大小
-            btnSubmit.setTextSize(TypedValue.COMPLEX_UNIT_PT, mPickerOptions.textSizeSubmitCancel);
-            btnCancel.setTextSize(TypedValue.COMPLEX_UNIT_PT, mPickerOptions.textSizeSubmitCancel);
-            tvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PT, mPickerOptions.textSizeTitle);
+            btnSubmit.setTextSize(mPickerOptions.textSizeSubmitCancel);
+            btnCancel.setTextSize(mPickerOptions.textSizeSubmitCancel);
+            tvTitle.setTextSize(mPickerOptions.textSizeTitle);
 
         } else {
             mPickerOptions.customListener.customLayout(LayoutInflater.from(context).inflate(mPickerOptions.layoutRes, contentContainer));

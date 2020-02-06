@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-import org.simple.eventbus.EventBus;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -38,8 +36,6 @@ public abstract class BaseBottomSheetDialog<VB extends ViewDataBinding> extends 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EventBus.getDefault().registerSticky(this);
-
         initView(savedInstanceState);
         initEvent();
         initData();
@@ -62,6 +58,5 @@ public abstract class BaseBottomSheetDialog<VB extends ViewDataBinding> extends 
         if (mBinding != null) {
             mBinding.unbind();
         }
-        EventBus.getDefault().unregister(this);
     }
 }

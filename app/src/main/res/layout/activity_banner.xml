@@ -15,6 +15,6 @@
         <com.youth.banner.Banner
             android:id="@+id/b_images"
             android:layout_width="match_parent"
-            android:layout_height="400pt"/>
+            android:layout_height="200dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -8,8 +8,8 @@
     </data>
 
     <FrameLayout
-        android:layout_width="180pt"
-        android:layout_height="180pt">
+        android:layout_width="90dp"
+        android:layout_height="90dp">
 
         <ImageView
             android:id="@+id/iv_img"
@@ -27,10 +27,10 @@
         <ImageView
             android:id="@+id/iv_check"
             selected="@{data.isChecked}"
-            android:layout_width="60pt"
-            android:layout_height="60pt"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="right"
-            android:padding="15pt"
+            android:padding="7dp"
             android:scaleType="fitXY"
             android:src="@drawable/image_selector_item_selected" />
     </FrameLayout>

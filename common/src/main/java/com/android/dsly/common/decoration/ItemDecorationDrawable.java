@@ -21,8 +21,8 @@ public class ItemDecorationDrawable extends ShapeDrawable {
     }
 
     public ItemDecorationDrawable(Context context, int width, int height, int color) {
-        setIntrinsicWidth(AutoSizeUtils.pt2px(context, width));
-        setIntrinsicHeight(AutoSizeUtils.pt2px(context, height));
+        setIntrinsicWidth(AutoSizeUtils.dp2px(context, width));
+        setIntrinsicHeight(AutoSizeUtils.dp2px(context, height));
         setColorFilter(context.getResources().getColor(color), PorterDuff.Mode.SRC);
     }
 }

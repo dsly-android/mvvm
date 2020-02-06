@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:textColor="@android:color/white"
-            android:textSize="18sp"/>
+            android:textSize="9sp"/>
     </LinearLayout>
 
     <moe.codeest.enviews.ENDownloadView

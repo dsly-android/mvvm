@@ -31,7 +31,7 @@ public class TestBottomSheetDialog extends BaseBottomSheetDialog<DesignDialogShe
         // 注意：这里要给layout的parent设置peekHeight，而不是在layout里给layout本身设置，下面设置背景色同理，坑爹！！！
         View mDialogSheetBottomView = (View) findViewById(R.id.nsv_scroll).getParent();
         BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(mDialogSheetBottomView);
-        bottomSheetBehavior.setPeekHeight(AutoSizeUtils.pt2px(mContext,300));
+        bottomSheetBehavior.setPeekHeight(AutoSizeUtils.dp2px(mContext,150));
     }
 
     @Override

@@ -19,117 +19,117 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="70pt"
+                android:layout_height="35dp"
                 android:text="feowijf"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

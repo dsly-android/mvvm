@@ -28,7 +28,7 @@
             android:gravity="center_vertical"
             android:lines="1"
             android:text="title"
-            android:textSize="16sp"
+            android:textSize="8sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -39,7 +39,7 @@
             android:gravity="center_vertical"
             android:lines="1"
             android:text="summery"
-            android:textSize="12sp"/>
+            android:textSize="6sp"/>
     </LinearLayout>
 
     <ImageView

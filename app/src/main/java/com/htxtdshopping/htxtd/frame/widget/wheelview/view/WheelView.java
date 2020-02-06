@@ -135,7 +135,7 @@ public class WheelView extends View {
     public WheelView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        textSize = AutoSizeUtils.pt2px(context, R.dimen.wheelview_textsize);
+        textSize = AutoSizeUtils.sp2px(context, R.dimen.wheelview_textsize);
 
         DisplayMetrics dm = getResources().getDisplayMetrics();
         float density = dm.density; // 屏幕密度比（0.75/1.0/1.5/2.0/3.0）
@@ -311,7 +311,7 @@ public class WheelView extends View {
      */
     public final void setTextSize(float size) {
         if (size > 0.0F) {
-            textSize = AutoSizeUtils.pt2px(context, size);
+            textSize = AutoSizeUtils.sp2px(context, size);
             paintOuterText.setTextSize(textSize);
             paintCenterText.setTextSize(textSize);
         }

@@ -2,7 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80pt">
+    android:layout_height="40dp">
 
     <LinearLayout
         android:id="@+id/load_more_loading_view"
@@ -13,18 +13,18 @@
 
         <ProgressBar
             style="?android:attr/progressBarStyleSmall"
-            android:layout_width="30pt"
-            android:layout_height="30pt"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:indeterminateTint="@color/colorPrimary"
-            android:layout_marginRight="8pt"/>
+            android:layout_marginRight="4dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8pt"
+            android:layout_marginLeft="4dp"
             android:text="@string/loading"
             android:textColor="#999999"
-            android:textSize="28pt"/>
+            android:textSize="14sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -38,10 +38,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8pt"
+            android:layout_marginLeft="4dp"
             android:text="@string/load_success"
             android:textColor="#999999"
-            android:textSize="28pt"/>
+            android:textSize="14sp"/>
     </LinearLayout>
 
     <FrameLayout
@@ -56,7 +56,7 @@
             android:layout_gravity="center"
             android:text="@string/load_failed"
             android:textColor="#999999"
-            android:textSize="28pt"/>
+            android:textSize="14sp"/>
 
     </FrameLayout>
 
@@ -70,25 +70,25 @@
 
         <View
             android:layout_width="0dp"
-            android:layout_height="2pt"
+            android:layout_height="1dp"
             android:layout_weight="1"
-            android:layout_marginLeft="100pt"
+            android:layout_marginLeft="50dp"
             android:background="#f1f1f1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/load_end"
-            android:layout_marginLeft="40pt"
-            android:layout_marginRight="40pt"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:textColor="#999999"
-            android:textSize="28pt"/>
+            android:textSize="14sp"/>
 
         <View
             android:layout_width="0dp"
-            android:layout_height="2pt"
+            android:layout_height="1dp"
             android:layout_weight="1"
-            android:layout_marginRight="100pt"
+            android:layout_marginRight="50dp"
             android:background="#f1f1f1"/>
     </LinearLayout>
 </FrameLayout>

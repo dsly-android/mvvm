@@ -33,8 +33,8 @@ public class CommonViewActivity extends BaseActivity<ActivityCommonViewBinding, 
         mBinding.ivIndicator.setSelectedPosition(1);
 
         ShadowDrawable.setShadowDrawable(mBinding.tvShadow, Color.parseColor("#3D5AFE"),
-                AutoSizeUtils.pt2px(this,16), Color.parseColor("#66000000"),
-                AutoSizeUtils.pt2px(this,16), 0, 0);
+                AutoSizeUtils.dp2px(this,8), Color.parseColor("#66000000"),
+                AutoSizeUtils.dp2px(this,8), 0, 0);
     }
 
     @Override

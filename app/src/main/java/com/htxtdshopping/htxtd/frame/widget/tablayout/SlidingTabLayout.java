@@ -156,13 +156,13 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         mIndicatorStyle = ta.getInt(R.styleable.SlidingTabLayout_tl_indicator_style, STYLE_NORMAL);
         mIndicatorColor = ta.getColor(R.styleable.SlidingTabLayout_tl_indicator_color, Color.parseColor(mIndicatorStyle == STYLE_BLOCK ? "#4B6A87" : "#ffffff"));
         mIndicatorHeight = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_height,
-                AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_TRIANGLE ? 8 : (mIndicatorStyle == STYLE_BLOCK ? -2 : 4)));
-        mIndicatorWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_width, AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_TRIANGLE ? 20 : -2));
-        mIndicatorCornerRadius = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_corner_radius, AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_BLOCK ? -2 : 0));
+                AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_TRIANGLE ? 4 : (mIndicatorStyle == STYLE_BLOCK ? -1 : 2)));
+        mIndicatorWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_width, AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_TRIANGLE ? 10 : -1));
+        mIndicatorCornerRadius = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_corner_radius, AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_BLOCK ? -1 : 0));
         mIndicatorMarginLeft = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_left, 0);
-        mIndicatorMarginTop = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_top, AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_BLOCK ? 14 : 0));
+        mIndicatorMarginTop = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_top, AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
         mIndicatorMarginRight = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_right, 0);
-        mIndicatorMarginBottom = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_bottom, AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_BLOCK ? 14 : 0));
+        mIndicatorMarginBottom = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_bottom, AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
         mIndicatorGravity = ta.getInt(R.styleable.SlidingTabLayout_tl_indicator_gravity, Gravity.BOTTOM);
         mIndicatorWidthEqualTitle = ta.getBoolean(R.styleable.SlidingTabLayout_tl_indicator_width_equal_title, false);
 
@@ -172,17 +172,17 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 
         mDividerColor = ta.getColor(R.styleable.SlidingTabLayout_tl_divider_color, Color.parseColor("#ffffff"));
         mDividerWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_divider_width, 0);
-        mDividerPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_divider_padding, AutoSizeUtils.pt2px(mContext, 24));
+        mDividerPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_divider_padding, AutoSizeUtils.dp2px(mContext, 12));
 
-        mTextsize = ta.getDimension(R.styleable.SlidingTabLayout_tl_textsize, AutoSizeUtils.pt2px(context, 28));
+        mTextsize = ta.getDimension(R.styleable.SlidingTabLayout_tl_textsize, AutoSizeUtils.sp2px(context, 14));
         mTextSelectColor = ta.getColor(R.styleable.SlidingTabLayout_tl_textSelectColor, Color.parseColor("#ffffff"));
         mTextUnselectColor = ta.getColor(R.styleable.SlidingTabLayout_tl_textUnselectColor, Color.parseColor("#AAffffff"));
         mTextBold = ta.getInt(R.styleable.SlidingTabLayout_tl_textBold, TEXT_BOLD_NONE);
         mTextAllCaps = ta.getBoolean(R.styleable.SlidingTabLayout_tl_textAllCaps, false);
 
         mTabSpaceEqual = ta.getBoolean(R.styleable.SlidingTabLayout_tl_tab_space_equal, false);
-        mTabWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_tab_width, AutoSizeUtils.pt2px(context, -2));
-        mTabPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_tab_padding, mTabSpaceEqual || mTabWidth > 0 ? 0 : AutoSizeUtils.pt2px(context, 40));
+        mTabWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_tab_width, AutoSizeUtils.dp2px(context, -1));
+        mTabPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_tab_padding, mTabSpaceEqual || mTabWidth > 0 ? 0 : AutoSizeUtils.dp2px(context, 20));
 
         ta.recycle();
     }
@@ -574,7 +574,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     }
 
     public void setTabPadding(float tabPadding) {
-        this.mTabPadding = AutoSizeUtils.pt2px(mContext, tabPadding);
+        this.mTabPadding = AutoSizeUtils.dp2px(mContext, tabPadding);
         updateTabStyles();
     }
 
@@ -584,7 +584,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     }
 
     public void setTabWidth(float tabWidth) {
-        this.mTabWidth = AutoSizeUtils.pt2px(mContext, tabWidth);
+        this.mTabWidth = AutoSizeUtils.dp2px(mContext, tabWidth);
         updateTabStyles();
     }
 
@@ -594,17 +594,17 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     }
 
     public void setIndicatorHeight(float indicatorHeight) {
-        this.mIndicatorHeight = AutoSizeUtils.pt2px(mContext, indicatorHeight);
+        this.mIndicatorHeight = AutoSizeUtils.dp2px(mContext, indicatorHeight);
         invalidate();
     }
 
     public void setIndicatorWidth(float indicatorWidth) {
-        this.mIndicatorWidth = AutoSizeUtils.pt2px(mContext, indicatorWidth);
+        this.mIndicatorWidth = AutoSizeUtils.dp2px(mContext, indicatorWidth);
         invalidate();
     }
 
     public void setIndicatorCornerRadius(float indicatorCornerRadius) {
-        this.mIndicatorCornerRadius = AutoSizeUtils.pt2px(mContext, indicatorCornerRadius);
+        this.mIndicatorCornerRadius = AutoSizeUtils.dp2px(mContext, indicatorCornerRadius);
         invalidate();
     }
 
@@ -615,10 +615,10 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 
     public void setIndicatorMargin(float indicatorMarginLeft, float indicatorMarginTop,
                                    float indicatorMarginRight, float indicatorMarginBottom) {
-        this.mIndicatorMarginLeft = AutoSizeUtils.pt2px(mContext, indicatorMarginLeft);
-        this.mIndicatorMarginTop = AutoSizeUtils.pt2px(mContext, indicatorMarginTop);
-        this.mIndicatorMarginRight = AutoSizeUtils.pt2px(mContext, indicatorMarginRight);
-        this.mIndicatorMarginBottom = AutoSizeUtils.pt2px(mContext, indicatorMarginBottom);
+        this.mIndicatorMarginLeft = AutoSizeUtils.dp2px(mContext, indicatorMarginLeft);
+        this.mIndicatorMarginTop = AutoSizeUtils.dp2px(mContext, indicatorMarginTop);
+        this.mIndicatorMarginRight = AutoSizeUtils.dp2px(mContext, indicatorMarginRight);
+        this.mIndicatorMarginBottom = AutoSizeUtils.dp2px(mContext, indicatorMarginBottom);
         invalidate();
     }
 
@@ -633,7 +633,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     }
 
     public void setUnderlineHeight(float underlineHeight) {
-        this.mUnderlineHeight = AutoSizeUtils.pt2px(mContext, underlineHeight);
+        this.mUnderlineHeight = AutoSizeUtils.dp2px(mContext, underlineHeight);
         invalidate();
     }
 
@@ -648,17 +648,17 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     }
 
     public void setDividerWidth(float dividerWidth) {
-        this.mDividerWidth = AutoSizeUtils.pt2px(mContext, dividerWidth);
+        this.mDividerWidth = AutoSizeUtils.dp2px(mContext, dividerWidth);
         invalidate();
     }
 
     public void setDividerPadding(float dividerPadding) {
-        this.mDividerPadding = AutoSizeUtils.pt2px(mContext, dividerPadding);
+        this.mDividerPadding = AutoSizeUtils.dp2px(mContext, dividerPadding);
         invalidate();
     }
 
     public void setTextsize(float textsize) {
-        this.mTextsize = AutoSizeUtils.pt2px(mContext, textsize);
+        this.mTextsize = AutoSizeUtils.sp2px(mContext, textsize);
         updateTabStyles();
     }
 
@@ -862,8 +862,8 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
             float textWidth = mTextPaint.measureText(tv_tab_title.getText().toString());
             float textHeight = mTextPaint.descent() - mTextPaint.ascent();
             MarginLayoutParams lp = (MarginLayoutParams) tipView.getLayoutParams();
-            lp.leftMargin = mTabWidth >= 0 ? (int) (mTabWidth / 2 + textWidth / 2 + AutoSizeUtils.pt2px(mContext, leftPadding)) : (int) (mTabPadding + textWidth + AutoSizeUtils.pt2px(mContext, leftPadding));
-            lp.topMargin = mHeight > 0 ? (int) (mHeight - textHeight) / 2 - AutoSizeUtils.pt2px(mContext, bottomPadding) : 0;
+            lp.leftMargin = mTabWidth >= 0 ? (int) (mTabWidth / 2 + textWidth / 2 + AutoSizeUtils.dp2px(mContext, leftPadding)) : (int) (mTabPadding + textWidth + AutoSizeUtils.dp2px(mContext, leftPadding));
+            lp.topMargin = mHeight > 0 ? (int) (mHeight - textHeight) / 2 - AutoSizeUtils.dp2px(mContext, bottomPadding) : 0;
             tipView.setLayoutParams(lp);
         }
     }

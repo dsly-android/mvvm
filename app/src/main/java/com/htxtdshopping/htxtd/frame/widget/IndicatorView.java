@@ -40,8 +40,8 @@ public class IndicatorView extends View {
 
     private void init(AttributeSet attrs) {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.IndicatorView);
-        mIndicatorMargin = typedArray.getDimensionPixelSize(R.styleable.IndicatorView_iv_indicatorMargin, AutoSizeUtils.pt2px(getContext(), 5));
-        mIndicatorRadius = typedArray.getDimensionPixelSize(R.styleable.IndicatorView_iv_indicatorRadius, AutoSizeUtils.pt2px(getContext(), 10));
+        mIndicatorMargin = typedArray.getDimensionPixelSize(R.styleable.IndicatorView_iv_indicatorMargin, AutoSizeUtils.dp2px(getContext(), 2));
+        mIndicatorRadius = typedArray.getDimensionPixelSize(R.styleable.IndicatorView_iv_indicatorRadius, AutoSizeUtils.dp2px(getContext(), 5));
         mPageCount = typedArray.getInt(R.styleable.IndicatorView_iv_pageCount, 0);
         mSelectPosition = typedArray.getInt(R.styleable.IndicatorView_iv_selectPosition, 0);
         int normalColor = typedArray.getColor(R.styleable.IndicatorView_iv_normalColor, ContextCompat.getColor(getContext(), R.color._ffe0e0e0));
@@ -116,8 +116,8 @@ public class IndicatorView extends View {
     }
 
     public void setIndicator(int indicatorRadius, int indicatorMargin) {
-        this.mIndicatorMargin = AutoSizeUtils.pt2px(getContext(), indicatorMargin);
-        this.mIndicatorRadius = AutoSizeUtils.pt2px(getContext(), indicatorRadius);
+        this.mIndicatorMargin = AutoSizeUtils.dp2px(getContext(), indicatorMargin);
+        this.mIndicatorRadius = AutoSizeUtils.dp2px(getContext(), indicatorRadius);
     }
 
     public void setIndicatorColor(int nornalColor, int selectColor) {

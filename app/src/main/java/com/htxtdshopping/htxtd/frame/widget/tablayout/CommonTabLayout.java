@@ -172,13 +172,13 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         mIndicatorStyle = ta.getInt(R.styleable.CommonTabLayout_tl_indicator_style, 0);
         mIndicatorColor = ta.getColor(R.styleable.CommonTabLayout_tl_indicator_color, Color.parseColor(mIndicatorStyle == STYLE_BLOCK ? "#4B6A87" : "#ffffff"));
         mIndicatorHeight = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_height,
-                AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_TRIANGLE ? 8 : (mIndicatorStyle == STYLE_BLOCK ? -2 : 4)));
-        mIndicatorWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_width, AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_TRIANGLE ? 20 : -2));
-        mIndicatorCornerRadius = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_corner_radius, AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_BLOCK ? -2 : 0));
+                AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_TRIANGLE ? 4 : (mIndicatorStyle == STYLE_BLOCK ? -1 : 2)));
+        mIndicatorWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_width, AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_TRIANGLE ? 10 : -1));
+        mIndicatorCornerRadius = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_corner_radius, AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_BLOCK ? -1 : 0));
         mIndicatorMarginLeft = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_left, 0);
-        mIndicatorMarginTop = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_top, AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_BLOCK ? 14 : 0));
+        mIndicatorMarginTop = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_top, AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
         mIndicatorMarginRight = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_right, 0);
-        mIndicatorMarginBottom = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_bottom, AutoSizeUtils.pt2px(context, mIndicatorStyle == STYLE_BLOCK ? 14 : 0));
+        mIndicatorMarginBottom = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_bottom, AutoSizeUtils.dp2px(context, mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
         mIndicatorAnimEnable = ta.getBoolean(R.styleable.CommonTabLayout_tl_indicator_anim_enable, true);
         mIndicatorBounceEnable = ta.getBoolean(R.styleable.CommonTabLayout_tl_indicator_bounce_enable, true);
         mIndicatorAnimDuration = ta.getInt(R.styleable.CommonTabLayout_tl_indicator_anim_duration, -1);
@@ -190,10 +190,10 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
 
         mDividerColor = ta.getColor(R.styleable.CommonTabLayout_tl_divider_color, Color.parseColor("#ffffff"));
         mDividerWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_divider_width, 0);
-        mDividerPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_divider_padding, AutoSizeUtils.pt2px(context, 24));
+        mDividerPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_divider_padding, AutoSizeUtils.dp2px(context, 12));
 
-        mTextSelectSize = ta.getDimension(R.styleable.CommonTabLayout_tl_textSelectSize, AutoSizeUtils.pt2px(context, 26f));
-        mTextUnselectSize = ta.getDimension(R.styleable.CommonTabLayout_tl_textUnselectSize, AutoSizeUtils.pt2px(context, 26f));
+        mTextSelectSize = ta.getDimension(R.styleable.CommonTabLayout_tl_textSelectSize, AutoSizeUtils.sp2px(context, 13));
+        mTextUnselectSize = ta.getDimension(R.styleable.CommonTabLayout_tl_textUnselectSize, AutoSizeUtils.sp2px(context, 13f));
         mTextSelectColor = ta.getColor(R.styleable.CommonTabLayout_tl_textSelectColor, Color.parseColor("#ffffff"));
         mTextUnselectColor = ta.getColor(R.styleable.CommonTabLayout_tl_textUnselectColor, Color.parseColor("#AAffffff"));
         mTextBold = ta.getInt(R.styleable.CommonTabLayout_tl_textBold, TEXT_BOLD_NONE);
@@ -203,11 +203,11 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         mIconGravity = ta.getInt(R.styleable.CommonTabLayout_tl_iconGravity, Gravity.TOP);
         mIconWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_iconWidth, 0);
         mIconHeight = ta.getDimension(R.styleable.CommonTabLayout_tl_iconHeight, 0);
-        mIconMargin = ta.getDimension(R.styleable.CommonTabLayout_tl_iconMargin, AutoSizeUtils.pt2px(context, 5f));
+        mIconMargin = ta.getDimension(R.styleable.CommonTabLayout_tl_iconMargin, AutoSizeUtils.dp2px(context, 2f));
 
         mTabSpaceEqual = ta.getBoolean(R.styleable.CommonTabLayout_tl_tab_space_equal, true);
-        mTabWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_tab_width, AutoSizeUtils.pt2px(context, -2));
-        mTabPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_tab_padding, mTabSpaceEqual || mTabWidth > 0 ? 0 : AutoSizeUtils.pt2px(context, 20));
+        mTabWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_tab_width, AutoSizeUtils.dp2px(context, -1));
+        mTabPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_tab_padding, mTabSpaceEqual || mTabWidth > 0 ? 0 : AutoSizeUtils.dp2px(context, 10));
 
         ta.recycle();
     }
@@ -532,7 +532,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     }
 
     public void setTabPadding(float tabPadding) {
-        this.mTabPadding = AutoSizeUtils.pt2px(mContext, tabPadding);
+        this.mTabPadding = AutoSizeUtils.dp2px(mContext, tabPadding);
         updateTabStyles();
     }
 
@@ -542,7 +542,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     }
 
     public void setTabWidth(float tabWidth) {
-        this.mTabWidth = AutoSizeUtils.pt2px(mContext, tabWidth);
+        this.mTabWidth = AutoSizeUtils.dp2px(mContext, tabWidth);
         updateTabStyles();
     }
 
@@ -552,17 +552,17 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     }
 
     public void setIndicatorHeight(float indicatorHeight) {
-        this.mIndicatorHeight = AutoSizeUtils.pt2px(mContext, indicatorHeight);
+        this.mIndicatorHeight = AutoSizeUtils.dp2px(mContext, indicatorHeight);
         invalidate();
     }
 
     public void setIndicatorWidth(float indicatorWidth) {
-        this.mIndicatorWidth = AutoSizeUtils.pt2px(mContext, indicatorWidth);
+        this.mIndicatorWidth = AutoSizeUtils.dp2px(mContext, indicatorWidth);
         invalidate();
     }
 
     public void setIndicatorCornerRadius(float indicatorCornerRadius) {
-        this.mIndicatorCornerRadius = AutoSizeUtils.pt2px(mContext, indicatorCornerRadius);
+        this.mIndicatorCornerRadius = AutoSizeUtils.dp2px(mContext, indicatorCornerRadius);
         invalidate();
     }
 
@@ -573,10 +573,10 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
 
     public void setIndicatorMargin(float indicatorMarginLeft, float indicatorMarginTop,
                                    float indicatorMarginRight, float indicatorMarginBottom) {
-        this.mIndicatorMarginLeft = AutoSizeUtils.pt2px(mContext, indicatorMarginLeft);
-        this.mIndicatorMarginTop = AutoSizeUtils.pt2px(mContext, indicatorMarginTop);
-        this.mIndicatorMarginRight = AutoSizeUtils.pt2px(mContext, indicatorMarginRight);
-        this.mIndicatorMarginBottom = AutoSizeUtils.pt2px(mContext, indicatorMarginBottom);
+        this.mIndicatorMarginLeft = AutoSizeUtils.dp2px(mContext, indicatorMarginLeft);
+        this.mIndicatorMarginTop = AutoSizeUtils.dp2px(mContext, indicatorMarginTop);
+        this.mIndicatorMarginRight = AutoSizeUtils.dp2px(mContext, indicatorMarginRight);
+        this.mIndicatorMarginBottom = AutoSizeUtils.dp2px(mContext, indicatorMarginBottom);
         invalidate();
     }
 
@@ -598,7 +598,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     }
 
     public void setUnderlineHeight(float underlineHeight) {
-        this.mUnderlineHeight = AutoSizeUtils.pt2px(mContext, underlineHeight);
+        this.mUnderlineHeight = AutoSizeUtils.dp2px(mContext, underlineHeight);
         invalidate();
     }
 
@@ -613,12 +613,12 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     }
 
     public void setDividerWidth(float dividerWidth) {
-        this.mDividerWidth = AutoSizeUtils.pt2px(mContext, dividerWidth);
+        this.mDividerWidth = AutoSizeUtils.dp2px(mContext, dividerWidth);
         invalidate();
     }
 
     public void setDividerPadding(float dividerPadding) {
-        this.mDividerPadding = AutoSizeUtils.pt2px(mContext, dividerPadding);
+        this.mDividerPadding = AutoSizeUtils.dp2px(mContext, dividerPadding);
         invalidate();
     }
 
@@ -658,17 +658,17 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     }
 
     public void setIconWidth(float iconWidth) {
-        this.mIconWidth = AutoSizeUtils.pt2px(mContext, iconWidth);
+        this.mIconWidth = AutoSizeUtils.dp2px(mContext, iconWidth);
         updateTabStyles();
     }
 
     public void setIconHeight(float iconHeight) {
-        this.mIconHeight = AutoSizeUtils.pt2px(mContext, iconHeight);
+        this.mIconHeight = AutoSizeUtils.dp2px(mContext, iconHeight);
         updateTabStyles();
     }
 
     public void setIconMargin(float iconMargin) {
-        this.mIconMargin = AutoSizeUtils.pt2px(mContext, iconMargin);
+        this.mIconMargin = AutoSizeUtils.dp2px(mContext, iconMargin);
         updateTabStyles();
     }
 
@@ -912,11 +912,11 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             }
 
             if (mIconGravity == Gravity.TOP || mIconGravity == Gravity.BOTTOM) {
-                lp.leftMargin = AutoSizeUtils.pt2px(mContext, leftPadding);
-                lp.topMargin = mHeight > 0 ? (int) (mHeight - textHeight - iconH - margin) / 2 - AutoSizeUtils.pt2px(mContext, bottomPadding) : AutoSizeUtils.pt2px(mContext, bottomPadding);
+                lp.leftMargin = AutoSizeUtils.dp2px(mContext, leftPadding);
+                lp.topMargin = mHeight > 0 ? (int) (mHeight - textHeight - iconH - margin) / 2 - AutoSizeUtils.dp2px(mContext, bottomPadding) : AutoSizeUtils.dp2px(mContext, bottomPadding);
             } else {
-                lp.leftMargin = AutoSizeUtils.pt2px(mContext, leftPadding);
-                lp.topMargin = mHeight > 0 ? (int) (mHeight - Math.max(textHeight, iconH)) / 2 - AutoSizeUtils.pt2px(mContext, bottomPadding) : AutoSizeUtils.pt2px(mContext, bottomPadding);
+                lp.leftMargin = AutoSizeUtils.dp2px(mContext, leftPadding);
+                lp.topMargin = mHeight > 0 ? (int) (mHeight - Math.max(textHeight, iconH)) / 2 - AutoSizeUtils.dp2px(mContext, bottomPadding) : AutoSizeUtils.dp2px(mContext, bottomPadding);
             }
 
             tipView.setLayoutParams(lp);

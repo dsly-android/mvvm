@@ -15,39 +15,39 @@
         <com.htxtdshopping.htxtd.frame.widget.CoverVideoPlayer
             android:id="@+id/cvp_video"
             android:layout_width="match_parent"
-            android:layout_height="405pt"/>
+            android:layout_height="202dp"/>
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30pt"
+            android:layout_margin="15dp"
             android:ellipsize="end"
             android:maxLines="2"
             tools:text="莫比不喜欢活着的人，布兰说请坐。布兰说请坐布兰说请坐布兰说请坐布兰说请坐布兰说请坐"
             android:textColor="@color/_363636"
-            android:textSize="36pt"/>
+            android:textSize="18sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50pt"
+            android:layout_marginTop="25dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="30pt"
-            android:paddingRight="30pt">
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
 
             <ImageView
                 android:id="@+id/iv_label1"
-                android:layout_width="81pt"
-                android:layout_height="81pt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/icon_people"/>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16pt"
-                android:layout_marginRight="30pt"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -58,7 +58,7 @@
                     android:singleLine="true"
                     tools:text="小包子"
                     android:textColor="@color/_363636"
-                    android:textSize="28pt"/>
+                    android:textSize="14sp"/>
 
                 <TextView
                     android:id="@+id/tv_time"
@@ -67,7 +67,7 @@
                     android:singleLine="true"
                     tools:text="原创·2019-01-18"
                     android:textColor="@color/_999999"
-                    android:textSize="24pt"/>
+                    android:textSize="12sp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

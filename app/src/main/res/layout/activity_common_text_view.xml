@@ -17,13 +17,13 @@
         <com.android.dsly.common.widget.CommonTextView
             android:id="@+id/ctv_test1"
             android:layout_width="match_parent"
-            android:layout_height="90pt"
+            android:layout_height="45dp"
             app:cCenterTextString="fjiwf"
             app:cCenterTextViewGravity="left_center"
-            app:cCenterViewPaddingLeft="300pt"
+            app:cCenterViewPaddingLeft="150dp"
             app:cLeftImageViewDrawableRes="@mipmap/ic_launcher_round"
-            app:cLeftImageViewHeight="60pt"
-            app:cLeftImageViewWidth="60pt"
+            app:cLeftImageViewHeight="30dp"
+            app:cLeftImageViewWidth="30dp"
             app:cLeftTextString="joaiffwfe"
             app:cRightIconResForDrawableRight="@drawable/ss_return"
             app:cRightTextString="fjoaief"/>

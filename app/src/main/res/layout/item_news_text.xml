@@ -13,10 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_press_effect"
-        android:paddingBottom="32pt"
-        android:paddingLeft="30pt"
-        android:paddingRight="30pt"
-        android:paddingTop="20pt">
+        android:paddingBottom="16dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/tv_title"
@@ -26,20 +26,20 @@
             android:maxLines="2"
             android:text="@{data.title}"
             android:textColor="@color/_212121"
-            android:textSize="34pt"
+            android:textSize="17sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="《红色通缉》第五集《筑坝》：红通逃犯欲潜逃国外 最终却在国内被捕"/>
 
         <TextView
             android:id="@+id/tv_label"
-            android:layout_width="68pt"
-            android:layout_height="32pt"
-            android:layout_marginTop="15pt"
+            android:layout_width="34dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/home_news_label"
             android:gravity="center"
             android:textColor="@color/_EA3D36"
-            android:textSize="24pt"
+            android:textSize="6sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             tools:text="置顶"/>
@@ -48,9 +48,9 @@
             android:id="@+id/tv_comment_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20pt"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/_a0a0a0"
-            android:textSize="24pt"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_label"
             app:layout_constraintLeft_toRightOf="@id/tv_label"
             app:layout_constraintTop_toTopOf="@id/tv_label"

@@ -107,8 +107,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
         itemView.initialize(drawable, checkedDrawable, text);
         itemView.setTextDefaultColor(Color.BLACK);
         itemView.setTextCheckedColor(getResources().getColor(R.color._81D8CF));
-        itemView.setTextSize(24);
-        itemView.setUnreadMsgTextSize(18);
+        itemView.setTextSize(12);
+        itemView.setUnreadMsgTextSize(9);
         return itemView;
     }
 

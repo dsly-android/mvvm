@@ -42,7 +42,7 @@ public class UnreadMsgView extends FrameLayout {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.UnreadMsgView);
         mNumber = typedArray.getInteger(R.styleable.UnreadMsgView_umv_number, 0);
         mBackgroundColor = typedArray.getColor(R.styleable.UnreadMsgView_umv_backgroundColor, ContextCompat.getColor(getContext(), android.R.color.holo_red_light));
-        mPaddingLeftAndRight = typedArray.getDimensionPixelSize(R.styleable.UnreadMsgView_umv_paddingLeftAndRight, AutoSizeUtils.pt2px(getContext(), 5));
+        mPaddingLeftAndRight = typedArray.getDimensionPixelSize(R.styleable.UnreadMsgView_umv_paddingLeftAndRight, AutoSizeUtils.dp2px(getContext(), 2));
         mStyle = typedArray.getInt(R.styleable.UnreadMsgView_umv_style, 2);
         typedArray.recycle();
 
@@ -52,7 +52,7 @@ public class UnreadMsgView extends FrameLayout {
         mVDot = new View(getContext());
 
         addView(mMsgNumView);
-        addView(mVDot, new LayoutParams(AutoSizeUtils.pt2px(getContext(), 10), AutoSizeUtils.pt2px(getContext(), 10)));
+        addView(mVDot, new LayoutParams(AutoSizeUtils.dp2px(getContext(), 5), AutoSizeUtils.dp2px(getContext(), 5)));
 
         if (mStyle == 0) {
             showDot();
@@ -89,7 +89,7 @@ public class UnreadMsgView extends FrameLayout {
             setVisibility(VISIBLE);
             mMsgNumView.setVisibility(GONE);
             mVDot.setVisibility(VISIBLE);
-            int height = AutoSizeUtils.pt2px(getContext(), 10);
+            int height = AutoSizeUtils.dp2px(getContext(), 5);
             GradientDrawable drawable = new GradientDrawable();
             drawable.setCornerRadius(height / 2);
             drawable.setColor(mBackgroundColor);

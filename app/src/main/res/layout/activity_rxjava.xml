@@ -19,7 +19,7 @@
             android:id="@+id/btn_test1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="12sp"
             onClickCommand="@{activity}"
             isThrottleFirst="true"
             android:text="接口的嵌套调用"/>
@@ -28,7 +28,7 @@
             android:id="@+id/btn_test2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="12sp"
             onClickCommand="@{activity}"
             android:text="merge组合多个被观察者按时间线并行执行"
             android:textAllCaps="false"/>
@@ -37,7 +37,7 @@
             android:id="@+id/btn_test3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="12sp"
             onClickCommand="@{activity}"
             android:text="concat组合多个被观察者按发送顺序串行执行"
             android:textAllCaps="false"/>
@@ -46,7 +46,7 @@
             android:id="@+id/btn_loading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="12sp"
             onClickCommand="@{activity}"
             android:text="显示/隐藏loading"
             android:textAllCaps="false"/>
@@ -55,14 +55,14 @@
             android:id="@+id/btn_test4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="12sp"
             onClickCommand="@{activity}"
             android:text="发射数据时，如果两次数据的发射间隔小于指定时间，就会丢弃前一次的数据,直到指定时间内都没有新数据发射时才进行发射"
             android:textAllCaps="false"/>
 
         <ImageView
             android:id="@+id/iv_test1"
-            android:layout_width="100pt"
-            android:layout_height="100pt"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
     </LinearLayout>
 </layout>

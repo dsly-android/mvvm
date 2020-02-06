@@ -56,7 +56,7 @@ public class RefreshAndLoadMoreActivity extends BaseFitsWindowActivity<ActivityR
         mTvRefreshNum = findViewById(R.id.tv_refresh_num);
 
         mBinding.rvContent.setLayoutManager(new LinearLayoutManager(this));
-        mBinding.rvContent.addItemDecoration(new LinearDividerItemDecoration(this, AutoSizeUtils.pt2px(this, 1)));
+        mBinding.rvContent.addItemDecoration(new LinearDividerItemDecoration(this, AutoSizeUtils.dp2px(this, 0.5f)));
         mAdapter = new RefreshAndLoadMoreAdapter();
         mAdapter.getLoadMoreModule().setLoadMoreView(new CustomizeLoadMoreView());
         mBinding.rvContent.setAdapter(mAdapter);

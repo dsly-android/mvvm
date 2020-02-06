@@ -2,7 +2,6 @@ package com.htxtdshopping.htxtd.frame.ui.four.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -38,11 +37,11 @@ public class SimpleHomeAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        int padding = AutoSizeUtils.pt2px(mContext,20);
+        int padding = AutoSizeUtils.dp2px(mContext,10);
 
         TextView tv = new TextView(mContext);
         tv.setText(mItems[position]);
-        tv.setTextSize(TypedValue.COMPLEX_UNIT_PT, 36);
+        tv.setTextSize(18);
         tv.setTextColor(Color.parseColor("#468ED0"));
         // tv.setGravity(Gravity.CENTER);
         tv.setPadding(padding, padding, padding, padding);

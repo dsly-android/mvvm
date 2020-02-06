@@ -2,8 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60pt"
-    android:layout_margin="10pt"
+    android:layout_height="30dp"
+    android:layout_margin="5dp"
     android:background="@android:color/holo_red_light"
     android:orientation="vertical">
 
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="10pt"
+        android:layout_margin="5dp"
         android:textColor="@android:color/white"
-        android:textSize="30pt"/>
+        android:textSize="15sp"/>
 </LinearLayout>

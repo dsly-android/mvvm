@@ -17,6 +17,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
+import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.tencent.smtt.sdk.QbSdk;
 
 import java.util.ArrayList;
@@ -29,7 +30,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.multidex.MultiDex;
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
-import me.jessyan.autosize.unit.Subunits;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import okhttp3.OkHttpClient;
 
@@ -70,6 +70,8 @@ public class GlobalConfiguration implements ConfigModule {
                 initNotificationChannels(app);
                 //ARouter
                 initARouter(app);
+                //LiveEventBus
+                initEventBus(app);
             }
 
             @Override
@@ -87,6 +89,15 @@ public class GlobalConfiguration implements ConfigModule {
     @Override
     public void injectFragmentLifecycle(Application application, List<FragmentManager.FragmentLifecycleCallbacks> lifecycles) {
 
+    }
+
+    private void initEventBus(Application application){
+        LiveEventBus.config()
+                //支持跨进程、跨APP通信
+//                .supportBroadcast(application)
+                //true：整个生命周期（从onCreate到onDestroy）都可以实时收到消息
+                //false：激活状态（Started）可以实时收到消息，非激活状态（Stoped）无法实时收到消息，需等到Activity重新变成激活状态，方可收到消息
+                .lifecycleObserverAlwaysActive(false);
     }
 
     private void initARouter(Application app){
@@ -148,8 +159,7 @@ public class GlobalConfiguration implements ConfigModule {
         AutoSizeConfig.getInstance().setLog(BuildConfig.DEBUG);
         AutoSizeConfig.getInstance().setExcludeFontScale(true);
         AutoSizeConfig.getInstance().getUnitsManager()
-                .setSupportSubunits(Subunits.PT)
-                .setSupportDP(false)
+                .setSupportDP(true)
                 .setSupportSP(true);
     }
 

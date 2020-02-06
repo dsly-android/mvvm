@@ -101,9 +101,9 @@ public class WaveSideBarView extends View {
         mTextColor = Color.parseColor("#969696");
         mWaveColor = Color.parseColor("#be2580D5");
         mTextColorChoose = context.getResources().getColor(android.R.color.white);
-        mTextSize = AutoSizeUtils.pt2px(context, 20);
-        mLargeTextSize = AutoSizeUtils.pt2px(context, 64);
-        mPadding = AutoSizeUtils.pt2px(context, 40);
+        mTextSize = AutoSizeUtils.sp2px(context, 10);
+        mLargeTextSize = AutoSizeUtils.sp2px(context, 32);
+        mPadding = AutoSizeUtils.dp2px(context, 20);
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.WaveSideBarView);
             mTextColor = a.getColor(R.styleable.WaveSideBarView_sidebarTextColor, mTextColor);
@@ -111,8 +111,8 @@ public class WaveSideBarView extends View {
             mTextSize = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarTextSize, mTextSize);
             mLargeTextSize = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarLargeTextSize, mLargeTextSize);
             mWaveColor = a.getColor(R.styleable.WaveSideBarView_sidebarBackgroundColor, mWaveColor);
-            mRadius = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarRadius, AutoSizeUtils.pt2px(context, 40));
-            mBallRadius = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarBallRadius, AutoSizeUtils.pt2px(context, 48));
+            mRadius = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarRadius, AutoSizeUtils.dp2px(context, 20));
+            mBallRadius = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarBallRadius, AutoSizeUtils.dp2px(context, 24));
             a.recycle();
         }
 

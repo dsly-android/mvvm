@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import com.trello.rxlifecycle3.components.support.RxFragment;
 
-import org.simple.eventbus.EventBus;
-
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -28,12 +26,6 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
     protected VB mBinding;
     protected VM mViewModel;
     private int mViewModelId;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EventBus.getDefault().registerSticky(this);
-    }
 
     @Nullable
     @Override
@@ -149,11 +141,5 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
         if (mBinding != null){
             mBinding.unbind();
         }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 }

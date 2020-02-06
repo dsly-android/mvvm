@@ -46,7 +46,7 @@
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:textColor="@color/_424242"
-                android:textSize="30sp"/>
+                android:textSize="15sp"/>
         </androidx.appcompat.widget.Toolbar>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

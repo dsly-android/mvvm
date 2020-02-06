@@ -11,8 +11,6 @@ import com.android.dsly.common.dialog.LoadingDialog;
 import com.blankj.utilcode.util.BarUtils;
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
-import org.simple.eventbus.EventBus;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -55,7 +53,6 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
             getWindow().setAttributes(lp);
         }
 
-        EventBus.getDefault().registerSticky(this);
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding();
         //私有的ViewModel与View的契约事件回调逻辑
@@ -235,7 +232,6 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
         if (mBinding != null) {
             mBinding.unbind();
         }

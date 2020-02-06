@@ -5,8 +5,6 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.widget.PopupWindow;
 
-import org.simple.eventbus.EventBus;
-
 import java.lang.reflect.Field;
 
 import androidx.databinding.DataBindingUtil;
@@ -27,8 +25,6 @@ public abstract class BasePopupWindow<VB extends ViewDataBinding> extends PopupW
 
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding();
-
-        EventBus.getDefault().registerSticky(this);
 
         //解决边框距离屏幕四周有间距的问题
         setBackgroundDrawable(null);
@@ -74,6 +70,5 @@ public abstract class BasePopupWindow<VB extends ViewDataBinding> extends PopupW
         if (mBinding != null){
             mBinding.unbind();
         }
-        EventBus.getDefault().unregister(this);
     }
 }

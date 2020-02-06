@@ -26,24 +26,24 @@ public class UnreadMsgUtils {
             msgView.setStrokeWidth(0);
             msgView.setText("");
 
-            lp.width = AutoSizeUtils.pt2px(msgView.getContext(), 10);
-            lp.height = AutoSizeUtils.pt2px(msgView.getContext(), 10);
+            lp.width = AutoSizeUtils.dp2px(msgView.getContext(), 5);
+            lp.height = AutoSizeUtils.dp2px(msgView.getContext(), 5);
             msgView.setLayoutParams(lp);
         } else {
-            lp.height = AutoSizeUtils.pt2px(msgView.getContext(), 28);
+            lp.height = AutoSizeUtils.dp2px(msgView.getContext(), 14);
             if (num > 0 && num < 10) {
                 //圆
-                lp.width = AutoSizeUtils.pt2px(msgView.getContext(), 28);
+                lp.width = AutoSizeUtils.dp2px(msgView.getContext(), 14);
                 msgView.setText(num + "");
             } else if (num > 9 && num < 100) {
                 //圆角矩形,圆角是高度的一半,设置默认padding
                 lp.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
-                msgView.setPadding(AutoSizeUtils.pt2px(msgView.getContext(), 10), 0, AutoSizeUtils.pt2px(msgView.getContext(), 10), 0);
+                msgView.setPadding(AutoSizeUtils.dp2px(msgView.getContext(), 5), 0, AutoSizeUtils.dp2px(msgView.getContext(), 5), 0);
                 msgView.setText(num + "");
             } else {
                 //数字超过两位,显示99+
                 lp.width = RelativeLayout.LayoutParams.WRAP_CONTENT;
-                msgView.setPadding(AutoSizeUtils.pt2px(msgView.getContext(), 10), 0, AutoSizeUtils.pt2px(msgView.getContext(), 10), 0);
+                msgView.setPadding(AutoSizeUtils.dp2px(msgView.getContext(), 5), 0, AutoSizeUtils.dp2px(msgView.getContext(), 5), 0);
                 msgView.setText("99+");
             }
             msgView.setLayoutParams(lp);

@@ -81,12 +81,12 @@ public class MsgView extends AppCompatTextView {
     }
 
     public void setCornerRadius(int cornerRadius) {
-        this.cornerRadius = AutoSizeUtils.pt2px(getContext(), cornerRadius);
+        this.cornerRadius = AutoSizeUtils.dp2px(getContext(), cornerRadius);
         setBgSelector();
     }
 
     public void setStrokeWidth(int strokeWidth) {
-        this.strokeWidth = AutoSizeUtils.pt2px(getContext(), strokeWidth);
+        this.strokeWidth = AutoSizeUtils.dp2px(getContext(), strokeWidth);
         setBgSelector();
     }
 

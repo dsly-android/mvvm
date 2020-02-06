@@ -171,7 +171,6 @@ class EasyFloat {
      * 浮窗的属性构建类，支持链式调用
      */
     class Builder(private val activity: Activity) : OnPermissionResult {
-
         // 创建浮窗数据类，方便管理配置
         private val config = FloatConfig()
 

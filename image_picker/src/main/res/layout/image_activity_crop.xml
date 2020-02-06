@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:image_borderColor="@android:color/white"
-            app:image_borderWidth="2pt"
-            app:image_horizontalPadding="100pt"/>
+            app:image_borderWidth="1dp"
+            app:image_horizontalPadding="50dp"/>
     </LinearLayout>
 </layout>
