@@ -1,4 +1,3 @@
-Recompacting log...
 [1/13] Building C object src/main/cpp/giflib/CMakeFiles/giflib.dir/dgif_lib.c.o
 [2/13] Building C object src/main/cpp/giflib/CMakeFiles/giflib.dir/egif_lib.c.o
 [3/13] Building C object src/main/cpp/giflib/CMakeFiles/giflib.dir/gif_err.c.o

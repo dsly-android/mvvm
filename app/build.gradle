@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+//kotlin
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 //bugly
 apply plugin: 'bugly'
 bugly {
@@ -88,6 +91,12 @@ repositories {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //common
     implementation project(path: ':common')

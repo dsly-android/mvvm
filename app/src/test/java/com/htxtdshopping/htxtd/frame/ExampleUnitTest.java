@@ -22,5 +22,9 @@ public class ExampleUnitTest {
                         System.out.println(Thread.currentThread().getName()+"");
                     }
                 });
+
+        Integer c = 100;
+        Integer d = 100;
+        System.out.println(c == d);
     }
 }
