@@ -2,19 +2,21 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/accessibilityservice/accessibilityservice.iml" filepath="$PROJECT_DIR$/accessibilityservice/accessibilityservice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/autosize/autosize.iml" filepath="$PROJECT_DIR$/autosize/autosize.iml" />
-      <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" />
-      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/common_service/common_service.iml" filepath="$PROJECT_DIR$/common_service/common_service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/easyfloat/easyfloat.iml" filepath="$PROJECT_DIR$/easyfloat/easyfloat.iml" />
-      <module fileurl="file://$PROJECT_DIR$/giflib/giflib.iml" filepath="$PROJECT_DIR$/giflib/giflib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/image_picker/image_picker.iml" filepath="$PROJECT_DIR$/image_picker/image_picker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/materialdesign/materialdesign.iml" filepath="$PROJECT_DIR$/materialdesign/materialdesign.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mvvm.iml" filepath="$PROJECT_DIR$/mvvm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/workmanager/workmanager.iml" filepath="$PROJECT_DIR$/workmanager/workmanager.iml" />
-      <module fileurl="file://$PROJECT_DIR$/zxing/zxing.iml" filepath="$PROJECT_DIR$/zxing/zxing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/accessibilityservice/accessibilityservice.iml" filepath="$PROJECT_DIR$/accessibilityservice/accessibilityservice.iml" group="mvvm/accessibilityservice" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="mvvm/app" />
+      <module fileurl="file://$PROJECT_DIR$/autosize/autosize.iml" filepath="$PROJECT_DIR$/autosize/autosize.iml" group="mvvm/autosize" />
+      <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" group="mvvm/banner" />
+      <module fileurl="file://$PROJECT_DIR$/biometrics/biometrics.iml" filepath="$PROJECT_DIR$/biometrics/biometrics.iml" group="mvvm/biometrics" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" group="mvvm/common" />
+      <module fileurl="file://$PROJECT_DIR$/common_service/common_service.iml" filepath="$PROJECT_DIR$/common_service/common_service.iml" group="mvvm/common_service" />
+      <module fileurl="file://$PROJECT_DIR$/easyfloat/easyfloat.iml" filepath="$PROJECT_DIR$/easyfloat/easyfloat.iml" group="mvvm/easyfloat" />
+      <module fileurl="file://$PROJECT_DIR$/facesdk/facesdk.iml" filepath="$PROJECT_DIR$/facesdk/facesdk.iml" group="mvvm/facesdk" />
+      <module fileurl="file://$PROJECT_DIR$/image_picker/image_picker.iml" filepath="$PROJECT_DIR$/image_picker/image_picker.iml" group="mvvm/image_picker" />
+      <module fileurl="file://$PROJECT_DIR$/materialdesign/materialdesign.iml" filepath="$PROJECT_DIR$/materialdesign/materialdesign.iml" group="mvvm/materialdesign" />
+      <module fileurl="file://$PROJECT_DIR$/mvvm.iml" filepath="$PROJECT_DIR$/mvvm.iml" group="mvvm" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" group="mvvm/web" />
+      <module fileurl="file://$PROJECT_DIR$/workmanager/workmanager.iml" filepath="$PROJECT_DIR$/workmanager/workmanager.iml" group="mvvm/workmanager" />
+      <module fileurl="file://$PROJECT_DIR$/zxing/zxing.iml" filepath="$PROJECT_DIR$/zxing/zxing.iml" group="mvvm/zxing" />
     </modules>
   </component>
 </project>

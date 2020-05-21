@@ -27,6 +27,7 @@ import com.google.zxing.Result;
 
 import java.io.IOException;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 /**
@@ -61,6 +62,9 @@ public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBind
     public void initView(Bundle savedInstanceState) {
         BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.transparent));
 
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) mBinding.ivLightSwitch.getLayoutParams();
+        params.bottomMargin = (ScreenUtils.getAppScreenHeight() - mBinding.vvScanArea.getFrameHeight()) / 2 + 10;
+
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
         beepManager = new BeepManager(this);
@@ -81,8 +85,10 @@ public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBind
         if (view.getId() == R.id.iv_light_switch) {
             if (cameraManager.isFlashlightOn()) {
                 cameraManager.setTorch(false);
+                mBinding.ivLightSwitch.setImageResource(R.drawable.zxing_torch_off);
             } else {
                 cameraManager.setTorch(true);
+                mBinding.ivLightSwitch.setImageResource(R.drawable.zxing_torch_on);
             }
         }
     }
@@ -250,14 +256,13 @@ public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBind
         }
 
         /** 获取布局中扫描框的位置信息 */
-        int[] location = new int[2];
-        mBinding.vScanArea.getLocationInWindow(location);
+        int screenWidth = ScreenUtils.getScreenWidth();
+        int screenHeight = ScreenUtils.getAppScreenHeight();
+        int cropLeft = (screenWidth - mBinding.vvScanArea.getFrameWidth()) / 2;
+        int cropTop = (screenHeight - mBinding.vvScanArea.getFrameHeight()) / 2;
 
-        int cropLeft = location[0];
-        int cropTop = location[1];
-
-        int cropWidth = mBinding.vScanArea.getWidth();
-        int cropHeight = mBinding.vScanArea.getHeight();
+        int cropWidth = mBinding.vvScanArea.getFrameWidth();
+        int cropHeight = mBinding.vvScanArea.getFrameHeight();
 
         /** 获取布局容器的宽高 */
         int containerWidth = mBinding.clParent.getWidth();

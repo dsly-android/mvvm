@@ -37,6 +37,10 @@ public class VoicePlayManager {
      * 播放监听
      */
     private VoicePlayCallBack mCallBack;
+    /**
+     * 是否循环播放
+     */
+    private boolean mIsLooping;
 
     private final Handler mHandler = new Handler() {
         @Override
@@ -165,6 +169,7 @@ public class VoicePlayManager {
             mMediaPlayer = null;
 
             mMediaPlayer = new MediaPlayer();
+            mMediaPlayer.setLooping(mIsLooping);
             mMediaPlayer.setOnCompletionListener(mPlayCompetedListener);
 
             if (prepareMedia(mMediaPlayer, mPlayFilePath)) {
@@ -327,6 +332,11 @@ public class VoicePlayManager {
         } catch (Exception e) {
         }
         return result;
+    }
+
+    public VoicePlayManager isLooping(boolean isLooping) {
+        mIsLooping = isLooping;
+        return this;
     }
 
     /**

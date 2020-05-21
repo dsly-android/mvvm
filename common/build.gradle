@@ -95,9 +95,6 @@ dependencies {
     //BaseRecyclerViewAdapterHelper
     api rootProject.ext.dependencies["adapter"]
 
-    //x5
-    api files('libs/tbs_sdk_thirdapp_v3.6.0.1371_43624_sharewithdownload_withoutGame_obfs_20181106_121046.jar')
-
     //SmartRefreshLayout
     api rootProject.ext.dependencies["refresh"]
     //没有使用特殊Header，可以不加这行

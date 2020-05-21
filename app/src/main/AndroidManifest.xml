@@ -50,9 +50,6 @@
         android:theme="@style/AppTheme"
         tools:replace="icon,theme,label,allowBackup">
         <activity
-            android:name=".ui.center.activity.GiflibActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ui.center.activity.CustomViewActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -159,11 +156,6 @@
             android:name=".ui.four.activity.CommonViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.second.activity.WebActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
             android:name=".ui.third.activity.ChangeAvatarActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -226,5 +218,4 @@
             android:name="UMENG_APPKEY"
             android:value="5c3ca500f1f556c482000950" />
     </application>
-
 </manifest>

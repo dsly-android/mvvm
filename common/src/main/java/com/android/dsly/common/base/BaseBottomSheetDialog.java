@@ -20,10 +20,7 @@ public abstract class BaseBottomSheetDialog<VB extends ViewDataBinding> extends 
     protected VB mBinding;
 
     public BaseBottomSheetDialog(@NonNull Context context) {
-        super(context);
-        mContext = context;
-        //私有的初始化Databinding和ViewModel方法
-        initViewDataBinding();
+        this(context,0);
     }
 
     public BaseBottomSheetDialog(@NonNull Context context, int theme) {

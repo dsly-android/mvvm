@@ -41,6 +41,7 @@ public class ImagePickerAdapter extends BaseMultiItemQuickAdapter<MultiItemEntit
             binding.setData(imageItem);
 
             GlideUtils.loadImage(getContext(), imageItem.path, helper.getView(R.id.iv_img));
+
             if (mSelectMode == ImagePickerActivity.MODE_AVATAR) {
                 helper.setVisible(R.id.iv_check, false);
                 helper.setVisible(R.id.v_cover, false);

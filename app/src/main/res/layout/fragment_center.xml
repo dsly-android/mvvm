@@ -50,14 +50,6 @@
                     android:text="自定义控件"
                     android:textAllCaps="false"
                     android:textSize="12sp"/>
-
-                <Button
-                    android:id="@+id/btn_giflib"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="通过giflib加载gif图片"
-                    android:textAllCaps="false"
-                    android:textSize="12sp"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

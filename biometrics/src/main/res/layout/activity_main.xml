@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_purchase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/colorAccent"
+                android:text="指纹验证"
+                android:textColor="?android:attr/textColorPrimaryInverse" />
+
+            <Button
+                android:id="@+id/btn_face_detect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/colorAccent"
+                android:text="人脸检测"
+                android:textColor="?android:attr/textColorPrimaryInverse"/>
+
+            <Button
+                android:id="@+id/btn_face_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/colorAccent"
+                android:text="人脸采集"
+                android:textColor="?android:attr/textColorPrimaryInverse" />
+
+            <Button
+                android:id="@+id/btn_face_auth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/colorAccent"
+                android:text="人脸认证"
+                android:textColor="?android:attr/textColorPrimaryInverse" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

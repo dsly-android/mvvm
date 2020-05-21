@@ -48,6 +48,10 @@ public class App extends BaseApp {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (!ProcessUtils.getCurrentProcessName().equals(getPackageName())){
+            return;
+        }
+
         AppContext.init(this);
         //bugly
         initBugly();

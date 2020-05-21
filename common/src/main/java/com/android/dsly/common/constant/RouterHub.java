@@ -26,6 +26,7 @@ public interface RouterHub {
     String IMAGE = "/image";
     String DESIGN = "/design";
     String WORK = "/work";
+    String WEB = "/web";
 
     /**
      * zxing分组
@@ -45,4 +46,9 @@ public interface RouterHub {
      * work分组
      */
     String WORK_WORK_MANAGER_ACTIVITY = WORK+"/WorkManagerActivity";
+
+    /**
+     * web分组
+     */
+    String WEB_WEB_ACTIVITY = WEB+"/WebActivity";
 }

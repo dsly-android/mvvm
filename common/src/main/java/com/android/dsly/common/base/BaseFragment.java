@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.trello.rxlifecycle3.components.support.RxFragment;
 
 import java.lang.reflect.ParameterizedType;
@@ -41,6 +42,9 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
         initViewDataBinding();
         //私有的ViewModel与View的契约事件回调逻辑
         registerLiveDataCallBack();
+
+        //注入arouter
+        ARouter.getInstance().inject(this);
 
         initView(savedInstanceState);
         initEvent();

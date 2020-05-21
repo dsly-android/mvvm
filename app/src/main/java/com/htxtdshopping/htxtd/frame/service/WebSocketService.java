@@ -98,7 +98,7 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
      * 初始化websocket连接
      */
     private void initSocketClient() {
-        URI uri = URI.create("ws://192.168.0.168:8088/ws");
+        URI uri = URI.create("ws://101.37.116.134:5555/ws");
         mClient = new WebSocketClient(uri) {
 
             @Override
@@ -115,7 +115,7 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
 
             @Override
             public void onClose(int code, String reason, boolean remote) {
-                LogUtils.e("onClose");
+                LogUtils.e("onClose:"+reason+"   "+remote);
             }
 
             @Override

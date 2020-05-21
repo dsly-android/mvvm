@@ -53,7 +53,7 @@ public final class ToastUtils {
     private static int sBgColor = COLOR_DEFAULT;
     private static int sBgResource = -1;
     private static int sMsgColor = COLOR_DEFAULT;
-    private static int sMsgTextSize = 24;
+    private static int sMsgTextSize = 12;
 
     private ToastUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");

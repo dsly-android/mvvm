@@ -10,6 +10,13 @@ import java.io.Serializable;
 public class BaseResponse<T> implements Serializable {
     private static final long serialVersionUID = 8812426608926628614L;
 
+    //成功
+    public static final int SUCCESS = 200;
+    //失败，不用提示
+    public static final int ERROR_NO_ALERT = 301;
+    //失败，要提示
+    public static final int ERROR_ALERT = 302;
+
     private int code;
     private String msg;
     private T data;

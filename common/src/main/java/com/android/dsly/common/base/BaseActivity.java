@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.R;
 import com.android.dsly.common.dialog.LoadingDialog;
 import com.blankj.utilcode.util.BarUtils;
@@ -57,6 +58,9 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         initViewDataBinding();
         //私有的ViewModel与View的契约事件回调逻辑
         registerLiveDataCallBack();
+
+        //注入arouter
+        ARouter.getInstance().inject(this);
 
         BarUtils.setStatusBarColor(this, getResources().getColor(R.color._81D8CF));
         if (isFitWindow()) {

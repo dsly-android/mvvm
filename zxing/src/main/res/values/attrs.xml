@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="zxing_ViewfinderView">
+        <attr name="zxing_maskColor" format="color" />
+        <attr name="zxing_frameColor" format="color" />
+        <attr name="zxing_cornerColor" format="color"/>
+        <attr name="zxing_laserColor" format="color"/>
+        <attr name="zxing_resultPointColor" format="color"/>
+        <attr name="zxing_labelText" format="string"/>
+        <attr name="zxing_labelTextColor" format="color"/>
+        <attr name="zxing_labelTextSize" format="dimension"/>
+        <attr name="zxing_labelTextPadding" format="dimension"/>
+        <attr name="zxing_labelTextLocation" format="enum">
+            <enum name="top" value="0"/>
+            <enum name="bottom" value="1"/>
+        </attr>
+        <attr name="zxing_showResultPoint" format="boolean"/>
+        <attr name="zxing_frameWidth" format="dimension"/>
+        <attr name="zxing_frameHeight" format="dimension"/>
+        <attr name="zxing_gridColumn" format="integer"/>
+        <attr name="zxing_gridHeight" format="dimension"/>
+        <attr name="zxing_laserStyle" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="line" value="1"/>
+            <enum name="grid" value="2"/>
+        </attr>
+        <attr name="zxing_cornerRectWidth" format="dimension"/>
+        <attr name="zxing_cornerRectHeight" format="dimension"/>
+        <attr name="zxing_scannerLineMoveDistance" format="dimension"/>
+        <attr name="zxing_scannerLineHeight" format="dimension"/>
+        <attr name="zxing_frameLineWidth" format="dimension"/>
+        <attr name="zxing_scannerAnimationDelay" format="integer"/>
+        <attr name="zxing_frameRatio" format="float"/>
+    </declare-styleable>
+</resources>
