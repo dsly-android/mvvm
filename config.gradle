@@ -22,7 +22,7 @@ ext {
             //design
             "design"                   : "com.google.android.material:material:1.1.0-alpha02",
             //rxhttp
-            "rxhttp"                   : "com.android.dsly:rxhttp:1.0.4",
+            "rxhttp"                   : "com.android.dsly:rxhttp:1.0.5",
             //fastjson
             "fastjson"                 : "com.alibaba:fastjson:1.1.71.android",
             //AndroidEventBus

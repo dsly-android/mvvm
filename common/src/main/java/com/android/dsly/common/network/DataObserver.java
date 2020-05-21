@@ -9,6 +9,7 @@ import com.android.dsly.rxhttp.model.RxHttpResponse;
 import com.android.dsly.rxhttp.observer.BaseObserver;
 
 import androidx.lifecycle.MutableLiveData;
+import retrofit2.HttpException;
 import retrofit2.Response;
 
 public class DataObserver<T> extends BaseObserver<T> {
@@ -28,16 +29,25 @@ public class DataObserver<T> extends BaseObserver<T> {
      * @param t
      */
     protected void onSuccess(T t) {
-        if (mLiveData != null) {
-            mLiveData.postValue(t);
-        }
     }
 
     @Override
-    protected void onError(String errorMsg) {
-        super.onError(errorMsg);
+    public void onError(Throwable e) {
+        super.onError(e);
+
+        BaseResponse response = new BaseResponse();
+
+        String errorMsg = handleException(e);
+        if (e instanceof HttpException) {
+            response.setMsg(errorMsg);
+            response.setCode(((HttpException) e).code());
+        } else {
+            response.setCode(0);
+            response.setMsg(errorMsg);
+        }
+
         if (mLiveData != null) {
-            mLiveData.postValue(null);
+            mLiveData.postValue(response);
         }
     }
 
@@ -56,10 +66,14 @@ public class DataObserver<T> extends BaseObserver<T> {
             if (((BaseResponse) baseResponse).getCode() == BaseResponse.SUCCESS) {
                 onSuccess(t);
             } else {
-                onError(new IllegalStateException(((BaseResponse) baseResponse).getMsg()));
+                onError(((BaseResponse) baseResponse).getCode(), ((BaseResponse) baseResponse).getMsg());
             }
         } else {
             onSuccess(t);
+        }
+
+        if (mLiveData != null) {
+            mLiveData.postValue(t);
         }
     }
 }
