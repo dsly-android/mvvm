@@ -84,8 +84,8 @@ public class RefreshAndLoadMoreViewModel extends BaseViewModel {
                     }
 
                     @Override
-                    protected void onError(String errorMsg) {
-                        super.onError(errorMsg);
+                    protected void onError(int code, String errorMsg) {
+                        super.onError(code, errorMsg);
                         liveData.setValue(null);
                         showDialog(false);
                     }

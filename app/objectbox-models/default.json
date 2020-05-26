@@ -10,22 +10,31 @@
       "properties": [
         {
           "id": "1:6455154442475845180",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         },
         {
           "id": "2:7735448922001942240",
+          "name": "name",
           "indexId": "1:1273702595229490685",
-          "name": "name"
+          "type": 9,
+          "flags": 2048
         },
         {
           "id": "3:6132587953806994529",
+          "name": "description",
           "indexId": "2:8133529727553629042",
-          "name": "description"
+          "type": 9,
+          "flags": 2080
         },
         {
           "id": "4:5680186249087992043",
+          "name": "personId",
           "indexId": "3:2154851499448561818",
-          "name": "personId"
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Person"
         }
       ],
       "relations": []
@@ -37,16 +46,22 @@
       "properties": [
         {
           "id": "1:1895071826410437544",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         },
         {
           "id": "2:2298783519794814782",
-          "name": "name"
+          "name": "name",
+          "type": 9
         },
         {
           "id": "3:6749969371509763387",
+          "name": "userId",
           "indexId": "4:6093340530874606569",
-          "name": "userId"
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "User"
         }
       ],
       "relations": []
@@ -58,12 +73,17 @@
       "properties": [
         {
           "id": "1:278127885788563708",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         },
         {
           "id": "2:5912658490676344484",
+          "name": "customerId",
           "indexId": "5:23157569282386783",
-          "name": "customerId"
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Customer"
         }
       ],
       "relations": []
@@ -75,7 +95,9 @@
       "properties": [
         {
           "id": "1:3583416323248056856",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         }
       ],
       "relations": []
@@ -87,17 +109,21 @@
       "properties": [
         {
           "id": "1:5074765564020319614",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         },
         {
           "id": "2:5063837986387626593",
-          "name": "name"
+          "name": "name",
+          "type": 9
         }
       ],
       "relations": [
         {
           "id": "1:8956576967626234200",
-          "name": "teachers"
+          "name": "teachers",
+          "targetId": "6:5523286145606361441"
         }
       ]
     },
@@ -108,11 +134,14 @@
       "properties": [
         {
           "id": "1:817587735879279891",
-          "name": "id"
+          "name": "id",
+          "type": 6,
+          "flags": 1
         },
         {
           "id": "2:1725653598956379248",
-          "name": "name"
+          "name": "name",
+          "type": 9
         }
       ],
       "relations": []
@@ -122,8 +151,8 @@
   "lastIndexId": "5:23157569282386783",
   "lastRelationId": "1:8956576967626234200",
   "lastSequenceId": "0:0",
-  "modelVersion": 4,
-  "modelVersionParserMinimum": 4,
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [],

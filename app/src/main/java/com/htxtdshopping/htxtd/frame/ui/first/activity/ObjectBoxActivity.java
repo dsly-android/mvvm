@@ -240,9 +240,11 @@ public class ObjectBoxActivity extends BaseFitsWindowActivity<ActivityObjectBoxB
         logTitle("Add two students and two teachers; first student has two teachers, second student has one teacher");
         Teacher obiWan = new Teacher("Obi-Wan Kenobi");
         Teacher yoda = new Teacher("Yoda");
+
         Student luke = new Student("Luke Skywalker");
         luke.teachers.add(obiWan);
         luke.teachers.add(yoda);
+
         Student anakin = new Student("Anakin Skywalker");
         anakin.teachers.add(obiWan);
         studentBox.put(luke, anakin);
@@ -270,8 +272,8 @@ public class ObjectBoxActivity extends BaseFitsWindowActivity<ActivityObjectBoxB
 
     private void logTeachers(Box<Student> studentBox, Box<Teacher> teacherBox) {
         log("There are " + teacherBox.count() + " teachers");
-        List<Teacher> students = teacherBox.getAll();
-        for (Teacher teacher : students) {
+        List<Teacher> teachers = teacherBox.getAll();
+        for (Teacher teacher : teachers) {
             ToMany<Student> teachersToMany = teacher.students;
             for (Student student : teachersToMany) {
                 log("Student " + student.id + " is taught by teacher " + teacher.id);

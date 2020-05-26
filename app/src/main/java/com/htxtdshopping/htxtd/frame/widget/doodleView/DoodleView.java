@@ -280,25 +280,3 @@ public class DoodleView extends SurfaceView implements SurfaceHolder.Callback {
         Point, Path, Line, Rect, Circle, FillEcRect, FilledCircle
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
