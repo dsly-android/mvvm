@@ -39,12 +39,7 @@ public class ServiceActivity extends BaseFitsWindowActivity<ActivityServiceBindi
 
     @Override
     public void initEvent() {
-        mBinding.btnStartService.setOnClickListener(this);
-        mBinding.btnStopService.setOnClickListener(this);
-        mBinding.btnBindService.setOnClickListener(this);
-        mBinding.btnUnbindService.setOnClickListener(this);
-        mBinding.btnStartIntentService.setOnClickListener(this);
-        mBinding.btnStopIntentService.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

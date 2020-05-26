@@ -52,16 +52,7 @@ public class FirstFragment extends BaseLazyFragment<FragmentFirstBinding, BaseVi
 
     @Override
     public void initEvent() {
-        mBinding.btnRefreshAndLoadMore.setOnClickListener(this);
-        mBinding.btnPermission.setOnClickListener(this);
-        mBinding.btnScanQrCode.setOnClickListener(this);
-        mBinding.btnGenerateQrCode.setOnClickListener(this);
-        mBinding.btnBanner.setOnClickListener(this);
-        mBinding.btnRxjava.setOnClickListener(this);
-        mBinding.btnObjectbox.setOnClickListener(this);
-        mBinding.btnAutosize.setOnClickListener(this);
-        mBinding.btnWindow.setOnClickListener(this);
-        mBinding.btnWebsocket.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

@@ -29,10 +29,7 @@ public class FloatWindowActivity extends BaseFitsWindowActivity<ActivityFloatWin
 
     @Override
     public void initEvent() {
-        mBinding.btnStartFloat.setOnClickListener(this);
-        mBinding.btnShowFloat.setOnClickListener(this);
-        mBinding.btnHideFloat.setOnClickListener(this);
-        mBinding.btnCancelFloat.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

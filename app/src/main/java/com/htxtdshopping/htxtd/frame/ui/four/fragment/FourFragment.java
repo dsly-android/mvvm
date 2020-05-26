@@ -36,15 +36,7 @@ public class FourFragment extends BaseLazyFragment<FragmentFourBinding, BaseView
 
     @Override
     public void initEvent() {
-        mBinding.btnTab.setOnClickListener(this);
-        mBinding.btnCommonTv.setOnClickListener(this);
-        mBinding.btnCommon.setOnClickListener(this);
-        mBinding.btnTimeOrDatePicker.setOnClickListener(this);
-        mBinding.btnContactNavigation.setOnClickListener(this);
-        mBinding.btnChooseChannel.setOnClickListener(this);
-        mBinding.btnRadarview.setOnClickListener(this);
-        mBinding.btnDialog.setOnClickListener(this);
-        mBinding.btnSketchpad.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

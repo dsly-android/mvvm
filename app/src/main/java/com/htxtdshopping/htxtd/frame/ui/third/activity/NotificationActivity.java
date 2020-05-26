@@ -23,9 +23,7 @@ public class NotificationActivity extends BaseFitsWindowActivity<ActivityNotific
 
     @Override
     public void initEvent() {
-        mBinding.btnHigh.setOnClickListener(this);
-        mBinding.btnLow.setOnClickListener(this);
-        mBinding.btnCustom.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

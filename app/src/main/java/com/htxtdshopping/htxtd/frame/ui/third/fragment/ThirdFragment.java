@@ -47,19 +47,7 @@ public class ThirdFragment extends BaseLazyFragment<FragmentThirdBinding, BaseVi
 
     @Override
     public void initEvent() {
-        mBinding.btnGrid.setOnClickListener(this);
-        mBinding.btnList.setOnClickListener(this);
-        mBinding.btnRecord.setOnClickListener(this);
-        mBinding.btnPopup.setOnClickListener(this);
-        mBinding.btnImagePicker.setOnClickListener(this);
-        mBinding.btnNotification.setOnClickListener(this);
-        mBinding.btnService.setOnClickListener(this);
-        mBinding.btnLogin.setOnClickListener(this);
-        mBinding.btnDesign.setOnClickListener(this);
-        mBinding.btnVersionUpdate.setOnClickListener(this);
-        mBinding.btnLifecycle.setOnClickListener(this);
-        mBinding.btnHandler.setOnClickListener(this);
-        mBinding.btnWorkmanager.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

@@ -117,9 +117,7 @@ public class UpgradeActivity extends BaseActivity<ActivityUpgradeBinding, BaseVi
             }
         };
 
-        mBinding.btnCancel.setOnClickListener(this);
-        mBinding.btnStart.setOnClickListener(this);
-        mBinding.btnInstall.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

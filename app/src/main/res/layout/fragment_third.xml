@@ -3,6 +3,9 @@
 
     <data>
 
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout
@@ -14,7 +17,7 @@
             android:id="@+id/v_bar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/_81D8CF"/>
+            android:background="@color/_81D8CF" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -29,104 +32,117 @@
                     android:id="@+id/btn_grid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="grid"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="list"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_record"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="录音"/>
+                    android:onClick="@{onClickListener}"
+                    android:text="录音"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_popup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="PopupWindow"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_image_picker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="修改头像"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_notification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="通知"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_service"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="服务"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="登录页面"
-                    android:textSize="12sp"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_design"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
+                    android:text="Material Design"
                     android:textAllCaps="false"
-                    android:textSize="12sp"
-                    android:text="Material Design"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_version_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
+                    android:text="版本更新"
                     android:textAllCaps="false"
-                    android:textSize="12sp"
-                    android:text="版本更新"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_lifecycle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
+                    android:text="lifecycle"
                     android:textAllCaps="false"
-                    android:textSize="12sp"
-                    android:text="lifecycle"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_handler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
+                    android:text="handler"
                     android:textAllCaps="false"
-                    android:textSize="12sp"
-                    android:text="handler"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_workmanager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
+                    android:text="workmanager"
                     android:textAllCaps="false"
-                    android:textSize="12sp"
-                    android:text="workmanager"/>
+                    android:textSize="12sp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

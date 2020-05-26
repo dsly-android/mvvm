@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout
@@ -16,7 +18,7 @@
             android:id="@+id/v_bar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/_81D8CF"/>
+            android:background="@color/_81D8CF" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -31,31 +33,35 @@
                     android:id="@+id/btn_linear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="LinearLayoutManager反转布局"
                     android:textAllCaps="false"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_slide_close"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="侧滑删除"
                     android:textAllCaps="false"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
                     android:text="自定义控件"
                     android:textAllCaps="false"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_test"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="刷新和加载列表"/>
+                    android:onClick="@{onClickListener}"
+                    android:text="刷新和加载列表" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

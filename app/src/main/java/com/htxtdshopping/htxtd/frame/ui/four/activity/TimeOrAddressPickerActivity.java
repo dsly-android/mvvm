@@ -86,16 +86,13 @@ public class TimeOrAddressPickerActivity extends BaseFitsWindowActivity<Activity
         initOptionPicker();
         initCustomTimePicker();
         initNoLinkOptionsPicker();
+
+        mBinding.setOnClickListener(this);
     }
 
     @Override
     public void initData() {
-        mBinding.btnLunar.setOnClickListener(this);
-        mBinding.btnTime.setOnClickListener(this);
-        mBinding.btnOptions.setOnClickListener(this);
-        mBinding.btnCustomTime.setOnClickListener(this);
-        mBinding.btnNoLinkage.setOnClickListener(this);
-        mBinding.btnGotoJsonData.setOnClickListener(this);
+
     }
 
     @Override

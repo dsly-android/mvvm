@@ -34,15 +34,7 @@ public class MaterialDesignActivity extends BaseFitsWindowActivity<DesignActivit
 
     @Override
     public void initEvent() {
-        mBinding.btnCardview.setOnClickListener(this);
-        mBinding.btnSearch.setOnClickListener(this);
-        mBinding.btnBottomSheet.setOnClickListener(this);
-        mBinding.btnChip.setOnClickListener(this);
-        mBinding.btnMd.setOnClickListener(this);
-        mBinding.btnDrawer.setOnClickListener(this);
-        mBinding.btnTab.setOnClickListener(this);
-        mBinding.btnLinkage.setOnClickListener(this);
-        mBinding.btnViews.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override
@@ -67,9 +59,9 @@ public class MaterialDesignActivity extends BaseFitsWindowActivity<DesignActivit
             ActivityUtils.startActivity(DrawerLayoutActivity.class);
         } else if (i == R.id.btn_tab) {
             ActivityUtils.startActivity(TabLayoutActivity.class);
-        } else if (i == R.id.btn_linkage){
+        } else if (i == R.id.btn_linkage) {
             ActivityUtils.startActivity(LinkageActivity.class);
-        } else if (i == R.id.btn_views){
+        } else if (i == R.id.btn_views) {
             ActivityUtils.startActivity(MaterialViewsActivity.class);
         }
     }

@@ -6,7 +6,6 @@ import android.os.SystemClock;
 import com.android.dsly.common.base.BaseFitsWindowActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ThreadUtils;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnLoadMoreListener;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityLinearBinding;

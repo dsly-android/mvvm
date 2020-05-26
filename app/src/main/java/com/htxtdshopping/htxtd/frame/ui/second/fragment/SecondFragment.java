@@ -35,12 +35,7 @@ public class SecondFragment extends BaseLazyFragment<FragmentSecondBinding, Base
 
     @Override
     public void initEvent() {
-        mBinding.btnOss.setOnClickListener(this);
-        mBinding.btnBugly.setOnClickListener(this);
-        mBinding.btnSophix.setOnClickListener(this);
-        mBinding.btnX5.setOnClickListener(this);
-        mBinding.btnLoginAndShare.setOnClickListener(this);
-        mBinding.btnBuglyCrash.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

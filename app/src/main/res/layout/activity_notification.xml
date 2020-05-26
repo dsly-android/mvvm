@@ -4,7 +4,9 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout
@@ -23,17 +25,20 @@
             android:id="@+id/btn_high"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="重要的通知"/>
 
         <Button
             android:id="@+id/btn_low"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="正常的通知"/>
 
         <Button
             android:id="@+id/btn_custom"
             android:layout_width="match_parent"
+            android:onClick="@{onClickListener}"
             android:layout_height="wrap_content"
             android:text="自定义通知"/>
     </LinearLayout>

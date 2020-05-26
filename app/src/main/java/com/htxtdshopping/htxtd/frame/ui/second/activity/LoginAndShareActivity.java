@@ -58,9 +58,7 @@ public class LoginAndShareActivity extends BaseFitsWindowActivity<ActivityLoginA
 
     @Override
     public void initEvent() {
-        mBinding.btnShareUi.setOnClickListener(this);
-        mBinding.btnShareNoUi.setOnClickListener(this);
-        mBinding.btnWechatLogin.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

@@ -5,6 +5,11 @@
     android:layout_height="40dp"
     android:orientation="vertical">
 
+    <View
+        android:id="@+id/load_more_success_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
     <LinearLayout
         android:id="@+id/load_more_loading_view"
         android:layout_width="match_parent"

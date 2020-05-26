@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout
@@ -22,7 +25,7 @@
             android:text="手机号登录"
             android:textColor="@android:color/black"
             android:textSize="25sp"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/et_phone"
@@ -37,9 +40,9 @@
             android:paddingRight="5dp"
             android:textColor="@color/_363636"
             android:textColorHint="@color/_cccccc"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
-        <View style="@style/horizontal_line"/>
+        <View style="@style/horizontal_line" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,27 +63,28 @@
                 android:singleLine="true"
                 android:textColor="@color/_363636"
                 android:textColorHint="@color/_cccccc"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
 
             <View
                 android:layout_width="1px"
                 android:layout_height="19dp"
                 android:layout_gravity="center_vertical"
-                android:background="@color/_D2D2D2"/>
+                android:background="@color/_D2D2D2" />
 
             <TextView
                 android:id="@+id/tv_showPW"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:onClick="@{onClickListener}"
                 android:paddingLeft="8dp"
                 android:paddingRight="2dp"
                 android:text="显示密码"
                 android:textColor="@color/_cccccc"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
         </LinearLayout>
 
-        <View style="@style/horizontal_line"/>
+        <View style="@style/horizontal_line" />
 
         <Button
             android:id="@+id/btn_login"
@@ -89,9 +93,10 @@
             android:layout_height="45dp"
             android:layout_marginTop="47dp"
             android:background="@drawable/seletor_bg_ed4040"
+            android:onClick="@{onClickListener}"
             android:text="登录"
             android:textColor="@color/color_ed4040_to_white"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -100,20 +105,21 @@
             android:layout_marginTop="75dp"
             android:text="使用第三方软件登录"
             android:textColor="@color/_999999"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <ImageView
             android:id="@+id/iv_wechat"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_gravity="center_horizontal"
+            android:onClick="@{onClickListener}"
             android:padding="10dp"
-            android:src="@drawable/wechat_login"/>
+            android:src="@drawable/wechat_login" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,24 +132,26 @@
                 android:id="@+id/iv_retrieve_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{onClickListener}"
                 android:padding="15dp"
                 android:text="找回密码"
                 android:textColor="@color/_666666"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
 
             <View
                 android:layout_width="1px"
                 android:layout_height="13dp"
-                android:background="@color/_b7b7b7"/>
+                android:background="@color/_b7b7b7" />
 
             <TextView
                 android:id="@+id/iv_customer_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{onClickListener}"
                 android:padding="15dp"
                 android:text="联系客服"
                 android:textColor="@color/_666666"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 </layout>

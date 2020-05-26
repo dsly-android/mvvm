@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout
@@ -16,72 +19,81 @@
             android:id="@+id/btn_cardview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="cardview"
             android:textAllCaps="false"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="toolbar+searchview"
             android:textAllCaps="false"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_md"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="Snackbar+CoordinatorLayout+FloatingActionButton"
             android:textAllCaps="false"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_bottom_sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="BottomSheet"
             android:textAllCaps="false"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_chip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="clip"
             android:textAllCaps="false"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_drawer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="drawerlayout"
             android:textAllCaps="false"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="tablayout"
             android:textAllCaps="false"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_linkage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="CoordinatorLayout的联动"
             android:textAllCaps="false"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btn_views"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{onClickListener}"
             android:text="Material Design样式的控件"
             android:textAllCaps="false"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
     </LinearLayout>
 </layout>

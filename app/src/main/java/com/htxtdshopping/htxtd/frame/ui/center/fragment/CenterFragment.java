@@ -30,15 +30,11 @@ public class CenterFragment extends BaseLazyFragment<FragmentCenterBinding, Base
     @Override
     public void initView(Bundle savedInstanceState) {
         BarUtils.setStatusBarColor(mBinding.vBar, getResources().getColor(R.color._81D8CF));
-
     }
 
     @Override
     public void initEvent() {
-        mBinding.btnLinear.setOnClickListener(this);
-        mBinding.btnSlideClose.setOnClickListener(this);
-        mBinding.btnView.setOnClickListener(this);
-        mBinding.btnTest.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override

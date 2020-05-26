@@ -54,11 +54,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, BaseViewMo
             }
         });
 
-        mBinding.tvShowPW.setOnClickListener(this);
-        mBinding.btnLogin.setOnClickListener(this);
-        mBinding.ivWechat.setOnClickListener(this);
-        mBinding.ivRetrievePassword.setOnClickListener(this);
-        mBinding.ivCustomerService.setOnClickListener(this);
+        mBinding.setOnClickListener(this);
     }
 
     @Override
