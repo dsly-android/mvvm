@@ -6,7 +6,8 @@ import android.view.View;
 import com.alibaba.fastjson.JSON;
 import com.android.dsly.common.base.BaseFitsWindowActivity;
 import com.android.dsly.common.base.BaseViewModel;
-import com.android.dsly.common.decoration.PinnedHeaderDecoration;
+import com.android.dsly.common.decoration.sticky.StickyHeadContainer;
+import com.android.dsly.common.decoration.sticky.StickyItemDecoration;
 import com.android.dsly.common.utils.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
@@ -21,7 +22,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -41,14 +41,7 @@ public class ContactNavigationActivity extends BaseFitsWindowActivity<ActivityCo
     @Override
     public void initView(Bundle savedInstanceState) {
         mBinding.rvContent.setLayoutManager(new LinearLayoutManager(this));
-        PinnedHeaderDecoration decoration = new PinnedHeaderDecoration();
-        decoration.registerTypePinnedHeader(ContactNavigationAdapter.HEADER, new PinnedHeaderDecoration.PinnedHeaderCreator() {
-            @Override
-            public boolean create(RecyclerView parent, int adapterPosition) {
-                return true;
-            }
-        });
-        mBinding.rvContent.addItemDecoration(decoration);
+        mBinding.rvContent.addItemDecoration(new StickyItemDecoration(mBinding.shcSticky, ContactNavigationAdapter.HEADER));
         mAdapter = new ContactNavigationAdapter();
         mBinding.rvContent.setAdapter(mAdapter);
     }
@@ -80,6 +73,13 @@ public class ContactNavigationActivity extends BaseFitsWindowActivity<ActivityCo
                             (LinearLayoutManager) mBinding.rvContent.getLayoutManager();
                     mLayoutManager.scrollToPositionWithOffset(pos, 0);
                 }
+            }
+        });
+        mBinding.shcSticky.setDataCallback(new StickyHeadContainer.DataCallback() {
+            @Override
+            public void onDataChange(int pos) {
+                ContactBean contactBean = mAdapter.getData().get(pos);
+                mBinding.include.tvTip.setText(contactBean.getPys().substring(0, 1).toUpperCase());
             }
         });
     }

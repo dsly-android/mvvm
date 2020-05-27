@@ -121,7 +121,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
     @Override
     public void onPanelOpened(@NonNull View panel) {
         finish();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 
     @Override
@@ -166,13 +166,13 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
     /**
      * 私有的ViewModel与View的契约事件回调逻辑
      */
-    protected void registerLiveDataCallBack(){
+    protected void registerLiveDataCallBack() {
         mViewModel.getDialogEvent().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if (aBoolean){
+                if (aBoolean) {
                     showLoading();
-                }else{
+                } else {
                     hideLoading();
                 }
             }
@@ -190,7 +190,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
      *
      * @return BR的id
      */
-    public int initVariableId(){
+    public int initVariableId() {
         return 0;
     }
 

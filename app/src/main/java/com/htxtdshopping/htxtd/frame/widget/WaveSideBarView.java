@@ -292,9 +292,7 @@ public class WaveSideBarView extends View {
         }
         mBallPath.close();
         canvas.drawPath(mBallPath, mWavePaint);
-
     }
-
 
     private void startAnimator(float... value) {
         if (mRatioAnimator == null) {

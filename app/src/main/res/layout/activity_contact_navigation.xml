@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,7 +16,7 @@
             android:id="@+id/tb_title"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_title_bar"
-            app:tb_title="联系人侧边栏快速导航"/>
+            app:tb_title="联系人侧边栏快速导航" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_content"
@@ -26,7 +26,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tb_title"/>
+            app:layout_constraintTop_toBottomOf="@id/tb_title" />
+
+        <com.android.dsly.common.decoration.sticky.StickyHeadContainer
+            android:id="@+id/shc_sticky"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tb_title">
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/item_pinned_header" />
+        </com.android.dsly.common.decoration.sticky.StickyHeadContainer>
 
         <com.htxtdshopping.htxtd.frame.widget.WaveSideBarView
             android:id="@+id/wsbv_letter"
@@ -35,6 +48,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tb_title"/>
+            app:layout_constraintTop_toBottomOf="@id/tb_title" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

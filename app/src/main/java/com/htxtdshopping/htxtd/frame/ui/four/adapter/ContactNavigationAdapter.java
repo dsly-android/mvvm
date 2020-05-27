@@ -1,11 +1,14 @@
 package com.htxtdshopping.htxtd.frame.ui.four.adapter;
 
+import com.android.dsly.common.decoration.sticky.FullSpanUtil;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.bean.ContactBean;
 
 import java.util.ArrayList;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author 陈志鹏
@@ -39,5 +42,21 @@ public class ContactNavigationAdapter extends BaseMultiItemQuickAdapter<ContactB
             }
         }
         return -1;
+    }
+
+    /**
+     * 需要这两个方法
+     * @param recyclerView
+     */
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        FullSpanUtil.onAttachedToRecyclerView(recyclerView, this, HEADER);
+    }
+
+    @Override
+    public void onViewAttachedToWindow(BaseViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        FullSpanUtil.onViewAttachedToWindow(holder, this, HEADER);
     }
 }
