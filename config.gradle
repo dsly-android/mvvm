@@ -25,8 +25,6 @@ ext {
             "rxhttp"                   : "com.android.dsly:rxhttp:1.0.6",
             //fastjson
             "fastjson"                 : "com.alibaba:fastjson:1.1.71.android",
-            //AndroidEventBus
-            "androideventbus"          : "org.simple:androideventbus:1.0.5.1",
             //LiveEventBus
             "LiveEventBus"             : "com.jeremyliao:live-event-bus-x:1.5.7",
             //glide
