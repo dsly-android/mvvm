@@ -34,7 +34,7 @@
                     android:id="@+id/btn_refresh_and_load_more"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="下拉刷新，上拉加载"
                     android:textSize="12sp" />
 
@@ -42,7 +42,7 @@
                     android:id="@+id/btn_permission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="6.0权限"
                     android:textSize="12sp" />
 
@@ -50,7 +50,7 @@
                     android:id="@+id/btn_scanQrCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="扫描二维码"
                     android:textSize="12sp" />
 
@@ -58,7 +58,7 @@
                     android:id="@+id/btn_generateQrCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="生成二维码"
                     android:textSize="12sp" />
 
@@ -66,7 +66,7 @@
                     android:id="@+id/btn_banner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="banner"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
@@ -75,7 +75,7 @@
                     android:id="@+id/btn_rxjava"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="Rxjava的使用"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
@@ -84,7 +84,7 @@
                     android:id="@+id/btn_objectbox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="objectbox"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
@@ -93,7 +93,7 @@
                     android:id="@+id/btn_autosize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="autosize"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
@@ -102,7 +102,7 @@
                     android:id="@+id/btn_window"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="悬浮窗"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
@@ -111,7 +111,7 @@
                     android:id="@+id/btn_websocket"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="websocket"
                     android:textAllCaps="false"
                     android:textSize="12sp" />

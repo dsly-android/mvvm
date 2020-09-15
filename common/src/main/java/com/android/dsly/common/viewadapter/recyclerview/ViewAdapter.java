@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @author 陈志鹏
  * @date 2020-01-11
  */
-public final class ViewAdapter {
+public class ViewAdapter {
 
     @BindingAdapter(value = {"scrollLoadImageEnabled"})
     public static void scrollLoadImageEnabled(RecyclerView recyclerView, boolean scrollLoadImageEnabled) {

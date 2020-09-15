@@ -4,9 +4,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -14,28 +16,32 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseFitsWindowActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.zxing.camera.CameraConfigurationManager;
 import com.android.dsly.zxing.camera.CameraManager;
 import com.android.dsly.zxing.databinding.ZxingActivityCaptureBinding;
+import com.android.dsly.zxing.utils.CodeUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ScreenUtils;
 import com.google.zxing.Result;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
 /**
  * @author 陈志鹏
  * @date 2018/10/29
  */
 @Route(path = RouterHub.ZXING_CAPTURE_ACTIVITY)
-public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBinding, BaseViewModel> implements SurfaceHolder.Callback, View.OnClickListener {
+public final class CaptureActivity extends BaseFitsWindowActivity<ZxingActivityCaptureBinding, BaseViewModel> implements SurfaceHolder.Callback, View.OnClickListener {
+
+    //选择文件中的图片
+    public static final int CODE_SCAN_GALLERY = 0;
 
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
@@ -60,10 +66,16 @@ public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBind
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.transparent));
+        mBinding.tbTitle.setRightTextString("相册");
 
-        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) mBinding.ivLightSwitch.getLayoutParams();
-        params.bottomMargin = (ScreenUtils.getAppScreenHeight() - mBinding.vvScanArea.getFrameHeight()) / 2 + 10;
+        mBinding.vvScanArea.post(new Runnable() {
+            @Override
+            public void run() {
+                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) mBinding.ivLightSwitch.getLayoutParams();
+                params.bottomMargin = (mBinding.vvScanArea.getHeight() - mBinding.vvScanArea.getFrameHeight()) / 2 + 20;
+                mBinding.ivLightSwitch.setLayoutParams(params);
+            }
+        });
 
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
@@ -73,11 +85,41 @@ public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBind
     @Override
     public void initEvent() {
         mBinding.ivLightSwitch.setOnClickListener(this);
+
+        mBinding.tbTitle.setOnRightTextClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pickIntent = new Intent(Intent.ACTION_PICK);
+                pickIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(pickIntent, CODE_SCAN_GALLERY);
+            }
+        });
     }
 
     @Override
     public void initData() {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+        switch (requestCode) {
+            case CODE_SCAN_GALLERY:
+                try {
+                    Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(data.getData()));
+                    String result = CodeUtils.getResult(bitmap);
+                    returnResult(result);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -182,17 +224,22 @@ public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBind
 //        inactivityTimer.onActivity();
 
         String text = result.getText();
-        LogUtils.e("二维码/条形码 扫描结果：" + text);
-        Intent intent = new Intent();
-        intent.putExtra(RouterHub.ZXING_RESULT_KEY_SCAN_RESULT, text);
-        setResult(RESULT_OK, intent);
-        finish();
+        returnResult(text);
 
         boolean fromLiveScan = barcode != null;
         if (fromLiveScan) {
             // Then not from history, so beep/vibrate and we have an image to draw on
             beepManager.playBeepSoundAndVibrate();
         }
+    }
+
+    private void returnResult(String result){
+        LogUtils.e("二维码/条形码 扫描结果：" + result);
+
+        Intent intent = new Intent();
+        intent.putExtra(RouterHub.ZXING_RESULT_KEY_SCAN_RESULT, result);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {
@@ -245,41 +292,14 @@ public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBind
      * @return
      */
     public Rect getScanArea(CameraConfigurationManager configManager) {
-        int cameraWidth = 0;
-        int cameraHeight = 0;
-        if (ScreenUtils.isLandscape()) {
-            cameraWidth = configManager.getCameraResolution().x;
-            cameraHeight = configManager.getCameraResolution().y;
-        } else {
-            cameraWidth = configManager.getCameraResolution().y;
-            cameraHeight = configManager.getCameraResolution().x;
-        }
-
         /** 获取布局中扫描框的位置信息 */
-        int screenWidth = ScreenUtils.getScreenWidth();
-        int screenHeight = ScreenUtils.getAppScreenHeight();
-        int cropLeft = (screenWidth - mBinding.vvScanArea.getFrameWidth()) / 2;
-        int cropTop = (screenHeight - mBinding.vvScanArea.getFrameHeight()) / 2;
-
-        int cropWidth = mBinding.vvScanArea.getFrameWidth();
-        int cropHeight = mBinding.vvScanArea.getFrameHeight();
-
-        /** 获取布局容器的宽高 */
-        int containerWidth = mBinding.clParent.getWidth();
-        int containerHeight = mBinding.clParent.getHeight();
-
-        /** 计算最终截取的矩形的左上角顶点x坐标 */
-        int x = cropLeft * cameraWidth / containerWidth;
-        /** 计算最终截取的矩形的左上角顶点y坐标 */
-        int y = cropTop * cameraHeight / containerHeight;
-
-        /** 计算最终截取的矩形的宽度 */
-        int width = cropWidth * cameraWidth / containerWidth;
-        /** 计算最终截取的矩形的高度 */
-        int height = cropHeight * cameraHeight / containerHeight;
+        int cropTop = (mBinding.vvScanArea.getMeasuredHeight() - mBinding.vvScanArea.getMeasuredWidth()) / 2
+                + BarUtils.getStatusBarHeight() / 2;
 
         /** 生成最终的截取的矩形 */
-        return new Rect(x, y, width + x, height + y);
+        Rect rect = new Rect(0, cropTop, mBinding.vvScanArea.getMeasuredWidth(),
+                mBinding.vvScanArea.getMeasuredWidth() + cropTop);
+        return rect;
     }
 
     public void restartPreviewAfterDelay(long delayMS) {

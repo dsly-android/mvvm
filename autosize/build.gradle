@@ -28,5 +28,5 @@ android {
 dependencies {
     compileOnly "com.android.support:appcompat-v7:28.0.0"
     //AndroidUtilCode
-    api 'com.blankj:utilcodex:1.25.2'
+    api rootProject.ext.dependencies["utilcodex"]
 }

@@ -11,6 +11,7 @@ import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityOssBinding;
 import com.htxtdshopping.htxtd.frame.network.OssService;
@@ -63,7 +64,7 @@ public class OssActivity extends BaseActivity<ActivityOssBinding, BaseViewModel>
 
                     @Override
                     public void onFailure(PutObjectRequest request, ClientException clientException, ServiceException serviceException) {
-
+                        LogUtils.e(clientException,serviceException);
                     }
                 });
                 break;
@@ -74,7 +75,7 @@ public class OssActivity extends BaseActivity<ActivityOssBinding, BaseViewModel>
                     @Override
                     public void onFinish(List<String> localPaths, List<String> uploadPaths) {
                         for (int i = 0; i < localPaths.size(); i++) {
-                            FileUtils.deleteFile(localPaths.get(i));
+                            FileUtils.delete(localPaths.get(i));
                         }
                         /*runOnUiThread(new Runnable() {
                             @Override

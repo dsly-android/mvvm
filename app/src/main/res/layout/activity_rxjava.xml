@@ -20,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            onClickCommand="@{activity}"
-            isThrottleFirst="true"
+            onAntiClick="@{activity}"
             android:text="接口的嵌套调用"/>
 
         <Button
@@ -29,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            onClickCommand="@{activity}"
+            onAntiClick="@{activity}"
             android:text="merge组合多个被观察者按时间线并行执行"
             android:textAllCaps="false"/>
 
@@ -38,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            onClickCommand="@{activity}"
+            onAntiClick="@{activity}"
             android:text="concat组合多个被观察者按发送顺序串行执行"
             android:textAllCaps="false"/>
 
@@ -47,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            onClickCommand="@{activity}"
+            onAntiClick="@{activity}"
             android:text="显示/隐藏loading"
             android:textAllCaps="false"/>
 
@@ -56,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            onClickCommand="@{activity}"
+            onAntiClick="@{activity}"
             android:text="发射数据时，如果两次数据的发射间隔小于指定时间，就会丢弃前一次的数据,直到指定时间内都没有新数据发射时才进行发射"
             android:textAllCaps="false"/>
 

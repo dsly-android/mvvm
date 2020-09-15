@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.base.BaseFitsWindowActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityGenerateQrCodeBinding;
-import com.mrd.common_service.service.GenerateCodeService;
+import com.mrd.common_service.service.IGenerateCodeService;
 
 /**
  * @author chenzhipeng
@@ -19,7 +18,7 @@ import com.mrd.common_service.service.GenerateCodeService;
 public class GenerateQrCodeActivity extends BaseFitsWindowActivity<ActivityGenerateQrCodeBinding, BaseViewModel> implements View.OnClickListener {
 
     @Autowired
-    GenerateCodeService mGenerateCodeService;
+    IGenerateCodeService mGenerateCodeService;
 
     @Override
     public int getLayoutId() {
@@ -28,7 +27,7 @@ public class GenerateQrCodeActivity extends BaseFitsWindowActivity<ActivityGener
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        ARouter.getInstance().inject(this);
+
     }
 
     @Override

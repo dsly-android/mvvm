@@ -20,6 +20,6 @@ public class RecordAdapter extends BaseQuickAdapter<File, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, File item) {
-        helper.setText(R.id.tv_file_name,item.getName()+"  "+FileUtils.getFileSize(item));
+        helper.setText(R.id.tv_file_name,item.getName()+"  "+FileUtils.getSize(item));
     }
 }

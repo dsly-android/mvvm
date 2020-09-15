@@ -9,8 +9,6 @@ import com.htxtdshopping.htxtd.frame.dialog.ConfirmDialog;
 
 public class DialogActivity extends BaseFitsWindowActivity {
 
-
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_dialog;

@@ -6,15 +6,16 @@ import android.graphics.Bitmap;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.zxing.utils.BarCodeUtils;
+import com.android.dsly.zxing.utils.CodeUtils;
 import com.android.dsly.zxing.utils.QrCodeUtils;
-import com.mrd.common_service.service.GenerateCodeService;
+import com.mrd.common_service.service.IGenerateCodeService;
 
 /**
  * @author 陈志鹏
  * @date 2019-12-13
  */
 @Route(path = RouterHub.ZXING_GENERATE_CODE_SERVICE)
-public class GenerateCodeServiceImpl implements GenerateCodeService {
+public class GenerateCodeServiceImpl implements IGenerateCodeService {
 
     @Override
     public Bitmap generateQrCode(String content) {
@@ -44,6 +45,11 @@ public class GenerateCodeServiceImpl implements GenerateCodeService {
     @Override
     public Bitmap generateBarCode(String content, int qrWidth, int qrHeight, int backgroundColor, int codeColor) {
         return BarCodeUtils.createBarCode(content, qrWidth, qrHeight, backgroundColor, codeColor);
+    }
+
+    @Override
+    public String decodeCode(Bitmap bitmap) {
+        return CodeUtils.getResult(bitmap);
     }
 
     @Override

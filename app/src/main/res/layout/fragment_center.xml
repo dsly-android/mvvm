@@ -33,7 +33,7 @@
                     android:id="@+id/btn_linear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="LinearLayoutManager反转布局"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
@@ -42,8 +42,8 @@
                     android:id="@+id/btn_slide_close"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="侧滑删除"
+                    onAntiClick="@{onClickListener}"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
 
@@ -51,8 +51,8 @@
                     android:id="@+id/btn_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="自定义控件"
+                    onAntiClick="@{onClickListener}"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
 
@@ -60,7 +60,7 @@
                     android:id="@+id/btn_test"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="刷新和加载列表" />
             </LinearLayout>
         </ScrollView>

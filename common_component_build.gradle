@@ -45,8 +45,8 @@ android {
     buildTypes {
         debug {
             if (isBuildModule.toBoolean()) {
-                minifyEnabled true    //混淆
-                shrinkResources true  //资源文件压缩
+                minifyEnabled false    //混淆
+                shrinkResources false  //资源文件压缩
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), '../app/proguard-rules.pro'
                 signingConfig signingConfigs.frame
             } else {

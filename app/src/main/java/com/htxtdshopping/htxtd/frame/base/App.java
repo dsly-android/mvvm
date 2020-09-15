@@ -12,6 +12,7 @@ import com.android.dsly.common.constant.Constants;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ProcessUtils;
+import com.blankj.utilcode.util.ThreadUtils;
 import com.htxtdshopping.htxtd.frame.BuildConfig;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.network.OssService;
@@ -147,7 +148,7 @@ public class App extends BaseApp {
         };
 
         // 初始化Bugly
-        Bugly.init(getApplicationContext(), "38552d428b", false, strategy);
+        Bugly.init(getApplicationContext(), "38552d428b", BuildConfig.DEBUG, strategy);
     }
 
     private void initOss() {
@@ -164,8 +165,18 @@ public class App extends BaseApp {
         // 失败后最大重试次数，默认2次
         conf.setMaxErrorRetry(2);
 
-        OSS oss = new OSSClient(this, Constants.OSS_ENDPOINT, credentialProvider, conf);
-        OssService.init(oss, Constants.OSS_BUCKET);
+        ThreadUtils.executeByIo(new ThreadUtils.SimpleTask<OSS>() {
+            @Override
+            public OSS doInBackground() throws Throwable {
+                OSS oss = new OSSClient(App.this, Constants.OSS_ENDPOINT, credentialProvider, conf);
+                return oss;
+            }
+
+            @Override
+            public void onSuccess(OSS oss) {
+                OssService.init(oss, Constants.OSS_BUCKET);
+            }
+        });
     }
 
     private void initUShare() {

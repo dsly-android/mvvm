@@ -6,9 +6,9 @@ import android.view.View;
 import com.android.dsly.common.base.BaseFitsWindowActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.decoration.GridDividerItemDecoration;
+import com.android.dsly.common.listener.OnItemAntiClickListener;
 import com.android.dsly.common.utils.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityGridBinding;
 import com.htxtdshopping.htxtd.frame.ui.third.adapter.GridAdapter;
@@ -43,9 +43,10 @@ public class GridActivity extends BaseFitsWindowActivity<ActivityGridBinding, Ba
 
     @Override
     public void initEvent() {
-        mAdapter.setOnItemClickListener(new OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new OnItemAntiClickListener() {
+
             @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onItemAntiClick(BaseQuickAdapter adapter, View view, int position) {
                 ToastUtils.showLong(position + "");
             }
         });

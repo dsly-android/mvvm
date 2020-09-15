@@ -22,32 +22,19 @@ public class ViewAdapter {
     /**
      * requireAll 是意思是是否需要绑定全部参数, false为否
      * View的onClick事件绑定
-     * onClickCommand 绑定的命令,
-     * isThrottleFirst 是否开启防止过快点击
+     * onAntiClick 绑定的命令,
      */
-    @BindingAdapter(value = {"onClickCommand", "isThrottleFirst"}, requireAll = false)
-    public static void onClickCommand(View view, final View.OnClickListener listener, final boolean isThrottleFirst) {
-        if (isThrottleFirst) {
-            RxView.clicks(view)
-                    .subscribe(new Consumer<Unit>() {
-                        @Override
-                        public void accept(Unit unit) throws Exception {
-                            if (listener != null) {
-                                listener.onClick(view);
-                            }
+    @BindingAdapter(value = {"onAntiClick"}, requireAll = false)
+    public static void onAntiClick(View view, final View.OnClickListener listener) {
+        RxView.clicks(view)
+                .throttleFirst(CLICK_INTERVAL, TimeUnit.SECONDS)//1秒钟内只允许点击1次
+                .subscribe(new Consumer<Unit>() {
+                    @Override
+                    public void accept(Unit unit) throws Exception {
+                        if (listener != null) {
+                            listener.onClick(view);
                         }
-                    });
-        } else {
-            RxView.clicks(view)
-                    .throttleFirst(CLICK_INTERVAL, TimeUnit.SECONDS)//1秒钟内只允许点击1次
-                    .subscribe(new Consumer<Unit>() {
-                        @Override
-                        public void accept(Unit unit) throws Exception {
-                            if (listener != null) {
-                                listener.onClick(view);
-                            }
-                        }
-                    });
-        }
+                    }
+                });
     }
 }

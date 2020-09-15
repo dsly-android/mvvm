@@ -232,6 +232,9 @@ public final class CameraManager {
     }
 
     public boolean isFlashlightOn(){
+        if (configManager == null || camera == null){
+            return false;
+        }
         return configManager.getTorchState(camera.getCamera());
     }
 }

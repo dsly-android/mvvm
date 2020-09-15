@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="对象存储 OSS"/>
 
                 <Button
@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="检查是否有新的更新"/>
 
                 <Button
@@ -48,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="阿里云的移动热修复"/>
 
                 <Button
@@ -56,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="x5内核"/>
 
                 <Button
@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="友盟登录和分享"/>
 
                 <Button
@@ -72,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="bugly异常上报"/>
             </LinearLayout>
         </ScrollView>

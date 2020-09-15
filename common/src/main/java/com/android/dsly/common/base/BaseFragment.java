@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.chad.library.BR;
 import com.trello.rxlifecycle3.components.support.RxFragment;
 
 import java.lang.reflect.ParameterizedType;
@@ -26,7 +27,6 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
 
     protected VB mBinding;
     protected VM mViewModel;
-    private int mViewModelId;
 
     @Nullable
     @Override
@@ -57,7 +57,6 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
      * 注入绑定
      */
     private void initViewDataBinding() {
-        mViewModelId = initVariableId();
         mViewModel = initViewModel();
         if (mViewModel == null) {
             Class modelClass;
@@ -71,9 +70,7 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
             mViewModel = (VM) ViewModelProviders.of(this).get(modelClass);
         }
         //关联ViewModel
-        if (mViewModelId != 0) {
-            mBinding.setVariable(mViewModelId, mViewModel);
-        }
+        mBinding.setVariable(BR.viewModel, mViewModel);
         //注入RxLifecycle生命周期
         mViewModel.setLifecycleProvider(this);
     }
@@ -81,13 +78,13 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
     /**
      * 私有的ViewModel与View的契约事件回调逻辑
      */
-    protected void registerLiveDataCallBack(){
+    protected void registerLiveDataCallBack() {
         mViewModel.getDialogEvent().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if (aBoolean){
+                if (aBoolean) {
                     showLoading();
-                }else{
+                } else {
                     hideLoading();
                 }
             }
@@ -98,15 +95,6 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
                 getActivity().finish();
             }
         });
-    }
-
-    /**
-     * 初始化ViewModel的id
-     *
-     * @return BR的id
-     */
-    public int initVariableId(){
-        return 0;
     }
 
     /**
@@ -142,7 +130,7 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mBinding != null){
+        if (mBinding != null) {
             mBinding.unbind();
         }
     }

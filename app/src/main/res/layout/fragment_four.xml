@@ -34,7 +34,7 @@
                     android:id="@+id/btn_tab"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
+                    onAntiClick="@{onClickListener}"
                     android:text="tablayout"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
@@ -43,8 +43,8 @@
                     android:id="@+id/btn_common_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="CommonTextView"
+                    onAntiClick="@{onClickListener}"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
 
@@ -52,8 +52,8 @@
                     android:id="@+id/btn_common"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="常用控件集合"
+                    onAntiClick="@{onClickListener}"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
 
@@ -61,8 +61,8 @@
                     android:id="@+id/btn_time_or_date_picker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="时间、地址选择器"
+                    onAntiClick="@{onClickListener}"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
 
@@ -70,8 +70,8 @@
                     android:id="@+id/btn_contact_navigation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="联系人侧边栏快速导航"
+                    onAntiClick="@{onClickListener}"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
 
@@ -79,24 +79,24 @@
                     android:id="@+id/btn_choose_channel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="仿今日头条频道选择"
+                    onAntiClick="@{onClickListener}"
                     android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_radarview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="雷达图"
+                    onAntiClick="@{onClickListener}"
                     android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_dialog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="dialog"
+                    onAntiClick="@{onClickListener}"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
 
@@ -104,8 +104,8 @@
                     android:id="@+id/btn_sketchpad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="@{onClickListener}"
                     android:text="画板"
+                    onAntiClick="@{onClickListener}"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
             </LinearLayout>

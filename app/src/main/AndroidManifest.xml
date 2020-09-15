@@ -49,7 +49,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="icon,theme,label,allowBackup">
-        <activity android:name=".ui.center.activity.TestActivity"></activity>
+        <activity android:name=".ui.center.activity.TestActivity"/>
         <activity
             android:name=".ui.center.activity.CustomViewActivity"
             android:screenOrientation="portrait" />

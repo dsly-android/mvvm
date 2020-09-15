@@ -176,4 +176,8 @@
         <attr name="mnv_backgroundColor" format="color"/>
         <attr name="mnv_paddingLeftAndRight" format="dimension"/>
     </declare-styleable>
+    <declare-styleable name="MaxRecyclerView">
+        <attr name="maxHeight" format="dimension" />
+        <attr name="maxWidth" format="dimension" />
+    </declare-styleable>
 </resources>

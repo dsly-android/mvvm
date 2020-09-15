@@ -71,5 +71,7 @@ ext {
             "work-runtime"             : "androidx.work:work-runtime:${version["workVersion"]}",
             "work-rxjava2"             : "androidx.work:work-rxjava2:${version["workVersion"]}",
             "work-testing"             : "androidx.work:work-testing:${version["workVersion"]}",
+            //AndroidUtilCode
+            "utilcodex"                : "com.blankj:utilcodex:1.29.0"
     ]
 }

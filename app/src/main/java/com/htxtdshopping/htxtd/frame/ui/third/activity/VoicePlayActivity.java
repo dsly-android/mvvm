@@ -73,6 +73,6 @@ public class VoicePlayActivity extends BaseActivity<ActivityVoicePlayBinding, Ba
     }
 
     public void deleteDir(View view) {
-        FileUtils.deleteDir(VoiceRecordManager.FILE_PATH);
+        FileUtils.deleteAllInDir(VoiceRecordManager.FILE_PATH);
     }
 }

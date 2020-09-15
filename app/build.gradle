@@ -45,8 +45,8 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled false    //混淆
-            shrinkResources false  //资源文件压缩
+            minifyEnabled true    //混淆
+            shrinkResources true  //资源文件压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.frame
         }
@@ -124,8 +124,9 @@ dependencies {
     implementation project(path: ':banner')
 
     //bugly
-    implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
-    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    implementation 'com.tencent.bugly:crashreport_upgrade:1.4.2'
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.47'
+    implementation 'com.tencent.tinker:tinker-android-lib:1.9.9'
 
     //Sophix
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.8'
@@ -152,5 +153,8 @@ dependencies {
     implementation "io.objectbox:objectbox-rxjava:2.5.1"
     debugImplementation "io.objectbox:objectbox-android-objectbrowser:2.5.1"
     releaseImplementation "io.objectbox:objectbox-android:2.5.1"
+
+    //MarqueeView
+    implementation 'com.sunfusheng:MarqueeView:1.4.1'
 }
 apply plugin: 'io.objectbox'

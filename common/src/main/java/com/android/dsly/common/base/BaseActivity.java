@@ -10,6 +10,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.R;
 import com.android.dsly.common.dialog.LoadingDialog;
 import com.blankj.utilcode.util.BarUtils;
+import com.chad.library.BR;
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
 import java.lang.reflect.Field;
@@ -32,7 +33,6 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
 
     protected VB mBinding;
     protected VM mViewModel;
-    private int mViewModelId;
 
     private LoadingDialog mLoadingDialog;
 
@@ -142,7 +142,6 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
             //DataBindingUtil类需要在project的build中配置 dataBinding {enabled true }, 同步后会自动关联android.databinding包
             mBinding = DataBindingUtil.setContentView(this, getLayoutId());
         }
-        mViewModelId = initVariableId();
         mViewModel = initViewModel();
         if (mViewModel == null) {
             Class modelClass;
@@ -156,9 +155,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
             mViewModel = (VM) ViewModelProviders.of(this).get(modelClass);
         }
         //关联ViewModel
-        if (mViewModelId != 0) {
-            mBinding.setVariable(mViewModelId, mViewModel);
-        }
+        mBinding.setVariable(BR.viewModel, mViewModel);
         //注入RxLifecycle生命周期
         mViewModel.setLifecycleProvider(this);
     }
@@ -183,15 +180,6 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
                 finish();
             }
         });
-    }
-
-    /**
-     * 初始化ViewModel的id
-     *
-     * @return BR的id
-     */
-    public int initVariableId() {
-        return 0;
     }
 
     /**

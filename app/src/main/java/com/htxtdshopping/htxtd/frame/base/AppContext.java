@@ -118,7 +118,7 @@ public class AppContext {
 
             @Override
             protected void completed(@NonNull DownloadTask task) {
-                Intent intent = IntentUtils.getInstallAppIntent(task.getFile().getAbsoluteFile(), true);
+                Intent intent = IntentUtils.getInstallAppIntent(task.getFile().getAbsoluteFile());
                 NotificationUtils.createSimpleNotification(Constants.NOTIFICATION_UPGRADE, true, NotificationChannels.CHANNEL_HIGH,
                         intent, R.mipmap.ic_launcher, Utils.getApp().getString(R.string.app_name), "下载完成");
             }

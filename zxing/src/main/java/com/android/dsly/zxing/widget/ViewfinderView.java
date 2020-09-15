@@ -30,11 +30,11 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 
 import com.android.dsly.zxing.R;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.google.zxing.ResultPoint;
 
 import java.util.ArrayList;
@@ -121,14 +121,6 @@ public final class ViewfinderView extends View {
      */
     private boolean isShowResultPoint;
 
-    /**
-     * 屏幕宽
-     */
-    private int screenWidth;
-    /**
-     * 屏幕高
-     */
-    private int screenHeight;
     /**
      * 扫码框宽
      */
@@ -287,23 +279,16 @@ public final class ViewfinderView extends View {
         possibleResultPoints = new ArrayList<>(5);
         lastPossibleResultPoints = null;
 
-        screenWidth = getDisplayMetrics().widthPixels;
-        screenHeight = getDisplayMetrics().heightPixels;
+        int size = (int)(Math.min(ScreenUtils.getScreenWidth(),ScreenUtils.getScreenHeight()) * frameRatio);
 
-        int size = (int)(Math.min(screenWidth,screenHeight) * frameRatio);
-
-        if(frameWidth<=0 || frameWidth > screenWidth){
+        if(frameWidth<=0 || frameWidth > ScreenUtils.getScreenWidth()){
             frameWidth = size;
         }
 
-        if(frameHeight<=0 || frameHeight > screenHeight){
+        if(frameHeight<=0 || frameHeight > ScreenUtils.getScreenHeight()){
             frameHeight = size;
         }
 
-    }
-
-    private DisplayMetrics getDisplayMetrics(){
-        return getResources().getDisplayMetrics();
     }
 
     public void setLabelText(String labelText) {
@@ -326,8 +311,8 @@ public final class ViewfinderView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         //扫码框默认居中，支持利用内距偏移扫码框
-        int leftOffset = (screenWidth - frameWidth) / 2 + getPaddingLeft() - getPaddingRight();
-        int topOffset = (screenHeight - frameHeight) / 2 + getPaddingTop() - getPaddingBottom();
+        int leftOffset = (getMeasuredWidth() - frameWidth) / 2 + getPaddingLeft() - getPaddingRight();
+        int topOffset = (getMeasuredHeight() - frameHeight) / 2 + getPaddingTop() - getPaddingBottom();
         frame = new Rect(leftOffset, topOffset, leftOffset + frameWidth, topOffset + frameHeight);
     }
 
