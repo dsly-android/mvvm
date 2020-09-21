@@ -19,7 +19,6 @@ import androidx.databinding.ViewDataBinding;
  * @author 陈志鹏
  * @date 2018/1/31
  */
-
 public abstract class BaseDialog<VB extends ViewDataBinding> extends AppCompatDialog implements ILifeCycle {
 
     protected Context mContext;

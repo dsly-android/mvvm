@@ -23,7 +23,7 @@ public class BottomSheetActivity extends BaseFitsWindowActivity<DesignActivityBo
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        dialog = new TestBottomSheetDialog(this);
+        dialog = new TestBottomSheetDialog();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class BottomSheetActivity extends BaseFitsWindowActivity<DesignActivityBo
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_bottom_sheet) {
-            dialog.show();
+            dialog.show(getSupportFragmentManager());
         }
     }
 }

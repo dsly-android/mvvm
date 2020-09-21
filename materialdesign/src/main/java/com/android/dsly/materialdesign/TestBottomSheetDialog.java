@@ -1,25 +1,21 @@
 package com.android.dsly.materialdesign;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseBottomSheetDialog;
+import com.android.dsly.common.base.BaseBottomSheetDialogFragment;
+import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.materialdesign.databinding.DesignDialogSheetBottomBinding;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import me.jessyan.autosize.utils.AutoSizeUtils;
 
 /**
  * @author 陈志鹏
  * @date 2020-01-06
  */
-public class TestBottomSheetDialog extends BaseBottomSheetDialog<DesignDialogSheetBottomBinding> {
-
-    public TestBottomSheetDialog(@NonNull Context context) {
-        super(context);
-    }
+public class TestBottomSheetDialog extends BaseBottomSheetDialogFragment<DesignDialogSheetBottomBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {
@@ -28,10 +24,19 @@ public class TestBottomSheetDialog extends BaseBottomSheetDialog<DesignDialogShe
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        // 注意：这里要给layout的parent设置peekHeight，而不是在layout里给layout本身设置，下面设置背景色同理，坑爹！！！
-        View mDialogSheetBottomView = (View) findViewById(R.id.nsv_scroll).getParent();
-        BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(mDialogSheetBottomView);
-        bottomSheetBehavior.setPeekHeight(AutoSizeUtils.dp2px(mContext,150));
+        getView().post(new Runnable() {
+            @Override
+            public void run() {
+                View parent = (View) getView().getParent();
+                CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) parent.getLayoutParams();
+                BottomSheetBehavior behavior = (BottomSheetBehavior) params.getBehavior();
+                //默认展开
+//                behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                //没展开时的高度
+                behavior.setPeekHeight(AutoSizeUtils.dp2px(getContext(),150));
+            }
+        });
+
     }
 
     @Override
@@ -42,5 +47,10 @@ public class TestBottomSheetDialog extends BaseBottomSheetDialog<DesignDialogShe
     @Override
     public void initData() {
 
+    }
+
+    @Override
+    public String getDialogTag() {
+        return "TestBottomSheetDialog";
     }
 }

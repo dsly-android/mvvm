@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.android.dsly.common.R;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseDialog;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,7 @@ public class LoadingDialog extends BaseDialog {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-
+        setCancelable(false);
     }
 
     @Override
@@ -36,6 +37,15 @@ public class LoadingDialog extends BaseDialog {
     @Override
     public void initData() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (mContext instanceof BaseActivity){
+            dismiss();
+            ((BaseActivity) mContext).finish();
+        }
     }
 
     @Override

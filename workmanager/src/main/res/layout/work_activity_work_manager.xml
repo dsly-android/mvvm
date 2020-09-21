@@ -18,14 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            onClickCommand="@{activity}"
+            onAntiClick="@{activity}"
             android:text="一次性任务"/>
         <Button
             android:id="@+id/btn_cycle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            onClickCommand="@{activity}"
+            onAntiClick="@{activity}"
             android:text="周期性任务"/>
     </LinearLayout>
 </layout>
