@@ -143,6 +143,15 @@
                     android:text="workmanager"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_voice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
+                    android:text="语音通话"
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

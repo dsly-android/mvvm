@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.LogUtils;
 import com.htxtdshopping.htxtd.frame.R;
@@ -18,7 +18,7 @@ import com.htxtdshopping.htxtd.frame.service.BindService;
 import com.htxtdshopping.htxtd.frame.service.LocalService;
 import com.htxtdshopping.htxtd.frame.service.MyIntentService;
 
-public class ServiceActivity extends BaseFitsWindowActivity<ActivityServiceBinding, BaseViewModel> implements View.OnClickListener {
+public class ServiceActivity extends BaseActivity<ActivityServiceBinding, BaseViewModel> implements View.OnClickListener {
 
 
     private Intent mIntent;

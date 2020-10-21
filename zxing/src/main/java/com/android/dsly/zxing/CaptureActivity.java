@@ -16,7 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.zxing.camera.CameraConfigurationManager;
@@ -38,7 +38,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
  * @date 2018/10/29
  */
 @Route(path = RouterHub.ZXING_CAPTURE_ACTIVITY)
-public final class CaptureActivity extends BaseFitsWindowActivity<ZxingActivityCaptureBinding, BaseViewModel> implements SurfaceHolder.Callback, View.OnClickListener {
+public final class CaptureActivity extends BaseActivity<ZxingActivityCaptureBinding, BaseViewModel> implements SurfaceHolder.Callback, View.OnClickListener {
 
     //选择文件中的图片
     public static final int CODE_SCAN_GALLERY = 0;

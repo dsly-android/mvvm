@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.android.dsly.common.adapter.BaseBindingAdapter;
 import com.android.dsly.common.adapter.BaseRefreshDataAdapter;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.bean.PageBean;
 import com.htxtdshopping.htxtd.frame.R;
@@ -19,7 +19,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-public class TestActivity extends BaseFitsWindowActivity<ActivityTestBinding, BaseViewModel> {
+public class TestActivity extends BaseActivity<ActivityTestBinding, BaseViewModel> {
 
     private BaseBindingAdapter mAdapter;
 

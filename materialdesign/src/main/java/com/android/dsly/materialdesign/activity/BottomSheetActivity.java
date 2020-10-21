@@ -3,7 +3,7 @@ package com.android.dsly.materialdesign.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.materialdesign.R;
 import com.android.dsly.materialdesign.TestBottomSheetDialog;
@@ -12,7 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import androidx.annotation.NonNull;
 
-public class BottomSheetActivity extends BaseFitsWindowActivity<DesignActivityBottomSheetBinding, BaseViewModel> implements View.OnClickListener {
+public class BottomSheetActivity extends BaseActivity<DesignActivityBottomSheetBinding, BaseViewModel> implements View.OnClickListener {
 
     private TestBottomSheetDialog dialog;
 

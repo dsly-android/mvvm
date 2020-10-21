@@ -46,8 +46,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.transparent));
-
         mController = mBinding.pnvTab.custom()
                 .addItem(newItem(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, "框架"))
                 .addItem(newItem(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, "第三方"))
@@ -123,6 +121,17 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         moveTaskToBack(false);
+    }
+
+    @Override
+    protected void initStatusBar() {
+        BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.transparent));
+    }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
     }
 }

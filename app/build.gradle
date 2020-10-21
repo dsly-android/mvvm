@@ -132,7 +132,7 @@ dependencies {
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.8'
 
     //oss
-    implementation 'com.aliyun.dpa:oss-android-sdk:+'
+    implementation 'com.aliyun.dpa:oss-android-sdk:2.9.4'
 
     //GSYVideoPlayer
     implementation 'com.shuyu:GSYVideoPlayer:7.0.2'

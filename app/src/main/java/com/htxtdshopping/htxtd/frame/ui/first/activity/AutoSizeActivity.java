@@ -3,14 +3,14 @@ package com.htxtdshopping.htxtd.frame.ui.first.activity;
 import android.os.Bundle;
 import android.widget.SeekBar;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityAutosizeBinding;
 
 import me.jessyan.autosize.AutoSizeConfig;
 
-public class AutoSizeActivity extends BaseFitsWindowActivity<ActivityAutosizeBinding, BaseViewModel> {
+public class AutoSizeActivity extends BaseActivity<ActivityAutosizeBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {

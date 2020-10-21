@@ -1,23 +1,17 @@
 package com.android.dsly.common.dialog;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.android.dsly.common.R;
 import com.android.dsly.common.base.BaseActivity;
-import com.android.dsly.common.base.BaseDialog;
-
-import androidx.annotation.NonNull;
+import com.android.dsly.common.base.BaseDialogFragment;
 
 /**
  * @author 陈志鹏
  * @date 2018/10/25
  */
-public class LoadingDialog extends BaseDialog {
-
-    public LoadingDialog(@NonNull Context context) {
-        super(context, R.style.AppTheme_Translucent_Dialog);
-    }
+public class LoadingDialog extends BaseDialogFragment {
 
     @Override
     public int getLayoutId() {
@@ -42,14 +36,24 @@ public class LoadingDialog extends BaseDialog {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (mContext instanceof BaseActivity){
+        if (getContext() instanceof BaseActivity){
             dismiss();
-            ((BaseActivity) mContext).finish();
+            ((BaseActivity) getContext()).finish();
         }
     }
 
     @Override
-    public void show() {
-        super.showDefault();
+    public double getWidth() {
+        return WindowManager.LayoutParams.WRAP_CONTENT;
+    }
+
+    @Override
+    public int getTheme() {
+        return R.style.AppTheme_Translucent_Dialog;
+    }
+
+    @Override
+    public String getDialogTag() {
+        return "LoadingDialog";
     }
 }

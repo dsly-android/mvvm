@@ -168,4 +168,9 @@ public class NewsVideoActivity extends BaseActivity<ActivityNewsVideoBinding, Ba
             mBinding.cvpVideo.onConfigurationChanged(this, newConfig, orientationUtils, true, true);
         }
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

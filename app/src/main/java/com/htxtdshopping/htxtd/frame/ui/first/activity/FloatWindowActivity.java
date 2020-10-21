@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityFloatWindowBinding;
@@ -15,7 +15,7 @@ import com.lzf.easyfloat.permission.PermissionUtils;
 
 import androidx.appcompat.app.AlertDialog;
 
-public class FloatWindowActivity extends BaseFitsWindowActivity<ActivityFloatWindowBinding, BaseViewModel> implements View.OnClickListener {
+public class FloatWindowActivity extends BaseActivity<ActivityFloatWindowBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.common.utils.ToastUtils;
@@ -23,7 +23,7 @@ import io.reactivex.functions.Consumer;
  * @author 陈志鹏
  * @date 2019-12-13
  */
-public class ZxingMainActivity extends BaseFitsWindowActivity<ZxingActivityMainBinding, BaseViewModel> {
+public class ZxingMainActivity extends BaseActivity<ZxingActivityMainBinding, BaseViewModel> {
 
     private static final int CODE_SCAN_QR = 1;
 

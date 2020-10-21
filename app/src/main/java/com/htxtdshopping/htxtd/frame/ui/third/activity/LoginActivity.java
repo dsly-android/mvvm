@@ -25,6 +25,13 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, BaseViewMo
     @Override
     public void initView(Bundle savedInstanceState) {
         mBinding.etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        mBinding.etPhone.post(new Runnable() {
+            @Override
+            public void run() {
+                KeyboardUtils.showSoftInput(mBinding.etPhone);
+            }
+        });
     }
 
     @Override
@@ -103,5 +110,10 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, BaseViewMo
             default:
                 break;
         }
+    }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
     }
 }

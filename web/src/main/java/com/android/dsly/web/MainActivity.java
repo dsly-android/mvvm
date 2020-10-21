@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.web.databinding.WebActivityMainBinding;
 
-public class MainActivity extends BaseFitsWindowActivity<WebActivityMainBinding, BaseViewModel> {
+public class MainActivity extends BaseActivity<WebActivityMainBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {

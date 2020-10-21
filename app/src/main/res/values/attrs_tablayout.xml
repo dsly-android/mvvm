@@ -66,6 +66,8 @@
     <attr name="tl_tab_width" format="dimension"/>
 
     <!-- title -->
+    <!--设置字体大小-->
+    <attr name="tl_textsize" format="dimension"/>
     <!-- 设置字体选中大小 -->
     <attr name="tl_textSelectSize" format="dimension"/>
     <!-- 设置字体未选中大小 -->

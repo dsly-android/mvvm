@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.decoration.GridDividerItemDecoration;
 import com.android.dsly.common.utils.ToastUtils;
@@ -28,7 +28,7 @@ import io.reactivex.functions.Consumer;
 /**
  * @author chenzhipeng
  */
-public class ChangeAvatarActivity extends BaseFitsWindowActivity<ActivityChangeAvatarBinding, BaseViewModel> implements View.OnClickListener {
+public class ChangeAvatarActivity extends BaseActivity<ActivityChangeAvatarBinding, BaseViewModel> implements View.OnClickListener {
 
     private static final int CODE_SINGLE_PICKER = 0;
     private static final int CODE_MULTIPLE_PICKER = 1;

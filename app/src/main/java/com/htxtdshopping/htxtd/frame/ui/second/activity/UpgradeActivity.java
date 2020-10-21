@@ -121,4 +121,9 @@ public class UpgradeActivity extends BaseActivity<ActivityUpgradeBinding, BaseVi
         /*注销下载监听*/
         Beta.unregisterDownloadListener();
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

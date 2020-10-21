@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.decoration.LinearDividerItemDecoration;
 import com.android.dsly.common.widget.CustomizeLoadMoreView;
 import com.blankj.utilcode.util.ActivityUtils;
@@ -36,7 +36,7 @@ import me.jessyan.autosize.utils.AutoSizeUtils;
 /**
  * @author chenzhipeng
  */
-public class RefreshAndLoadMoreActivity extends BaseFitsWindowActivity<ActivityRefreshAndLoadMoreBinding, RefreshAndLoadMoreViewModel> {
+public class RefreshAndLoadMoreActivity extends BaseActivity<ActivityRefreshAndLoadMoreBinding, RefreshAndLoadMoreViewModel> {
 
     private RefreshAndLoadMoreAdapter mAdapter;
     private TextView mTvRefreshNum;

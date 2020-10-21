@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.common.utils.ToastUtils;
@@ -22,7 +22,7 @@ import androidx.work.WorkManager;
 import me.jessyan.autosize.utils.LogUtils;
 
 @Route(path = RouterHub.WORK_WORK_MANAGER_ACTIVITY)
-public class WorkManagerActivity extends BaseFitsWindowActivity<WorkActivityWorkManagerBinding, BaseViewModel> implements View.OnClickListener {
+public class WorkManagerActivity extends BaseActivity<WorkActivityWorkManagerBinding, BaseViewModel> implements View.OnClickListener {
 
     private OneTimeWorkRequest oneTimeWorkRequest;
     private PeriodicWorkRequest periodicWorkRequest;

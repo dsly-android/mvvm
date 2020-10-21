@@ -2,6 +2,7 @@ package com.android.dsly.common.base;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,9 @@ public abstract class BaseDialogFragment<VB extends ViewDataBinding, VM extends 
         initViewDataBinding();
         //私有的ViewModel与View的契约事件回调逻辑
         registerLiveDataCallBack();
+
+        //返回键监听器
+        setOnBackKeyListener();
 
         //注入arouter
         ARouter.getInstance().inject(this);
@@ -104,16 +108,32 @@ public abstract class BaseDialogFragment<VB extends ViewDataBinding, VM extends 
         });
     }
 
+    private void setOnBackKeyListener() {
+        //设置返回键监听器
+        getDialog().setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    onBackPressed();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+    }
+
     public void show(@NonNull FragmentManager manager) {
         show(manager, getDialogTag());
     }
 
     /**
      * dialog占屏幕宽度的百分比
+     *
      * @return
      */
-    public double getWidthPercent(){
-        return 0.73;
+    public double getWidth() {
+        return ScreenUtils.getScreenWidth() * 0.73;
     }
 
     @Override
@@ -125,11 +145,18 @@ public abstract class BaseDialogFragment<VB extends ViewDataBinding, VM extends 
     /**
      * 修改dialog显示的宽高和位置
      */
-    public void initWidth() {
+    protected void initWidth() {
         WindowManager.LayoutParams params = getDialog().getWindow().getAttributes();
-        params.width = (int) (ScreenUtils.getScreenWidth() * getWidthPercent());
+        params.width = (int) getWidth();
         params.height = WindowManager.LayoutParams.WRAP_CONTENT;
         getDialog().getWindow().setAttributes(params);
+    }
+
+    /**
+     * 点击返回键调用方法
+     */
+    protected void onBackPressed() {
+
     }
 
     /**

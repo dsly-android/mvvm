@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.web.web.X5WebChromeClient;
 import com.android.dsly.web.web.X5WebView;
@@ -20,7 +20,7 @@ import me.jessyan.autosize.AutoSize;
  * @author 陈志鹏
  * @date 2020/2/27
  */
-public abstract class BaseWebActivity<VB extends ViewDataBinding, VM extends BaseViewModel> extends BaseFitsWindowActivity<VB, VM> {
+public abstract class BaseWebActivity<VB extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity<VB, VM> {
 
     public static final int CODE_CHOOSE_FILE = 0;
 

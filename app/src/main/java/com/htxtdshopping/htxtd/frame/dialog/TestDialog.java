@@ -18,7 +18,7 @@ public class TestDialog extends BaseDialogFragment {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        setCancelable(false);
+
     }
 
     @Override

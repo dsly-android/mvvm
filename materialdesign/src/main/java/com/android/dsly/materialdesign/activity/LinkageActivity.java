@@ -3,13 +3,13 @@ package com.android.dsly.materialdesign.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.materialdesign.R;
 import com.android.dsly.materialdesign.databinding.DesignActivityLinkageBinding;
 import com.blankj.utilcode.util.ActivityUtils;
 
-public class LinkageActivity extends BaseFitsWindowActivity<DesignActivityLinkageBinding, BaseViewModel> implements View.OnClickListener {
+public class LinkageActivity extends BaseActivity<DesignActivityLinkageBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {

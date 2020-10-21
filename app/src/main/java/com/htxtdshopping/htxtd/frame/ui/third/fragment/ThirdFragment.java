@@ -23,6 +23,7 @@ import com.htxtdshopping.htxtd.frame.ui.third.activity.LoginActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.NotificationActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.PopupWindowActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.ServiceActivity;
+import com.htxtdshopping.htxtd.frame.ui.third.activity.VoiceActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.VoiceRecordActivity;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -96,6 +97,9 @@ public class ThirdFragment extends BaseLazyFragment<FragmentThirdBinding, BaseVi
                 break;
             case R.id.btn_workmanager:
                 ARouter.getInstance().build(RouterHub.WORK_WORK_MANAGER_ACTIVITY).navigation();
+                break;
+            case R.id.btn_voice:
+                ActivityUtils.startActivity(VoiceActivity.class);
                 break;
             default:
                 break;

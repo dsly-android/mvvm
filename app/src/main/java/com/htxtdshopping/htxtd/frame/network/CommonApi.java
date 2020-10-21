@@ -15,13 +15,37 @@
  */
 package com.htxtdshopping.htxtd.frame.network;
 
+import com.android.dsly.common.network.BaseResponse;
+import com.htxtdshopping.htxtd.frame.bean.CallBean;
+
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Url;
 
 public interface CommonApi {
 
     @GET
     Observable<ResponseBody> getBitmap(@Url String url);
+
+    /**
+     * 语音通话--呼叫
+     *
+     * @param receiverId
+     * @param roomId
+     * @return
+     */
+    @POST("/v1/voice/call.do")
+    @FormUrlEncoded
+    Observable<BaseResponse<CallBean>> call(@Field("receiverId") String receiverId, @Field("roomId") String roomId);
+
+    /**
+     * 语音通话--挂断 -- udp端也要挂断，以udp为主，如果udp挂断消息未推送成功，由webSocket推送挂断消息，客户端收到做同样的处理
+     */
+    @POST("/v1/voice/hangUp.do")
+    @FormUrlEncoded
+    Observable<BaseResponse> hangUp(@Field("receiverId") String receiverId, @Field("roomId") String roomId);
 }

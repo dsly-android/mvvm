@@ -183,4 +183,9 @@ public class ImagePreviewActivity extends BaseActivity<ImageActivityImagePreview
         mBinding.tbTitle.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
         mBinding.flFooter.animate().alpha(1.0f).setInterpolator(new DecelerateInterpolator(2));
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

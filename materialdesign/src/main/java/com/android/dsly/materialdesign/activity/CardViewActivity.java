@@ -2,12 +2,12 @@ package com.android.dsly.materialdesign.activity;
 
 import android.os.Bundle;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.materialdesign.R;
 import com.android.dsly.materialdesign.databinding.DesignActivityCardViewBinding;
 
-public class CardViewActivity extends BaseFitsWindowActivity<DesignActivityCardViewBinding, BaseViewModel> {
+public class CardViewActivity extends BaseActivity<DesignActivityCardViewBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {

@@ -4,7 +4,7 @@ import android.Manifest;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BasePermissionConsumer;
 import com.htxtdshopping.htxtd.frame.R;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -12,7 +12,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 /**
  * @author chenzhipeng
  */
-public class PermissionActivity extends BaseFitsWindowActivity {
+public class PermissionActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {

@@ -59,7 +59,7 @@ dependencies {
 
     implementation project(path: ':facesdk')
     //AndroidUtilCode
-    implementation 'com.blankj:utilcodex:1.25.2'
+    implementation rootProject.ext.dependencies["utilcodex"]
     //RxPermissions
     api rootProject.ext.dependencies["rxpermissions"]
     //rxjava

@@ -4,16 +4,17 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BasePopupWindow;
 import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityPopupWindowBinding;
+import com.htxtdshopping.htxtd.frame.popup.TestActionItemPopup;
 
 /**
  * @author chenzhipeng
  */
-public class PopupWindowActivity extends BaseFitsWindowActivity<ActivityPopupWindowBinding, BaseViewModel> {
+public class PopupWindowActivity extends BaseActivity<ActivityPopupWindowBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {
@@ -32,6 +33,10 @@ public class PopupWindowActivity extends BaseFitsWindowActivity<ActivityPopupWin
     @Override
     public void initData() {
 
+    }
+
+    public void actionItem(View view){
+        new TestActionItemPopup(this).show(mBinding.btnAction);
     }
 
     public void fullScreen(View view) {

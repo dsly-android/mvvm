@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityCommonTabBinding;
 import com.htxtdshopping.htxtd.frame.ui.four.fragment.SimpleCardFragment;
 import com.htxtdshopping.htxtd.frame.widget.tablayout.CommonTabLayout;
 import com.htxtdshopping.htxtd.frame.widget.tablayout.listener.CustomTabEntity;
@@ -23,7 +25,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import me.jessyan.autosize.utils.AutoSizeUtils;
 
-public class CommonTabActivity extends BaseActivity {
+public class CommonTabActivity extends BaseActivity<ActivityCommonTabBinding, BaseViewModel> {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private ArrayList<Fragment> mFragments2 = new ArrayList<>();
 
@@ -209,5 +211,10 @@ public class CommonTabActivity extends BaseActivity {
         public Fragment getItem(int position) {
             return mFragments.get(position);
         }
+    }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
     }
 }

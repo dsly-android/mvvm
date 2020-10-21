@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.htxtdshopping.htxtd.frame.R;
@@ -15,7 +15,7 @@ import com.mrd.common_service.service.IGenerateCodeService;
 /**
  * @author chenzhipeng
  */
-public class GenerateQrCodeActivity extends BaseFitsWindowActivity<ActivityGenerateQrCodeBinding, BaseViewModel> implements View.OnClickListener {
+public class GenerateQrCodeActivity extends BaseActivity<ActivityGenerateQrCodeBinding, BaseViewModel> implements View.OnClickListener {
 
     @Autowired
     IGenerateCodeService mGenerateCodeService;

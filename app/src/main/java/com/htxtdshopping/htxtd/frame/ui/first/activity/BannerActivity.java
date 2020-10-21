@@ -59,4 +59,9 @@ public class BannerActivity extends BaseActivity<ActivityBannerBinding, BaseView
         super.onPause();
         mBinding.bImages.stopAutoPlay();
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

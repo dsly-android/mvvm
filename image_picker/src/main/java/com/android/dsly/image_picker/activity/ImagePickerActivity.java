@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.Constants;
 import com.android.dsly.common.decoration.GridDividerItemDecoration;
@@ -43,7 +43,7 @@ import io.reactivex.functions.Consumer;
 /**
  * @author chenzhipeng
  */
-public class ImagePickerActivity extends BaseFitsWindowActivity<ImageActivityImagePickerBinding, BaseViewModel> implements ImageDataUtils.OnImagesLoadedListener, ImageFolderPopupWindow.OnImageFolderSelectedListener, View.OnClickListener {
+public class ImagePickerActivity extends BaseActivity<ImageActivityImagePickerBinding, BaseViewModel> implements ImageDataUtils.OnImagesLoadedListener, ImageFolderPopupWindow.OnImageFolderSelectedListener, View.OnClickListener {
 
     public static final String RESULT_KEY_IMAGE_PATH = "result_key_image_path";
     private static final int CODE_CROP_IMAGE = 1;

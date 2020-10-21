@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.materialdesign.activity.BottomSheetActivity;
@@ -20,7 +20,7 @@ import com.android.dsly.materialdesign.databinding.DesignActivityMaterialDesignB
 import com.blankj.utilcode.util.ActivityUtils;
 
 @Route(path = RouterHub.DESIGN_MATERIAL_DESIGN_ACTIVITY)
-public class MaterialDesignActivity extends BaseFitsWindowActivity<DesignActivityMaterialDesignBinding, BaseViewModel> implements View.OnClickListener {
+public class MaterialDesignActivity extends BaseActivity<DesignActivityMaterialDesignBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {

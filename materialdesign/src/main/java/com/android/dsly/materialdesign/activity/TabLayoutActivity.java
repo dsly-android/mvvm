@@ -3,7 +3,7 @@ package com.android.dsly.materialdesign.activity;
 import android.os.Bundle;
 
 import com.android.dsly.common.base.AppFragmentPagerAdapter;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.materialdesign.fragment.PlaceholderFragment;
 import com.android.dsly.materialdesign.R;
@@ -15,7 +15,7 @@ import java.util.List;
 
 import me.jessyan.autosize.utils.LogUtils;
 
-public class TabLayoutActivity extends BaseFitsWindowActivity<DesignActivityTabLayoutBinding, BaseViewModel> {
+public class TabLayoutActivity extends BaseActivity<DesignActivityTabLayoutBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {
@@ -27,9 +27,9 @@ public class TabLayoutActivity extends BaseFitsWindowActivity<DesignActivityTabL
         List<Class> class1 = new ArrayList<>();
         class1.add(PlaceholderFragment.class);
         class1.add(PlaceholderFragment.class);
-        String[] title1 = new String[2];
-        title1[0] = "tab1";
-        title1[1] = "tab2";
+        List<String> title1 = new ArrayList<>();
+        title1.add("tab1");
+        title1.add("tab2");
         mBinding.viewPager1.setAdapter(new AppFragmentPagerAdapter(getSupportFragmentManager(),class1, title1));
         mBinding.tab1.setupWithViewPager(mBinding.viewPager1);
         mBinding.tab1.getTabAt(1).select();

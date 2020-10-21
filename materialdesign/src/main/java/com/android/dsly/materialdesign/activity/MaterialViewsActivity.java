@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.materialdesign.R;
 import com.android.dsly.materialdesign.databinding.DesignActivityMaterialViewsBinding;
@@ -13,7 +13,7 @@ import com.google.android.material.chip.ChipGroup;
 
 import me.jessyan.autosize.utils.LogUtils;
 
-public class MaterialViewsActivity extends BaseFitsWindowActivity<DesignActivityMaterialViewsBinding, BaseViewModel> {
+public class MaterialViewsActivity extends BaseActivity<DesignActivityMaterialViewsBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {

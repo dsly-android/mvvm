@@ -2,12 +2,12 @@ package com.htxtdshopping.htxtd.frame.ui.center.activity;
 
 import android.os.Bundle;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityCustomViewBinding;
 
-public class CustomViewActivity extends BaseFitsWindowActivity<ActivityCustomViewBinding, BaseViewModel> {
+public class CustomViewActivity extends BaseActivity<ActivityCustomViewBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {

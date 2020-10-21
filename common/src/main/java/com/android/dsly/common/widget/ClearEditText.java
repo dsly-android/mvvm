@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -110,7 +111,7 @@ public class ClearEditText extends FrameLayout {
         }
         mEtInput.setTextColor(textColor);
         mEtInput.setHintTextColor(hintTextColor);
-        mEtInput.setTextSize(textSize);
+        mEtInput.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
         mVUnderLine.setBackgroundColor(mUnderLineColor);
         mVUnderLine.setVisibility(mUnderLineVisible);
     }
@@ -144,18 +145,23 @@ public class ClearEditText extends FrameLayout {
         });
     }
 
+    public EditText getEtInput() {
+        return mEtInput;
+    }
+
     /**
      * 获取输入的字符串
+     *
      * @return
      */
-    public String getTextStr(){
+    public String getTextStr() {
         return mEtInput.getText().toString();
     }
 
     /**
      * 清空输入的内容
      */
-    public void clear(){
+    public void clear() {
         mEtInput.getText().clear();
     }
 }

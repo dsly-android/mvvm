@@ -35,14 +35,14 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
  */
 public class AppFragmentPagerAdapter extends FragmentStatePagerAdapter {
     private List<Class> mList;
-    private CharSequence[] mTitles;
+    private List<String> mTitles;
 
     public AppFragmentPagerAdapter(FragmentManager fragmentManager, List<Class> list) {
         super(fragmentManager);
         this.mList = list;
     }
 
-    public AppFragmentPagerAdapter(FragmentManager fragmentManager, List<Class> list, CharSequence[] titles) {
+    public AppFragmentPagerAdapter(FragmentManager fragmentManager, List<Class> list, List<String> titles) {
         super(fragmentManager);
         this.mList = list;
         this.mTitles = titles;
@@ -63,7 +63,7 @@ public class AppFragmentPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if (mTitles != null) {
-            return mTitles[position];
+            return mTitles.get(position);
         }
         return super.getPageTitle(position);
     }

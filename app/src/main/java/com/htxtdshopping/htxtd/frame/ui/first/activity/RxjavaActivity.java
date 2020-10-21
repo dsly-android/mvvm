@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.rxhttp.observer.CommonObserver;
 import com.blankj.utilcode.util.LogUtils;
@@ -25,7 +25,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class RxjavaActivity extends BaseFitsWindowActivity<ActivityRxjavaBinding, BaseViewModel> implements View.OnClickListener {
+public class RxjavaActivity extends BaseActivity<ActivityRxjavaBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {

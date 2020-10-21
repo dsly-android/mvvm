@@ -5,7 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
 import com.htxtdshopping.htxtd.frame.R;
@@ -21,7 +21,7 @@ import com.umeng.socialize.media.UMWeb;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
-public class LoginAndShareActivity extends BaseFitsWindowActivity<ActivityLoginAndShareBinding, BaseViewModel> implements View.OnClickListener {
+public class LoginAndShareActivity extends BaseActivity<ActivityLoginAndShareBinding, BaseViewModel> implements View.OnClickListener {
 
     private UMShareListener mShareListener;
     private ShareAction mShareAction;

@@ -5,7 +5,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
 import com.android.dsly.materialdesign.R;
@@ -13,7 +13,7 @@ import com.android.dsly.materialdesign.databinding.DesignActivitySearchViewBindi
 
 import androidx.annotation.NonNull;
 
-public class SearchViewActivity extends BaseFitsWindowActivity<DesignActivitySearchViewBinding, BaseViewModel> {
+public class SearchViewActivity extends BaseActivity<DesignActivitySearchViewBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {

@@ -92,4 +92,9 @@ public class OssActivity extends BaseActivity<ActivityOssBinding, BaseViewModel>
                 break;
         }
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

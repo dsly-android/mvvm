@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.fastjson.JSON;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.decoration.sticky.StickyHeadContainer;
 import com.android.dsly.common.decoration.sticky.StickyItemDecoration;
@@ -29,7 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class ContactNavigationActivity extends BaseFitsWindowActivity<ActivityContactNavigationBinding, BaseViewModel> {
+public class ContactNavigationActivity extends BaseActivity<ActivityContactNavigationBinding, BaseViewModel> {
 
     private ContactNavigationAdapter mAdapter;
 

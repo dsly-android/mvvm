@@ -110,4 +110,9 @@ public class VoiceRecordActivity extends BaseActivity<ActivityVoiceRecordBinding
     public void record(View view) {
         ActivityUtils.startActivity(VoicePlayActivity.class);
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

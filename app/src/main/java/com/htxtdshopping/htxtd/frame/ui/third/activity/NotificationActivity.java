@@ -3,13 +3,13 @@ package com.htxtdshopping.htxtd.frame.ui.third.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityNotificationBinding;
 import com.htxtdshopping.htxtd.frame.notification.Notifications;
 
-public class NotificationActivity extends BaseFitsWindowActivity<ActivityNotificationBinding, BaseViewModel> implements View.OnClickListener {
+public class NotificationActivity extends BaseActivity<ActivityNotificationBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {

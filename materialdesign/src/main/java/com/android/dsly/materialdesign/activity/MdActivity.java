@@ -3,14 +3,14 @@ package com.android.dsly.materialdesign.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
 import com.android.dsly.materialdesign.R;
 import com.android.dsly.materialdesign.databinding.DesignActivityMdBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MdActivity extends BaseFitsWindowActivity<DesignActivityMdBinding, BaseViewModel> {
+public class MdActivity extends BaseActivity<DesignActivityMdBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {

@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.blankj.utilcode.util.LogUtils;
 import com.htxtdshopping.htxtd.frame.R;
 
 import java.lang.ref.WeakReference;
 
-public class HandlerActivity extends BaseFitsWindowActivity {
+public class HandlerActivity extends BaseActivity {
 
     private Handler mHandler;
 

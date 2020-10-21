@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.Constants;
 import com.android.dsly.common.utils.ToastUtils;
@@ -28,7 +28,7 @@ import androidx.annotation.Nullable;
 /**
  * @author chenzhipeng
  */
-public class CropActivity extends BaseFitsWindowActivity<ImageActivityCropBinding, BaseViewModel> {
+public class CropActivity extends BaseActivity<ImageActivityCropBinding, BaseViewModel> {
 
     public static final String KEY_IMAGE_PATH = "key_image_path";
     public static final String RESULT_KEY_IMAGE_PATH = "result_key_image_path";

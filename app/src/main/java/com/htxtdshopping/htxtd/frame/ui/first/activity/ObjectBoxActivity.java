@@ -8,7 +8,7 @@ import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.base.AppContext;
@@ -41,7 +41,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class ObjectBoxActivity extends BaseFitsWindowActivity<ActivityObjectBoxBinding, BaseViewModel> {
+public class ObjectBoxActivity extends BaseActivity<ActivityObjectBoxBinding, BaseViewModel> {
 
     private Box<Person> personBox;
     private Box<User> userBox;

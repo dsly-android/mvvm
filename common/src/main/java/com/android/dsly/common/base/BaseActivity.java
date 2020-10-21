@@ -10,17 +10,20 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.R;
 import com.android.dsly.common.dialog.LoadingDialog;
 import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.FragmentUtils;
 import com.chad.library.BR;
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.slidingpanelayout.widget.SlidingPaneLayout;
@@ -62,7 +65,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         //注入arouter
         ARouter.getInstance().inject(this);
 
-        BarUtils.setStatusBarColor(this, getResources().getColor(R.color._81D8CF));
+        initStatusBar();
         if (isFitWindow()) {
             setFitsSystemWindows(true);
         }
@@ -191,26 +194,48 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         return null;
     }
 
+    /**
+     * 将返回键的点击方法传递到fragment
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        List<Fragment> fragments = FragmentUtils.getFragments(getSupportFragmentManager());
+        for (int i = 0; i < fragments.size(); i++) {
+            Fragment fragment = fragments.get(i);
+            if (fragment instanceof BaseFragment){
+                ((BaseFragment) fragment).onBackPressed();
+            }
+        }
+    }
+
+    /**
+     * 初始化状态栏
+     */
+    protected void initStatusBar(){
+        BarUtils.setStatusBarColor(this, getResources().getColor(R.color._81D8CF));
+    }
+
     protected boolean isFitWindow() {
-        return false;
+        return true;
     }
 
     protected void showLoading() {
         if (mLoadingDialog == null) {
-            mLoadingDialog = new LoadingDialog(this);
+            mLoadingDialog = new LoadingDialog();
         }
-        if (!mLoadingDialog.isShowing()) {
-            mLoadingDialog.show();
+        if (!mLoadingDialog.isVisible()) {
+            mLoadingDialog.show(getSupportFragmentManager());
         }
     }
 
     protected void hideLoading() {
-        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+        if (mLoadingDialog != null && mLoadingDialog.isAdded()) {
             mLoadingDialog.dismiss();
         }
     }
 
-    public void setFitsSystemWindows(boolean fitSystemWindows) {
+    protected void setFitsSystemWindows(boolean fitSystemWindows) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             return;
         }

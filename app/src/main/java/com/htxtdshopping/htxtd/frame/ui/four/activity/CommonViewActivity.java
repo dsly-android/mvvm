@@ -64,4 +64,9 @@ public class CommonViewActivity extends BaseActivity<ActivityCommonViewBinding, 
         messages.add("6. 微信公众号：孙福生");
         mBinding.mvMarquee.startWithList(messages);
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

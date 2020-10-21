@@ -83,6 +83,10 @@ public class TitleBar extends ConstraintLayout implements View.OnClickListener {
         mTvRight.setText(text);
     }
 
+    public String getRightTextString(){
+        return mTvRight.getText().toString();
+    }
+
     public void setOnRightImageClickListener(OnClickListener listener) {
         mIvRight.setOnClickListener(listener);
     }

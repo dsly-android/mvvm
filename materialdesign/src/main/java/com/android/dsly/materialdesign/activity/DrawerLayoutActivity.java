@@ -5,7 +5,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.materialdesign.R;
 import com.android.dsly.materialdesign.databinding.DesignActivityDrawerLayoutBinding;
@@ -18,7 +18,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-public class DrawerLayoutActivity extends BaseFitsWindowActivity<DesignActivityDrawerLayoutBinding, BaseViewModel>
+public class DrawerLayoutActivity extends BaseActivity<DesignActivityDrawerLayoutBinding, BaseViewModel>
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override

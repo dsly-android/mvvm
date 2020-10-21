@@ -3,7 +3,7 @@ package com.htxtdshopping.htxtd.frame.ui.four.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import static com.htxtdshopping.htxtd.frame.ui.four.adapter.ChooseChannelAdapter.TYPE_SELECTED;
 
-public class ChooseChannelActivity extends BaseFitsWindowActivity<ActivityChooseChannelBinding, BaseViewModel> {
+public class ChooseChannelActivity extends BaseActivity<ActivityChooseChannelBinding, BaseViewModel> {
 
     private ChooseChannelAdapter mAdapter;
 

@@ -9,7 +9,7 @@ ext {
     ]
 
     version = [
-            glideSdkVersion         : "4.9.0",
+            glideSdkVersion         : "4.11.0",
             rxBindingVersion        : "3.1.0",
             workVersion             : "2.2.0",
     ]
@@ -22,7 +22,7 @@ ext {
             //design
             "design"                   : "com.google.android.material:material:1.1.0-alpha02",
             //rxhttp
-            "rxhttp"                   : "com.android.dsly:rxhttp:1.0.6",
+            "rxhttp"                   : "com.android.dsly:rxhttp:1.0.8",
             //fastjson
             "fastjson"                 : "com.alibaba:fastjson:1.1.71.android",
             //LiveEventBus
@@ -31,6 +31,8 @@ ext {
             "glide"                    : "com.github.bumptech.glide:glide:${version["glideSdkVersion"]}",
             //glide-compiler
             "glide-compiler"           : "com.github.bumptech.glide:compiler:${version["glideSdkVersion"]}",
+            //okhttp3-integration
+            "okhttp3-integration"      : "com.github.bumptech.glide:okhttp3-integration:${version["glideSdkVersion"]}",
             //rxpermissions
             "rxpermissions"            : "com.github.tbruyelle:rxpermissions:0.10.2",
             //lifecycle
@@ -40,7 +42,7 @@ ext {
             //leakcanary
             "leakcanary"               : "com.squareup.leakcanary:leakcanary-android:2.0",
             //flexbox
-            "flexbox"                  : "com.google.android:flexbox:1.1.0",
+            "flexbox"                  : "com.google.android:flexbox:2.0.1",
             //BaseRecyclerViewAdapterHelper
             "adapter"                  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta4",
             //SmartRefreshLayout

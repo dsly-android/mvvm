@@ -3,7 +3,7 @@ package com.htxtdshopping.htxtd.frame.ui.first.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.constant.EventBusTag;
 import com.blankj.utilcode.util.ServiceUtils;
@@ -13,7 +13,7 @@ import com.htxtdshopping.htxtd.frame.event.SocketSendEvent;
 import com.htxtdshopping.htxtd.frame.service.WebSocketService;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
-public class WebSocketActivity extends BaseFitsWindowActivity<ActivityWebSocketBinding, BaseViewModel> implements View.OnClickListener {
+public class WebSocketActivity extends BaseActivity<ActivityWebSocketBinding, BaseViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {

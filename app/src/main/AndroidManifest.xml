@@ -52,48 +52,60 @@
         <activity android:name=".ui.center.activity.TestActivity"/>
         <activity
             android:name=".ui.center.activity.CustomViewActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.center.activity.SlideCloseActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SlideClose.Transparent.Theme" />
+            android:theme="@style/SlideClose.Transparent.Theme"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.center.activity.LinearActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
 
         <service android:name=".service.WebSocketService" />
 
         <activity
             android:name=".ui.first.activity.WebSocketActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.four.activity.DoodleViewActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.four.activity.DialogActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
 
         <service android:name="com.lzf.easyfloat.service.FloatService" />
 
         <activity
             android:name=".ui.four.activity.RadarViewActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.first.activity.AutoSizeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.first.activity.FloatWindowActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.HandlerActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.LifecycleActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.other.activity.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Splash">
+            android:theme="@style/AppTheme.Splash"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -102,72 +114,94 @@
         </activity>
         <activity
             android:name=".ui.other.activity.MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.first.activity.RefreshAndLoadMoreActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.first.activity.PermissionActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.first.activity.GenerateQrCodeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.GridActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.ListActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.VoiceRecordActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.VoicePlayActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.second.activity.OssActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.second.activity.UpgradeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.AppCompat.Dialog" />
+            android:theme="@style/AppTheme.AppCompat.Dialog"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.PopupWindowActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.first.activity.ObjectBoxActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.four.activity.TabHomeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.four.activity.SlidingTabActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.four.activity.SegmentTabActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.four.activity.CommonTabActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.four.activity.CommonTextViewActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.four.activity.CommonViewActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.ChangeAvatarActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.NotificationActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.LaunchActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.ServiceActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
 
         <service android:name=".service.LocalService" />
         <service android:name=".service.BindService" />
@@ -175,13 +209,16 @@
 
         <activity
             android:name=".ui.four.activity.TimeOrAddressPickerActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.four.activity.ContactNavigationActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.second.activity.LoginAndShareActivity"
-            android:screenOrientation="portrait" /> <!-- 分享 -->
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" /> <!-- 分享 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -189,28 +226,30 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".ui.four.activity.ChooseChannelActivity"
-            android:screenOrientation="portrait" /> <!-- 一进去就弹出输入法 -->
-        <!-- android:windowSoftInputMode="stateVisible|adjustResize" -->
-        <!-- 不弹出输入法 -->
-        <!-- android:windowSoftInputMode="stateHidden" -->
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.LoginActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.first.activity.BannerActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.first.activity.NewsVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.first.activity.RxjavaActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.third.activity.UpgradeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.AppCompat.Dialog" /> <!-- bugly -->
+            android:theme="@style/AppTheme.AppCompat.Dialog"
+            tools:ignore="LockedOrientationActivity" /> <!-- bugly -->
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"

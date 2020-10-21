@@ -3,7 +3,7 @@ package com.htxtdshopping.htxtd.frame.ui.center.activity;
 import android.os.Bundle;
 import android.os.SystemClock;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.chad.library.adapter.base.listener.OnLoadMoreListener;
@@ -18,7 +18,7 @@ import java.util.List;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class LinearActivity extends BaseFitsWindowActivity<ActivityLinearBinding, BaseViewModel> {
+public class LinearActivity extends BaseActivity<ActivityLinearBinding, BaseViewModel> {
 
     private LinearAdapter mAdapter;
 

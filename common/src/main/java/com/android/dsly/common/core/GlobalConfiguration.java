@@ -13,6 +13,7 @@ import com.android.dsly.rxhttp.cache.CacheMode;
 import com.android.dsly.rxhttp.cookie.store.SPCookieStore;
 import com.android.dsly.rxhttp.interceptor.HttpLoggingInterceptor;
 import com.android.dsly.rxhttp.utils.HttpsUtils;
+import com.android.dsly.rxhttp.utils.RxHttpLog;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.LogUtils;
@@ -106,7 +107,7 @@ public class GlobalConfiguration implements ConfigModule {
     }
 
     private void initRxHttp(Application application) {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        OkHttpClient.Builder builder = RetrofitUrlManager.getInstance().with(new OkHttpClient.Builder());
 
         //全局的读取超时时间
         builder.readTimeout(RxHttp.DEFAULT_MILLISECONDS / 2, TimeUnit.MILLISECONDS);
@@ -139,7 +140,7 @@ public class GlobalConfiguration implements ConfigModule {
 
         RxHttp.getInstance()
                 .setBaseUrl("https://www.apiopen.top/")
-                .setOkHttpClientBuild(RetrofitUrlManager.getInstance().with(builder))
+                .setOkHttpClientBuild(builder)
 //                .addCommonHeader("aaa","aaa")  //全局公共头
 //                .addCommonHeaders(new LinkedHashMap<String, String>())   //全局公共头
                 .setCookieType(new SPCookieStore(application)) //使用sp保持cookie，如果cookie不过期，则一直有效
@@ -148,6 +149,9 @@ public class GlobalConfiguration implements ConfigModule {
                 .setCacheMode(CacheMode.NO_CACHE) //缓存模式，默认不缓存
                 .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE) //缓存过期时间，默认远不过期
                 .init(application);
+
+        RxHttpLog.getConfig().setGlobalTag("RxHttp");
+        RxHttpLog.getConfig().setLogSwitch(BuildConfig.DEBUG);
     }
 
     private void initAutoSize(Application application) {

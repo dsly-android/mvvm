@@ -31,4 +31,9 @@ public class CommonTextViewActivity extends BaseActivity<ActivityCommonTextViewB
     public void initData() {
 
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

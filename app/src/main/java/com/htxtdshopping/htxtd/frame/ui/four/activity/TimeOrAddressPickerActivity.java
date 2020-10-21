@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.ConvertUtils;
@@ -47,7 +47,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class TimeOrAddressPickerActivity extends BaseFitsWindowActivity<ActivityTimeOrAddressPickerBinding, BaseViewModel> implements View.OnClickListener {
+public class TimeOrAddressPickerActivity extends BaseActivity<ActivityTimeOrAddressPickerBinding, BaseViewModel> implements View.OnClickListener {
 
     private TimePickerView pvTime, pvCustomTime, pvCustomLunar;
     private OptionsPickerView pvOptions, pvNoLinkOptions;

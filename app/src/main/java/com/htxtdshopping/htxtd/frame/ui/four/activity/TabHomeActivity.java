@@ -43,4 +43,9 @@ public class TabHomeActivity extends BaseActivity<ActivityTabHomeBinding, BaseVi
     public void initData() {
 
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

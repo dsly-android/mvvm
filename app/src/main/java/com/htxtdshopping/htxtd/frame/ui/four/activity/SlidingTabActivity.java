@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivitySlidingTabBinding;
 import com.htxtdshopping.htxtd.frame.ui.four.fragment.SimpleCardFragment;
 import com.htxtdshopping.htxtd.frame.widget.tablayout.SlidingTabLayout;
 import com.htxtdshopping.htxtd.frame.widget.tablayout.listener.OnTabSelectListener;
@@ -19,7 +21,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class SlidingTabActivity extends BaseActivity implements OnTabSelectListener {
+public class SlidingTabActivity extends BaseActivity<ActivitySlidingTabBinding, BaseViewModel> implements OnTabSelectListener {
     private Context mContext = this;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
@@ -133,5 +135,10 @@ public class SlidingTabActivity extends BaseActivity implements OnTabSelectListe
         public Fragment getItem(int position) {
             return mFragments.get(position);
         }
+    }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
     }
 }

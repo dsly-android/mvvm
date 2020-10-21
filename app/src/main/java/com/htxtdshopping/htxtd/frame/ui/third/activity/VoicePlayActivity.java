@@ -75,4 +75,9 @@ public class VoicePlayActivity extends BaseActivity<ActivityVoicePlayBinding, Ba
     public void deleteDir(View view) {
         FileUtils.deleteAllInDir(VoiceRecordManager.FILE_PATH);
     }
+
+    @Override
+    protected boolean isFitWindow() {
+        return false;
+    }
 }

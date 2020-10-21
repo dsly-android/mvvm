@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.htxtdshopping.htxtd.frame.R;
@@ -18,7 +18,7 @@ import com.htxtdshopping.htxtd.frame.widget.doodleView.DoodleView;
 
 import androidx.appcompat.app.AlertDialog;
 
-public class DoodleViewActivity extends BaseFitsWindowActivity<ActivityDoodleViewBinding, BaseViewModel> {
+public class DoodleViewActivity extends BaseActivity<ActivityDoodleViewBinding, BaseViewModel> {
 
     private AlertDialog mColorDialog;
     private AlertDialog mPaintDialog;

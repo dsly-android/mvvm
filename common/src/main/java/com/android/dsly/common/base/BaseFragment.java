@@ -107,6 +107,13 @@ public abstract class BaseFragment<VB extends ViewDataBinding, VM extends BaseVi
     }
 
     /**
+     * 点击返回键调用方法
+     */
+    protected void onBackPressed(){
+
+    }
+
+    /**
      * 是否使用懒加载
      *
      * @return

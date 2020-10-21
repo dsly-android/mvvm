@@ -2,12 +2,12 @@ package com.htxtdshopping.htxtd.frame.ui.third.activity;
 
 import android.os.Bundle;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.blankj.utilcode.util.LogUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.lifecycle.TestObserver;
 
-public class LifecycleActivity extends BaseFitsWindowActivity {
+public class LifecycleActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {

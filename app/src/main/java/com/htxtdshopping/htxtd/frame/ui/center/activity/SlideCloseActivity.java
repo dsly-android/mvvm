@@ -2,10 +2,10 @@ package com.htxtdshopping.htxtd.frame.ui.center.activity;
 
 import android.os.Bundle;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.htxtdshopping.htxtd.frame.R;
 
-public class SlideCloseActivity extends BaseFitsWindowActivity {
+public class SlideCloseActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {

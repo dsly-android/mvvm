@@ -3,7 +3,7 @@ package com.htxtdshopping.htxtd.frame.ui.four.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.htxtdshopping.htxtd.frame.R;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RadarViewActivity extends BaseFitsWindowActivity<ActivityRadarViewBinding, BaseViewModel> {
+public class RadarViewActivity extends BaseActivity<ActivityRadarViewBinding, BaseViewModel> {
 
     @Override
     public int getLayoutId() {

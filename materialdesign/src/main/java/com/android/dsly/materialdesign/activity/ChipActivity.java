@@ -2,10 +2,10 @@ package com.android.dsly.materialdesign.activity;
 
 import android.os.Bundle;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.materialdesign.R;
 
-public class ChipActivity extends BaseFitsWindowActivity {
+public class ChipActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {

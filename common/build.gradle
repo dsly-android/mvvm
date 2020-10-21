@@ -72,6 +72,7 @@ dependencies {
 
     //glide
     api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["okhttp3-integration"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
     //RxPermissions

@@ -3,7 +3,7 @@ package com.htxtdshopping.htxtd.frame.ui.third.activity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.dsly.common.base.BaseFitsWindowActivity;
+import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.decoration.GridDividerItemDecoration;
 import com.android.dsly.common.listener.OnItemAntiClickListener;
@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 /**
  * @author chenzhipeng
  */
-public class GridActivity extends BaseFitsWindowActivity<ActivityGridBinding, BaseViewModel> {
+public class GridActivity extends BaseActivity<ActivityGridBinding, BaseViewModel> {
 
     private GridAdapter mAdapter;
 
