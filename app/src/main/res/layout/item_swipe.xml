@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="entity"
+            type="java.lang.String" />
+    </data>
+
+    <com.htxtdshopping.htxtd.frame.widget.SwipeRevealLayout
+        android:id="@+id/srl_swipe"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:dragEdge="right"
+        app:mode="same_level">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_red_light"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_collect"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="收藏"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@{entity}"
+                android:textColor="@color/_212121"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </com.htxtdshopping.htxtd.frame.widget.SwipeRevealLayout>
+</layout>

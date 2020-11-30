@@ -42,6 +42,15 @@
                     android:id="@+id/btn_slide_close"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="侧滑关闭"
+                    onAntiClick="@{onClickListener}"
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_swipe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="侧滑删除"
                     onAntiClick="@{onClickListener}"
                     android:textAllCaps="false"

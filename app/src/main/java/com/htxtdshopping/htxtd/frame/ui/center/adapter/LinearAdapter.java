@@ -19,6 +19,6 @@ public class LinearAdapter extends BaseQuickAdapter<String, BaseViewHolder> impl
 
     @Override
     protected void convert(@NonNull BaseViewHolder helper, String item) {
-        helper.setText(R.id.tv_content,item);
+        helper.setText(R.id.tv_content, item);
     }
 }

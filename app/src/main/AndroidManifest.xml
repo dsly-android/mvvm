@@ -51,6 +51,10 @@
         android:theme="@style/AppTheme"
         tools:replace="icon,theme,label,allowBackup">
         <activity
+            android:name=".ui.center.activity.SwipeActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name=".ui.four.activity.StateLayoutActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />

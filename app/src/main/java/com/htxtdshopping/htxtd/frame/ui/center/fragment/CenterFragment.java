@@ -13,6 +13,7 @@ import com.htxtdshopping.htxtd.frame.databinding.FragmentCenterBinding;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.CustomViewActivity;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.LinearActivity;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.SlideCloseActivity;
+import com.htxtdshopping.htxtd.frame.ui.center.activity.SwipeActivity;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.TestActivity;
 
 import androidx.fragment.app.Fragment;
@@ -56,6 +57,9 @@ public class CenterFragment extends BaseLazyFragment<FragmentCenterBinding, Base
                 break;
             case R.id.btn_test:
                 ActivityUtils.startActivity(TestActivity.class);
+                break;
+            case R.id.btn_swipe:
+                ActivityUtils.startActivity(SwipeActivity.class);
                 break;
             default:
                 break;
