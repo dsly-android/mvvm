@@ -98,7 +98,7 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
      * 初始化websocket连接
      */
     private void initSocketClient() {
-        URI uri = URI.create("ws://101.37.116.134:5555/ws");
+        URI uri = URI.create("ws://47.107.48.238:5555/ws");
         mClient = new WebSocketClient(uri) {
 
             @Override

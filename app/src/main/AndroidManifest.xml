@@ -38,7 +38,8 @@
     <uses-permission android:name="android.permission.GET_TASKS" /> <!-- UShare -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 控制屏幕息屏亮屏 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".base.SophixStubApplication"
@@ -49,7 +50,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="icon,theme,label,allowBackup">
-        <activity android:name=".ui.center.activity.TestActivity"/>
+        <activity
+            android:name=".ui.four.activity.StateLayoutActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.third.activity.ViewPager2Activity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.third.activity.DistanceSensorActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.third.activity.SensorActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.third.activity.RandomAccessFileActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.center.activity.TestActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.center.activity.CustomViewActivity"
             android:screenOrientation="portrait"
@@ -114,6 +138,7 @@
         </activity>
         <activity
             android:name=".ui.other.activity.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity

@@ -22,7 +22,10 @@ import com.htxtdshopping.htxtd.frame.ui.third.activity.ListActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.LoginActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.NotificationActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.PopupWindowActivity;
+import com.htxtdshopping.htxtd.frame.ui.third.activity.RandomAccessFileActivity;
+import com.htxtdshopping.htxtd.frame.ui.third.activity.SensorActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.ServiceActivity;
+import com.htxtdshopping.htxtd.frame.ui.third.activity.ViewPager2Activity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.VoiceActivity;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.VoiceRecordActivity;
 import com.tbruyelle.rxpermissions2.Permission;
@@ -100,6 +103,15 @@ public class ThirdFragment extends BaseLazyFragment<FragmentThirdBinding, BaseVi
                 break;
             case R.id.btn_voice:
                 ActivityUtils.startActivity(VoiceActivity.class);
+                break;
+            case R.id.btn_randomAccessFile:
+                ActivityUtils.startActivity(RandomAccessFileActivity.class);
+                break;
+            case R.id.btn_sensor:
+                ActivityUtils.startActivity(SensorActivity.class);
+                break;
+            case R.id.btn_viewpager2:
+                ActivityUtils.startActivity(ViewPager2Activity.class);
                 break;
             default:
                 break;

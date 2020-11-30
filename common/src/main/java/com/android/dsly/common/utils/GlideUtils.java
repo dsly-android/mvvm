@@ -5,8 +5,11 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.android.dsly.common.R;
+import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.ThreadUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 import com.bumptech.glide.request.RequestOptions;
 
 /**
@@ -38,5 +41,49 @@ public final class GlideUtils {
             apply.override(width, height);
         }
         apply.into(iv);
+    }
+
+    /**
+     * 清理图片磁盘缓存
+     */
+    public static void clearImageDiskCache(final Context context) {
+        try {
+            if (ThreadUtils.isMainThread()) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Glide.get(context).clearDiskCache();
+                    }
+                }).start();
+            } else {
+                Glide.get(context).clearDiskCache();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 清除图片内存缓存
+     */
+    public static void clearImageMemoryCache(final Context context) {
+        try {
+            if (ThreadUtils.isMainThread()) {
+                Glide.get(context).clearMemory();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 清除图片所有缓存
+     * 主要调用这个方法
+     */
+    public static void clearImageAllCache(Context context) {
+        clearImageDiskCache(context);
+        clearImageMemoryCache(context);
+        String ImageExternalCatchDir = context.getExternalCacheDir() + ExternalCacheDiskCacheFactory.DEFAULT_DISK_CACHE_DIR;
+        FileUtils.delete(ImageExternalCatchDir);
     }
 }

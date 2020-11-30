@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.decoration.LinearDividerItemDecoration;
-import com.android.dsly.common.widget.CustomizeLoadMoreView;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
@@ -58,7 +57,6 @@ public class RefreshAndLoadMoreActivity extends BaseActivity<ActivityRefreshAndL
         mBinding.rvContent.setLayoutManager(new LinearLayoutManager(this));
         mBinding.rvContent.addItemDecoration(new LinearDividerItemDecoration(this, AutoSizeUtils.dp2px(this, 0.5f)));
         mAdapter = new RefreshAndLoadMoreAdapter();
-        mAdapter.getLoadMoreModule().setLoadMoreView(new CustomizeLoadMoreView());
         mBinding.rvContent.setAdapter(mAdapter);
     }
 

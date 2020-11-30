@@ -13,9 +13,8 @@ import com.alibaba.sdk.android.oss.model.GetObjectResult;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.android.dsly.common.constant.Constants;
-import com.android.dsly.common.constant.UserSputilsKey;
 import com.blankj.utilcode.util.ObjectUtils;
-import com.blankj.utilcode.util.SPUtils;
+import com.htxtdshopping.htxtd.frame.utils.AppSPUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -193,7 +192,7 @@ public class OssService {
      * 生成objectKey
      */
     private String generateKey(String fileName) {
-        long userId = SPUtils.getInstance().getLong(UserSputilsKey.USER_ID);
+        long userId = AppSPUtils.getUserId();
         long currentTimeMillis = System.currentTimeMillis();
         if (mOldTimestamp == currentTimeMillis) {
             mDigital++;

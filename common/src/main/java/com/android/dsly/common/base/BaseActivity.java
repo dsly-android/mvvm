@@ -233,6 +233,7 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         if (mLoadingDialog != null && mLoadingDialog.isAdded()) {
             mLoadingDialog.dismiss();
         }
+        mLoadingDialog = null;
     }
 
     protected void setFitsSystemWindows(boolean fitSystemWindows) {

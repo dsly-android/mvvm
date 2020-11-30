@@ -7,12 +7,17 @@ import android.view.View;
 
 import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
+import com.android.dsly.common.network.DataObserver;
 import com.android.dsly.rxhttp.observer.CommonObserver;
+import com.android.dsly.rxhttp.utils.TransformerUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityRxjavaBinding;
 import com.htxtdshopping.htxtd.frame.network.ServerApi;
+import com.jakewharton.rxbinding3.widget.RxTextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -21,6 +26,7 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -35,6 +41,18 @@ public class RxjavaActivity extends BaseActivity<ActivityRxjavaBinding, BaseView
     @Override
     public void initView(Bundle savedInstanceState) {
         mBinding.setActivity(this);
+
+        RxTextView.textChanges(mBinding.etInput)
+                //仅在过了一段指定的时间还没发射数据时才发射一个数据
+                .debounce(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+                //跳过第一个
+                .skip(1)
+                .subscribe(new Consumer<CharSequence>() {
+                    @Override
+                    public void accept(CharSequence charSequence) throws Exception {
+                        LogUtils.i(Thread.currentThread().getName() + "   " + charSequence);
+                    }
+                });
     }
 
     @Override
@@ -64,6 +82,21 @@ public class RxjavaActivity extends BaseActivity<ActivityRxjavaBinding, BaseView
                 break;
             case R.id.btn_loading:
                 test4();
+                break;
+            case R.id.btn_test5:
+                test6();
+                break;
+            case R.id.btn_test6:
+                test7();
+                break;
+            case R.id.btn_test7:
+                test8();
+                break;
+            case R.id.btn_test8:
+                test9();
+                break;
+            case R.id.btn_test9:
+                test10();
                 break;
             default:
                 break;
@@ -95,9 +128,10 @@ public class RxjavaActivity extends BaseActivity<ActivityRxjavaBinding, BaseView
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long o) throws Exception {
-                        LogUtils.e(o);
+                        LogUtils.e(o + "");
                     }
                 });
+
     }
 
     private void test3() {
@@ -137,7 +171,7 @@ public class RxjavaActivity extends BaseActivity<ActivityRxjavaBinding, BaseView
                 });
     }
 
-    private void test5(){
+    private void test5() {
         Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
@@ -161,8 +195,137 @@ public class RxjavaActivity extends BaseActivity<ActivityRxjavaBinding, BaseView
                 .subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        LogUtils.e(""+integer);
+                        LogUtils.e("" + integer);
                     }
                 });
+    }
+
+    private void test6() {
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                LogUtils.i("create:" + Thread.currentThread().getName());
+                emitter.onNext("aaa");
+                emitter.onComplete();
+            }
+        }).subscribeOn(Schedulers.io())
+                .map(new Function<String, String>() {
+                    @Override
+                    public String apply(String s) throws Exception {
+                        LogUtils.i("map:" + Thread.currentThread().getName());
+                        return "bbb";
+                    }
+                }).subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        LogUtils.i("accept:" + Thread.currentThread().getName());
+                    }
+                });
+    }
+
+    private void test7() {
+        Observable.interval(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+                //选取前6个
+                .take(6)
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        LogUtils.i(Thread.currentThread().getName() + "    " + aLong + "");
+                    }
+                });
+    }
+
+    private boolean mIsCached = false;
+
+    private void test8() {
+        Observable<String> cacheObservable = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                if (mIsCached) {
+                    emitter.onNext("cache");
+                }
+                emitter.onComplete();
+            }
+        });
+        Observable<String> netObservable = Observable.just("net");
+        //返回一个Observable，它发射两个ObservableSource发出的项，一个接一个，不交织.
+        Observable.concat(cacheObservable, netObservable)
+                .compose(TransformerUtils.pack(this))
+                //从串联队列中取出并发送第一个有效事件（next事件）
+                .firstElement()
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        mIsCached = true;
+                        LogUtils.i(s);
+                    }
+                });
+    }
+
+    private void test9() {
+        List<String> datas = new ArrayList<>();
+        datas.add("aaa");
+        datas.add("aaa");
+        datas.add("aaa");
+        datas.add("aaa");
+
+        List<String> strings = Observable.fromIterable(datas)
+                .take(3)
+                .toList().blockingGet();
+        LogUtils.i(strings.toString());
+    }
+
+    private void test10() {
+        Observable<Integer> just1 = Observable.just(1);
+        Observable<Integer> just2 = Observable.just(2);
+//        Observable<Integer> just2 = Observable.error(new NullPointerException());
+        Observable.zip(just1, just2, new BiFunction<Integer, Integer, Data>() {
+            @Override
+            public Data apply(Integer integer1, Integer integer2) throws Exception {
+                return new Data(integer1, integer2);
+            }
+        }).compose(TransformerUtils.pack(this))
+                .subscribe(new DataObserver<Data>(){
+                    @Override
+                    protected void onSuccess(Data data) {
+                        super.onSuccess(data);
+                        LogUtils.i(data.getA() + "   " + data.getB());
+                    }
+
+                    @Override
+                    protected void onError(int code, String errorMsg) {
+                        super.onError(code, errorMsg);
+                        LogUtils.i("onError");
+                    }
+                });
+
+    }
+
+    class Data {
+        private Integer a;
+        private Integer b;
+
+        public Data(Integer a, Integer b) {
+            this.a = a;
+            this.b = b;
+        }
+
+        public Integer getA() {
+            return a;
+        }
+
+        public void setA(Integer a) {
+            this.a = a;
+        }
+
+        public Integer getB() {
+            return b;
+        }
+
+        public void setB(Integer b) {
+            this.b = b;
+        }
     }
 }

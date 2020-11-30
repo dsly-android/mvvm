@@ -7,6 +7,7 @@ import android.util.Log;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.BuildConfig;
 import com.android.dsly.common.notification.NotificationChannels;
+import com.android.dsly.common.widget.CustomizeLoadMoreView;
 import com.android.dsly.rxhttp.RxHttp;
 import com.android.dsly.rxhttp.cache.CacheEntity;
 import com.android.dsly.rxhttp.cache.CacheMode;
@@ -18,6 +19,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
+import com.chad.library.adapter.base.module.LoadMoreModuleConfig;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.util.ArrayList;
@@ -70,6 +72,8 @@ public class GlobalConfiguration implements ConfigModule {
                 initARouter(app);
                 //LiveEventBus
                 initEventBus(app);
+                //BaseRecyclerViewAdapterHelper
+                initBaseRecyclerViewAdapterHelper();
             }
 
             @Override
@@ -218,5 +222,10 @@ public class GlobalConfiguration implements ConfigModule {
 
     private void initNotificationChannels(Application application) {
         NotificationChannels.createAllNotificationChannels(application);
+    }
+
+    private void initBaseRecyclerViewAdapterHelper(){
+        // 在 Application 中配置全局自定义的 LoadMoreView
+        LoadMoreModuleConfig.setDefLoadMoreView(new CustomizeLoadMoreView());
     }
 }

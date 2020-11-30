@@ -20,7 +20,7 @@ ext {
             //multidex
             "multidex"                 : "androidx.multidex:multidex:2.0.1",
             //design
-            "design"                   : "com.google.android.material:material:1.1.0-alpha02",
+            "design"                   : "com.google.android.material:material:1.2.1",
             //rxhttp
             "rxhttp"                   : "com.android.dsly:rxhttp:1.0.8",
             //fastjson

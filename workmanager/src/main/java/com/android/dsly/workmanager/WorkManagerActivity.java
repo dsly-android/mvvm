@@ -87,6 +87,7 @@ public class WorkManagerActivity extends BaseActivity<WorkActivityWorkManagerBin
                         public void onChanged(WorkInfo workInfo) {
                             if (workInfo.getState() == WorkInfo.State.SUCCEEDED) {
                                 LogUtils.e(workInfo.getOutputData().getString("result"));
+                                ToastUtils.showShort(workInfo.getOutputData().getString("result"));
                             }
                         }
                     });

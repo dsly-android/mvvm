@@ -16,6 +16,7 @@ import com.htxtdshopping.htxtd.frame.ui.four.activity.ContactNavigationActivity;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.DialogActivity;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.DoodleViewActivity;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.RadarViewActivity;
+import com.htxtdshopping.htxtd.frame.ui.four.activity.StateLayoutActivity;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.TabHomeActivity;
 import com.htxtdshopping.htxtd.frame.ui.four.activity.TimeOrAddressPickerActivity;
 
@@ -73,6 +74,9 @@ public class FourFragment extends BaseLazyFragment<FragmentFourBinding, BaseView
                 break;
             case R.id.btn_sketchpad:
                 ActivityUtils.startActivity(DoodleViewActivity.class);
+                break;
+            case R.id.btn_statelayout:
+                ActivityUtils.startActivity(StateLayoutActivity.class);
                 break;
             default:
                 break;

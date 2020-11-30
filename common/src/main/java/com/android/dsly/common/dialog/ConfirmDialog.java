@@ -26,6 +26,7 @@ public class ConfirmDialog extends Dialog {
         super(context, R.style.AppTheme_Dialog);
     }
 
+    @Override
     public void show() {
         super.show();
         WindowManager.LayoutParams params = getWindow().getAttributes();

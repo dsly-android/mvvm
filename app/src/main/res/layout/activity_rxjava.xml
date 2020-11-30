@@ -59,9 +59,59 @@
             android:text="发射数据时，如果两次数据的发射间隔小于指定时间，就会丢弃前一次的数据,直到指定时间内都没有新数据发射时才进行发射"
             android:textAllCaps="false"/>
 
+        <Button
+            android:id="@+id/btn_test5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            onAntiClick="@{activity}"
+            android:text="线程切换"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_test6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            onAntiClick="@{activity}"
+            android:text="倒计时"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_test7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            onAntiClick="@{activity}"
+            android:text="先从缓存取再从网络取"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_test8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            onAntiClick="@{activity}"
+            android:text="集合操作"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_test9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            onAntiClick="@{activity}"
+            android:text="多个数据源返回的数据压缩成一个数据"
+            android:textAllCaps="false"/>
+
         <ImageView
             android:id="@+id/iv_test1"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
+
+        <EditText
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </layout>

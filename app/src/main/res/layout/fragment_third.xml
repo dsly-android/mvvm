@@ -152,6 +152,33 @@
                     android:text="语音通话"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_randomAccessFile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
+                    android:text="randomAccessFile"
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_sensor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
+                    android:text="传感器"
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_viewpager2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{onClickListener}"
+                    android:text="ViewPager2"
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
