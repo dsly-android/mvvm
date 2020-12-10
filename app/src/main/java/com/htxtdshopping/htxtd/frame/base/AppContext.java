@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.android.dsly.common.constant.Constants;
+import com.android.dsly.common.constant.EventBusTag;
+import com.android.dsly.common.event.NetworkStatusChangedEvent;
 import com.android.dsly.common.notification.NotificationChannels;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.EncryptUtils;
 import com.blankj.utilcode.util.IntentUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.Utils;
 import com.getkeepsafe.relinker.ReLinker;
 import com.htxtdshopping.htxtd.frame.BuildConfig;
@@ -22,6 +25,7 @@ import com.htxtdshopping.htxtd.frame.state.LoginState;
 import com.htxtdshopping.htxtd.frame.state.NotLoggedInState;
 import com.htxtdshopping.htxtd.frame.ui.third.activity.UpgradeActivity;
 import com.htxtdshopping.htxtd.frame.utils.NotificationUtils;
+import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.liulishuo.okdownload.DownloadTask;
 import com.liulishuo.okdownload.core.cause.ResumeFailedCause;
 import com.liulishuo.okdownload.core.listener.DownloadListener3;
@@ -60,6 +64,9 @@ public class AppContext {
         mState = new NotLoggedInState();
 
         initDb("frame");
+
+        //注册网络状态改变广播
+        NetworkUtils.registerNetworkStatusChangedListener(mNetworkStatusChangedListener);
     }
 
     public LoginState getLoginState() {
@@ -190,4 +197,28 @@ public class AppContext {
     public static <T> Box<T> boxFor(Class<T> tClass) {
         return AppContext.getInstance().getBoxStore().boxFor(tClass);
     }
+
+    private NetworkUtils.OnNetworkStatusChangedListener mNetworkStatusChangedListener = new NetworkUtils.OnNetworkStatusChangedListener() {
+
+        @Override
+        public void onDisconnected() {
+            NetworkStatusChangedEvent event = new NetworkStatusChangedEvent();
+            event.setIsConnected(false);
+
+            LiveEventBus.get(EventBusTag.EVENT_NETWORK_STATUS_CHANGED,
+                    NetworkStatusChangedEvent.class)
+                    .post(event);
+        }
+
+        @Override
+        public void onConnected(NetworkUtils.NetworkType networkType) {
+            NetworkStatusChangedEvent event = new NetworkStatusChangedEvent();
+            event.setIsConnected(true);
+            event.setNetworkType(networkType);
+
+            LiveEventBus.get(EventBusTag.EVENT_NETWORK_STATUS_CHANGED,
+                    NetworkStatusChangedEvent.class)
+                    .post(event);
+        }
+    };
 }

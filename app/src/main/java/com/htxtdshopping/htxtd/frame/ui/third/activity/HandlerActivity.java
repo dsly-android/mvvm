@@ -5,12 +5,14 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.LogUtils;
 import com.htxtdshopping.htxtd.frame.R;
+import com.htxtdshopping.htxtd.frame.databinding.ActivityHandlerBinding;
 
 import java.lang.ref.WeakReference;
 
-public class HandlerActivity extends BaseActivity {
+public class HandlerActivity extends BaseActivity<ActivityHandlerBinding, BaseViewModel> {
 
     private Handler mHandler;
 
@@ -96,5 +98,9 @@ public class HandlerActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         mHandler.removeCallbacksAndMessages(0);
+
+        //在子线程中创建Looper经常会出现内存泄露，因为loop没有释放
+//        Looper.myLooper().quitSafely();
+        //主线程不能调quit方法
     }
 }

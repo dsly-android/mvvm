@@ -2,21 +2,21 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/accessibilityservice/accessibilityservice.iml" filepath="$PROJECT_DIR$/accessibilityservice/accessibilityservice.iml" group="mvvm/accessibilityservice" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="mvvm/app" />
-      <module fileurl="file://$PROJECT_DIR$/autosize/autosize.iml" filepath="$PROJECT_DIR$/autosize/autosize.iml" group="mvvm/autosize" />
-      <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" group="mvvm/banner" />
-      <module fileurl="file://$PROJECT_DIR$/biometrics/biometrics.iml" filepath="$PROJECT_DIR$/biometrics/biometrics.iml" group="mvvm/biometrics" />
-      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" group="mvvm/common" />
-      <module fileurl="file://$PROJECT_DIR$/common_service/common_service.iml" filepath="$PROJECT_DIR$/common_service/common_service.iml" group="mvvm/common_service" />
-      <module fileurl="file://$PROJECT_DIR$/easyfloat/easyfloat.iml" filepath="$PROJECT_DIR$/easyfloat/easyfloat.iml" group="mvvm/easyfloat" />
-      <module fileurl="file://$PROJECT_DIR$/facesdk/facesdk.iml" filepath="$PROJECT_DIR$/facesdk/facesdk.iml" group="mvvm/facesdk" />
-      <module fileurl="file://$PROJECT_DIR$/image_picker/image_picker.iml" filepath="$PROJECT_DIR$/image_picker/image_picker.iml" group="mvvm/image_picker" />
-      <module fileurl="file://$PROJECT_DIR$/materialdesign/materialdesign.iml" filepath="$PROJECT_DIR$/materialdesign/materialdesign.iml" group="mvvm/materialdesign" />
-      <module fileurl="file://$PROJECT_DIR$/mvvm.iml" filepath="$PROJECT_DIR$/mvvm.iml" group="mvvm" />
-      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" group="mvvm/web" />
-      <module fileurl="file://$PROJECT_DIR$/workmanager/workmanager.iml" filepath="$PROJECT_DIR$/workmanager/workmanager.iml" group="mvvm/workmanager" />
-      <module fileurl="file://$PROJECT_DIR$/zxing/zxing.iml" filepath="$PROJECT_DIR$/zxing/zxing.iml" group="mvvm/zxing" />
+      <module fileurl="file://$PROJECT_DIR$/mvvm.iml" filepath="$PROJECT_DIR$/mvvm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/accessibilityservice/mvvm.accessibilityservice.iml" filepath="$PROJECT_DIR$/.idea/modules/accessibilityservice/mvvm.accessibilityservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mvvm.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mvvm.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/autosize/mvvm.autosize.iml" filepath="$PROJECT_DIR$/.idea/modules/autosize/mvvm.autosize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/banner/mvvm.banner.iml" filepath="$PROJECT_DIR$/.idea/modules/banner/mvvm.banner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/biometrics/mvvm.biometrics.iml" filepath="$PROJECT_DIR$/.idea/modules/biometrics/mvvm.biometrics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/mvvm.common.iml" filepath="$PROJECT_DIR$/.idea/modules/common/mvvm.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common_service/mvvm.common_service.iml" filepath="$PROJECT_DIR$/.idea/modules/common_service/mvvm.common_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/easyfloat/mvvm.easyfloat.iml" filepath="$PROJECT_DIR$/.idea/modules/easyfloat/mvvm.easyfloat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/facesdk/mvvm.facesdk.iml" filepath="$PROJECT_DIR$/.idea/modules/facesdk/mvvm.facesdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/image_picker/mvvm.image_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/image_picker/mvvm.image_picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/materialdesign/mvvm.materialdesign.iml" filepath="$PROJECT_DIR$/.idea/modules/materialdesign/mvvm.materialdesign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/mvvm.web.iml" filepath="$PROJECT_DIR$/.idea/modules/web/mvvm.web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/workmanager/mvvm.workmanager.iml" filepath="$PROJECT_DIR$/.idea/modules/workmanager/mvvm.workmanager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/zxing/mvvm.zxing.iml" filepath="$PROJECT_DIR$/.idea/modules/zxing/mvvm.zxing.iml" />
     </modules>
   </component>
 </project>

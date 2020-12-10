@@ -86,4 +86,8 @@ public class TestActivity extends BaseActivity<ActivityTestBinding, BaseViewMode
 
         pageNum++;
     }
+
+    public void aaa(){
+
+    }
 }

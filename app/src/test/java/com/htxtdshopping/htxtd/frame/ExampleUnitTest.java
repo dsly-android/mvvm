@@ -1,5 +1,7 @@
 package com.htxtdshopping.htxtd.frame;
 
+import com.blankj.utilcode.util.NumberUtils;
+
 import org.junit.Test;
 
 /**
@@ -11,6 +13,7 @@ public class ExampleUnitTest {
 
     @Test
     public void addition_isCorrect() {
-
+        String format = NumberUtils.format(0.0162f, 2);
+        System.out.println(format);
     }
 }
