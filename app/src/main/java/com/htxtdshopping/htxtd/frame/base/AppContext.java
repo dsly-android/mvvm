@@ -167,7 +167,7 @@ public class AppContext {
 
     /**
      * 初始化数据库
-     *
+     * 
      * @param userId 根据不同用户的userId将不同用户的数据保存到不同的文件夹中
      */
     public void initDb(String userId) {
