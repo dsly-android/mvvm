@@ -74,6 +74,8 @@ ext {
             "work-rxjava2"             : "androidx.work:work-rxjava2:${version["workVersion"]}",
             "work-testing"             : "androidx.work:work-testing:${version["workVersion"]}",
             //AndroidUtilCode
-            "utilcodex"                : "com.blankj:utilcodex:1.29.0"
+            "utilcodex"                : "com.blankj:utilcodex:1.29.0",
+            //banner
+            "banner"                   : "com.youth.banner:banner:2.1.0"
     ]
 }

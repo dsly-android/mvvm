@@ -121,7 +121,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         moveTaskToBack(false);
     }
 

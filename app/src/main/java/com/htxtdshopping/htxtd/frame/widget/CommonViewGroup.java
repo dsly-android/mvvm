@@ -19,7 +19,7 @@ import androidx.core.content.ContextCompat;
 public class CommonViewGroup extends ViewGroup {
 
     public CommonViewGroup(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public CommonViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -40,6 +40,12 @@ public class CommonViewGroup extends ViewGroup {
         int sizeWidth = MeasureSpec.getSize(widthMeasureSpec);
         int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
         LogUtils.e(widthMode + "  " + sizeWidth + "  " + heightMode + "   " + sizeHeight);
+
+        //获取布局中的宽高，不需要调用measure也能获取到
+        View childView = getChildAt(0);
+        LayoutParams layoutParams = childView.getLayoutParams();
+        LogUtils.e(layoutParams.height + "   " + layoutParams.width);
+
         //调用这个方法后才能在getMeasuredWidth方法中获取到值
         measureChildren(widthMeasureSpec, heightMeasureSpec);
 
@@ -59,15 +65,15 @@ public class CommonViewGroup extends ViewGroup {
 
     /**
      * padding部分的ui没有显示出来
+     *
+     * left、top、right、bottom表示本控件在父控件中的位置
+     *
      * @param changed
-     * @param left
-     * @param top
-     * @param right
-     * @param bottom
      */
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         LogUtils.e(BarUtils.getActionBarHeight() + "  " + left + "  " + top + "  " + right + "  " + bottom);
+//        getPaddingLeft() : padding部分需要在onLayout中自己判断
         for (int i = 0; i < getChildCount(); i++) {
             View view = getChildAt(i);
             view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());

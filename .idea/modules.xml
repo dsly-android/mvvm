@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/accessibilityservice/mvvm.accessibilityservice.iml" filepath="$PROJECT_DIR$/.idea/modules/accessibilityservice/mvvm.accessibilityservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mvvm.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mvvm.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/autosize/mvvm.autosize.iml" filepath="$PROJECT_DIR$/.idea/modules/autosize/mvvm.autosize.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/banner/mvvm.banner.iml" filepath="$PROJECT_DIR$/.idea/modules/banner/mvvm.banner.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/biometrics/mvvm.biometrics.iml" filepath="$PROJECT_DIR$/.idea/modules/biometrics/mvvm.biometrics.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/mvvm.common.iml" filepath="$PROJECT_DIR$/.idea/modules/common/mvvm.common.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/common_service/mvvm.common_service.iml" filepath="$PROJECT_DIR$/.idea/modules/common_service/mvvm.common_service.iml" />

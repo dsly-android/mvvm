@@ -122,7 +122,7 @@ dependencies {
     implementation project(path: ':image_picker')
 
     //banner
-    implementation project(path: ':banner')
+    implementation rootProject.ext.dependencies["banner"]
 
     //bugly
     implementation 'com.tencent.bugly:crashreport_upgrade:1.4.2'
