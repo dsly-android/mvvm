@@ -14,6 +14,7 @@
         <attr name="cet_underLineVisible" format="integer"/>
         <attr name="cet_drawableClose" format="reference"/>
         <attr name="cet_paddingLeftAndRight" format="dimension"/>
+        <attr name="cet_digits" format="reference"/>
     </declare-styleable>
     <declare-styleable name="CommonTextView">
         <attr name="cLeftIconResForDrawableLeft" format="reference"/>

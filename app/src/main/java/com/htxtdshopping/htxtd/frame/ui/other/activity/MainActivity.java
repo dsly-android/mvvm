@@ -47,11 +47,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
     @Override
     public void initView(Bundle savedInstanceState) {
         mController = mBinding.pnvTab.custom()
-                .addItem(newItem(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, "框架"))
-                .addItem(newItem(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, "第三方"))
+                .addItem(newItem(R.drawable.book_icon_mine_unselected, R.drawable.book_icon_mine_selected, "框架"))
+                .addItem(newItem(R.drawable.book_icon_mine_unselected, R.drawable.book_icon_mine_selected, "第三方"))
                 .addItem(newRoundItem(R.drawable.icon_center, R.drawable.icon_center))
-                .addItem(newItem(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, "系统"))
-                .addItem(newItem(R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, "控件"))
+                .addItem(newItem(R.drawable.book_icon_mine_unselected, R.drawable.book_icon_mine_selected, "系统"))
+                .addItem(newItem(R.drawable.book_icon_mine_unselected, R.drawable.book_icon_mine_selected, "控件"))
                 .build();
 
         if (savedInstanceState == null) {

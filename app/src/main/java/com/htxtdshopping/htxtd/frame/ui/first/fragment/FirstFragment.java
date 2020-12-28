@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.alibaba.android.arouter.core.LogisticsCenter;
-import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.base.BaseLazyFragment;
 import com.android.dsly.common.base.BaseViewModel;
@@ -36,7 +34,7 @@ import io.reactivex.functions.Consumer;
  * @author 陈志鹏
  * @date 2018/9/7
  */
-public class FirstFragment extends BaseLazyFragment<FragmentFirstBinding, BaseViewModel> implements  View.OnClickListener {
+public class FirstFragment extends BaseLazyFragment<FragmentFirstBinding, BaseViewModel> implements View.OnClickListener {
 
     public static final int CODE_SCAN_QR = 1;
 
@@ -105,11 +103,8 @@ public class FirstFragment extends BaseLazyFragment<FragmentFirstBinding, BaseVi
                     @Override
                     public void accept(Permission permission) throws Exception {
                         if (permission.granted) {
-                            Postcard postcard = ARouter.getInstance().build(RouterHub.ZXING_CAPTURE_ACTIVITY);
-                            LogisticsCenter.completion(postcard);
-                            Intent intent = new Intent(getActivity(), postcard.getDestination());
-                            intent.putExtras(postcard.getExtras());
-                            startActivityForResult(intent, CODE_SCAN_QR);
+                            ARouter.getInstance().build(RouterHub.ZXING_CAPTURE_ACTIVITY)
+                                    .navigation(getActivity(), CODE_SCAN_QR);
                         } else if (permission.shouldShowRequestPermissionRationale) {
                             ToastUtils.showLong("shouldShowRequestPermissionRationale");
                         } else {
