@@ -386,6 +386,15 @@
 # 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
 # -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
 
+#PictureSelector 2.0
+-keep class com.luck.picture.lib.** { *; }
+#Ucrop
+-dontwarn com.yalantis.ucrop**
+-keep class com.yalantis.ucrop** { *; }
+-keep interface com.yalantis.ucrop** { *; }
+#Okio
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+
 #-------------------------------------------基本不用动区域--------------------------------------------
 #---------------------------------基本指令区----------------------------------
 #代码混淆的压缩比例，值在0-7之间

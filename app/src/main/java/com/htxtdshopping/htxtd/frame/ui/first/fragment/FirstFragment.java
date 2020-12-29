@@ -21,6 +21,7 @@ import com.htxtdshopping.htxtd.frame.ui.first.activity.FloatWindowActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.GenerateQrCodeActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.ObjectBoxActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.PermissionActivity;
+import com.htxtdshopping.htxtd.frame.ui.first.activity.PictureSelectorActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.RefreshAndLoadMoreActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.RxjavaActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.WebSocketActivity;
@@ -90,6 +91,9 @@ public class FirstFragment extends BaseLazyFragment<FragmentFirstBinding, BaseVi
                 break;
             case R.id.btn_websocket:
                 ActivityUtils.startActivity(WebSocketActivity.class);
+                break;
+            case R.id.btn_picture_selector:
+                ActivityUtils.startActivity(PictureSelectorActivity.class);
                 break;
             default:
                 break;

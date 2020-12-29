@@ -3,20 +3,14 @@ package com.htxtdshopping.htxtd.frame.base;
 import android.content.Context;
 import android.content.Intent;
 
-import com.alibaba.sdk.android.oss.ClientConfiguration;
-import com.alibaba.sdk.android.oss.OSS;
-import com.alibaba.sdk.android.oss.OSSClient;
-import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.android.dsly.common.base.BaseApp;
 import com.android.dsly.common.constant.Constants;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ProcessUtils;
-import com.blankj.utilcode.util.ThreadUtils;
 import com.htxtdshopping.htxtd.frame.BuildConfig;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.network.OssService;
-import com.htxtdshopping.htxtd.frame.network.STSProvider;
 import com.htxtdshopping.htxtd.frame.ui.second.activity.UpgradeActivity;
 import com.htxtdshopping.htxtd.frame.widget.refresh.NewsRefreshHeader;
 import com.liulishuo.okdownload.core.dispatcher.DownloadDispatcher;
@@ -152,31 +146,7 @@ public class App extends BaseApp {
     }
 
     private void initOss() {
-        //使用自己的获取STSToken的类
-        OSSCredentialProvider credentialProvider = new STSProvider();
-
-        ClientConfiguration conf = new ClientConfiguration();
-        // 连接超时，默认15秒
-        conf.setConnectionTimeout(15 * 1000);
-        // socket超时，默认15秒
-        conf.setSocketTimeout(15 * 1000);
-        // 最大并发请求数，默认5个
-        conf.setMaxConcurrentRequest(5);
-        // 失败后最大重试次数，默认2次
-        conf.setMaxErrorRetry(2);
-
-        ThreadUtils.executeByIo(new ThreadUtils.SimpleTask<OSS>() {
-            @Override
-            public OSS doInBackground() throws Throwable {
-                OSS oss = new OSSClient(App.this, Constants.OSS_ENDPOINT, credentialProvider, conf);
-                return oss;
-            }
-
-            @Override
-            public void onSuccess(OSS oss) {
-                OssService.init(oss, Constants.OSS_BUCKET);
-            }
-        });
+        OssService.init(Constants.OSS_BUCKET);
     }
 
     private void initUShare() {

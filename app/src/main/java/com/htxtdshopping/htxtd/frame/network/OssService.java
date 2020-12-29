@@ -2,11 +2,14 @@ package com.htxtdshopping.htxtd.frame.network;
 
 import android.text.TextUtils;
 
+import com.alibaba.sdk.android.oss.ClientConfiguration;
 import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.OSS;
+import com.alibaba.sdk.android.oss.OSSClient;
 import com.alibaba.sdk.android.oss.ServiceException;
 import com.alibaba.sdk.android.oss.callback.OSSCompletedCallback;
 import com.alibaba.sdk.android.oss.callback.OSSProgressCallback;
+import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.internal.OSSAsyncTask;
 import com.alibaba.sdk.android.oss.model.GetObjectRequest;
 import com.alibaba.sdk.android.oss.model.GetObjectResult;
@@ -14,10 +17,13 @@ import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.android.dsly.common.constant.Constants;
 import com.blankj.utilcode.util.ObjectUtils;
+import com.blankj.utilcode.util.ThreadUtils;
+import com.blankj.utilcode.util.Utils;
 import com.htxtdshopping.htxtd.frame.utils.AppSPUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -28,13 +34,18 @@ import androidx.annotation.NonNull;
  */
 public class OssService {
 
+    //永久保存
+    private static final String DIR_SAVE_FOREVER = "save_forever";
+    //可以删除
+    private static final String DIR_CAN_DELETE = "can_delete";
+
     private OSS oss;
     private String bucket;
     private static OssService ossService;
 
-    public static void init(OSS oss, String bucket) {
+    public static void init(String bucket) {
         if (ossService == null) {
-            ossService = new OssService(oss, bucket);
+            ossService = new OssService(bucket);
         }
     }
 
@@ -42,9 +53,39 @@ public class OssService {
         return ossService;
     }
 
-    private OssService(OSS oss, String bucket) {
-        this.oss = oss;
+    private OssService(String bucket) {
         this.bucket = bucket;
+        initOss();
+    }
+
+    private void initOss() {
+        //OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider
+        // (Constants.OSS_ACCESSKEYID, Constants.OSS_ACCESSKEYSECRET);
+        //使用自己的获取STSToken的类
+        OSSCredentialProvider credentialProvider = new STSProvider();
+
+        ClientConfiguration conf = new ClientConfiguration();
+        // 连接超时，默认15秒
+        conf.setConnectionTimeout(15 * 1000);
+        // socket超时，默认15秒
+        conf.setSocketTimeout(15 * 1000);
+        // 最大并发请求数，默认5个
+        conf.setMaxConcurrentRequest(5);
+        // 失败后最大重试次数，默认2次
+        conf.setMaxErrorRetry(2);
+
+        ThreadUtils.executeByIo(new ThreadUtils.SimpleTask<OSS>() {
+            @Override
+            public OSS doInBackground() throws Throwable {
+                OSS oss = new OSSClient(Utils.getApp(), Constants.OSS_ENDPOINT, credentialProvider, conf);
+                return oss;
+            }
+
+            @Override
+            public void onSuccess(OSS oss) {
+                ossService.oss = oss;
+            }
+        });
     }
 
     /**
@@ -84,13 +125,13 @@ public class OssService {
         return task;
     }
 
-    public PutObjectResult putByteData(byte[] datas) {
+    public PutObjectResult putByteData(String dir, byte[] datas) {
         if (datas == null) {
             return null;
         }
 
         // 构造上传请求
-        PutObjectRequest put = new PutObjectRequest(bucket, generateKey(null), datas);
+        PutObjectRequest put = new PutObjectRequest(bucket, generateKey(dir, null), datas);
         try {
             PutObjectResult putResult = oss.putObject(put);
             return putResult;
@@ -105,13 +146,13 @@ public class OssService {
     /**
      * 同步上传
      */
-    public PutObjectResult putObject(String localFile) {
+    public PutObjectResult putObject(String dir, String localFile) {
         File file = new File(localFile);
         if (!file.exists()) {
             return null;
         }
         // 构造上传请求
-        PutObjectRequest put = new PutObjectRequest(bucket, generateKey(localFile), localFile);
+        PutObjectRequest put = new PutObjectRequest(bucket, generateKey(dir, localFile), localFile);
         PutObjectResult putResult = null;
         try {
             putResult = oss.putObject(put);
@@ -123,7 +164,13 @@ public class OssService {
         return putResult;
     }
 
-    public OSSAsyncTask asyncPutObject(String localFile,
+    public OSSAsyncTask asyncPutHeadImg(String localFile,
+                                        final OSSProgressCallback<PutObjectRequest> userProgressCallback,
+                                        @NonNull final OSSCompletedCallback<PutObjectRequest, PutObjectResult> userCallback) {
+        return asyncPutObject(DIR_SAVE_FOREVER + "/headImg", localFile, userProgressCallback, userCallback);
+    }
+
+    public OSSAsyncTask asyncPutObject(String dir, String localFile,
                                        final OSSProgressCallback<PutObjectRequest> userProgressCallback,
                                        @NonNull final OSSCompletedCallback<PutObjectRequest, PutObjectResult> userCallback) {
         File file = new File(localFile);
@@ -132,7 +179,7 @@ public class OssService {
         }
 
         // 构造上传请求
-        PutObjectRequest put = new PutObjectRequest(bucket, generateKey(localFile), localFile);
+        PutObjectRequest put = new PutObjectRequest(bucket, generateKey(dir, localFile), localFile);
 
         // 异步上传时可以设置进度回调
         if (userProgressCallback != null) {
@@ -143,19 +190,19 @@ public class OssService {
         return task;
     }
 
-    public List<OSSAsyncTask> asyncPutObjects(List<String> localFiles, OnUploadFileListener listener) {
+    public List<OSSAsyncTask> asyncPutObjects(String dir, List<String> localFiles, OnUploadFileListener listener) {
         List<OSSAsyncTask> tasks = new ArrayList<>();
-        List<String> uploadPaths = new ArrayList<>(localFiles);
+        HashMap<String, String> netPaths = new HashMap<>();
         final int[] count = {0};
         for (int i = 0; i < localFiles.size(); i++) {
-            int finalI = i;
-            OSSAsyncTask task = asyncPutObject(localFiles.get(i), null, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
+            OSSAsyncTask task = asyncPutObject(dir, localFiles.get(i), null, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
                 @Override
                 public void onSuccess(PutObjectRequest request, PutObjectResult result) {
-                    uploadPaths.set(finalI, generateUrl(request.getObjectKey()));
+                    String uploadFilePath = request.getUploadFilePath();
+                    netPaths.put(uploadFilePath, generateUrl(request.getObjectKey()));
                     count[0]++;
                     if (count[0] >= localFiles.size()) {
-                        listener.onFinish(localFiles, uploadPaths);
+                        listener.onFinish(localFiles, netPaths);
                     }
                 }
 
@@ -163,7 +210,7 @@ public class OssService {
                 public void onFailure(PutObjectRequest request, ClientException clientException, ServiceException serviceException) {
                     count[0]++;
                     if (count[0] >= localFiles.size()) {
-                        listener.onFinish(localFiles, uploadPaths);
+                        listener.onFinish(localFiles, netPaths);
                     }
                 }
             });
@@ -173,7 +220,7 @@ public class OssService {
     }
 
     public interface OnUploadFileListener {
-        void onFinish(List<String> localPaths, List<String> uploadPaths);
+        void onFinish(List<String> localPaths, HashMap<String, String> netPaths);
     }
 
     /**
@@ -191,7 +238,7 @@ public class OssService {
     /**
      * 生成objectKey
      */
-    private String generateKey(String fileName) {
+    private String generateKey(String dir, String fileName) {
         long userId = AppSPUtils.getUserId();
         long currentTimeMillis = System.currentTimeMillis();
         if (mOldTimestamp == currentTimeMillis) {
@@ -200,6 +247,6 @@ public class OssService {
             mOldTimestamp = currentTimeMillis;
             mDigital = 0;
         }
-        return "" + userId + mOldTimestamp + mDigital + "." + (TextUtils.isEmpty(fileName) ? "" : fileName.substring(fileName.lastIndexOf(".") + 1));
+        return dir + "/" + userId + mOldTimestamp + mDigital + "." + (TextUtils.isEmpty(fileName) ? "" : fileName.substring(fileName.lastIndexOf(".") + 1));
     }
 }

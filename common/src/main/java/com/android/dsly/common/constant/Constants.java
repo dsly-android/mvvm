@@ -7,6 +7,9 @@ import com.blankj.utilcode.util.Utils;
  * @date 2018/11/21
  */
 public interface Constants {
+    //时间格式
+    String TIME_FORMAT_Y_M_D_H_M = "yyyy-MM-dd HH:mm";
+
     /**
      * 临时图片缓存路径
      */

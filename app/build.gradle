@@ -45,8 +45,8 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled true    //混淆
-            shrinkResources true  //资源文件压缩
+            minifyEnabled false    //混淆
+            shrinkResources false  //资源文件压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.frame
         }
@@ -157,5 +157,11 @@ dependencies {
 
     //MarqueeView
     implementation 'com.sunfusheng:MarqueeView:1.4.1'
+
+    //pickerview
+    implementation project(path: ':pickerview')
+
+    //PictureSelector
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.6.0'
 }
 apply plugin: 'io.objectbox'
