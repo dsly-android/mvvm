@@ -118,4 +118,8 @@ public class TitleBar extends ConstraintLayout implements View.OnClickListener {
     public void setRightImageResource(int resId){
         mIvRight.setImageResource(resId);
     }
+
+    public void setBackTextVisible(int visible){
+        mTvBack.setVisibility(visible);
+    }
 }

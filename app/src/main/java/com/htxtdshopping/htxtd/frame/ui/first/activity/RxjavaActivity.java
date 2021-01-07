@@ -11,6 +11,7 @@ import com.android.dsly.common.network.DataObserver;
 import com.android.dsly.rxhttp.observer.CommonObserver;
 import com.android.dsly.rxhttp.utils.TransformerUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityRxjavaBinding;
 import com.htxtdshopping.htxtd.frame.network.ServerApi;
@@ -20,9 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
@@ -97,6 +100,9 @@ public class RxjavaActivity extends BaseActivity<ActivityRxjavaBinding, BaseView
                 break;
             case R.id.btn_test9:
                 test10();
+                break;
+            case R.id.btn_test10:
+                test11();
                 break;
             default:
                 break;
@@ -287,7 +293,7 @@ public class RxjavaActivity extends BaseActivity<ActivityRxjavaBinding, BaseView
                 return new Data(integer1, integer2);
             }
         }).compose(TransformerUtils.pack(this))
-                .subscribe(new DataObserver<Data>(){
+                .subscribe(new DataObserver<Data>() {
                     @Override
                     protected void onSuccess(Data data) {
                         super.onSuccess(data);
@@ -301,6 +307,41 @@ public class RxjavaActivity extends BaseActivity<ActivityRxjavaBinding, BaseView
                     }
                 });
 
+    }
+
+    private void test11(){
+//        Observable first = Observable.empty();
+        Observable first = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<String> emitter) throws Exception {
+                //使用第一个
+//                emitter.onNext("first");
+//                emitter.onComplete();
+
+                //使用第二个
+                emitter.onError(new NullPointerException("null"));
+            }
+        }).onErrorResumeNext(new Function<Throwable, ObservableSource<? extends String>>() {
+            @Override
+            public ObservableSource<? extends String> apply(@io.reactivex.annotations.NonNull Throwable throwable) throws Exception {
+                return Observable.empty();
+            }
+        });
+        //使用第二个
+        Observable two = Observable.just("two");
+
+        first.switchIfEmpty(two)
+                .subscribe(new Consumer() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        ToastUtils.showLong(o.toString());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        ToastUtils.showLong(throwable.getMessage());
+                    }
+                });
     }
 
     class Data {

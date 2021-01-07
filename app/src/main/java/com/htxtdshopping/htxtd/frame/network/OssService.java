@@ -170,6 +170,10 @@ public class OssService {
         return asyncPutObject(DIR_SAVE_FOREVER + "/headImg", localFile, userProgressCallback, userCallback);
     }
 
+    /**
+     *
+     * @param dir oss上保存文件的目录
+     */
     public OSSAsyncTask asyncPutObject(String dir, String localFile,
                                        final OSSProgressCallback<PutObjectRequest> userProgressCallback,
                                        @NonNull final OSSCompletedCallback<PutObjectRequest, PutObjectResult> userCallback) {

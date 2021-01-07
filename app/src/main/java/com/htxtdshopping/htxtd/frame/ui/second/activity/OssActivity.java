@@ -51,7 +51,7 @@ public class OssActivity extends BaseActivity<ActivityOssBinding, BaseViewModel>
         switch (view.getId()) {
             case R.id.btn_upload_single:
                 String path = "本地路径";
-                OssService.getInstance().asyncPutObject(path, null, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
+                OssService.getInstance().asyncPutObject("oss上保存文件的目录",path, null, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
                     @Override
                     public void onSuccess(PutObjectRequest request, PutObjectResult result) {
                         runOnUiThread(new Runnable() {
@@ -72,7 +72,7 @@ public class OssActivity extends BaseActivity<ActivityOssBinding, BaseViewModel>
             case R.id.btn_upload_more:
                 //本地路径
                 List<String> filePaths = new ArrayList<>();
-                OssService.getInstance().asyncPutObjects(filePaths, new OssService.OnUploadFileListener() {
+                OssService.getInstance().asyncPutObjects("oss上保存文件的目录",filePaths, new OssService.OnUploadFileListener() {
                     @Override
                     public void onFinish(List<String> localPaths, HashMap<String, String> netPaths) {
                         for (int i = 0; i < localPaths.size(); i++) {

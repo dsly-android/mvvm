@@ -1,5 +1,6 @@
 package com.android.dsly.common.network;
 
+import com.android.dsly.common.utils.ToastUtils;
 import com.android.dsly.rxhttp.model.RxHttpResponse;
 
 import androidx.lifecycle.Observer;
@@ -11,9 +12,22 @@ import retrofit2.Response;
  */
 public abstract class NetObserver<T> implements Observer<T> {
 
+    private boolean isShowToast;
+
+    public NetObserver() {
+    }
+
+    public NetObserver(boolean isShowToast) {
+        this.isShowToast = isShowToast;
+    }
+
     public abstract void onSuccess(T t);
 
-    public abstract void onError(int code, String msg);
+    public void onError(int code, String msg){
+        if (isShowToast){
+            ToastUtils.showLong(msg);
+        }
+    }
 
     @Override
     public void onChanged(T t) {

@@ -1,6 +1,7 @@
 package com.android.dsly.common.utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
@@ -11,6 +12,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * @author 陈志鹏
@@ -41,6 +47,26 @@ public final class GlideUtils {
             apply.override(width, height);
         }
         apply.into(iv);
+    }
+
+    /**
+     * 加载图片生成bitmap对象
+     */
+    public static void loadImageToBitmap(Context context,String urlOrPath){
+        Glide.with(context)
+                .asBitmap()
+                .load(urlOrPath)
+                .into(new CustomTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                    }
+                });
     }
 
     /**

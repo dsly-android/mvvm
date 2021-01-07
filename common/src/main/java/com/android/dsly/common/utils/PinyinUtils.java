@@ -140,7 +140,11 @@ public final class PinyinUtils {
         if (surname == null || surname.length() == 0) {
             return null;
         }
-        return String.valueOf(surname.charAt(0));
+        if (Character.isLetter(surname.charAt(0))) {
+            return String.valueOf(surname.charAt(0));
+        } else {
+            return "#";
+        }
     }
 
     /**
