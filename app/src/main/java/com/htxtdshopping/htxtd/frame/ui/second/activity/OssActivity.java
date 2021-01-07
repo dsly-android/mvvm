@@ -17,6 +17,7 @@ import com.htxtdshopping.htxtd.frame.databinding.ActivityOssBinding;
 import com.htxtdshopping.htxtd.frame.network.OssService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -50,7 +51,7 @@ public class OssActivity extends BaseActivity<ActivityOssBinding, BaseViewModel>
         switch (view.getId()) {
             case R.id.btn_upload_single:
                 String path = "本地路径";
-                OssService.getInstance().asyncPutObject(path, null, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
+                OssService.getInstance().asyncPutObject("oss上保存文件的目录",path, null, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
                     @Override
                     public void onSuccess(PutObjectRequest request, PutObjectResult result) {
                         runOnUiThread(new Runnable() {
@@ -71,17 +72,17 @@ public class OssActivity extends BaseActivity<ActivityOssBinding, BaseViewModel>
             case R.id.btn_upload_more:
                 //本地路径
                 List<String> filePaths = new ArrayList<>();
-                OssService.getInstance().asyncPutObjects(filePaths, new OssService.OnUploadFileListener() {
+                OssService.getInstance().asyncPutObjects("oss上保存文件的目录",filePaths, new OssService.OnUploadFileListener() {
                     @Override
-                    public void onFinish(List<String> localPaths, List<String> uploadPaths) {
+                    public void onFinish(List<String> localPaths, HashMap<String, String> netPaths) {
                         for (int i = 0; i < localPaths.size(); i++) {
                             FileUtils.delete(localPaths.get(i));
                         }
                         /*runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                for (int i = 0; i < uploadPaths.size(); i++) {
-                                    addData((String) uploadPaths.get(i));
+                                for (int i = 0; i < localPaths.size(); i++) {
+                                    addData((String) netPaths.get(localPaths.get(i)));
                                 }
                             }
                         });*/

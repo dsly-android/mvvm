@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -111,6 +110,6 @@ public class UnreadMsgView extends FrameLayout {
     }
 
     public void setTextSize(int textSize) {
-        mMsgNumView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        mMsgNumView.setTextSize(textSize);
     }
 }

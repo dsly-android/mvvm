@@ -156,6 +156,9 @@ public class ImagePickerActivity extends BaseActivity<ImageActivityImagePickerBi
                 super.onScrollStateChanged(recyclerView, newState);
                 switch (newState) {
                     case RecyclerView.SCROLL_STATE_IDLE:
+                        if (ImagePickerActivity.this.isDestroyed()) {
+                            return;
+                        }
                         Glide.with(ImagePickerActivity.this).resumeRequests();
                         break;
                     case RecyclerView.SCROLL_STATE_SETTLING:

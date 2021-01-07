@@ -208,6 +208,7 @@ public class AppContext {
             LiveEventBus.get(EventBusTag.EVENT_NETWORK_STATUS_CHANGED,
                     NetworkStatusChangedEvent.class)
                     .post(event);
+
         }
 
         @Override

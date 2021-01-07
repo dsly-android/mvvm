@@ -5,6 +5,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.bean.ContactBean;
+import com.htxtdshopping.htxtd.frame.widget.WaveSideBarView;
 
 import java.util.ArrayList;
 
@@ -14,49 +15,41 @@ import androidx.recyclerview.widget.RecyclerView;
  * @author 陈志鹏
  * @date 2019/1/11
  */
-public class ContactNavigationAdapter extends BaseMultiItemQuickAdapter<ContactBean, BaseViewHolder> {
+public class ContactNavigationAdapter extends BaseMultiItemQuickAdapter<WaveSideBarView.IDisplayName, BaseViewHolder> {
 
     public static final int CONTACT = 0;
-    public static final int HEADER = 1;
 
     public ContactNavigationAdapter() {
         super(new ArrayList<>());
         addItemType(CONTACT, R.layout.item_wave_contact);
-        addItemType(HEADER, R.layout.item_pinned_header);
+        addItemType(WaveSideBarView.ITEM_LETTER, R.layout.item_pinned_header);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, ContactBean item) {
+    protected void convert(BaseViewHolder helper, WaveSideBarView.IDisplayName item) {
         int itemViewType = helper.getItemViewType();
         if (itemViewType == CONTACT) {
-            helper.setText(R.id.tv_contact_name, item.getName());
+            ContactBean contactBean = (ContactBean) item;
+            helper.setText(R.id.tv_contact_name, contactBean.getName());
         } else {
-            helper.setText(R.id.tv_tip, item.getPys().substring(0, 1).toUpperCase());
+            helper.setText(R.id.tv_tip, item.getDisplayName());
         }
-    }
-
-    public int getLetterPosition(String letter){
-        for (int i = 0 ; i < getData().size(); i++){
-            if(getData().get(i).getType() ==1 && getData().get(i).getPys().equals(letter)){
-                return i;
-            }
-        }
-        return -1;
     }
 
     /**
      * 需要这两个方法
+     *
      * @param recyclerView
      */
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-        FullSpanUtil.onAttachedToRecyclerView(recyclerView, this, HEADER);
+        FullSpanUtil.onAttachedToRecyclerView(recyclerView, this, WaveSideBarView.ITEM_LETTER);
     }
 
     @Override
     public void onViewAttachedToWindow(BaseViewHolder holder) {
         super.onViewAttachedToWindow(holder);
-        FullSpanUtil.onViewAttachedToWindow(holder, this, HEADER);
+        FullSpanUtil.onViewAttachedToWindow(holder, this, WaveSideBarView.ITEM_LETTER);
     }
 }

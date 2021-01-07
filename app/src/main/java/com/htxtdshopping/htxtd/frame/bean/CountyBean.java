@@ -1,6 +1,6 @@
 package com.htxtdshopping.htxtd.frame.bean;
 
-import com.htxtdshopping.htxtd.frame.widget.wheelview.interfaces.IPickerViewData;
+import com.contrarywind.interfaces.IPickerViewData;
 
 /**
  * @author 陈志鹏

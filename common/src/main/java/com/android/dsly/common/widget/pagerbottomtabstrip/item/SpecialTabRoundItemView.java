@@ -2,6 +2,7 @@ package com.android.dsly.common.widget.pagerbottomtabstrip.item;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -59,7 +60,12 @@ public class SpecialTabRoundItemView extends BaseTabItem {
     public void initialize(@DrawableRes int drawableRes, @DrawableRes int checkedDrawableRes, String title) {
         mDefaultDrawable = ContextCompat.getDrawable(getContext(), drawableRes);
         mCheckedDrawable = ContextCompat.getDrawable(getContext(), checkedDrawableRes);
-        mTitle.setText(title);
+        if (TextUtils.isEmpty(title)){
+            mTitle.setVisibility(GONE);
+        }else{
+            mTitle.setVisibility(VISIBLE);
+            mTitle.setText(title);
+        }
     }
 
     @Override

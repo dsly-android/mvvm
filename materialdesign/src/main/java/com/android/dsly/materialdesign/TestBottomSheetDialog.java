@@ -36,7 +36,6 @@ public class TestBottomSheetDialog extends BaseBottomSheetDialogFragment<DesignD
                 behavior.setPeekHeight(AutoSizeUtils.dp2px(getContext(),150));
             }
         });
-
     }
 
     @Override

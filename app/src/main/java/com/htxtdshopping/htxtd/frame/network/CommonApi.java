@@ -31,6 +31,8 @@ public interface CommonApi {
     @GET
     Observable<ResponseBody> getBitmap(@Url String url);
 
+    //post请求没有参数不能写@FormUrlEncoded
+
     /**
      * 语音通话--呼叫
      *

@@ -104,6 +104,15 @@
             android:text="多个数据源返回的数据压缩成一个数据"
             android:textAllCaps="false"/>
 
+        <Button
+            android:id="@+id/btn_test10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            onAntiClick="@{activity}"
+            android:text="如果这个数据源返回null则使用下一个数据库"
+            android:textAllCaps="false"/>
+
         <ImageView
             android:id="@+id/iv_test1"
             android:layout_width="50dp"

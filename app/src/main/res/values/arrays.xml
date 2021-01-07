@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="waveSideBarLetters">
-        <item>\u0023</item>
+        <item>\u2191</item>
         <item>\u2606</item>
         <item>A</item>
         <item>B</item>
@@ -29,6 +29,7 @@
         <item>X</item>
         <item>Y</item>
         <item>Z</item>
+        <item>\u0023</item>
     </array>
     <array name="image_url">
         <item>http://img.zcool.cn/community/01b72057a7e0790000018c1bf4fce0.png</item>

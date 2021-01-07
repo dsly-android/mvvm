@@ -13,12 +13,17 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.android.dsly.common.utils.PinyinUtils;
+import com.blankj.utilcode.util.ConvertUtils;
+import com.blankj.utilcode.util.ObjectUtils;
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.htxtdshopping.htxtd.frame.R;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-
-import me.jessyan.autosize.utils.AutoSizeUtils;
 
 /**
  * 波浪侧边栏
@@ -101,9 +106,9 @@ public class WaveSideBarView extends View {
         mTextColor = Color.parseColor("#969696");
         mWaveColor = Color.parseColor("#be2580D5");
         mTextColorChoose = context.getResources().getColor(android.R.color.white);
-        mTextSize = AutoSizeUtils.sp2px(context, 10);
-        mLargeTextSize = AutoSizeUtils.sp2px(context, 32);
-        mPadding = AutoSizeUtils.dp2px(context, 20);
+        mTextSize = ConvertUtils.sp2px(10);
+        mLargeTextSize = ConvertUtils.sp2px(32);
+        mPadding = ConvertUtils.dp2px(20);
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.WaveSideBarView);
             mTextColor = a.getColor(R.styleable.WaveSideBarView_sidebarTextColor, mTextColor);
@@ -111,8 +116,8 @@ public class WaveSideBarView extends View {
             mTextSize = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarTextSize, mTextSize);
             mLargeTextSize = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarLargeTextSize, mLargeTextSize);
             mWaveColor = a.getColor(R.styleable.WaveSideBarView_sidebarBackgroundColor, mWaveColor);
-            mRadius = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarRadius, AutoSizeUtils.dp2px(context, 20));
-            mBallRadius = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarBallRadius, AutoSizeUtils.dp2px(context, 24));
+            mRadius = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarRadius, ConvertUtils.dp2px(20));
+            mBallRadius = a.getDimensionPixelSize(R.styleable.WaveSideBarView_sidebarBallRadius, ConvertUtils.dp2px(24));
             a.recycle();
         }
 
@@ -326,5 +331,81 @@ public class WaveSideBarView extends View {
 
     public interface OnTouchLetterChangeListener {
         void onLetterChange(String letter);
+    }
+
+    public interface IDisplayName extends MultiItemEntity {
+
+        String getDisplayName();
+    }
+
+    public static class WaveComparator implements Comparator<IDisplayName> {
+
+        @Override
+        public int compare(IDisplayName l, IDisplayName r) {
+            if (l == null || r == null) {
+                return 0;
+            }
+            String lhsSortLetters = getLetter(l);
+            String rhsSortLetters = getLetter(r);
+            if (lhsSortLetters == null || rhsSortLetters == null) {
+                return 0;
+            }
+            if (lhsSortLetters.equals("#") && rhsSortLetters.equals("#")) {
+                return 0;
+            } else if (lhsSortLetters.equals("#")) {
+                return 1;
+            } else if (rhsSortLetters.equals("#")) {
+                return -1;
+            }
+            return lhsSortLetters.compareTo(rhsSortLetters);
+        }
+    }
+
+    //对数据源进行排序，并加入拼音的item
+    public <T extends IDisplayName> List<IDisplayName> sortData(List<T> datas) {
+        if (ObjectUtils.isEmpty(datas)) {
+            return null;
+        }
+        Collections.sort(datas, new WaveComparator());
+
+        List<IDisplayName> newDatas = new ArrayList<>();
+        for (int i = 0; i < datas.size(); i++) {
+            if (i == 0 ||
+                    !getLetter(datas.get(i)).equals(getLetter(datas.get(i - 1)))) {
+                int finalI = i;
+                newDatas.add(new IDisplayName() {
+                    @Override
+                    public String getDisplayName() {
+                        return getLetter(datas.get(finalI));
+                    }
+
+                    @Override
+                    public int getItemType() {
+                        return ITEM_LETTER;
+                    }
+                });
+            }
+            newDatas.add(datas.get(i));
+        }
+        return newDatas;
+    }
+
+    public static final int ITEM_LETTER = 101;
+
+    public int getLetterPosition(List<IDisplayName> datas, String letter) {
+        if (letter.charAt(0) == '\u2191'){
+            return 0;
+        }
+        for (int i = 0; i < datas.size(); i++) {
+            if (datas.get(i).getItemType() == WaveSideBarView.ITEM_LETTER
+                    && datas.get(i).getDisplayName().equals(letter)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static String getLetter(IDisplayName displayName){
+        return PinyinUtils.getSurnameFirstLetter(displayName.getDisplayName()).toUpperCase();
     }
 }

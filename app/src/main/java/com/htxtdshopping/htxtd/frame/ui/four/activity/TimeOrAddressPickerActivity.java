@@ -1,12 +1,16 @@
 package com.htxtdshopping.htxtd.frame.ui.four.activity;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,6 +20,14 @@ import com.alibaba.fastjson.JSON;
 import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
 import com.android.dsly.common.utils.ToastUtils;
+import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.CustomListener;
+import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.listener.OnTimeSelectChangeListener;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.htxtdshopping.htxtd.frame.R;
@@ -24,14 +36,6 @@ import com.htxtdshopping.htxtd.frame.bean.CityBean;
 import com.htxtdshopping.htxtd.frame.bean.CountyBean;
 import com.htxtdshopping.htxtd.frame.bean.ProvinceBean;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityTimeOrAddressPickerBinding;
-import com.htxtdshopping.htxtd.frame.widget.pickerview.builder.OptionsPickerBuilder;
-import com.htxtdshopping.htxtd.frame.widget.pickerview.builder.TimePickerBuilder;
-import com.htxtdshopping.htxtd.frame.widget.pickerview.listener.CustomListener;
-import com.htxtdshopping.htxtd.frame.widget.pickerview.listener.OnOptionsSelectListener;
-import com.htxtdshopping.htxtd.frame.widget.pickerview.listener.OnTimeSelectChangeListener;
-import com.htxtdshopping.htxtd.frame.widget.pickerview.listener.OnTimeSelectListener;
-import com.htxtdshopping.htxtd.frame.widget.pickerview.view.OptionsPickerView;
-import com.htxtdshopping.htxtd.frame.widget.pickerview.view.TimePickerView;
 import com.trello.rxlifecycle3.android.ActivityEvent;
 
 import java.io.IOException;
@@ -216,7 +220,28 @@ public class TimeOrAddressPickerActivity extends BaseActivity<ActivityTimeOrAddr
                     }
                 })
                 .setType(new boolean[]{true, true, true, true, true, true})
+                .isDialog(true)
                 .build();
+
+        Dialog mDialog = pvTime.getDialog();
+        if (mDialog != null) {
+
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    Gravity.BOTTOM);
+
+            params.leftMargin = 0;
+            params.rightMargin = 0;
+            pvTime.getDialogContainerLayout().setLayoutParams(params);
+
+            Window dialogWindow = mDialog.getWindow();
+            if (dialogWindow != null) {
+                dialogWindow.setWindowAnimations(com.bigkoo.pickerview.R.style.picker_view_slide_anim);//修改动画样式
+                dialogWindow.setGravity(Gravity.BOTTOM);//改成Bottom,底部显示
+                dialogWindow.setDimAmount(0.3f);
+            }
+        }
     }
 
     private void initOptionPicker() {//条件选择器初始化

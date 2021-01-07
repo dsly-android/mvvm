@@ -18,7 +18,7 @@ import com.mrd.common_service.service.IGenerateCodeService;
 public class GenerateQrCodeActivity extends BaseActivity<ActivityGenerateQrCodeBinding, BaseViewModel> implements View.OnClickListener {
 
     @Autowired
-    IGenerateCodeService mGenerateCodeService;
+    public IGenerateCodeService mGenerateCodeService;
 
     @Override
     public int getLayoutId() {
@@ -27,7 +27,7 @@ public class GenerateQrCodeActivity extends BaseActivity<ActivityGenerateQrCodeB
 
     @Override
     public void initView(Bundle savedInstanceState) {
-
+//        mGenerateCodeService = ARouter.getInstance().navigation(IGenerateCodeService.class);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class GenerateQrCodeActivity extends BaseActivity<ActivityGenerateQrCodeB
                 if (ObjectUtils.isEmpty(code)) {
                     return;
                 }
-                Bitmap bitmap = mGenerateCodeService.generateBarCode(code);
+                Bitmap bitmap = mGenerateCodeService.generateQrCode(code);
                 mBinding.ivImg.setImageBitmap(bitmap);
                 break;
             default:

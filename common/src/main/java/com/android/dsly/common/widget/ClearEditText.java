@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -47,6 +48,8 @@ public class ClearEditText extends FrameLayout {
     private Drawable closeDrawable;
     private int mUnderLineVisible;
     private int mPaddingLeftAndRight;
+    //可输入的字符
+    private String mDigits;
 
     public ClearEditText(@NonNull Context context) {
         this(context, null);
@@ -75,6 +78,7 @@ public class ClearEditText extends FrameLayout {
         mUnderLineColor = array.getColor(R.styleable.ClearEditText_cet_underLineColor, defaultUnderLineColor);
         mUnderLineVisible = array.getInteger(R.styleable.ClearEditText_cet_underLineVisible, View.GONE);
         mPaddingLeftAndRight = array.getDimensionPixelSize(R.styleable.ClearEditText_cet_paddingLeftAndRight, AutoSizeUtils.dp2px(mContext, 10));
+        mDigits = array.getString(R.styleable.ClearEditText_cet_digits);
 
         initView();
         initEvent();
@@ -103,6 +107,9 @@ public class ClearEditText extends FrameLayout {
             mIvClose.setVisibility(VISIBLE);
         } else {
             mIvClose.setVisibility(GONE);
+        }
+        if (!TextUtils.isEmpty(mDigits)){
+            mEtInput.setKeyListener(DigitsKeyListener.getInstance(mDigits));
         }
         mEtInput.setHint(hintTextStr);
         mEtInput.setText(textStr);

@@ -1,3 +1,5 @@
-include ':app', ':banner', ':autosize', ':easyfloat', ':common', ':zxing', ':common_service', ':image_picker', ':accessibilityservice', ':materialdesign', ':workmanager', ':facesdk'
+include ':pickerview'
+include ':wheelview'
+include ':app', ':autosize', ':easyfloat', ':common', ':zxing', ':common_service', ':image_picker', ':accessibilityservice', ':materialdesign', ':workmanager', ':facesdk'
 include ':web'
 include ':biometrics'
