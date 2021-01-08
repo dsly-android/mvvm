@@ -2,6 +2,7 @@ package com.htxtdshopping.htxtd.frame.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -12,6 +13,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.htxtdshopping.htxtd.frame.event.SocketReceiveEvent;
 import com.htxtdshopping.htxtd.frame.event.SocketSendEvent;
+import com.htxtdshopping.htxtd.frame.notification.Notifications;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import org.java_websocket.client.WebSocketClient;
@@ -40,6 +42,13 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
     @Override
     public void onCreate() {
         super.onCreate();
+        //8.0后通过startForegroundService启动一个service，在系统创建服务后，
+        // 应用有五秒的时间来调用该服务的 startForeground() 方法以显示新服务的用户可见通知。
+        //如果应用在此时间限制内未调用 startForeground()，则系统将停止服务并声明此应用为 ANR。
+        if (Build.VERSION_CODES.O <= Build.VERSION.SDK_INT) {
+            Notifications.getInstance().showForegroundNotification(this);
+        }
+
         mHandler = new WebSocketHandler(this);
 
         //发送消息
@@ -103,7 +112,7 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
 
             @Override
             public void onOpen(ServerHandshake handshakedata) {
-                LogUtils.e("onOpen");
+                LogUtils.i("onOpen");
             }
 
             @Override
@@ -115,12 +124,12 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
 
             @Override
             public void onClose(int code, String reason, boolean remote) {
-                LogUtils.e("onClose:"+reason+"   "+remote);
+                LogUtils.i("onClose:"+reason+"   "+remote);
             }
 
             @Override
             public void onError(Exception ex) {
-                LogUtils.e("onError：" + ex.getMessage());
+                LogUtils.i("onError：" + ex.getMessage());
             }
         };
         try {
@@ -158,6 +167,10 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (Build.VERSION_CODES.O <= Build.VERSION.SDK_INT) {
+            stopForeground(true);
+        }
+
         mHandler.removeMessages(WHAT_HEART_BEAT);
         closeConnect();
 

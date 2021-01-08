@@ -18,10 +18,15 @@ package com.htxtdshopping.htxtd.frame.network;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.android.dsly.common.network.BaseResponse;
+import com.android.dsly.common.network.DataObserver;
 import com.android.dsly.rxhttp.RxHttp;
+import com.android.dsly.rxhttp.utils.TransformerUtils;
+import com.htxtdshopping.htxtd.frame.bean.CallBean;
 import com.htxtdshopping.htxtd.frame.event.VersionUpdateEvent;
 
 import io.reactivex.Observable;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import okhttp3.ResponseBody;
 
@@ -53,5 +58,24 @@ public class ServerApi {
         event.setApkUrl("https://6be0527b4ce07d30a8260fe78599460c.dd.cdntips.com/imtt.dd.qq.com/16891/apk/4930D062BB950D0CB156EDA29DF813C0.apk?mkey=5d302acf7ae0dcd2&f=1026&fsname=com.ss.android.article.video_3.7.4_374.apk&csr=1bbd&cip=122.224.250.39&proto=https");
         event.setDescription("1.支持断点下载\n2.支持Android N\n3.支持Android O\n4.支持Android P\n5.支持自定义下载过程\n6.支持 设备>=Android M 动态权限的申请\n7.支持通知栏进度条展示");
         return event;
+    }
+
+    /**
+     * test
+     */
+    public static void test(){
+        RxHttp.createApi(CommonApi.class)
+                .call("1","1")
+                .map(new Function<BaseResponse<CallBean>, BaseResponse<CallBean>>() {
+                    @Override
+                    public BaseResponse<CallBean> apply(@NonNull BaseResponse<CallBean> response) throws Exception {
+                        //如果服务器报错或者没有网络不会走这个方法，只有正常返回才会走这个方法
+                        if (response.getCode() == BaseResponse.SUCCESS){
+                            //只要有返回结果就会执行这个方法，需要判断返回的结果是否是成功的
+                        }
+                        return response;
+                    }
+                }).compose(TransformerUtils.pack())
+                .subscribe(new DataObserver<>());
     }
 }
