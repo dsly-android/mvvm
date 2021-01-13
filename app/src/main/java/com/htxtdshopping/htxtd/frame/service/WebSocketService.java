@@ -124,7 +124,7 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
 
             @Override
             public void onClose(int code, String reason, boolean remote) {
-                LogUtils.i("onClose:"+reason+"   "+remote);
+                LogUtils.i("onClose:" + reason + "   " + remote);
             }
 
             @Override
