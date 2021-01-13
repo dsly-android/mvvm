@@ -11,6 +11,7 @@ import com.android.dsly.common.widget.pagerbottomtabstrip.item.BaseTabItem;
 import com.android.dsly.common.widget.pagerbottomtabstrip.item.SpecialTabItemView;
 import com.android.dsly.common.widget.pagerbottomtabstrip.item.SpecialTabRoundItemView;
 import com.android.dsly.common.widget.pagerbottomtabstrip.listener.SimpleTabItemSelectedListener;
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.FragmentUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -109,7 +110,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
         switch (requestCode){
             case REQUEST_IGNORE_BATTERY_CODE:
                 if (resultCode == RESULT_CANCELED) {
-                    ToastUtils.showLong("允许frame后台运行，更能保证消息的实时性");
+                    ToastUtils.showLong("允许" + AppUtils.getAppName() + "后台运行，更能保证消息的实时性");
                 }
                 break;
             default:
