@@ -41,6 +41,8 @@ public class CommonViewActivity extends BaseActivity<ActivityCommonViewBinding, 
         ShadowDrawable.setShadowDrawable(mBinding.tvShadow, Color.parseColor("#3D5AFE"),
                 AutoSizeUtils.dp2px(this,8), Color.parseColor("#66000000"),
                 AutoSizeUtils.dp2px(this,8), 0, 0);
+
+        mBinding.cpbProcess.setProgress(50);
     }
 
     @Override

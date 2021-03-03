@@ -28,6 +28,7 @@ public final class GlideUtils {
         RequestOptions options = new RequestOptions()
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher_round)
+//                .transform(new RoundedCorners(10)) //使用RoundedCorners，imageview的scaleType不能设置成CENTER_CROP
                 .circleCrop();
         Glide.with(context).load(url).apply(options).into(iv);
     }

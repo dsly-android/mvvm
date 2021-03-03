@@ -74,7 +74,7 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             WebSocketClient client = mService.get().getClient();
-            if (client.isClosed()) {
+            if (client == null || client.isClosed()) {
                 mService.get().reconnectWs();
             }
             //每隔一定的时间，对长连接进行一次心跳检测
@@ -148,7 +148,11 @@ public class WebSocketService extends BaseService implements Observer<SocketSend
             @Override
             public Object doInBackground() throws Throwable {
                 try {
-                    mClient.reconnectBlocking();
+                    if (mClient == null) {
+                        initSocketClient();
+                    } else {
+                        mClient.reconnectBlocking();
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
