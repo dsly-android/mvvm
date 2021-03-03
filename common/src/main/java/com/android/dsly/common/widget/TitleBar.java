@@ -115,8 +115,17 @@ public class TitleBar extends ConstraintLayout implements View.OnClickListener {
         mTvRight.setAlpha(alpha);
     }
 
+    public void setRightTextColor(int color){
+        mTvRight.setTextColor(color);
+    }
+
+    public void setRightTextEnable(boolean enable){
+        mTvRight.setEnabled(enable);
+    }
+
     public void setRightImageResource(int resId){
         mIvRight.setImageResource(resId);
+        setRightImageVisible(View.VISIBLE);
     }
 
     public void setBackTextVisible(int visible){

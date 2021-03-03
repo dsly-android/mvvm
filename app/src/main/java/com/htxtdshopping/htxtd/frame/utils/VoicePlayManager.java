@@ -87,7 +87,7 @@ public class VoicePlayManager {
                 mSBPlayProgress.setProgress(0);
             }
             if (mCallBack != null) {
-                mCallBack.finish();
+                mCallBack.finish(mPlayFilePath);
             }
         }
     };
@@ -147,10 +147,14 @@ public class VoicePlayManager {
     public void startPlay(String filePath) {
         if (TextUtils.isEmpty(filePath) || !new File(filePath).exists()) {
             if (mCallBack != null) {
-                mCallBack.finish();
+                mCallBack.finish(filePath);
             }
             ToastUtils.showShort("文件不存在");
         } else {
+            //停止
+            if (isPlaying() && mCallBack != null && mPlayFilePath != null){
+                mCallBack.stop(mPlayFilePath);
+            }
             mPlayFilePath = filePath;
             startPlay(true);
         }
@@ -227,7 +231,7 @@ public class VoicePlayManager {
             pauseMedia(mMediaPlayer);
             //暂停
             if (mCallBack != null) {
-                mCallBack.pause();
+                mCallBack.pause(mPlayFilePath);
             }
         }
     }
@@ -240,6 +244,10 @@ public class VoicePlayManager {
         mDeviceState = MEDIA_STATE_PLAY_STOP;
         stopMedia(mMediaPlayer);
         mMediaPlayer = null;
+        //停止
+        if (mCallBack != null){
+            mCallBack.stop(mPlayFilePath);
+        }
     }
 
     /**
@@ -374,16 +382,21 @@ public class VoicePlayManager {
         /**
          * 播放暂停
          */
-        void pause();
+        void pause(String playFilePath);
 
         /**
          * 播放开始
          */
-        void start();
+        void start(String playFilePath);
+
+        /**
+         * 播放停止
+         */
+        void stop(String playFilePath);
 
         /**
          * 播放结束
          */
-        void finish();
+        void finish(String playFilePath);
     }
 }

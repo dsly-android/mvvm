@@ -147,4 +147,7 @@
 
         <attr name="minDistRequestDisallowParent" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="FixedImageView">
+        <attr name="fiv_max_length" format="dimension"/>
+    </declare-styleable>
 </resources>

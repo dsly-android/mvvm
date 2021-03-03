@@ -62,11 +62,11 @@ public class BaseViewModel<M extends IModel> extends AndroidViewModel {
     }
 
     public void showDialog(Boolean showDialog) {
-        getDialogEvent().setValue(showDialog);
+        getDialogEvent().postValue(showDialog);
     }
 
     public void finish() {
-        getFinishEvent().setValue(null);
+        getFinishEvent().postValue(null);
     }
 
     @Override

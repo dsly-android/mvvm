@@ -1,5 +1,6 @@
 package com.htxtdshopping.htxtd.frame.ui.other.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -10,8 +11,10 @@ import com.android.dsly.common.widget.pagerbottomtabstrip.item.BaseTabItem;
 import com.android.dsly.common.widget.pagerbottomtabstrip.item.SpecialTabItemView;
 import com.android.dsly.common.widget.pagerbottomtabstrip.item.SpecialTabRoundItemView;
 import com.android.dsly.common.widget.pagerbottomtabstrip.listener.SimpleTabItemSelectedListener;
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.FragmentUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityMainBinding;
 import com.htxtdshopping.htxtd.frame.ui.center.fragment.CenterFragment;
@@ -19,10 +22,12 @@ import com.htxtdshopping.htxtd.frame.ui.first.fragment.FirstFragment;
 import com.htxtdshopping.htxtd.frame.ui.four.fragment.FourFragment;
 import com.htxtdshopping.htxtd.frame.ui.second.fragment.SecondFragment;
 import com.htxtdshopping.htxtd.frame.ui.third.fragment.ThirdFragment;
+import com.htxtdshopping.htxtd.frame.utils.WhitelistUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -70,7 +75,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
         } else {
             firstFragment = (FirstFragment) FragmentUtils.findFragment(getSupportFragmentManager(), FirstFragment.class);
             secondFragment = (SecondFragment) FragmentUtils.findFragment(getSupportFragmentManager(), SecondFragment.class);
-            centerFragment = (CenterFragment) FragmentUtils.findFragment(getSupportFragmentManager(),CenterFragment.class);
+            centerFragment = (CenterFragment) FragmentUtils.findFragment(getSupportFragmentManager(), CenterFragment.class);
             thirdFragment = (ThirdFragment) FragmentUtils.findFragment(getSupportFragmentManager(), ThirdFragment.class);
             fourFragment = (FourFragment) FragmentUtils.findFragment(getSupportFragmentManager(), FourFragment.class);
             mFragments = new ArrayList<>();
@@ -94,7 +99,23 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
 
     @Override
     public void initData() {
+        WhitelistUtils.joinToWhitelist(this, REQUEST_IGNORE_BATTERY_CODE);
+    }
 
+    private static final int REQUEST_IGNORE_BATTERY_CODE = 101;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case REQUEST_IGNORE_BATTERY_CODE:
+                if (resultCode == RESULT_CANCELED) {
+                    ToastUtils.showLong("允许" + AppUtils.getAppName() + "后台运行，更能保证消息的实时性");
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     /**
@@ -115,7 +136,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, BaseViewMode
      */
     private BaseTabItem newRoundItem(int drawable, int checkedDrawable) {
         SpecialTabRoundItemView itemView = new SpecialTabRoundItemView(this);
-        itemView.initialize(drawable, checkedDrawable,"");
+        itemView.initialize(drawable, checkedDrawable, "");
         return itemView;
     }
 

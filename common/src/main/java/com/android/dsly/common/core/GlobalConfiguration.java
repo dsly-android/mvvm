@@ -213,8 +213,8 @@ public class GlobalConfiguration implements ConfigModule {
     private void initCrash() {
         CrashUtils.init(new CrashUtils.OnCrashListener() {
             @Override
-            public void onCrash(String crashInfo, Throwable e) {
-                LogUtils.e(Log.getStackTraceString(e));
+            public void onCrash(CrashUtils.CrashInfo crashInfo) {
+                LogUtils.e(Log.getStackTraceString(crashInfo.getThrowable()));
                 AppUtils.relaunchApp();
             }
         });

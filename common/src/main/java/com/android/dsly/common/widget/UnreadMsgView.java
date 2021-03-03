@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.android.dsly.common.R;
+import com.blankj.utilcode.util.ConvertUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ public class UnreadMsgView extends FrameLayout {
     private int mBackgroundColor;
     private int mPaddingLeftAndRight;
     private int mStyle;
+    private float mTextSize;
 
     public UnreadMsgView(@NonNull Context context) {
         this(context, null);
@@ -43,11 +45,13 @@ public class UnreadMsgView extends FrameLayout {
         mBackgroundColor = typedArray.getColor(R.styleable.UnreadMsgView_umv_backgroundColor, ContextCompat.getColor(getContext(), android.R.color.holo_red_light));
         mPaddingLeftAndRight = typedArray.getDimensionPixelSize(R.styleable.UnreadMsgView_umv_paddingLeftAndRight, AutoSizeUtils.dp2px(getContext(), 2));
         mStyle = typedArray.getInt(R.styleable.UnreadMsgView_umv_style, 2);
+        mTextSize = typedArray.getDimension(R.styleable.UnreadMsgView_umv_textSize, ConvertUtils.dp2px(10));
         typedArray.recycle();
 
         mMsgNumView = new MsgNumView(getContext());
         mMsgNumView.setTextColor(ContextCompat.getColor(getContext(), android.R.color.white));
         mMsgNumView.setPadding(mPaddingLeftAndRight, 0, mPaddingLeftAndRight, 0);
+        mMsgNumView.setTextSize(mTextSize);
         mVDot = new View(getContext());
 
         addView(mMsgNumView);

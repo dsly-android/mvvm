@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.dsly.common.base.BaseActivity;
+import com.android.dsly.common.dialog.CenterActionItemDialog;
 import com.android.dsly.common.dialog.ConfirmDialog;
+import com.android.dsly.common.utils.ToastUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.dialog.TestDialog;
 
@@ -54,5 +56,18 @@ public class DialogActivity extends BaseActivity {
 
     public void loading(View view){
         showLoading();
+    }
+
+    public void centerActionItem(View view){
+        new CenterActionItemDialog.Builder()
+                .addActionItem("飞机")
+                .addActionItem("饿哦就反胃")
+                .setOnItemClickListener(new CenterActionItemDialog.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(String content, int pos) {
+                        ToastUtils.showLong(content);
+                    }
+                })
+                .show(getSupportFragmentManager());
     }
 }

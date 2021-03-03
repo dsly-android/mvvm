@@ -38,7 +38,7 @@ public class NotificationActivity extends BaseActivity<ActivityNotificationBindi
                 Notifications.getInstance().showImportantNotification(NotificationActivity.this);
                 break;
             case R.id.btn_low:
-                Notifications.getInstance().showNormalNotification(this);
+                Notifications.getInstance().showNormalNotification(NotificationActivity.this);
                 break;
             case R.id.btn_custom:
                 Notifications.getInstance().showCustomViewNotification(this,true,true);

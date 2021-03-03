@@ -213,7 +213,7 @@ public class Notifications {
                 .setTicker("Foreground service")
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle("Foreground service")
-                .setContentText("Service is running")
+                .setContentText("保持应用后台运行，能及时接收信息")
                 .setContentIntent(contentPendingIntent)
                 .build();
         service.startForeground(NOTIFICATION_FOREGROUND_SERVICE, notification);

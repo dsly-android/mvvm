@@ -171,6 +171,7 @@
             <enum name="number" value="1"/>
             <enum name="gone" value="2"/>
         </attr>
+        <attr name="umv_textSize" format="dimension"/>
     </declare-styleable>
     <declare-styleable name="MsgNumView">
         <attr name="mnv_number" format="integer"/>
