@@ -284,6 +284,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.AppCompat.Dialog"
             tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.other.activity.ZxingActivity"
+            android:screenOrientation="portrait" />
         <!-- bugly -->
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

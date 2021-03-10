@@ -36,6 +36,8 @@ allprojects {
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' }
         //okdownload
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        //bga-qrcode-zxing
+        maven { url 'https://dl.bintray.com/jenly/maven' }
     }
 }
 

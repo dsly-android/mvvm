@@ -6,10 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.base.BaseLazyFragment;
 import com.android.dsly.common.base.BaseViewModel;
-import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BarUtils;
@@ -25,6 +23,7 @@ import com.htxtdshopping.htxtd.frame.ui.first.activity.PictureSelectorActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.RefreshAndLoadMoreActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.RxjavaActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.WebSocketActivity;
+import com.htxtdshopping.htxtd.frame.ui.other.activity.ZxingActivity;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -107,8 +106,7 @@ public class FirstFragment extends BaseLazyFragment<FragmentFirstBinding, BaseVi
                     @Override
                     public void accept(Permission permission) throws Exception {
                         if (permission.granted) {
-                            ARouter.getInstance().build(RouterHub.ZXING_CAPTURE_ACTIVITY)
-                                    .navigation(getActivity(), CODE_SCAN_QR);
+                            ZxingActivity.start(getActivity());
                         } else if (permission.shouldShowRequestPermissionRationale) {
                             ToastUtils.showLong("shouldShowRequestPermissionRationale");
                         } else {
@@ -126,7 +124,7 @@ public class FirstFragment extends BaseLazyFragment<FragmentFirstBinding, BaseVi
         }
         switch (requestCode) {
             case FirstFragment.CODE_SCAN_QR:
-                String scanResult = data.getStringExtra(RouterHub.ZXING_RESULT_KEY_SCAN_RESULT);
+                String scanResult = data.getStringExtra(ZxingActivity.RESULT_SCAN);
                 ToastUtils.showLong(scanResult);
                 break;
             default:

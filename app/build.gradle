@@ -113,7 +113,6 @@ dependencies {
 
     if (!isBuildModule.toBoolean()) {
         //使用runtimeOnly会是databinding失效
-        implementation project(":zxing")
         implementation project(":materialdesign")
         implementation project(":web")
     }
@@ -163,5 +162,8 @@ dependencies {
 
     //PictureSelector
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.6.0'
+
+    //bga-qrcode-zxing
+    implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.3.7'
 }
 apply plugin: 'io.objectbox'

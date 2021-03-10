@@ -4,21 +4,18 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.android.dsly.common.base.BaseActivity;
-import com.android.dsly.common.base.BaseViewModel;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.ActivityGenerateQrCodeBinding;
-import com.mrd.common_service.service.IGenerateCodeService;
+import com.htxtdshopping.htxtd.frame.ui.first.viewmodel.GenerateQrCodeViewModel;
+
+import androidx.lifecycle.Observer;
 
 /**
  * @author chenzhipeng
  */
-public class GenerateQrCodeActivity extends BaseActivity<ActivityGenerateQrCodeBinding, BaseViewModel> implements View.OnClickListener {
-
-    @Autowired
-    public IGenerateCodeService mGenerateCodeService;
+public class GenerateQrCodeActivity extends BaseActivity<ActivityGenerateQrCodeBinding, GenerateQrCodeViewModel> implements View.OnClickListener {
 
     @Override
     public int getLayoutId() {
@@ -37,7 +34,12 @@ public class GenerateQrCodeActivity extends BaseActivity<ActivityGenerateQrCodeB
 
     @Override
     public void initData() {
-
+        mViewModel.getGenerateQrCodeLiveData().observe(this, new Observer<Bitmap>() {
+            @Override
+            public void onChanged(Bitmap bitmap) {
+                mBinding.ivImg.setImageBitmap(bitmap);
+            }
+        });
     }
 
     @Override
@@ -48,8 +50,7 @@ public class GenerateQrCodeActivity extends BaseActivity<ActivityGenerateQrCodeB
                 if (ObjectUtils.isEmpty(code)) {
                     return;
                 }
-                Bitmap bitmap = mGenerateCodeService.generateQrCode(code);
-                mBinding.ivImg.setImageBitmap(bitmap);
+                mViewModel.generateQrCode(code);
                 break;
             default:
                 break;

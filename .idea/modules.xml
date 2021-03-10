@@ -17,7 +17,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/mvvm.web.iml" filepath="$PROJECT_DIR$/.idea/modules/web/mvvm.web.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wheelview/mvvm.wheelview.iml" filepath="$PROJECT_DIR$/.idea/modules/wheelview/mvvm.wheelview.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/workmanager/mvvm.workmanager.iml" filepath="$PROJECT_DIR$/.idea/modules/workmanager/mvvm.workmanager.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/zxing/mvvm.zxing.iml" filepath="$PROJECT_DIR$/.idea/modules/zxing/mvvm.zxing.iml" />
     </modules>
   </component>
 </project>

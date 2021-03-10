@@ -8,6 +8,7 @@ import com.android.dsly.common.base.BaseApp;
 import com.android.dsly.common.constant.Constants;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ProcessUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.htxtdshopping.htxtd.frame.BuildConfig;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.network.OssService;
@@ -24,6 +25,7 @@ import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.UpgradeInfo;
 import com.tencent.bugly.beta.ui.UILifecycleListener;
+import com.tencent.bugly.beta.upgrade.UpgradeStateListener;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
@@ -102,6 +104,36 @@ public class App extends BaseApp {
         //Wifi下自动下载,默认值为false。
 //        Beta.autoDownloadOnWifi = false;
         Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade;
+        Beta.upgradeStateListener = new UpgradeStateListener() {
+            @Override
+            public void onUpgradeFailed(boolean b) {
+                if (b) {
+                    ToastUtils.showLong("检查更新失败");
+                }
+            }
+
+            @Override
+            public void onUpgradeSuccess(boolean b) {
+
+            }
+
+            @Override
+            public void onUpgradeNoVersion(boolean b) {
+                if (b) {
+                    ToastUtils.showLong("你已经是最新版了");
+                }
+            }
+
+            @Override
+            public void onUpgrading(boolean b) {
+
+            }
+
+            @Override
+            public void onDownloadCompleted(boolean b) {
+
+            }
+        };
         //升级对话框生命周期回调接口
         Beta.upgradeDialogLifecycleListener = new UILifecycleListener<UpgradeInfo>() {
             @Override
