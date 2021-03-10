@@ -1,17 +1,18 @@
 package com.htxtdshopping.htxtd.frame.base;
 
 import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
 
 import com.android.dsly.common.base.BaseApp;
 import com.android.dsly.common.constant.Constants;
-import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ProcessUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.htxtdshopping.htxtd.frame.BuildConfig;
 import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.network.OssService;
-import com.htxtdshopping.htxtd.frame.ui.second.activity.UpgradeActivity;
+import com.htxtdshopping.htxtd.frame.ui.other.activity.SplashActivity;
 import com.htxtdshopping.htxtd.frame.widget.refresh.NewsRefreshHeader;
 import com.liulishuo.okdownload.core.dispatcher.DownloadDispatcher;
 import com.lzf.easyfloat.EasyFloat;
@@ -23,7 +24,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.UpgradeInfo;
-import com.tencent.bugly.beta.upgrade.UpgradeListener;
+import com.tencent.bugly.beta.ui.UILifecycleListener;
 import com.tencent.bugly.beta.upgrade.UpgradeStateListener;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.commonsdk.UMConfigure;
@@ -98,22 +99,17 @@ public class App extends BaseApp {
 
         Beta.storageDir = new File(getFilesDir().getAbsolutePath() + "/bugly");
         Beta.enableHotfix = false;
-        Beta.upgradeListener = new UpgradeListener() {
-            @Override
-            public void onUpgrade(int i, UpgradeInfo upgradeInfo, boolean b, boolean b1) {
-                if (upgradeInfo != null) {
-                    Intent intent = new Intent(getApplicationContext(), UpgradeActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                }/* else {
-                    ToastUtils.showLong("你已经是最新版了");
-                }*/
-            }
-        };
+        //添加不显示更新弹窗的activity
+        Beta.canNotShowUpgradeActs.add(SplashActivity.class);
+        //Wifi下自动下载,默认值为false。
+//        Beta.autoDownloadOnWifi = false;
+        Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade;
         Beta.upgradeStateListener = new UpgradeStateListener() {
             @Override
             public void onUpgradeFailed(boolean b) {
-                ToastUtils.showLong("检查更新失败");
+                if (b) {
+                    ToastUtils.showLong("检查更新失败");
+                }
             }
 
             @Override
@@ -123,21 +119,52 @@ public class App extends BaseApp {
 
             @Override
             public void onUpgradeNoVersion(boolean b) {
-//                ToastUtils.showLong("你已经是最新版了");
-            }
-
-            @Override
-            public void onUpgrading(boolean b) {
                 if (b) {
-                    ToastUtils.showLong("正在检查更新，请稍后...");
+                    ToastUtils.showLong("你已经是最新版了");
                 }
             }
 
             @Override
+            public void onUpgrading(boolean b) {
+
+            }
+
+            @Override
             public void onDownloadCompleted(boolean b) {
-//                ToastUtils.showLong("下载完成");
-                //安装apk
-                AppUtils.installApp(Beta.getStrategyTask().getSaveFile());
+
+            }
+        };
+        //升级对话框生命周期回调接口
+        Beta.upgradeDialogLifecycleListener = new UILifecycleListener<UpgradeInfo>() {
+            @Override
+            public void onCreate(Context context, View view, UpgradeInfo upgradeInfo) {
+
+            }
+
+            @Override
+            public void onStart(Context context, View view, UpgradeInfo upgradeInfo) {
+
+            }
+
+            @Override
+            public void onResume(Context context, View view, UpgradeInfo upgradeInfo) {
+                TextView tvTitle = view.findViewWithTag("beta_title");
+                tvTitle.setText(AppUtils.getAppName());
+            }
+
+            @Override
+            public void onPause(Context context, View view, UpgradeInfo upgradeInfo) {
+
+            }
+
+            @Override
+            public void onStop(Context context, View view, UpgradeInfo upgradeInfo) {
+
+            }
+
+            @Override
+            public void onDestroy(Context context, View view, UpgradeInfo upgradeInfo) {
+
             }
         };
 

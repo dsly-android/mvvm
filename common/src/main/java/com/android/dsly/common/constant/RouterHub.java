@@ -22,20 +22,10 @@ public interface RouterHub {
     /**
      * 组键名
      */
-    String ZXING = "/zxing";
     String IMAGE = "/image";
     String DESIGN = "/design";
     String WORK = "/work";
     String WEB = "/web";
-
-    /**
-     * zxing分组
-     */
-    String ZXING_CAPTURE_ACTIVITY = ZXING + "/CaptureActivity";
-    //扫码返回的结果
-    String ZXING_RESULT_KEY_SCAN_RESULT = ZXING + "/result_key_scan_result";
-    //zxing的service
-    String ZXING_GENERATE_CODE_SERVICE = ZXING + "/GenerateCodeService";
 
     /**
      * design分组

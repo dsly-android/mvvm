@@ -189,11 +189,6 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.second.activity.UpgradeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.AppCompat.Dialog"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
             android:name=".ui.third.activity.PopupWindowActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
@@ -288,11 +283,16 @@
             android:name=".ui.third.activity.UpgradeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.AppCompat.Dialog"
-            tools:ignore="LockedOrientationActivity" /> <!-- bugly -->
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.other.activity.ZxingActivity"
+            android:screenOrientation="portrait" />
+        <!-- bugly -->
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:theme="@android:style/Theme.Translucent" /> <!-- 友盟 -->
+            android:theme="@android:style/Theme.Translucent" />
+        <!-- 友盟 -->
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5c3ca500f1f556c482000950" />
