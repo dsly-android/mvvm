@@ -24,7 +24,7 @@ public class GenerateQrCodeActivity extends BaseActivity<ActivityGenerateQrCodeB
 
     @Override
     public void initView(Bundle savedInstanceState) {
-//        mGenerateCodeService = ARouter.getInstance().navigation(IGenerateCodeService.class);
+
     }
 
     @Override
