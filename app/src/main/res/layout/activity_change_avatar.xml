@@ -27,8 +27,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_content"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:overScrollMode="never"/>
+
+        <TextView
+            android:id="@+id/tv_pick_file"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="选择文件"/>
     </LinearLayout>
 </layout>

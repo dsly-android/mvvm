@@ -123,6 +123,15 @@
                     android:text="图片选择器"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_camera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    onAntiClick="@{onClickListener}"
+                    android:text="拍照和录像"
+                    android:textAllCaps="false"
+                    android:textSize="12sp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

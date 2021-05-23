@@ -173,8 +173,11 @@ public class MaterialItemView extends BaseTabItem {
 
     @Override
     public void setHasMessage(boolean hasMessage) {
-        mMessages.setVisibility(View.VISIBLE);
-        mMessages.showDot();
+        if (hasMessage) {
+            mMessages.showDot();
+        } else {
+            mMessages.setGone();
+        }
     }
 
     @Override
@@ -255,6 +258,7 @@ public class MaterialItemView extends BaseTabItem {
 
     /**
      * 设置文字的大小
+     *
      * @param textSize
      */
     public void setTextSize(int textSize) {

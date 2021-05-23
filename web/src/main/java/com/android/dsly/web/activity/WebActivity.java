@@ -1,7 +1,7 @@
 package com.android.dsly.web.activity;
 
-import android.graphics.Bitmap;
-import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -10,12 +10,9 @@ import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.web.R;
 import com.android.dsly.web.base.BaseWebActivity;
 import com.android.dsly.web.databinding.WebActivityWebBinding;
-import com.android.dsly.web.web.X5WebChromeClient;
-import com.android.dsly.web.web.X5WebView;
-import com.android.dsly.web.web.X5WebViewClient;
-import com.tencent.smtt.sdk.WebView;
-
-import static android.view.View.GONE;
+import com.android.dsly.web.web.CustomSettings;
+import com.just.agentweb.IAgentWebSettings;
+import com.just.agentweb.WebChromeClient;
 
 /**
  * @author chenzhipeng
@@ -33,37 +30,41 @@ public class WebActivity extends BaseWebActivity<WebActivityWebBinding, BaseView
 
     @Override
     public void initEvent() {
-        mBinding.wvWeb.setWebViewClient(new X5WebViewClient(){
-            @Override
-            public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
-                super.onPageStarted(webView, s, bitmap);
-                mBinding.pbProgress.setVisibility(View.VISIBLE);
-            }
 
-            @Override
-            public void onPageFinished(WebView webView, String s) {
-                super.onPageFinished(webView, s);
-                mBinding.pbProgress.setVisibility(GONE);
-            }
-        });
-
-        getWebView().setWebChromeClient(new X5WebChromeClient(this) {
-
-            @Override
-            public void onProgressChanged(WebView webView, int i) {
-                super.onProgressChanged(webView, i);
-                mBinding.pbProgress.setProgress(i);
-            }
-        });
     }
 
     @Override
     public void initData() {
-        mBinding.wvWeb.loadUrl(url);
+        super.initData();
+        //加载新的url
+//        mAgentWeb.getUrlLoader().loadUrl("");
+        //获取网址
+//        String url = mAgentWeb.getWebCreator().getWebView().getUrl();
+    }
+
+    public WebChromeClient getWebChromeClient() {
+        return new WebChromeClient() {
+
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                mBinding.tbTitle.setTitle(title);
+            }
+        };
     }
 
     @Override
-    public X5WebView getWebView() {
-        return mBinding.wvWeb;
+    protected ViewGroup getAgentWebParent() {
+        return mBinding.llParent;
+    }
+
+    @Override
+    protected IAgentWebSettings getAgentWebSettings() {
+        return new CustomSettings();
+    }
+
+    @Override
+    public String getUrl() {
+        return url;
     }
 }

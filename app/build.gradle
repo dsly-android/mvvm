@@ -165,5 +165,8 @@ dependencies {
 
     //bga-qrcode-zxing
     implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.3.7'
+
+    //CameraView
+    implementation 'cjt.library.wheel:camera:1.1.9'
 }
 apply plugin: 'io.objectbox'

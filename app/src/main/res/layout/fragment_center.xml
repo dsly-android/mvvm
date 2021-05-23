@@ -71,6 +71,13 @@
                     android:layout_height="wrap_content"
                     onAntiClick="@{onClickListener}"
                     android:text="刷新和加载列表" />
+
+                <Button
+                    android:id="@+id/btn_canvas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    onAntiClick="@{onClickListener}"
+                    android:text="canvas位置转换" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

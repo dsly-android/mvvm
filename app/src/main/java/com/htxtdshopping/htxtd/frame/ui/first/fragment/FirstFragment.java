@@ -22,6 +22,7 @@ import com.htxtdshopping.htxtd.frame.ui.first.activity.PermissionActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.PictureSelectorActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.RefreshAndLoadMoreActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.RxjavaActivity;
+import com.htxtdshopping.htxtd.frame.ui.first.activity.TakePhotoOrVideoActivity;
 import com.htxtdshopping.htxtd.frame.ui.first.activity.WebSocketActivity;
 import com.htxtdshopping.htxtd.frame.ui.other.activity.ZxingActivity;
 import com.tbruyelle.rxpermissions2.Permission;
@@ -93,6 +94,9 @@ public class FirstFragment extends BaseLazyFragment<FragmentFirstBinding, BaseVi
                 break;
             case R.id.btn_picture_selector:
                 ActivityUtils.startActivity(PictureSelectorActivity.class);
+                break;
+            case R.id.btn_camera:
+                ActivityUtils.startActivity(TakePhotoOrVideoActivity.class);
                 break;
             default:
                 break;

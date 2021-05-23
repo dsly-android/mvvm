@@ -9,4 +9,6 @@ package com.android.dsly.common.constant;
 public interface RequestCode {
     //扫码界面
     int REQUEST_SCAN_CODE = 1;
+    //选择文件
+    int REQUEST_CHOOSE_FILE = 2;
 }

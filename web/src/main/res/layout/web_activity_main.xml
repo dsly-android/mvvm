@@ -16,8 +16,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="test"
+            android:text="test1"
             android:onClick="click"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="js通信"
+            android:onClick="jsCommunicate"/>
     </LinearLayout>
 </layout>
