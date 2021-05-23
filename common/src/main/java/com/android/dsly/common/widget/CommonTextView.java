@@ -1312,6 +1312,13 @@ public class CommonTextView extends RelativeLayout {
         return leftImageView;
     }
 
+    public ImageView getRightImageView(){
+        if (rightImageView == null){
+            initRightImageView();
+        }
+        return rightImageView;
+    }
+
     /**
      * 获取左边textView的值
      *

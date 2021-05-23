@@ -7,10 +7,13 @@ import android.view.View;
 
 import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
+import com.android.dsly.common.constant.RequestCode;
 import com.android.dsly.common.decoration.GridDividerItemDecoration;
+import com.android.dsly.common.utils.IntentUtils;
 import com.android.dsly.common.utils.ToastUtils;
 import com.android.dsly.image_picker.activity.ImagePickerActivity;
 import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.UriUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.htxtdshopping.htxtd.frame.R;
@@ -19,6 +22,7 @@ import com.htxtdshopping.htxtd.frame.ui.third.adapter.ChangeAvatarAdapter;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.io.File;
 import java.util.List;
 
 import androidx.annotation.Nullable;
@@ -72,6 +76,7 @@ public class ChangeAvatarActivity extends BaseActivity<ActivityChangeAvatarBindi
             }
         });
         mBinding.ivAvatar.setOnClickListener(this);
+        mBinding.tvPickFile.setOnClickListener(this);
     }
 
     @Override
@@ -93,6 +98,14 @@ public class ChangeAvatarActivity extends BaseActivity<ActivityChangeAvatarBindi
             case CODE_MULTIPLE_PICKER:
                 List<String> imagePaths = (List<String>) data.getSerializableExtra(ImagePickerActivity.RESULT_KEY_IMAGE_PATH);
                 mAdapter.setNewData(imagePaths);
+                break;
+            case RequestCode.REQUEST_CHOOSE_FILE:
+                File file = UriUtils.uri2File(data.getData());
+                if (file == null) {
+                    ToastUtils.showLong("选择文件错误");
+                    return;
+                }
+                ToastUtils.showLong(file.getAbsolutePath());
                 break;
             default:
                 break;
@@ -119,6 +132,10 @@ public class ChangeAvatarActivity extends BaseActivity<ActivityChangeAvatarBindi
                                 }
                             }
                         });
+                break;
+            case R.id.tv_pick_file:
+                Intent pickFileIntent = IntentUtils.getPickFileIntent();
+                startActivityForResult(pickFileIntent, RequestCode.REQUEST_CHOOSE_FILE);
                 break;
             default:
                 break;

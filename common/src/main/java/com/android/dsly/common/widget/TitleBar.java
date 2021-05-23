@@ -4,25 +4,29 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.dsly.common.R;
+import com.blankj.utilcode.util.BarUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 /**
  * @author 陈志鹏
  * @date 2019/1/15
  */
-public class TitleBar extends ConstraintLayout implements View.OnClickListener {
+public class TitleBar extends LinearLayout implements View.OnClickListener {
 
+    private View mVBar;
     private TextView mTvBack;
     private TextView mTvTitle;
     private ImageView mIvRight;
     private TextView mTvRight;
     private String mTitle;
+    private boolean mIsShowBar;
 
     public TitleBar(Context context) {
         this(context, null);
@@ -39,6 +43,7 @@ public class TitleBar extends ConstraintLayout implements View.OnClickListener {
     private void initAttrs(AttributeSet attrs) {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.TitleBar);
         mTitle = typedArray.getString(R.styleable.TitleBar_tb_title);
+        mIsShowBar = typedArray.getBoolean(R.styleable.TitleBar_is_show_bar,false);
         typedArray.recycle();
     }
 
@@ -48,12 +53,20 @@ public class TitleBar extends ConstraintLayout implements View.OnClickListener {
     }
 
     private void initView() {
+        setOrientation(VERTICAL);
+
         View.inflate(getContext(), R.layout.view_title, this);
+        mVBar = findViewById(R.id.v_bar);
         mTvBack = findViewById(R.id.tv_back);
         mTvTitle = findViewById(R.id.tv_title);
         mIvRight = findViewById(R.id.iv_right);
         mTvRight = findViewById(R.id.tv_right);
 
+        if (mIsShowBar){
+            ViewGroup.LayoutParams params = mVBar.getLayoutParams();
+            params.height = BarUtils.getStatusBarHeight();
+            mVBar.setLayoutParams(params);
+        }
         setTitle(mTitle);
     }
 

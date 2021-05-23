@@ -1,20 +1,24 @@
 package com.android.dsly.web.base;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.PixelFormat;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
-import com.android.dsly.web.web.X5WebChromeClient;
-import com.android.dsly.web.web.X5WebView;
+import com.android.dsly.web.R;
+import com.android.dsly.web.web.BaseWebViewClient;
+import com.blankj.utilcode.util.ConvertUtils;
+import com.just.agentweb.AgentWeb;
+import com.just.agentweb.DefaultWebClient;
+import com.just.agentweb.IAgentWebSettings;
+import com.just.agentweb.WebChromeClient;
 
+import androidx.core.content.ContextCompat;
 import androidx.databinding.ViewDataBinding;
-import me.jessyan.autosize.AutoSize;
 
 /**
  * @author 陈志鹏
@@ -22,22 +26,13 @@ import me.jessyan.autosize.AutoSize;
  */
 public abstract class BaseWebActivity<VB extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity<VB, VM> {
 
-    public static final int CODE_CHOOSE_FILE = 0;
-
-    public abstract X5WebView getWebView();
-
-    @Override
-    public View onCreateView(String name, Context context, AttributeSet attrs) {
-        //解决首次进入有webview的页面时适配失效的问题
-        AutoSize.autoConvertDensityOfGlobal(this);
-        return super.onCreateView(name, context, attrs);
-    }
+    protected AgentWeb mAgentWeb;
 
     @Override
     public void initView(Bundle savedInstanceState) {
         //网页中的视频，上屏幕的时候，可能出现闪烁的情况，需要如下设置
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
-        getWebView().setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+//        mAgentWeb.getWebCreator().getWebView().setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         try {
             if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 11) {
                 getWindow()
@@ -50,48 +45,60 @@ public abstract class BaseWebActivity<VB extends ViewDataBinding, VM extends Bas
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        X5WebChromeClient webChromeClient = (X5WebChromeClient) getWebView().getWebChromeClient();
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case CODE_CHOOSE_FILE:
-                    if (null != webChromeClient.getUploadFile()) {
-                        Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
-                        webChromeClient.getUploadFile().onReceiveValue(result);
-                        webChromeClient.setUploadFile(null);
-                    }
-                    if (null != webChromeClient.getUploadFiles()) {
-                        Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
-                        webChromeClient.getUploadFiles().onReceiveValue(new Uri[]{result});
-                        webChromeClient.setUploadFiles(null);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        } else if (resultCode == RESULT_CANCELED) {
-            if (null != webChromeClient.getUploadFile()) {
-                webChromeClient.getUploadFile().onReceiveValue(null);
-                webChromeClient.setUploadFile(null);
-            }
-        }
+    public void initData() {
+        mAgentWeb = AgentWeb.with(this)
+                .setAgentWebParent(getAgentWebParent(), new LinearLayout.LayoutParams(-1, -1))
+                .useDefaultIndicator(ContextCompat.getColor(this, R.color._81D8CF), ConvertUtils.dp2px(2))
+                .setAgentWebWebSettings(getAgentWebSettings())
+                .setWebChromeClient(getWebChromeClient())
+                .setWebViewClient(new BaseWebViewClient())
+                .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
+                .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)//严格模式 Android 4.2.2 以下会放弃注入对象 ，使用AgentWebView没影响。
+                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.ASK)//打开其他应用时，弹窗咨询用户是否前往其他应用
+                //添加baseurl的cookie
+//                .additionalHttpHeader("http://android.myapp.com/", "cookie", "41bc7ddf04a26b91803f6b11817a5a1c")
+                .interceptUnkownUrl()
+                .createAgentWeb()
+                .ready()
+                .go(getUrl());
+        mAgentWeb.getWebCreator().getWebView().setOverScrollMode(View.OVER_SCROLL_NEVER);
+    }
+
+    protected abstract String getUrl();
+
+    protected IAgentWebSettings getAgentWebSettings() {
+        return null;
+    }
+
+    protected abstract ViewGroup getAgentWebParent();
+
+    protected WebChromeClient getWebChromeClient() {
+        return null;
     }
 
     @Override
-    public void onBackPressed() {
-        if (getWebView().canGoBack()) {
-            getWebView().goBack();
-        } else {
-            super.onBackPressed();
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (mAgentWeb.handleKeyEvent(keyCode, event)) {
+            return true;
         }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onPause() {
+        mAgentWeb.getWebLifeCycle().onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mAgentWeb.getWebLifeCycle().onResume();
+        super.onResume();
     }
 
     @Override
     protected void onDestroy() {
-        if (getWebView() != null) {
-            getWebView().onDestroy();
-        }
         super.onDestroy();
+        mAgentWeb.getWebLifeCycle().onDestroy();
     }
 }

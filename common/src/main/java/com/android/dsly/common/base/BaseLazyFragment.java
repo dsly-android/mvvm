@@ -15,10 +15,6 @@ public abstract class BaseLazyFragment<VB extends ViewDataBinding, VM extends Ba
 
     private static final String INVISIBLE_WHEN_LEAVE = "invisible_when_leave";
     private boolean mInvisibleWhenLeave;
-    /**
-     * 是否第一次加载
-     */
-    protected boolean isFirstLoad = true;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,25 +45,28 @@ public abstract class BaseLazyFragment<VB extends ViewDataBinding, VM extends Ba
         outState.putBoolean(INVISIBLE_WHEN_LEAVE, mInvisibleWhenLeave);
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //初始化的时候，判断当前fragment可见状态
+        if (!mInvisibleWhenLeave && isFragmentVisible()) {
+            dispatchUserVisibleHint(true);
+        }
+    }
+
     /**
-     * 只有FragmentTransaction的show()和hide()方法才会调用onHiddenChanged()方法
+     * 用FragmentTransaction来控制fragment的hide和show时，
+     * 那么这个方法就会被调用。每当你对某个Fragment使用hide
+     * 或者是show的时候，那么这个Fragment就会自动调用这个方法。
      * @param hidden
      */
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden && isFirstLoad && isResumed()) {
-            isFirstLoad = false;
-            initData();
-        }
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (!mInvisibleWhenLeave && isFragmentVisible() && isFirstLoad) {
-            isFirstLoad = false;
-            initData();
+        if (hidden) {
+            dispatchUserVisibleHint(false);
+        } else {
+            dispatchUserVisibleHint(true);
         }
     }
 
@@ -79,12 +78,6 @@ public abstract class BaseLazyFragment<VB extends ViewDataBinding, VM extends Ba
         } else {
             mInvisibleWhenLeave = true;
         }
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        isFirstLoad = true;
     }
 
     @Override

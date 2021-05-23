@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="@{onClickListener}"
-                    android:text="修改头像"
+                    android:text="修改头像和选择文件"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
 

@@ -95,7 +95,11 @@ public class SpecialTabItemView extends BaseTabItem {
 
     @Override
     public void setHasMessage(boolean hasMessage) {
-        mMessages.showDot();
+        if (hasMessage) {
+            mMessages.showDot();
+        } else {
+            mMessages.setGone();
+        }
     }
 
     @Override

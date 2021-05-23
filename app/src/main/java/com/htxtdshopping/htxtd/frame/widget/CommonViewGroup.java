@@ -112,9 +112,17 @@ public class CommonViewGroup extends ViewGroup {
         }
     }
 
+    /**
+     * 内存抖动：在短时间内反复地发生内存增长和回收的循环。
+     * 内存的回收虽然很快，时间成本很低，但终究是有时间成本的。一两次内存回收不容易被用户察觉，
+     * 但多次内存回收行为集中在短时间内爆发，这就造成了比较大的界面卡顿的风险。
+     * 在 onDraw 里创建的对象往往是绘制相关的对象，而这些对象又经常会包含通往系统下层的 Native 对象的引用，
+     * 这就导致在 onDraw 里创建对象所导致的内存回收的耗时往往会更高，直白地说就是——界面更卡顿。
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        LogUtils.i("onDraw:" + System.currentTimeMillis());
         Paint paint = new Paint();
         paint.setTextSize(30);
         paint.setColor(ContextCompat.getColor(getContext(), android.R.color.black));

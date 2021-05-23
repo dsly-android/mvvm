@@ -1,5 +1,7 @@
 package com.htxtdshopping.htxtd.frame.ui.first.activity;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +24,7 @@ import androidx.core.content.ContextCompat;
 
 public class NewsVideoActivity extends BaseActivity<ActivityNewsVideoBinding, BaseViewModel> {
 
-    LinearLayout mLlTop;
+    private LinearLayout mLlTop;
     private boolean isPause;
     private OrientationUtils orientationUtils;
 
@@ -124,7 +126,6 @@ public class NewsVideoActivity extends BaseActivity<ActivityNewsVideoBinding, Ba
         mBinding.cvpVideo.startAfterPrepared();
     }
 
-
     @Override
     public void onBackPressed() {
         if (orientationUtils != null) {
@@ -136,6 +137,22 @@ public class NewsVideoActivity extends BaseActivity<ActivityNewsVideoBinding, Ba
         super.onBackPressed();
     }
 
+    /**
+     * 解决内存泄露问题
+     */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(new ContextWrapper(newBase) {
+            @Override
+            public Object getSystemService(String name) {
+                // 解决 VideoView 中 AudioManager 造成的内存泄漏
+                if (Context.AUDIO_SERVICE.equals(name)) {
+                    return getApplicationContext().getSystemService(name);
+                }
+                return super.getSystemService(name);
+            }
+        });
+    }
 
     @Override
     protected void onPause() {

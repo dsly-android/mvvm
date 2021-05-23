@@ -124,7 +124,7 @@ public abstract class BaseActionItemPopup extends BasePopupWindow<PopupActionIte
     public void dismiss() {
         AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
         alphaAnimation.setDuration(mAnimDuration);
-        alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+        Animation.AnimationListener listener = new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
 
@@ -139,11 +139,13 @@ public abstract class BaseActionItemPopup extends BasePopupWindow<PopupActionIte
             public void onAnimationRepeat(Animation animation) {
 
             }
-        });
+        };
+        alphaAnimation.setAnimationListener(listener);
         mFlContainer.startAnimation(alphaAnimation);
 
         ScaleAnimation scaleAnimation = new ScaleAnimation(1, 0, 1, 0, Animation.RELATIVE_TO_SELF, 1, Animation.RELATIVE_TO_SELF, 0);
         scaleAnimation.setDuration(mAnimDuration);
+        scaleAnimation.setAnimationListener(listener);
         mRvContent.startAnimation(scaleAnimation);
     }
 

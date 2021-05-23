@@ -31,7 +31,7 @@ public class GenerateQrCodeViewModel extends BaseViewModel {
         Observable.create(new ObservableOnSubscribe<Bitmap>() {
             @Override
             public void subscribe(@io.reactivex.annotations.NonNull ObservableEmitter<Bitmap> emitter) throws Exception {
-                Bitmap bitmap = QRCodeEncoder.syncEncodeQRCode("王浩", ConvertUtils.dp2px(150));
+                Bitmap bitmap = QRCodeEncoder.syncEncodeQRCode(content, ConvertUtils.dp2px(150));
                 emitter.onNext(bitmap);
                 emitter.onComplete();
             }
@@ -50,7 +50,7 @@ public class GenerateQrCodeViewModel extends BaseViewModel {
             public void subscribe(@io.reactivex.annotations.NonNull ObservableEmitter<Bitmap> emitter) throws Exception {
                 int width = ConvertUtils.dp2px(150);
                 int height = ConvertUtils.dp2px(70);
-                Bitmap bitmap = QRCodeEncoder.syncEncodeBarcode("王浩", width, height, 0);
+                Bitmap bitmap = QRCodeEncoder.syncEncodeBarcode(content, width, height, 0);
                 emitter.onNext(bitmap);
                 emitter.onComplete();
             }
