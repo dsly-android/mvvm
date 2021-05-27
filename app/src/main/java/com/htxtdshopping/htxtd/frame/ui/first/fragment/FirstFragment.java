@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.base.BaseLazyFragment;
 import com.android.dsly.common.base.BaseViewModel;
+import com.android.dsly.common.constant.RouterHub;
 import com.android.dsly.common.utils.ToastUtils;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BarUtils;
@@ -97,6 +99,12 @@ public class FirstFragment extends BaseLazyFragment<FragmentFirstBinding, BaseVi
                 break;
             case R.id.btn_camera:
                 ActivityUtils.startActivity(TakePhotoOrVideoActivity.class);
+                break;
+            case R.id.btn_web:
+                ARouter.getInstance()
+                        .build(RouterHub.WEB_WEB_ACTIVITY)
+                        .withString("url","http://www.baidu.com")
+                        .navigation();
                 break;
             default:
                 break;

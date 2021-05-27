@@ -3,10 +3,8 @@ package com.htxtdshopping.htxtd.frame.ui.second.fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.base.BaseLazyFragment;
 import com.android.dsly.common.base.BaseViewModel;
-import com.android.dsly.common.constant.RouterHub;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.htxtdshopping.htxtd.frame.R;
@@ -55,12 +53,6 @@ public class SecondFragment extends BaseLazyFragment<FragmentSecondBinding, Base
                 break;
             case R.id.btn_sophix:
                 SophixManager.getInstance().queryAndLoadNewPatch();
-                break;
-            case R.id.btn_x5:
-                ARouter.getInstance()
-                        .build(RouterHub.WEB_WEB_ACTIVITY)
-                        .withString("url","http://www.baidu.com")
-                        .navigation();
                 break;
             case R.id.btn_login_and_share:
                 ActivityUtils.startActivity(LoginAndShareActivity.class);
