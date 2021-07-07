@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/mvvm.iml" filepath="$PROJECT_DIR$/mvvm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mvvm.iml" filepath="$PROJECT_DIR$/.idea/modules/mvvm.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/accessibilityservice/mvvm.accessibilityservice.iml" filepath="$PROJECT_DIR$/.idea/modules/accessibilityservice/mvvm.accessibilityservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mvvm.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mvvm.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/autosize/mvvm.autosize.iml" filepath="$PROJECT_DIR$/.idea/modules/autosize/mvvm.autosize.iml" />

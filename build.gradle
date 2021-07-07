@@ -4,6 +4,9 @@ apply plugin: 'com.alibaba.arouter'
 buildscript {
     ext.kotlin_version = '1.3.41'
     repositories {
+//        maven{
+//            url 'http://120.77.82.161:8082/artifactory/android_group/'
+//        }
         google()
         jcenter()
         mavenCentral()
@@ -28,6 +31,9 @@ buildscript {
 
 allprojects {
     repositories {
+//        maven{
+//            url 'http://120.77.82.161:8082/artifactory/android_group/'
+//        }
         google()
         jcenter()
         mavenCentral()

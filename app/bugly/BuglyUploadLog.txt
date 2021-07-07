@@ -6,3 +6,19 @@ file=/Users/chenzhipeng/移动硬盘/android/框架/mvvm/app/build/outputs/mappi
 sha1=237149b03058957a6434bab9094b1a37a85b176d
 appId=38552d428b
 
+file=/Users/chenzhipeng/移动硬盘/android/框架/mvvm/app/build/outputs/mapping/debug/mapping.txt
+sha1=b8f9599f0026558430742ea47f187970ec0330b8
+appId=38552d428b
+
+file=/Users/chenzhipeng/移动硬盘/android/框架/mvvm/app/build/outputs/mapping/release/mapping.txt
+sha1=44a8a7c3731057a0266d01b4b1e48d4502c2178d
+appId=38552d428b
+
+file=/Users/chenzhipeng/移动硬盘/android/框架/mvvm/app/build/outputs/mapping/debug/mapping.txt
+sha1=5b72c373811ec21e0e9dc4447bc6f42e62af9119
+appId=38552d428b
+
+file=/Users/chenzhipeng/移动硬盘/android/框架/mvvm/app/build/outputs/mapping/release/mapping.txt
+sha1=a13d9280720be94bcc65cdbadfe21bdcbbbf370d
+appId=38552d428b
+
