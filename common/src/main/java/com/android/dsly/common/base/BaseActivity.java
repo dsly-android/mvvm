@@ -221,9 +221,11 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
     }
 
     protected void showLoading() {
-        if (mLoadingDialog == null) {
-            mLoadingDialog = new LoadingDialog();
+        if (mLoadingDialog != null) {
+            mLoadingDialog.dismiss();
+            mLoadingDialog = null;
         }
+        mLoadingDialog = new LoadingDialog();
         if (!mLoadingDialog.isVisible()) {
             mLoadingDialog.show(getSupportFragmentManager());
         }

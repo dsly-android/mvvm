@@ -12,7 +12,6 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.R;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.BR;
-import com.trello.rxlifecycle3.components.support.RxAppCompatDialogFragment;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -29,7 +28,7 @@ import androidx.lifecycle.ViewModelProviders;
  * @author 陈志鹏
  * @date 2018/10/26
  */
-public abstract class BaseDialogFragment<VB extends ViewDataBinding, VM extends BaseViewModel> extends RxAppCompatDialogFragment implements ILifeCycle {
+public abstract class BaseDialogFragment<VB extends ViewDataBinding, VM extends BaseViewModel> extends RxAppcompatRobustDialogFragment implements ILifeCycle {
 
     protected VB mBinding;
     protected VM mViewModel;

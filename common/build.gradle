@@ -46,7 +46,7 @@ dependencies {
     //implementation修饰的只能在当前module中引用,依赖module中改为api则主module中也可引用jar包
     //annotationProcessor在每个module都必须要引用
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'androidx.appcompat:appcompat:1.3.0'
     api 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
     testApi 'junit:junit:4.12'
     androidTestApi 'androidx.test:runner:1.2.0'
