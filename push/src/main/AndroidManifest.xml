@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.dsly.push">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
+    <application>
+        <meta-data
+            android:name="com.alibaba.app.appkey"
+            android:value="333391711" /> <!-- 请填写你自己的- appKey -->
+        <meta-data
+            android:name="com.alibaba.app.appsecret"
+            android:value="a074c0ab9d7a4293b743a31b982d71d6" /> <!-- 请填写你自己的appSecret -->
+        <!-- 华为推送 -->
+        <meta-data
+            android:name="com.huawei.hms.client.appid"
+            android:value="appid=xxxxxx" /> <!-- vivo推送 -->
+        <meta-data
+            android:name="com.vivo.push.api_key"
+            android:value="请填写vivo平台上注册应用的appKey" />
+        <meta-data
+            android:name="com.vivo.push.app_id"
+            android:value="请填写vivo平台上注册应用的appID" />
+
+        <meta-data
+            android:name="com.android.dsly.push.AliPushConfiguration"
+            android:value="ConfigModule" />
+
+        <activity
+            android:name=".AliPushPopupActivity"
+            android:exported="true"
+            android:theme="@style/ActivityTranslucent"
+            android:screenOrientation="portrait" />
+        <receiver
+            android:name=".AliPushMessageReceiver"
+            android:exported="false"> <!-- 为保证receiver安全，建议设置不可导出，如需对其他应用开放可通过android：permission进行限制 -->
+            <intent-filter>
+                <action android:name="com.alibaba.push2.action.NOTIFICATION_OPENED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.alibaba.push2.action.NOTIFICATION_REMOVED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.alibaba.sdk.android.push.RECEIVE" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

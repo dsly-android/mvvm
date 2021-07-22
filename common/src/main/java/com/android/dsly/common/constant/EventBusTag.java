@@ -13,4 +13,7 @@ public interface EventBusTag {
 
     //网络状态改变发送的消息
     String EVENT_NETWORK_STATUS_CHANGED = "event_network_status_changed";
+
+    //收到阿里云推送通知的消息
+    String EVENT_ALIPUSH_NOTICE = "EVENT_ALIPUSH_NOTICE";
 }

@@ -43,10 +43,10 @@ public class NotificationChannels {
             importantChannel.setLockscreenVisibility(NotificationCompat.VISIBILITY_PRIVATE);
             // 设置绕过免打扰模式
             importantChannel.setBypassDnd(true);
-            //发出通知时的声音
-            importantChannel.setSound(null, null);
-            //震动的频率
-            importantChannel.setVibrationPattern(null);
+            //发出通知时的声音，默认用系统音效
+//            importantChannel.setSound(null, null);
+            //是否可以震动
+            importantChannel.enableVibration(true);
             importantChannel.setGroup(GROUP_ID);
             nm.createNotificationChannel(importantChannel);
 

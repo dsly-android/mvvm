@@ -1,11 +1,13 @@
 package com.htxtdshopping.htxtd.frame.base;
 
+import android.app.Application;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.dsly.common.base.BaseApp;
 import com.android.dsly.common.constant.Constants;
+import com.android.dsly.common.core.AppLifecycles;
+import com.android.dsly.common.core.ConfigModule;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ProcessUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -31,73 +33,67 @@ import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
 
 import java.io.File;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.FragmentManager;
 
 /**
  * @author 陈志鹏
- * @date 2018/7/27
+ * @date 2021/7/15
  */
-public class App extends BaseApp {
+public class AppConfiguration implements ConfigModule {
+    @Override
+    public void injectAppLifecycle(Application application, List<AppLifecycles> lifecycles) {
+        lifecycles.add(new AppLifecycles() {
+            @Override
+            public void attachBaseContext(@NonNull Application application) {
+
+            }
+
+            @Override
+            public void onCreate(@NonNull Application application) {
+                if (!ProcessUtils.getCurrentProcessName().equals(application.getPackageName())){
+                    return;
+                }
+                AppContext.init(application);
+                //bugly
+                initBugly(application);
+                //oss
+                initOss();
+                //初始化UShare
+                initUShare(application);
+                //okdownload
+                initOkDownload();
+                //EasyFloat
+                initEasyFloat(application);
+            }
+
+            @Override
+            public void onTerminate(@NonNull Application application) {
+
+            }
+        });
+    }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        if (!ProcessUtils.getCurrentProcessName().equals(getPackageName())){
-            return;
-        }
+    public void injectActivityLifecycle(Application application, List<Application.ActivityLifecycleCallbacks> lifecycles) {
 
-        AppContext.init(this);
-        //bugly
-        initBugly();
-        //oss
-        initOss();
-        //初始化UShare
-        initUShare();
-        //okdownload
-        initOkDownload();
-        //EasyFloat
-        initEasyFloat();
     }
 
-    static {//使用static代码段可以防止内存泄漏
-        //启用矢量图兼容
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-        //设置全局默认配置（优先级最低，会被其他设置覆盖）
-        SmartRefreshLayout.setDefaultRefreshInitializer(new DefaultRefreshInitializer() {
-            @Override
-            public void initialize(@NonNull Context context, @NonNull RefreshLayout layout) {
-                //开始设置全局的基本参数
-                layout.setEnableLoadMore(false);
-                layout.setEnableAutoLoadMore(true);
-                layout.setEnableOverScrollDrag(false);
-                layout.setEnableOverScrollBounce(true);
-                layout.setEnableLoadMoreWhenContentNotFull(false);
-                layout.setEnableScrollContentWhenRefreshed(true);
-                layout.setEnableFooterFollowWhenLoadFinished(true);
-            }
-        });
+    @Override
+    public void injectFragmentLifecycle(Application application, List<FragmentManager.FragmentLifecycleCallbacks> lifecycles) {
 
-        //全局设置默认的 Header
-        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
-            @Override
-            public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-                //开始设置全局的基本参数（这里设置的属性只跟下面的MaterialHeader绑定，其他Header不会生效，能覆盖DefaultRefreshInitializer的属性和Xml设置的属性）
-                //全局设置主题颜色（优先级第二低，可以覆盖 DefaultRefreshInitializer 的配置，与下面的ClassicsHeader绑定）
-                layout.setPrimaryColorsId(android.R.color.white, R.color._81D8CF);
-                return new NewsRefreshHeader(context);
-            }
-        });
     }
 
-    private void initBugly() {
+    private void initBugly(Application application) {
         String currentProcessName = ProcessUtils.getCurrentProcessName();
         // 设置是否为上报进程
-        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(this);
-        strategy.setUploadProcess(currentProcessName == null || currentProcessName.equals(getPackageName()));
+        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(application);
+        strategy.setUploadProcess(currentProcessName == null || currentProcessName.equals(application.getPackageName()));
 
-        Beta.storageDir = new File(getFilesDir().getAbsolutePath() + "/bugly");
+        Beta.storageDir = new File(application.getFilesDir().getAbsolutePath() + "/bugly");
         Beta.enableHotfix = false;
         //添加不显示更新弹窗的activity
         Beta.canNotShowUpgradeActs.add(SplashActivity.class);
@@ -169,15 +165,45 @@ public class App extends BaseApp {
         };
 
         // 初始化Bugly
-        Bugly.init(getApplicationContext(), "38552d428b", BuildConfig.DEBUG, strategy);
+        Bugly.init(application, "38552d428b", BuildConfig.DEBUG, strategy);
+    }
+
+    static {//使用static代码段可以防止内存泄漏
+        //启用矢量图兼容
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        //设置全局默认配置（优先级最低，会被其他设置覆盖）
+        SmartRefreshLayout.setDefaultRefreshInitializer(new DefaultRefreshInitializer() {
+            @Override
+            public void initialize(@NonNull Context context, @NonNull RefreshLayout layout) {
+                //开始设置全局的基本参数
+                layout.setEnableLoadMore(false);
+                layout.setEnableAutoLoadMore(true);
+                layout.setEnableOverScrollDrag(false);
+                layout.setEnableOverScrollBounce(true);
+                layout.setEnableLoadMoreWhenContentNotFull(false);
+                layout.setEnableScrollContentWhenRefreshed(true);
+                layout.setEnableFooterFollowWhenLoadFinished(true);
+            }
+        });
+
+        //全局设置默认的 Header
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
+            @Override
+            public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
+                //开始设置全局的基本参数（这里设置的属性只跟下面的MaterialHeader绑定，其他Header不会生效，能覆盖DefaultRefreshInitializer的属性和Xml设置的属性）
+                //全局设置主题颜色（优先级第二低，可以覆盖 DefaultRefreshInitializer 的配置，与下面的ClassicsHeader绑定）
+                layout.setPrimaryColorsId(android.R.color.white, R.color._81D8CF);
+                return new NewsRefreshHeader(context);
+            }
+        });
     }
 
     private void initOss() {
         OssService.init(Constants.OSS_BUCKET);
     }
 
-    private void initUShare() {
-        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, null);
+    private void initUShare(Application application) {
+        UMConfigure.init(application, UMConfigure.DEVICE_TYPE_PHONE, null);
     }
 
     {
@@ -189,7 +215,7 @@ public class App extends BaseApp {
         DownloadDispatcher.setMaxParallelRunningCount(3);
     }
 
-    private void initEasyFloat() {
-        EasyFloat.init(this, BuildConfig.DEBUG);
+    private void initEasyFloat(Application application) {
+        EasyFloat.init(application, BuildConfig.DEBUG);
     }
 }

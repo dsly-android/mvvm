@@ -70,16 +70,16 @@ public class RefreshDataAgent {
             //重置数据
             mAdapter.setNewData(pageBean.getResults());
         } else {
-            if (pageBean.getHasNext()) {
-                mAdapter.getLoadMoreModule().loadMoreComplete();
-            } else {
-                mAdapter.getLoadMoreModule().loadMoreEnd();
-            }
             if (mNrlRefresh != null) {
                 mNrlRefresh.setEnableRefresh(true);
             }
             //添加数据
             mAdapter.addData(pageBean.getResults());
+        }
+        if (pageBean.getHasNext()) {
+            mAdapter.getLoadMoreModule().loadMoreComplete();
+        } else {
+            mAdapter.getLoadMoreModule().loadMoreEnd();
         }
     }
 

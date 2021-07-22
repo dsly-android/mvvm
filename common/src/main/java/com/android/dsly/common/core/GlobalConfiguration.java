@@ -22,6 +22,7 @@ import com.blankj.utilcode.util.Utils;
 import com.chad.library.adapter.base.module.LoadMoreModuleConfig;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
+import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -113,6 +114,9 @@ public class GlobalConfiguration implements ConfigModule {
     private void initRxHttp(Application application) {
         OkHttpClient.Builder builder = RetrofitUrlManager.getInstance().with(new OkHttpClient.Builder());
 
+        //不使用代理，防止抓包
+        builder.proxy(Proxy.NO_PROXY);
+        
         //全局的读取超时时间
         builder.readTimeout(RxHttp.DEFAULT_MILLISECONDS / 2, TimeUnit.MILLISECONDS);
         //全局的写入超时时间
