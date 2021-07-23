@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
@@ -31,13 +30,8 @@ public class KeyboardHeightFrameLayout extends FrameLayout implements InputAware
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-
     @Override
     public void show(int height, boolean immediate) {
-        // TODO
-        ViewGroup.LayoutParams layoutParams = getLayoutParams();
-        //height:软键盘高度
-        layoutParams.height = height;
         getChildAt(0).setVisibility(VISIBLE);
         setVisibility(VISIBLE);
     }

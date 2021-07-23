@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.dsly.common.R;
+import com.blankj.utilcode.util.ConvertUtils;
 import com.htxtdshopping.htxtd.frame.widget.groupheadview.layout.DingLayoutManager;
 import com.htxtdshopping.htxtd.frame.widget.groupheadview.layout.ILayoutManager;
 import com.htxtdshopping.htxtd.frame.widget.groupheadview.layout.WechatLayoutManager;
@@ -55,12 +56,12 @@ public class Builder {
     }
 
     public Builder setSize(int size) {
-        this.size = Utils.dp2px(context, size);
+        this.size = ConvertUtils.dp2px(size);
         return this;
     }
 
     public Builder setGap(int gap) {
-        this.gap = Utils.dp2px(context, gap);
+        this.gap = ConvertUtils.dp2px(gap);
         return this;
     }
 

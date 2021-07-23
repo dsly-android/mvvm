@@ -9,7 +9,6 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
-import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Surface;
@@ -40,7 +39,6 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
     private final int minCustomKeyboardSize;
     private final int defaultCustomKeyboardSize;
     private final int minCustomKeyboardTopMargin;
-    private final int statusBarHeight;
 
     private int viewInset;
 
@@ -57,12 +55,10 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
 
     public KeyboardAwareLinearLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        final int statusBarRes = getResources().getIdentifier("status_bar_height", "dimen", "android");
         minKeyboardSize = getResources().getDimensionPixelSize(R.dimen.min_keyboard_size);
         minCustomKeyboardSize = getResources().getDimensionPixelSize(R.dimen.min_custom_keyboard_size);
         defaultCustomKeyboardSize = getResources().getDimensionPixelSize(R.dimen.default_custom_keyboard_size);
         minCustomKeyboardTopMargin = getResources().getDimensionPixelSize(R.dimen.min_custom_keyboard_top_margin);
-        statusBarHeight = statusBarRes > 0 ? getResources().getDimensionPixelSize(statusBarRes) : 0;
         viewInset = getViewInset();
     }
 
@@ -93,14 +89,13 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
         if (viewInset == 0){
             viewInset = BarUtils.getNavBarHeight();
         }
-        final int availableHeight = this.getRootView().getHeight() - statusBarHeight - viewInset;
+        final int availableHeight = this.getRootView().getHeight() - viewInset;
 
         getWindowVisibleDisplayFrame(rect);
 
         final int keyboardHeight = availableHeight - (rect.bottom - rect.top);
 
         if (keyboardHeight > minKeyboardSize) {
-            if (getKeyboardHeight() != keyboardHeight) setKeyboardPortraitHeight(keyboardHeight);
             if (!keyboardOpen) onKeyboardOpen(keyboardHeight);
         } else if (keyboardOpen) {
             onKeyboardClose();
@@ -163,14 +158,7 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
     }
 
     private int getKeyboardPortraitHeight() {
-        int keyboardHeight = PreferenceManager.getDefaultSharedPreferences(getContext())
-                .getInt("keyboard_height_portrait", defaultCustomKeyboardSize);
-        return Math.min(Math.max(keyboardHeight, minCustomKeyboardSize), getRootView().getHeight() - minCustomKeyboardTopMargin);
-    }
-
-    private void setKeyboardPortraitHeight(int height) {
-        PreferenceManager.getDefaultSharedPreferences(getContext())
-                .edit().putInt("keyboard_height_portrait", height).apply();
+        return defaultCustomKeyboardSize;
     }
 
     public void postOnKeyboardClose(final Runnable runnable) {

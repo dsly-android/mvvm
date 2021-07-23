@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.htxtdshopping.htxtd.frame.widget.groupheadview.listener.OnHandlerListener;
+import com.trello.rxlifecycle3.LifecycleProvider;
 
 import java.util.Arrays;
 
@@ -118,7 +119,7 @@ public class CombineHelper {
                     emitter.onError(new NullPointerException("null"));
                 }
             }
-        }).compose(TransformerUtils.pack())
+        }).compose(TransformerUtils.pack((LifecycleProvider) builder.context))
                 .subscribe(new Consumer<Bitmap>() {
                     @Override
                     public void accept(Bitmap bitmap) throws Exception {
@@ -146,7 +147,7 @@ public class CombineHelper {
                 emitter.onNext(result);
                 emitter.onComplete();
             }
-        }).compose(TransformerUtils.pack())
+        }).compose(TransformerUtils.pack((LifecycleProvider) b.context))
                 .subscribe(new Consumer<Bitmap>() {
                     @Override
                     public void accept(Bitmap bitmap) throws Exception {

@@ -1,7 +1,6 @@
 package com.htxtdshopping.htxtd.frame.widget.groupheadview.helper;
 
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,10 +13,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Utils {
-    public static int dp2px(Context context, float dipValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * scale + 0.5f);
-    }
 
     public static void close(Closeable closeable) {
         try {
