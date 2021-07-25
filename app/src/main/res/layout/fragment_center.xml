@@ -78,6 +78,13 @@
                     android:layout_height="wrap_content"
                     onAntiClick="@{onClickListener}"
                     android:text="canvas位置转换" />
+
+                <Button
+                    android:id="@+id/btn_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    onAntiClick="@{onClickListener}"
+                    android:text="图片列表测试" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

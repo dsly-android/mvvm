@@ -12,6 +12,7 @@ import com.htxtdshopping.htxtd.frame.R;
 import com.htxtdshopping.htxtd.frame.databinding.FragmentCenterBinding;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.CanvasActivity;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.CustomViewActivity;
+import com.htxtdshopping.htxtd.frame.ui.center.activity.ImageActivity;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.LinearActivity;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.SlideCloseActivity;
 import com.htxtdshopping.htxtd.frame.ui.center.activity.SwipeActivity;
@@ -64,6 +65,9 @@ public class CenterFragment extends BaseLazyFragment<FragmentCenterBinding, Base
                 break;
             case R.id.btn_canvas:
                 ActivityUtils.startActivity(CanvasActivity.class);
+                break;
+            case R.id.btn_image:
+                ActivityUtils.startActivity(ImageActivity.class);
                 break;
             default:
                 break;
