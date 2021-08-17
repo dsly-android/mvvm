@@ -1,33 +1,39 @@
-package com.android.dsly.common.base
-
-import android.os.Bundle
+package com.android.dsly.common.base;
 
 /**
  * @author 陈志鹏
  * @date 2021/8/17
  */
-interface ILifeCycle {
+
+import android.os.Bundle;
+
+/**
+ * @author 陈志鹏
+ * @date 2018/9/7
+ */
+public interface ILifeCycle {
+
     /**
      * 获取布局id
      *
      * @return
      */
-    fun getLayoutId(): Int
+    int getLayoutId();
 
     /**
      * 初始化 view
      *
      * @param savedInstanceState
      */
-    fun initView(savedInstanceState: Bundle?)
+    void initView(Bundle savedInstanceState);
 
     /**
      * 初始化事件
      */
-    fun initEvent()
+    void initEvent();
 
     /**
      * 初始化数据
      */
-    fun initData()
+    void initData();
 }
