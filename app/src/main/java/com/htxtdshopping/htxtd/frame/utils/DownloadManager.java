@@ -21,7 +21,7 @@ public class DownloadManager {
     private static final OkHttpClient okHttpClient = new OkHttpClient();
 
     public static void download(final String url, final String saveDir, final OnDownloadListener listener) {
-        download(url, saveDir, listener);
+        download(url, saveDir, null, listener);
     }
 
     public static void download(final String url, final String saveDir, String name, final OnDownloadListener listener) {

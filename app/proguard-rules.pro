@@ -208,6 +208,20 @@
 #Okio
 -dontwarn org.codehaus.mojo.animal_sniffer.*
 
+#MMKV
+-keepclasseswithmembers,includedescriptorclasses class com.tencent.mmkv.** {
+    native <methods>;
+    long nativeHandle;
+    private static *** onMMKVCRCCheckFail(***);
+    private static *** onMMKVFileLengthError(***);
+    private static *** mmkvLogImp(...);
+    private static *** onContentChangedByOuterProcess(***);
+}
+
+#android-gif-drawable
+-keep class pl.droidsonroids.gif.sample.GifSelectorDrawable { *; }
+-keep public class pl.droidsonroids.gif.GifIOException{<init>(int, java.lang.String);}
+
 #-------------------------------------------基本不用动区域--------------------------------------------
 #---------------------------------基本指令区----------------------------------
 #代码混淆的压缩比例，值在0-7之间
@@ -367,4 +381,21 @@
 -keep @androidx.annotation.Keep class *
 -keepclassmembers class * {
     @androidx.annotation.Keep *;
+}
+
+# coroutines
+-assumenosideeffects class kotlinx.coroutines.internal.MainDispatcherLoader {
+    boolean FAST_SERVICE_LOADER_ENABLED return false;
+}
+-assumenosideeffects class kotlinx.coroutines.internal.FastServiceLoaderKt {
+    boolean ANDROID_DETECTED return true;
+}
+-keep class kotlinx.coroutines.android.AndroidDispatcherFactory {*;}
+-assumenosideeffects class kotlinx.coroutines.internal.MainDispatchersKt {
+    boolean SUPPORT_MISSING return false;
+}
+-assumenosideeffects class kotlinx.coroutines.DebugKt {
+    boolean getASSERTIONS_ENABLED() return false;
+    boolean getDEBUG() return false;
+    boolean getRECOVER_STACK_TRACES() return false;
 }

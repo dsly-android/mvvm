@@ -9,4 +9,8 @@ public class CombineBitmap {
     public static Builder init(Context context) {
         return new Builder(context);
     }
+
+    public static Builder init(Context context, int maxDisplayNum) {
+        return new Builder(context, maxDisplayNum);
+    }
 }

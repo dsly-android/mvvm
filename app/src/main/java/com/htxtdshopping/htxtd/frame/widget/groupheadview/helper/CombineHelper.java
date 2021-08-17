@@ -3,8 +3,8 @@ package com.htxtdshopping.htxtd.frame.widget.groupheadview.helper;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
+import com.android.dsly.common.utils.CacheDoubleUtils;
 import com.android.dsly.rxhttp.utils.TransformerUtils;
-import com.blankj.utilcode.util.CacheDoubleUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;

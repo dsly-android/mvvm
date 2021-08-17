@@ -3,6 +3,7 @@ package com.htxtdshopping.htxtd.frame.widget;
 import android.content.Context;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
 import android.widget.ImageView;
@@ -65,6 +66,7 @@ public class CoverVideoPlayer extends StandardGSYVideoPlayer {
                                 .error(res)
                                 .placeholder(res))
                 .load(url)
+                .centerInside()
                 .into(mCoverImage);
     }
 
@@ -105,14 +107,13 @@ public class CoverVideoPlayer extends StandardGSYVideoPlayer {
     protected boolean byStartedClick;
 
     @Override
-    protected void onClickUiToggle() {
+    protected void onClickUiToggle(MotionEvent e) {
         if (mIfCurrentIsFullscreen && mLockCurScreen && mNeedLockFull) {
             setViewShowState(mLockScreen, VISIBLE);
             return;
         }
         byStartedClick = true;
-        super.onClickUiToggle();
-
+        super.onClickUiToggle(e);
     }
 
     @Override

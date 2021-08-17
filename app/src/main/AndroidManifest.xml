@@ -312,6 +312,9 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5c3ca500f1f556c482000950" />
+        <meta-data
+            android:name="com.htxtdshopping.htxtd.frame.base.AppConfiguration"
+            android:value="ConfigModule" />
     </application>
 
 </manifest>

@@ -1,6 +1,6 @@
 package com.htxtdshopping.htxtd.frame.utils;
 
-import com.blankj.utilcode.util.SPUtils;
+import com.tencent.mmkv.MMKV;
 
 /**
  * 退出登录后需要清空的数据
@@ -11,16 +11,24 @@ import com.blankj.utilcode.util.SPUtils;
 public class AppSelfSPUtils {
 
     public static final String USER_INFO = "user_info";
+    private static MMKV mmkv;
 
     public static void putUserId(Long userId) {
-        SPUtils.getInstance(USER_INFO).put("userId", userId);
+        getMmkv().encode("userId", userId);
     }
 
     public static Long getUserId() {
-        return SPUtils.getInstance(USER_INFO).getLong("userId");
+        return getMmkv().decodeLong("userId");
     }
 
     public static void clear(){
-        SPUtils.getInstance(USER_INFO).clear();
+        getMmkv().clearAll();
+    }
+
+    private static MMKV getMmkv() {
+        if (mmkv == null) {
+            mmkv = MMKV.mmkvWithID(USER_INFO, MMKV.MULTI_PROCESS_MODE);
+        }
+        return mmkv;
     }
 }

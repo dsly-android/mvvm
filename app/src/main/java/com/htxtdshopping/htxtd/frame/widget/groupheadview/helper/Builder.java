@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.dsly.common.R;
+import com.blankj.utilcode.util.CacheMemoryUtils;
 import com.blankj.utilcode.util.ConvertUtils;
 import com.htxtdshopping.htxtd.frame.widget.groupheadview.layout.DingLayoutManager;
 import com.htxtdshopping.htxtd.frame.widget.groupheadview.layout.ILayoutManager;
@@ -33,6 +34,7 @@ public class Builder {
     public int placeholder = R.drawable.ic_launcher_background; // 获取图片失败时的默认图片
     public int count; // 要加载的资源数量
     public int subSize; // 单个bitmap的尺寸
+    public int maxDisplayNum = 9;//最大显示数量
 
     public ILayoutManager layoutManager; // bitmap的组合样式
 
@@ -48,6 +50,11 @@ public class Builder {
 
     public Builder(Context context) {
         this.context = context;
+    }
+
+    public Builder(Context context, int maxDisplayNum) {
+        this.context = context;
+        this.maxDisplayNum = maxDisplayNum;
     }
 
     public Builder setImageView(ImageView imageView) {
@@ -91,11 +98,11 @@ public class Builder {
     }
 
     public Builder setBitmaps(Bitmap... bitmaps) {
-        if (bitmaps.length > 9) {
-            Bitmap[] _bitmaps = new Bitmap[9];
-            System.arraycopy(bitmaps, 0, _bitmaps, 0, 9);
+        if (bitmaps.length > maxDisplayNum) {
+            Bitmap[] _bitmaps = new Bitmap[maxDisplayNum];
+            System.arraycopy(bitmaps, 0, _bitmaps, 0, maxDisplayNum);
             this.bitmaps = _bitmaps;
-            this.count = 9;
+            this.count = maxDisplayNum;
         } else {
             this.bitmaps = bitmaps;
             this.count = bitmaps.length;
@@ -104,11 +111,11 @@ public class Builder {
     }
 
     public Builder setUrls(String... urls) {
-        if (urls.length > 9) {
-            String[] _urls = new String[9];
-            System.arraycopy(urls, 0, _urls, 0, 9);
+        if (urls.length > maxDisplayNum) {
+            String[] _urls = new String[maxDisplayNum];
+            System.arraycopy(urls, 0, _urls, 0, maxDisplayNum);
             this.urls = _urls;
-            this.count = 9;
+            this.count = maxDisplayNum;
         } else {
             this.urls = urls;
             this.count = urls.length;
@@ -117,11 +124,11 @@ public class Builder {
     }
 
     public Builder setResourceIds(int... resourceIds) {
-        if (resourceIds.length > 9) {
-            int[] _resourceIds = new int[9];
-            System.arraycopy(resourceIds, 0, _resourceIds, 0, 9);
+        if (resourceIds.length > maxDisplayNum) {
+            int[] _resourceIds = new int[maxDisplayNum];
+            System.arraycopy(resourceIds, 0, _resourceIds, 0, maxDisplayNum);
             this.resourceIds = _resourceIds;
-            this.count = 9;
+            this.count = maxDisplayNum;
         } else {
             this.resourceIds = resourceIds;
             this.count = resourceIds.length;
@@ -130,11 +137,16 @@ public class Builder {
     }
 
     public void build() {
-        imageView.setImageResource(placeholder);
         imageView.setTag(Utils.hashKeyFormUrl(Arrays.toString(urls)));
         subSize = getSubSize(size, gap, layoutManager, count);
         initRegions();
-        CombineHelper.init().load(this);
+        Bitmap bitmap = CacheMemoryUtils.getInstance().get(Utils.hashKeyFormUrl(Arrays.toString(urls)));
+        if (bitmap == null) {
+            imageView.setImageResource(placeholder);
+            CombineHelper.init().load(this);
+        } else {
+            imageView.setImageBitmap(bitmap);
+        }
     }
 
     /**

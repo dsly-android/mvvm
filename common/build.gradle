@@ -1,5 +1,8 @@
-apply plugin: 'com.android.library'
-
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id "kotlin-kapt"
+}
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -40,6 +43,11 @@ android {
 
     //给 Module 内的资源名增加前缀, 避免资源名冲突
 //    resourcePrefix "common_"
+
+    //coroutines
+    packagingOptions {
+        exclude "DebugProbesKt.bin"
+    }
 }
 
 dependencies {
@@ -52,6 +60,14 @@ dependencies {
     androidTestApi 'androidx.test:runner:1.2.0'
     androidTestApi 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //kotlin
+    api rootProject.ext.dependencies["core-ktx"]
+    api rootProject.ext.dependencies["kotlin-stdlib"]
+
+    //coroutines
+    api rootProject.ext.dependencies["coroutines-core"]
+    api rootProject.ext.dependencies["coroutines-android"]
+    
     //multidex
     api rootProject.ext.dependencies["multidex"]
 
@@ -114,4 +130,10 @@ dependencies {
     api rootProject.ext.dependencies["rxbinding-viewpager"]
     api rootProject.ext.dependencies["rxbinding-viewpager2"]
     api rootProject.ext.dependencies["rxbinding-material"]
+
+    //mmkv
+    api rootProject.ext.dependencies["mmkv"]
+
+    //android-gif-drawable
+    api rootProject.ext.dependencies["gif-drawable"]
 }

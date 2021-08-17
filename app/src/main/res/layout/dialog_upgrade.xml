@@ -7,11 +7,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/bg_white_corner8"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:background="@drawable/ic_bg_updrage"
         android:orientation="vertical">
 
         <!-- 【必设】升级标题控件tag：beta_title-->
@@ -22,40 +22,60 @@
             android:tag="beta_title"
             android:textColor="@android:color/black"
             android:textSize="18sp"
+            android:visibility="gone"
             tools:text="title" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:overScrollMode="never">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
                 <!-- 【必设】升级信息控件tag：beta_upgrade_info-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:tag="beta_upgrade_info"
                     android:textColor="@color/_333333"
-                    android:textSize="14sp"
+                    android:textSize="22sp"
                     tools:text="info" />
+
+                <TextView
+                    android:id="@+id/tv_file_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/_999999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_update_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/_999999"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/strUpgradeDialogFeatureLabel"
-                    android:textStyle="bold"
-                    android:textColor="@color/_333333"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="12dp"
+                    android:text="更新说明："
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
                 <!-- 【必设】更新属性控件tag：beta_upgrade_feature-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:tag="beta_upgrade_feature"
-                    android:textColor="@color/_333333"
+                    android:textColor="@color/_999999"
                     android:textSize="14sp"
                     tools:text="feature" />
             </LinearLayout>
@@ -63,28 +83,34 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
             <!-- 【必设】取消按钮tag：beta_cancel_button-->
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="14dp"
                 android:layout_weight="1"
+                android:background="@drawable/ic_updage_cancel"
                 android:gravity="center"
                 android:tag="beta_cancel_button"
-                android:textColor="@color/_333333"
-                android:textSize="16sp"
+                android:textColor="@color/_46A0F4"
+                android:textSize="17sp"
                 tools:text="cancel" />
             <!-- 【必设】确认按钮tag：beta_confirm_button-->
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="14dp"
                 android:layout_weight="1"
+                android:background="@drawable/ic_updage_now"
                 android:gravity="center"
                 android:tag="beta_confirm_button"
-                android:textColor="@color/_333333"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="17sp"
                 tools:text="confirm" />
         </LinearLayout>
     </LinearLayout>

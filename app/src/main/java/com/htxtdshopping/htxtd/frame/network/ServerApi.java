@@ -29,6 +29,8 @@ import com.htxtdshopping.htxtd.frame.utils.AppSelfSPUtils;
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 
 /**
@@ -49,7 +51,7 @@ public class ServerApi {
     }
 
     /**
-     * 版本更新接口
+     * 版本更新接口GSYVideoOptionBuilder
      */
     public static VersionUpdateEvent versionUpdate() {
         VersionUpdateEvent event = new VersionUpdateEvent();
@@ -78,6 +80,20 @@ public class ServerApi {
                     }
                 }).compose(TransformerUtils.pack())
                 .subscribe(new DataObserver<>());
+    }
+
+    /**
+     * POST提交application/json数据
+     */
+    public static void publish(String json){
+        RxHttp.createApi(CommonApi.class)
+                .publish(generateRequestBody(json))
+                .compose(TransformerUtils.pack())
+                .subscribe(new DataObserver<>());
+    }
+
+    private static RequestBody generateRequestBody(String json){
+        return RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), json);
     }
 
     /**

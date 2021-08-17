@@ -21,6 +21,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.chad.library.adapter.base.module.LoadMoreModuleConfig;
 import com.jeremyliao.liveeventbus.LiveEventBus;
+import com.tencent.mmkv.MMKV;
 
 import java.net.Proxy;
 import java.util.ArrayList;
@@ -75,6 +76,8 @@ public class GlobalConfiguration implements ConfigModule {
                 initEventBus(app);
                 //BaseRecyclerViewAdapterHelper
                 initBaseRecyclerViewAdapterHelper();
+                //mmkv
+                initMmkv(app);
             }
 
             @Override
@@ -231,5 +234,9 @@ public class GlobalConfiguration implements ConfigModule {
     private void initBaseRecyclerViewAdapterHelper(){
         // 在 Application 中配置全局自定义的 LoadMoreView
         LoadMoreModuleConfig.setDefLoadMoreView(new CustomizeLoadMoreView());
+    }
+
+    private void initMmkv(Application application) {
+        MMKV.initialize(application);
     }
 }

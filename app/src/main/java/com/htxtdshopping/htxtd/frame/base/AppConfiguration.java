@@ -9,7 +9,9 @@ import com.android.dsly.common.constant.Constants;
 import com.android.dsly.common.core.AppLifecycles;
 import com.android.dsly.common.core.ConfigModule;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.ProcessUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.htxtdshopping.htxtd.frame.BuildConfig;
 import com.htxtdshopping.htxtd.frame.R;
@@ -54,7 +56,7 @@ public class AppConfiguration implements ConfigModule {
 
             @Override
             public void onCreate(@NonNull Application application) {
-                if (!ProcessUtils.getCurrentProcessName().equals(application.getPackageName())){
+                if (!ProcessUtils.getCurrentProcessName().equals(application.getPackageName())) {
                     return;
                 }
                 AppContext.init(application);
@@ -146,6 +148,12 @@ public class AppConfiguration implements ConfigModule {
             public void onResume(Context context, View view, UpgradeInfo upgradeInfo) {
                 TextView tvTitle = view.findViewWithTag("beta_title");
                 tvTitle.setText(AppUtils.getAppName());
+                TextView tvUpgradeInfo = view.findViewWithTag("beta_upgrade_info");
+                tvUpgradeInfo.setText("升级到" + upgradeInfo.versionName + "版本");
+                TextView tvFileSize = view.findViewById(R.id.tv_file_size);
+                tvFileSize.setText("包大小：" + ConvertUtils.byte2FitMemorySize(upgradeInfo.fileSize, 2));
+                TextView tvUpdateTime = view.findViewById(R.id.tv_update_time);
+                tvUpdateTime.setText("更新时间：" + TimeUtils.millis2String(upgradeInfo.publishTime));
             }
 
             @Override
