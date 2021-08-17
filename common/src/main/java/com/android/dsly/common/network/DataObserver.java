@@ -5,8 +5,12 @@ package com.android.dsly.common.network;
  * @date 2020/4/8
  */
 
+import com.android.dsly.common.constant.EventBusTag;
+import com.android.dsly.common.event.TokenInvalidationEvent;
 import com.android.dsly.rxhttp.model.RxHttpResponse;
 import com.android.dsly.rxhttp.observer.BaseObserver;
+import com.blankj.utilcode.util.StringUtils;
+import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import androidx.lifecycle.MutableLiveData;
 import retrofit2.HttpException;
@@ -65,6 +69,10 @@ public class DataObserver<T> extends BaseObserver<T> {
             //可以根据需求对code统一处理
             if (((BaseResponse) baseResponse).getCode() == BaseResponse.SUCCESS) {
                 onSuccess(t);
+            } else if (((BaseResponse) baseResponse).getCode() == BaseResponse.ERROR_NO_ALERT
+                    && !StringUtils.isEmpty(((BaseResponse) baseResponse).getMsg())
+                    && ((BaseResponse) baseResponse).getMsg().contains("无效token")) {
+                LiveEventBus.get(EventBusTag.EVENT_TOKEN_INVALIDATION).post(new TokenInvalidationEvent());
             } else {
                 onError(((BaseResponse) baseResponse).getCode(), ((BaseResponse) baseResponse).getMsg());
             }

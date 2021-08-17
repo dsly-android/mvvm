@@ -24,10 +24,13 @@ import com.android.dsly.rxhttp.RxHttp;
 import com.android.dsly.rxhttp.utils.TransformerUtils;
 import com.htxtdshopping.htxtd.frame.bean.CallBean;
 import com.htxtdshopping.htxtd.frame.event.VersionUpdateEvent;
+import com.htxtdshopping.htxtd.frame.utils.AppSelfSPUtils;
 
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 
 /**
@@ -48,7 +51,7 @@ public class ServerApi {
     }
 
     /**
-     * 版本更新接口
+     * 版本更新接口GSYVideoOptionBuilder
      */
     public static VersionUpdateEvent versionUpdate() {
         VersionUpdateEvent event = new VersionUpdateEvent();
@@ -77,5 +80,47 @@ public class ServerApi {
                     }
                 }).compose(TransformerUtils.pack())
                 .subscribe(new DataObserver<>());
+    }
+
+    /**
+     * POST提交application/json数据
+     */
+    public static void publish(String json){
+        RxHttp.createApi(CommonApi.class)
+                .publish(generateRequestBody(json))
+                .compose(TransformerUtils.pack())
+                .subscribe(new DataObserver<>());
+    }
+
+    private static RequestBody generateRequestBody(String json){
+        return RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), json);
+    }
+
+    /**
+     * 分页数据只缓存第一页
+     */
+    /*public static void circle(Long userId, int page, LifecycleProvider provider,
+                              MutableLiveData<RxHttpResponse<BaseResponse<List<DynamicCircleBean>>>> liveData) {
+        if (page == 1) {
+            RxHttp.createApi(ChatApi.class)
+                    .circle(userId, page)
+                    .compose(TransformerUtils.cachePackResp(provider, generateCacheKey("ChatServerApi-circle-" + page)))
+                    .subscribe(new DataObserver(liveData));
+        } else {
+            RxHttp.createApi(ChatApi.class)
+                    .circle(userId, page)
+                    .compose(TransformerUtils.noCachePackResp(provider))
+                    .subscribe(new DataObserver(liveData));
+        }
+    }*/
+
+    /**
+     * userId用来标示哪个用户的缓存
+     * key：类名-方法名-参数
+     */
+    public static String generateCacheKey(String key) {
+        long userId = AppSelfSPUtils.getUserId();
+        key = userId + "-" + key;
+        return key;
     }
 }

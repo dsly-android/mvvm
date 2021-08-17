@@ -12,4 +12,10 @@
     <!-- 选项文字大小 -->
     <dimen name="pickerview_textsize">10sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--keyboard-->
+    <dimen name="min_keyboard_size">50dp</dimen>
+    <dimen name="default_custom_keyboard_size">250dp</dimen>
+    <dimen name="min_custom_keyboard_size">110dp</dimen>
+    <dimen name="min_custom_keyboard_top_margin">170dp</dimen>
 </resources>

@@ -52,14 +52,6 @@
                     android:text="阿里云的移动热修复"/>
 
                 <Button
-                    android:id="@+id/btn_x5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    onAntiClick="@{onClickListener}"
-                    android:text="x5内核"/>
-
-                <Button
                     android:id="@+id/btn_login_and_share"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

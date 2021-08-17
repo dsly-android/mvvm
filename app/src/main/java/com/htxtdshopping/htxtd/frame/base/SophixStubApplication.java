@@ -3,6 +3,7 @@ package com.htxtdshopping.htxtd.frame.base;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.dsly.common.base.BaseApp;
 import com.htxtdshopping.htxtd.frame.BuildConfig;
 import com.taobao.sophix.PatchStatus;
 import com.taobao.sophix.SophixApplication;
@@ -19,7 +20,7 @@ import androidx.annotation.Keep;
 public class SophixStubApplication extends SophixApplication {
     // 此处SophixEntry应指定真正的Application，并且保证RealApplicationStub类名不被混淆。
     @Keep
-    @SophixEntry(App.class)
+    @SophixEntry(BaseApp.class)
     static class RealApplicationStub {
     }
 

@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/NoSpaceActionBarTheme</item>
         <!--<item name="android:windowAnimationStyle">@style/activity_animation</item>-->
+        <!--将窗口背景设为null会减少一层绘制-->
+        <item name="android:windowBackground">@null</item>
         <!--禁止多点误触-->
         <!--windowEnableSplitTouch控制Window之间的多点触控，同一个window没有效果-->
         <item name="android:windowEnableSplitTouch">false</item>

@@ -2,15 +2,18 @@ package com.android.dsly.common.base;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.dsly.common.R;
 import com.android.dsly.common.dialog.LoadingDialog;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.FragmentUtils;
+import com.blankj.utilcode.util.KeyboardUtils;
 import com.chad.library.BR;
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
@@ -74,67 +77,6 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         initView(savedInstanceState);
         initEvent();
         initData();
-    }
-
-    /**
-     * 侧滑关闭
-     */
-    private void initSlideBackClose() {
-        if (isSupportSwipeClose()) {
-            SlidingPaneLayout slidingPaneLayout = new SlidingPaneLayout(this);
-            // 通过反射改变mOverhangSize的值为0，
-            // 这个mOverhangSize值为菜单到右边屏幕的最短距离，
-            // 默认是32dp，现在给它改成0
-            try {
-                Field overhangSize = SlidingPaneLayout.class.getDeclaredField("mOverhangSize");
-                overhangSize.setAccessible(true);
-                overhangSize.set(slidingPaneLayout, 0);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            slidingPaneLayout.setPanelSlideListener(this);
-            slidingPaneLayout.setSliderFadeColor(getResources()
-                    .getColor(android.R.color.transparent));
-
-            // 左侧的透明视图
-            View leftView = new View(this);
-            leftView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            leftView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-            slidingPaneLayout.addView(leftView, 0);
-
-            ViewGroup decorView = (ViewGroup) getWindow().getDecorView();
-
-
-            // 右侧的内容视图
-            ViewGroup decorChild = (ViewGroup) decorView.getChildAt(0);
-            decorChild.setBackgroundColor(getResources()
-                    .getColor(android.R.color.white));
-            decorView.removeView(decorChild);
-            decorView.addView(slidingPaneLayout);
-
-            // 为 SlidingPaneLayout 添加内容视图
-            slidingPaneLayout.addView(decorChild, 1);
-        }
-    }
-
-    protected boolean isSupportSwipeClose() {
-        return false;
-    }
-
-    @Override
-    public void onPanelOpened(@NonNull View panel) {
-        finish();
-        overridePendingTransition(0, 0);
-    }
-
-    @Override
-    public void onPanelClosed(@NonNull View panel) {
-
-    }
-
-    @Override
-    public void onPanelSlide(@NonNull View panel, float slideOffset) {
-
     }
 
     /**
@@ -221,9 +163,11 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
     }
 
     protected void showLoading() {
-        if (mLoadingDialog == null) {
-            mLoadingDialog = new LoadingDialog();
+        if (mLoadingDialog != null) {
+            mLoadingDialog.dismiss();
+            mLoadingDialog = null;
         }
+        mLoadingDialog = new LoadingDialog();
         if (!mLoadingDialog.isVisible()) {
             mLoadingDialog.show(getSupportFragmentManager());
         }
@@ -253,5 +197,98 @@ public abstract class BaseActivity<VB extends ViewDataBinding, VM extends BaseVi
         if (mBinding != null) {
             mBinding.unbind();
         }
+    }
+
+    /**
+     * 侧滑关闭
+     */
+    private void initSlideBackClose() {
+        if (isSupportSwipeClose()) {
+            SlidingPaneLayout slidingPaneLayout = new SlidingPaneLayout(this);
+            // 通过反射改变mOverhangSize的值为0，
+            // 这个mOverhangSize值为菜单到右边屏幕的最短距离，
+            // 默认是32dp，现在给它改成0
+            try {
+                Field overhangSize = SlidingPaneLayout.class.getDeclaredField("mOverhangSize");
+                overhangSize.setAccessible(true);
+                overhangSize.set(slidingPaneLayout, 0);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            slidingPaneLayout.setPanelSlideListener(this);
+            slidingPaneLayout.setSliderFadeColor(getResources()
+                    .getColor(android.R.color.transparent));
+
+            // 左侧的透明视图
+            View leftView = new View(this);
+            leftView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            leftView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            slidingPaneLayout.addView(leftView, 0);
+
+            ViewGroup decorView = (ViewGroup) getWindow().getDecorView();
+
+
+            // 右侧的内容视图
+            ViewGroup decorChild = (ViewGroup) decorView.getChildAt(0);
+            decorChild.setBackgroundColor(getResources()
+                    .getColor(android.R.color.white));
+            decorView.removeView(decorChild);
+            decorView.addView(slidingPaneLayout);
+
+            // 为 SlidingPaneLayout 添加内容视图
+            slidingPaneLayout.addView(decorChild, 1);
+        }
+    }
+
+    protected boolean isSupportSwipeClose() {
+        return false;
+    }
+
+    @Override
+    public void onPanelOpened(@NonNull View panel) {
+        finish();
+        overridePendingTransition(0, 0);
+    }
+
+    @Override
+    public void onPanelClosed(@NonNull View panel) {
+
+    }
+
+    @Override
+    public void onPanelSlide(@NonNull View panel, float slideOffset) {
+
+    }
+
+    /**
+     * 点击空白处隐藏软键盘
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (isClickBlankArea2HideSoftInput() && ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (isShouldHideKeyboard(v, ev)) {
+                KeyboardUtils.hideSoftInput(this);
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    private boolean isShouldHideKeyboard(View v, MotionEvent event) {
+        if ((v instanceof EditText)) {
+            int[] l = {0, 0};
+            v.getLocationOnScreen(l);
+            int left = l[0],
+                    top = l[1],
+                    bottom = top + v.getHeight(),
+                    right = left + v.getWidth();
+            return !(event.getRawX() > left && event.getRawX() < right
+                    && event.getRawY() > top && event.getRawY() < bottom);
+        }
+        return false;
+    }
+
+    protected boolean isClickBlankArea2HideSoftInput(){
+        return false;
     }
 }

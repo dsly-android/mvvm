@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import com.android.dsly.common.R;
 import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
@@ -53,11 +54,11 @@ public final class GlideUtils {
     /**
      * 加载图片生成bitmap对象
      */
-    public static void loadImageToBitmap(Context context,String urlOrPath){
+    public static void loadImageToBitmap(Context context, String urlOrPath) {
         Glide.with(context)
                 .asBitmap()
                 .load(urlOrPath)
-                .into(new CustomTarget<Bitmap>() {
+                .into(new CustomTarget<Bitmap>(ScreenUtils.getScreenWidth(), ScreenUtils.getScreenHeight()) {
                     @Override
                     public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
 

@@ -19,7 +19,7 @@ import com.android.dsly.common.constant.Constants;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.Utils;
-import com.htxtdshopping.htxtd.frame.utils.AppSPUtils;
+import com.htxtdshopping.htxtd.frame.utils.AppSelfSPUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -243,7 +243,7 @@ public class OssService {
      * 生成objectKey
      */
     private String generateKey(String dir, String fileName) {
-        long userId = AppSPUtils.getUserId();
+        long userId = AppSelfSPUtils.getUserId();
         long currentTimeMillis = System.currentTimeMillis();
         if (mOldTimestamp == currentTimeMillis) {
             mDigital++;

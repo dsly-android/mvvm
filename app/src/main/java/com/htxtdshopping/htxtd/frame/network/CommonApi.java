@@ -19,7 +19,9 @@ import com.android.dsly.common.network.BaseResponse;
 import com.htxtdshopping.htxtd.frame.bean.CallBean;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -50,4 +52,10 @@ public interface CommonApi {
     @POST("/v1/voice/hangUp.do")
     @FormUrlEncoded
     Observable<BaseResponse> hangUp(@Field("receiverId") String receiverId, @Field("roomId") String roomId);
+
+    /**
+     * POST提交application/json数据
+     */
+    @POST("/v1/test/text.do")
+    Observable<BaseResponse> publish(@Body RequestBody body);
 }

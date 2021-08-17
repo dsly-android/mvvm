@@ -2,7 +2,6 @@ package com.htxtdshopping.htxtd.frame.ui.center.activity;
 
 import android.os.Bundle;
 
-import com.android.dsly.common.adapter.BaseBindingAdapter;
 import com.android.dsly.common.adapter.BaseRefreshDataAdapter;
 import com.android.dsly.common.base.BaseActivity;
 import com.android.dsly.common.base.BaseViewModel;
@@ -21,7 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class TestActivity extends BaseActivity<ActivityTestBinding, BaseViewModel> {
 
-    private BaseBindingAdapter mAdapter;
+    private BaseRefreshDataAdapter mAdapter;
 
     @Override
     public int getLayoutId() {
@@ -31,7 +30,7 @@ public class TestActivity extends BaseActivity<ActivityTestBinding, BaseViewMode
     @Override
     public void initView(Bundle savedInstanceState) {
         mBinding.rvContent.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new BaseBindingAdapter(R.layout.item_test, mBinding.srlRefresh);
+        mAdapter = new BaseRefreshDataAdapter(R.layout.item_test, mBinding.srlRefresh);
         mAdapter.setEnableLoadMore(true);
         mBinding.rvContent.setAdapter(mAdapter);
     }

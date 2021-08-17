@@ -132,6 +132,14 @@
                     android:text="拍照和录像"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_web"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    onAntiClick="@{onClickListener}"
+                    android:text="webview"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

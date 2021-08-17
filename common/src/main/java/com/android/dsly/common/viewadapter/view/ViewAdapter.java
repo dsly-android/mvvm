@@ -2,6 +2,7 @@ package com.android.dsly.common.viewadapter.view;
 
 import android.view.View;
 
+import com.blankj.utilcode.util.KeyboardUtils;
 import com.jakewharton.rxbinding3.view.RxView;
 
 import java.util.concurrent.TimeUnit;
@@ -36,5 +37,20 @@ public class ViewAdapter {
                         }
                     }
                 });
+    }
+
+    /**
+     * 点击父布局隐藏输入法
+     */
+    @BindingAdapter("click2HideSoftInput")
+    public static void click2HideSoftInput(View view, boolean hide) {
+        if (hide) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    KeyboardUtils.hideSoftInput(v);
+                }
+            });
+        }
     }
 }

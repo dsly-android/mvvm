@@ -1,7 +1,6 @@
 package com.android.dsly.common.adapter;
 
 import com.android.dsly.common.bean.PageBean;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -13,7 +12,7 @@ import androidx.annotation.NonNull;
  * @author 陈志鹏
  * @date 2020/5/25
  */
-public abstract class BaseRefreshDataAdapter<T, VM extends BaseViewHolder> extends BaseQuickAdapter<T, VM> implements LoadMoreModule {
+public class BaseRefreshDataAdapter<T, VM extends BaseViewHolder> extends BaseBindingAdapter<T, VM> implements LoadMoreModule {
 
     //数据刷新代理
     private RefreshDataAgent mRefreshDataAgent;

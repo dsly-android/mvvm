@@ -1,6 +1,6 @@
 package com.htxtdshopping.htxtd.frame.utils;
 
-import com.blankj.utilcode.util.SPUtils;
+import com.tencent.mmkv.MMKV;
 
 /**
  * 通过userId保存对应用户的数据
@@ -10,6 +10,8 @@ import com.blankj.utilcode.util.SPUtils;
  */
 public class AppUserSPUtils {
 
+    private static MMKV mmkv;
+
     public static String getUserId() {
         return "userId";
     }
@@ -17,11 +19,18 @@ public class AppUserSPUtils {
     /**
      * 初始化数据
      */
-    public boolean isInitData() {
-        return SPUtils.getInstance(getUserId()).getBoolean("isInitData");
+    public static boolean isInitData() {
+        return getMmkv().decodeBool("isInitData");
     }
 
-    public void putInitData(boolean isInitData) {
-        SPUtils.getInstance(getUserId()).put("isInitData", isInitData);
+    public static void putInitData(boolean isInitData) {
+        getMmkv().encode("isInitData", isInitData);
+    }
+
+    private static MMKV getMmkv() {
+        if (mmkv == null) {
+            mmkv = MMKV.mmkvWithID(getUserId(), MMKV.MULTI_PROCESS_MODE);
+        }
+        return mmkv;
     }
 }

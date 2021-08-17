@@ -12,9 +12,19 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="maven5" />
+      <option name="name" value="maven5" />
+      <option name="url" value="https://dl.bintray.com/cjt/maven" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="MavenRepo" />
       <option name="name" value="MavenRepo" />
       <option name="url" value="https://repo.maven.apache.org/maven2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven4" />
+      <option name="name" value="maven4" />
+      <option name="url" value="https://dl.bintray.com/jenly/maven" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="maven2" />
@@ -42,14 +52,9 @@
       <option name="url" value="https://dl.google.com/dl/android/maven2/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="maven4" />
-      <option name="name" value="maven4" />
-      <option name="url" value="https://dl.bintray.com/jenly/maven" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="maven5" />
-      <option name="name" value="maven5" />
-      <option name="url" value="https://dl.bintray.com/cjt/maven" />
+      <option name="id" value="maven6" />
+      <option name="name" value="maven6" />
+      <option name="url" value="https://developer.huawei.com/repo/" />
     </remote-repository>
   </component>
 </project>
