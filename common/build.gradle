@@ -1,8 +1,4 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id "kotlin-kapt"
-}
+apply plugin: 'com.android.library'
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -43,11 +39,6 @@ android {
 
     //给 Module 内的资源名增加前缀, 避免资源名冲突
 //    resourcePrefix "common_"
-
-    //coroutines
-    packagingOptions {
-        exclude "DebugProbesKt.bin"
-    }
 }
 
 dependencies {
@@ -60,14 +51,6 @@ dependencies {
     androidTestApi 'androidx.test:runner:1.2.0'
     androidTestApi 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //kotlin
-    api rootProject.ext.dependencies["core-ktx"]
-    api rootProject.ext.dependencies["kotlin-stdlib"]
-
-    //coroutines
-    api rootProject.ext.dependencies["coroutines-core"]
-    api rootProject.ext.dependencies["coroutines-android"]
-    
     //multidex
     api rootProject.ext.dependencies["multidex"]
 

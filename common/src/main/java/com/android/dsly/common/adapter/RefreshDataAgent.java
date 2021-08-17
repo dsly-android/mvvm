@@ -76,7 +76,7 @@ public class RefreshDataAgent {
             //添加数据
             mAdapter.addData(pageBean.getResults());
         }
-        if (pageBean.getHasNext()) {
+        if (pageBean.isHasNext()) {
             mAdapter.getLoadMoreModule().loadMoreComplete();
         } else {
             mAdapter.getLoadMoreModule().loadMoreEnd();
